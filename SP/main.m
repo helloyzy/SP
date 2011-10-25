@@ -11,8 +11,9 @@
 #import "SPAppDelegate.h"
 
 int main(int argc, char *argv[])
-{
-    @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([SPAppDelegate class]));
-    }
+{    
+    NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+    int retVal = UIApplicationMain(argc, argv, nil, NSStringFromClass([SPAppDelegate class]));
+    [pool release];
+    return retVal;
 }

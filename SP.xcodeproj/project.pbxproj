@@ -37,20 +37,20 @@
 		0B9A659B14564D220031E5C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0B9A659D14564D220031E5C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		0B9A659F14564D220031E5C2 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		0B9A65A314564D220031E5C2 /* SP-Info.plist */ = {isa = PBXFileReference; path = "SP-Info.plist"; sourceTree = "<group>"; };
+		0B9A65A314564D220031E5C2 /* SP-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SP-Info.plist"; sourceTree = "<group>"; };
 		0B9A65A514564D220031E5C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0B9A65A714564D220031E5C2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		0B9A65A914564D220031E5C2 /* SP-Prefix.pch */ = {isa = PBXFileReference; path = "SP-Prefix.pch"; sourceTree = "<group>"; };
-		0B9A65AA14564D220031E5C2 /* SPAppDelegate.h */ = {isa = PBXFileReference; path = SPAppDelegate.h; sourceTree = "<group>"; };
+		0B9A65A914564D220031E5C2 /* SP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SP-Prefix.pch"; sourceTree = "<group>"; };
+		0B9A65AA14564D220031E5C2 /* SPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPAppDelegate.h; sourceTree = "<group>"; };
 		0B9A65AB14564D220031E5C2 /* SPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPAppDelegate.m; sourceTree = "<group>"; };
-		0B9A65AD14564D220031E5C2 /* SPViewController.h */ = {isa = PBXFileReference; path = SPViewController.h; sourceTree = "<group>"; };
+		0B9A65AD14564D220031E5C2 /* SPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPViewController.h; sourceTree = "<group>"; };
 		0B9A65AE14564D220031E5C2 /* SPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPViewController.m; sourceTree = "<group>"; };
 		0B9A65B114564D220031E5C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SPViewController.xib; sourceTree = "<group>"; };
 		0B9A65B814564D220031E5C2 /* SPTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9A65B914564D220031E5C2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		0B9A65C114564D220031E5C2 /* SPTests-Info.plist */ = {isa = PBXFileReference; path = "SPTests-Info.plist"; sourceTree = "<group>"; };
+		0B9A65C114564D220031E5C2 /* SPTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SPTests-Info.plist"; sourceTree = "<group>"; };
 		0B9A65C314564D220031E5C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0B9A65C514564D220031E5C2 /* SPTests.h */ = {isa = PBXFileReference; path = SPTests.h; sourceTree = "<group>"; };
+		0B9A65C514564D220031E5C2 /* SPTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPTests.h; sourceTree = "<group>"; };
 		0B9A65C614564D220031E5C2 /* SPTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
