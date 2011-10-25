@@ -431,6 +431,7 @@
 				0B9A65CC14564D220031E5C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0B9A65CD14564D220031E5C2 /* Build configuration list for PBXNativeTarget "SPTests" */ = {
 			isa = XCConfigurationList;
@@ -439,6 +440,7 @@
 				0B9A65CF14564D220031E5C2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
