@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPViewController : UIViewController
-
+@interface SPViewController : UIViewController {
+    NSMutableData* responseData;
+}
 @end
