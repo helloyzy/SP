@@ -32,6 +32,7 @@
 - (void)testExample1
 {
     STFail(@"Unit tests are not implemented yet in SPTests");
+    NSLog(@"TEST");
 }
 
 @end
