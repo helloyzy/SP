@@ -7,6 +7,8 @@
 //
 
 #import "SPViewController.h"
+#import "GetUserInfo.h"
+#import "GetUserInfoService.h"
 
 @implementation SPViewController
 
@@ -20,44 +22,15 @@
 
 - (void)viewDidLoad
 {
-    [super viewDidLoad];
+    [super viewDidLoad];    
     
-    NSString *userName = @"Perficient\\spark.pan";
-    NSString *soapMessage = [NSString stringWithFormat:@
-                             "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n"
-                             "<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n"
-                             "<soap:Body>\n"
-                             "<GetUserInfo xmlns=\"http://schemas.microsoft.com/sharepoint/soap/directory/\"> \n"
-                             "<userLoginName>%@</userLoginName>\n"
-                             "</GetUserInfo>\n"
-                             "</soap:Body>\n"
-                             "</soap:Envelope>\n", userName];
-    
-    
-    
-    
-    NSURL *url = [NSURL URLWithString:@"https://sharepoint.perficient.com/sites/gdc/_vti_bin/UserGroup.asmx"];
-    NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
-    
-    NSString *msgLength = [NSString stringWithFormat:@"%d", [soapMessage length]];
-    [theRequest addValue: @"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    
-    [theRequest addValue:@"sharepoint.perficient.com" forHTTPHeaderField:@"Host"];
-    [theRequest addValue: msgLength forHTTPHeaderField:@"Content-Length"];
-    [theRequest setHTTPMethod:@"POST"];
-    [theRequest setHTTPBody: [soapMessage dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    
-    @try
-    {
-        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
-        if(connection)
-            responseData = [NSMutableData data];
-        
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Caught %@%@", [exception name], [exception reason]);
-    }
+    GetUserInfo * userInfo = [[GetUserInfo alloc] init];
+    userInfo.userLoginName = @"Perficient\\spark.pan";
+    GetUserInfoService * userInfoService = [[GetUserInfoService alloc] init];
+    userInfoService.userInfo = userInfo;
+    [userInfoService request];
+    [userInfo release];
+    [userInfoService release];
     
 }
 
