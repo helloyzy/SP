@@ -34,53 +34,6 @@
     
 }
 
--(void)connection:(NSURLConnection *)connection
-didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge
-                                   *)challenge
-{
-    
-    NSLog(@"Auth Request");
-    if ([challenge previousFailureCount] == 0) {
-        NSURLCredential *newCredential;
-        newCredential=[NSURLCredential credentialWithUser:(NSString
-                                                           *)@"Perficient\\spark.pan"
-                                                 password:(NSString
-                                                           *)@"zhe@812Bl"
-                       
-                                              persistence:NSURLCredentialPersistenceForSession];
-        [[challenge sender] useCredential:newCredential
-               forAuthenticationChallenge:challenge];
-    } else {
-        [[challenge sender] cancelAuthenticationChallenge:challenge];
-        // inform the user that the user name and password
-        // in the preferences are incorrect
-        //[self showPreferencesCredentialsAreIncorrectPanel:self];
-    }
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-    responseData = [[NSMutableData alloc] init];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-    [responseData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    [responseData release];
-    [connection release];
-    NSLog(@"%@", [error description]);
-}
-
-- (void) connectionDidFinishLoading:(NSURLConnection *)connection {
-    
-    NSString * string = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
-    NSLog(@"%@", string);
-    [responseData release];
-    [connection release];
-}
-
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
