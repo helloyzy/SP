@@ -9,6 +9,7 @@
 #import "SoapServiceBase.h"
 #import "Macros.h"
 #import "UTLDebug.h"
+#import "RXMLElement.h"
 
 @interface SoapServiceBase () 
 
@@ -73,6 +74,9 @@
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {	
     NSString * string = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
     NSLog(@"%@", string);
+    RXMLElement * rxml = [RXMLElement elementFromXMLString:string];
+    RXMLElement * userInfo = [rxml child:@"soap:Body.GetUserInfoResponse.GetUserInfoResult.GetUserInfo.User"];
+    NSLog(@"%@", [userInfo attribute:@"LoginName"]);
     [string release];
     self.responseData = nil;
     self.connection = nil;
