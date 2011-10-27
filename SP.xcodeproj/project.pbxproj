@@ -54,6 +54,8 @@
 		0B9A65BB14564D220031E5C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659B14564D220031E5C2 /* UIKit.framework */; };
 		0B9A65BC14564D220031E5C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659D14564D220031E5C2 /* Foundation.framework */; };
 		0B9A65C414564D220031E5C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B9A65C214564D220031E5C2 /* InfoPlist.strings */; };
+		0BAAF4F5145904A9003B4640 /* NSObject+AssociativeReferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */; };
+		0BAAF50214591ACE003B4640 /* NSObjAssoRefTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF50114591ACE003B4640 /* NSObjAssoRefTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +158,10 @@
 		0B9A65B914564D220031E5C2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0B9A65C114564D220031E5C2 /* SPTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SPTests-Info.plist"; sourceTree = "<group>"; };
 		0B9A65C314564D220031E5C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0BAAF4F3145904A9003B4640 /* NSObject+AssociativeReferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociativeReferences.h"; sourceTree = "<group>"; };
+		0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociativeReferences.m"; sourceTree = "<group>"; };
+		0BAAF50014591ACE003B4640 /* NSObjAssoRefTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjAssoRefTests.h; sourceTree = "<group>"; };
+		0BAAF50114591ACE003B4640 /* NSObjAssoRefTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjAssoRefTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +214,7 @@
 		0B672D371456B4EE00EAE589 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0BAAF4F11459046F003B4640 /* Extensions */,
 				0B672DBA1456C37900EAE589 /* Log */,
 				0B672DAA1456C07900EAE589 /* XML */,
 			);
@@ -464,6 +471,7 @@
 		0B9A65BF14564D220031E5C2 /* SPTests */ = {
 			isa = PBXGroup;
 			children = (
+				0BAAF4FE14591A0D003B4640 /* Utils */,
 				0B672DA11456BF4400EAE589 /* Classes */,
 				0B9A65C014564D220031E5C2 /* Supporting Files */,
 			);
@@ -477,6 +485,32 @@
 				0B9A65C214564D220031E5C2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0BAAF4F11459046F003B4640 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0BAAF4F3145904A9003B4640 /* NSObject+AssociativeReferences.h */,
+				0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0BAAF4FE14591A0D003B4640 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0BAAF4FF14591A0D003B4640 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0BAAF4FF14591A0D003B4640 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0BAAF50014591ACE003B4640 /* NSObjAssoRefTests.h */,
+				0BAAF50114591ACE003B4640 /* NSObjAssoRefTests.m */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -623,6 +657,7 @@
 				0B672DD71456C54000EAE589 /* UTLDebug.m in Sources */,
 				0B672DDC1456C94C00EAE589 /* SPAppDelegate.m in Sources */,
 				0B672DDD1456C94C00EAE589 /* SPViewController.m in Sources */,
+				0BAAF4F5145904A9003B4640 /* NSObject+AssociativeReferences.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +666,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B672DA41456BF4400EAE589 /* SPTests.m in Sources */,
+				0BAAF50214591ACE003B4640 /* NSObjAssoRefTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -724,6 +760,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SP/SP-Prefix.pch";
 				INFOPLIST_FILE = "SP/SP-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../AAATrunk_V1/BingMaps/MapControl\"",
@@ -755,6 +792,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SP/SP-Prefix.pch";
 				INFOPLIST_FILE = "SP/SP-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../AAATrunk_V1/BingMaps/MapControl\"",

@@ -26,12 +26,12 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in SPTests");
+    // STFail(@"Unit tests are not implemented yet in SPTests");
 }
 
 - (void)testExample1
 {
-    STFail(@"Unit tests are not implemented yet in SPTests");
+    // STFail(@"Unit tests are not implemented yet in SPTests");
 }
 
 @end
