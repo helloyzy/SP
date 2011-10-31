@@ -10,9 +10,7 @@
 #import "XMLWriter.h"
 #import "Macros.h"
 
-@interface SoapEnveloper () {
-    XMLWriter * writer;
-}
+@interface SoapEnveloper () 
 
 - (void) writeSoapHead;
 - (void) writeSoapTail;

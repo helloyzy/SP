@@ -9,7 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "XMLSerializable.h"
 
-@interface SoapEnveloper : NSObject
+@interface SoapEnveloper : NSObject {
+@private
+    XMLWriter * writer;
+}
 
 - (id) initWithNamespaces:(NSDictionary *)namespaces;
 - (void) write:(id<XMLSerializable>)entity;
