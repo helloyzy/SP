@@ -54,6 +54,10 @@
 		0B9A65BB14564D220031E5C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659B14564D220031E5C2 /* UIKit.framework */; };
 		0B9A65BC14564D220031E5C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659D14564D220031E5C2 /* Foundation.framework */; };
 		0B9A65C414564D220031E5C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B9A65C214564D220031E5C2 /* InfoPlist.strings */; };
+		AD7E6056145F947E0093FFA3 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E6055145F947E0093FFA3 /* GDataXMLNode.m */; };
+		AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E6057145F94960093FFA3 /* ListInfo.m */; };
+		AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */; };
+		AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7E6061145F95480093FFA3 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -156,6 +160,13 @@
 		0B9A65B914564D220031E5C2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0B9A65C114564D220031E5C2 /* SPTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SPTests-Info.plist"; sourceTree = "<group>"; };
 		0B9A65C314564D220031E5C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		AD7E6054145F947E0093FFA3 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		AD7E6055145F947E0093FFA3 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		AD7E6057145F94960093FFA3 /* ListInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListInfo.m; sourceTree = "<group>"; };
+		AD7E6058145F94960093FFA3 /* ListInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListInfo.h; sourceTree = "<group>"; };
+		AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListCollectionService.m; sourceTree = "<group>"; };
+		AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListCollectionService.h; sourceTree = "<group>"; };
+		AD7E6061145F95480093FFA3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */,
 				0B672D9F1456BD5800EAE589 /* CoreText.framework in Frameworks */,
 				0B672D9D1456BD4900EAE589 /* CoreData.framework in Frameworks */,
 				0B9A659C14564D220031E5C2 /* UIKit.framework in Frameworks */,
@@ -187,6 +199,8 @@
 		0B672D351456B4EE00EAE589 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				AD7E6054145F947E0093FFA3 /* GDataXMLNode.h */,
+				AD7E6055145F947E0093FFA3 /* GDataXMLNode.m */,
 				0B672D451456BBD800EAE589 /* iBoost */,
 			);
 			path = 3rdParty;
@@ -199,8 +213,8 @@
 				0B672DD91456C94B00EAE589 /* SPAppDelegate.m */,
 				0B672DDA1456C94B00EAE589 /* SPViewController.h */,
 				0B672DDB1456C94B00EAE589 /* SPViewController.m */,
-				0B672DB01456C0B900EAE589 /* Soap */,
 				0B9A65B014564D220031E5C2 /* SPViewController.xib */,
+				0B672DB01456C0B900EAE589 /* Soap */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -392,6 +406,8 @@
 		0B672DBE1456C41000EAE589 /* SoapEntity */ = {
 			isa = PBXGroup;
 			children = (
+				AD7E6057145F94960093FFA3 /* ListInfo.m */,
+				AD7E6058145F94960093FFA3 /* ListInfo.h */,
 				0B672DC61456C4BD00EAE589 /* GetUserInfo.h */,
 				0B672DC71456C4BD00EAE589 /* GetUserInfo.m */,
 			);
@@ -401,6 +417,8 @@
 		0B672DBF1456C41E00EAE589 /* SoapService */ = {
 			isa = PBXGroup;
 			children = (
+				AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */,
+				AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */,
 				0B672DC91456C4D000EAE589 /* GetUserInfoService.h */,
 				0B672DCA1456C4D000EAE589 /* GetUserInfoService.m */,
 			);
@@ -410,6 +428,7 @@
 		0B9A658C14564D210031E5C2 = {
 			isa = PBXGroup;
 			children = (
+				AD7E6061145F95480093FFA3 /* libxml2.dylib */,
 				0B9A65A114564D220031E5C2 /* SP */,
 				0B9A65BF14564D220031E5C2 /* SPTests */,
 				0B9A659A14564D220031E5C2 /* Frameworks */,
@@ -623,6 +642,9 @@
 				0B672DD71456C54000EAE589 /* UTLDebug.m in Sources */,
 				0B672DDC1456C94C00EAE589 /* SPAppDelegate.m in Sources */,
 				0B672DDD1456C94C00EAE589 /* SPViewController.m in Sources */,
+				AD7E6056145F947E0093FFA3 /* GDataXMLNode.m in Sources */,
+				AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */,
+				AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -723,6 +745,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SP/SP-Prefix.pch";
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "SP/SP-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -754,6 +777,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SP/SP-Prefix.pch";
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "SP/SP-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

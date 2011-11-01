@@ -9,8 +9,13 @@
 #import "SPViewController.h"
 #import "GetUserInfo.h"
 #import "GetUserInfoService.h"
+#import "ListInfo.h"
+#import "GetListCollectionService.h"
 
 @implementation SPViewController
+
+@synthesize tableview;
+@synthesize listOfItems;
 
 - (void)didReceiveMemoryWarning
 {
@@ -20,7 +25,7 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
+/*- (void)viewDidLoad
 {
     [super viewDidLoad];    
     
@@ -32,6 +37,30 @@
     [userInfo release];
     [userInfoService release];
     
+}*/
+
+
+- (void)viewDidLoad
+{
+    ListInfo * listInfo = [[ListInfo alloc] init];
+    //userInfo.userLoginName = @"Perficient\\spark.pan";
+    GetListCollectionService * listInfoService = [[GetListCollectionService alloc] init];
+    listInfoService.listInfo = listInfo;
+    [listInfoService request];
+    
+    listInfoService.delegate = self;
+    
+    [listInfo release];
+    [listInfoService release];
+    
+    
+    [super viewDidLoad];   
+    
+}
+
+- (void) dataSourceReturn:(NSMutableArray *)datasource {
+    listOfItems = datasource;
+    [tableview reloadData];
 }
 
 - (void)viewDidUnload
@@ -41,6 +70,35 @@
     // e.g. self.myOutlet = nil;
 }
 
+
+
+// Customize the number of rows in the table view.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [listOfItems count];
+}
+
+
+// Customize the appearance of table view cells.
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *CellIdentifier = @"Cell";
+	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    
+    
+    // Set up the cell...
+	NSString *cellValue = [listOfItems objectAtIndex:indexPath.row];
+	cell.textLabel.text = cellValue;
+    
+    return cell;
+}
+
+
+- (void)dealloc {
+    
+    [tableview release];
+    [listOfItems release];
+    [super release];
+}
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

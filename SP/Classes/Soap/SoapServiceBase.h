@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface SoapServiceBase : NSObject
+@interface SoapServiceBase : NSObject {
+    NSMutableData *responseData;
+}
 
 - (void) sendSoapRequest:(NSURLRequest *)request;
 
