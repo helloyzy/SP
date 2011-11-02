@@ -1,0 +1,32 @@
+//
+//  SoapServiceBase.h
+//  TestSharePoint
+//
+//  Created by Whitman Yang on 10/24/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+<<<<<<< HEAD
+@class SoapEnveloper;
+
+@interface SoapServiceBase : NSObject
+=======
+@interface SoapServiceBase : NSObject {
+    NSMutableData *responseData;
+}
+>>>>>>> 180e8c04833cdb47405277cdb09453ca03727c69
+
+- (void) request;
+
+@end
+
+@interface SoapServiceBase (Protected) 
+
+- (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper;
+
+- (id) parseResponse:(NSString *)responseString;
+- (void) sendNotificationOnSuccess:(id)value;
+
+@end
