@@ -58,6 +58,12 @@
 		AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E6057145F94960093FFA3 /* ListInfo.m */; };
 		AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */; };
 		AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7E6061145F95480093FFA3 /* libxml2.dylib */; };
+  		0BAAF4F5145904A9003B4640 /* NSObject+AssociativeReferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */; };
+		0BAAF50214591ACE003B4640 /* NSObjAssoRefTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF50114591ACE003B4640 /* NSObjAssoRefTests.m */; };
+		0BAAF512145940FD003B4640 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF50D145940FD003B4640 /* NSDataAdditions.m */; };
+		0BAAF513145940FD003B4640 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF50F145940FD003B4640 /* RXMLElement.m */; };
+		0BAAF514145940FD003B4640 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF511145940FD003B4640 /* TBXML.m */; };
+		0BAAF5171459413E003B4640 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAAF5161459413E003B4640 /* libz.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,6 +173,17 @@
 		AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListCollectionService.m; sourceTree = "<group>"; };
 		AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListCollectionService.h; sourceTree = "<group>"; };
 		AD7E6061145F95480093FFA3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		0BAAF4F3145904A9003B4640 /* NSObject+AssociativeReferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociativeReferences.h"; sourceTree = "<group>"; };
+		0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociativeReferences.m"; sourceTree = "<group>"; };
+		0BAAF50014591ACE003B4640 /* NSObjAssoRefTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjAssoRefTests.h; sourceTree = "<group>"; };
+		0BAAF50114591ACE003B4640 /* NSObjAssoRefTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSObjAssoRefTests.m; sourceTree = "<group>"; };
+		0BAAF50C145940FD003B4640 /* NSDataAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSDataAdditions.h; sourceTree = "<group>"; };
+		0BAAF50D145940FD003B4640 /* NSDataAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSDataAdditions.m; sourceTree = "<group>"; };
+		0BAAF50E145940FD003B4640 /* RXMLElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RXMLElement.h; sourceTree = "<group>"; };
+		0BAAF50F145940FD003B4640 /* RXMLElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RXMLElement.m; sourceTree = "<group>"; };
+		0BAAF510145940FD003B4640 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
+		0BAAF511145940FD003B4640 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
+		0BAAF5161459413E003B4640 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */,
+				0BAAF5171459413E003B4640 /* libz.dylib in Frameworks */,
 				0B672D9F1456BD5800EAE589 /* CoreText.framework in Frameworks */,
 				0B672D9D1456BD4900EAE589 /* CoreData.framework in Frameworks */,
 				0B9A659C14564D220031E5C2 /* UIKit.framework in Frameworks */,
@@ -201,6 +219,7 @@
 			children = (
 				AD7E6054145F947E0093FFA3 /* GDataXMLNode.h */,
 				AD7E6055145F947E0093FFA3 /* GDataXMLNode.m */,
+				0BAAF50B145940FD003B4640 /* RaptureXML */,
 				0B672D451456BBD800EAE589 /* iBoost */,
 			);
 			path = 3rdParty;
@@ -222,6 +241,7 @@
 		0B672D371456B4EE00EAE589 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				0BAAF4F11459046F003B4640 /* Extensions */,
 				0B672DBA1456C37900EAE589 /* Log */,
 				0B672DAA1456C07900EAE589 /* XML */,
 			);
@@ -429,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				AD7E6061145F95480093FFA3 /* libxml2.dylib */,
+				0BAAF5161459413E003B4640 /* libz.dylib */,
 				0B9A65A114564D220031E5C2 /* SP */,
 				0B9A65BF14564D220031E5C2 /* SPTests */,
 				0B9A659A14564D220031E5C2 /* Frameworks */,
@@ -483,6 +504,7 @@
 		0B9A65BF14564D220031E5C2 /* SPTests */ = {
 			isa = PBXGroup;
 			children = (
+				0BAAF4FE14591A0D003B4640 /* Utils */,
 				0B672DA11456BF4400EAE589 /* Classes */,
 				0B9A65C014564D220031E5C2 /* Supporting Files */,
 			);
@@ -496,6 +518,45 @@
 				0B9A65C214564D220031E5C2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0BAAF4F11459046F003B4640 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0BAAF4F3145904A9003B4640 /* NSObject+AssociativeReferences.h */,
+				0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0BAAF4FE14591A0D003B4640 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				0BAAF4FF14591A0D003B4640 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		0BAAF4FF14591A0D003B4640 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0BAAF50014591ACE003B4640 /* NSObjAssoRefTests.h */,
+				0BAAF50114591ACE003B4640 /* NSObjAssoRefTests.m */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0BAAF50B145940FD003B4640 /* RaptureXML */ = {
+			isa = PBXGroup;
+			children = (
+				0BAAF50C145940FD003B4640 /* NSDataAdditions.h */,
+				0BAAF50D145940FD003B4640 /* NSDataAdditions.m */,
+				0BAAF50E145940FD003B4640 /* RXMLElement.h */,
+				0BAAF50F145940FD003B4640 /* RXMLElement.m */,
+				0BAAF510145940FD003B4640 /* TBXML.h */,
+				0BAAF511145940FD003B4640 /* TBXML.m */,
+			);
+			path = RaptureXML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -645,6 +706,10 @@
 				AD7E6056145F947E0093FFA3 /* GDataXMLNode.m in Sources */,
 				AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */,
 				AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */,
+				0BAAF4F5145904A9003B4640 /* NSObject+AssociativeReferences.m in Sources */,
+				0BAAF512145940FD003B4640 /* NSDataAdditions.m in Sources */,
+				0BAAF513145940FD003B4640 /* RXMLElement.m in Sources */,
+				0BAAF514145940FD003B4640 /* TBXML.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -653,6 +718,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B672DA41456BF4400EAE589 /* SPTests.m in Sources */,
+				0BAAF50214591ACE003B4640 /* NSObjAssoRefTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -747,6 +813,7 @@
 				GCC_PREFIX_HEADER = "SP/SP-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "SP/SP-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../AAATrunk_V1/BingMaps/MapControl\"",
@@ -779,6 +846,7 @@
 				GCC_PREFIX_HEADER = "SP/SP-Prefix.pch";
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "SP/SP-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/../AAATrunk_V1/BingMaps/MapControl\"",
