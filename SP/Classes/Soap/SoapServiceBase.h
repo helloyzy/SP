@@ -8,8 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class SoapEnveloper;
+
 @interface SoapServiceBase : NSObject
 
-- (void) sendSoapRequest:(NSURLRequest *)request;
+- (void) request;
+
+@end
+
+@interface SoapServiceBase (Protected) 
+
+- (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper;
+
+- (id) parseResponse:(NSString *)responseString;
+- (void) sendNotificationOnSuccess:(id)value;
 
 @end

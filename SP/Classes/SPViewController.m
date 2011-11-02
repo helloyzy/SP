@@ -28,10 +28,19 @@
     userInfo.userLoginName = @"Perficient\\spark.pan";
     GetUserInfoService * userInfoService = [[GetUserInfoService alloc] init];
     userInfoService.userInfo = userInfo;
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(onNotification:) name:@"UserInfo" object:userInfoService];
     [userInfoService request];
     [userInfo release];
     [userInfoService release];
     
+}
+
+- (void)onNotification:(NSNotification *)notification {
+    NSDictionary * dict = [notification userInfo];
+    NSLog(@"%@ 1212121", [dict objectForKey:@"value"]);
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center removeObserver:self];
 }
 
 - (void)viewDidUnload

@@ -10,6 +10,7 @@
 #import "Macros.h"
 #import "UTLDebug.h"
 #import "RXMLElement.h"
+#import "SoapEnveloper.h"
 
 @interface SoapServiceBase () 
 
@@ -17,6 +18,7 @@
 @property (nonatomic, retain) NSURLConnection * connection;
 
 - (void) fail:(NSString *)description;
+- (void) sendSoapRequest:(NSURLRequest *)request;
 
 @end
 
@@ -27,13 +29,29 @@
 
 #pragma mark - public methods
 
-- (void) sendSoapRequest:(NSURLRequest *)request {
-    @try {
-        connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+- (void) request {
+    SoapEnveloper * soapEnveloper = [[SoapEnveloper alloc] init];
+    NSURLRequest * request = [self buildRequest:soapEnveloper];
+    [soapEnveloper release];
+    if (request) {
+        [self sendSoapRequest:request];
+    } else {
+        [self fail:@"Failed to build the request"];
     }
-    @catch (NSException *exception) {
-        [self fail:[NSString stringWithFormat:@"%@%@", [exception name], [exception reason]]];
-    }
+}
+
+#pragma mark - default implementations for protected methods
+
+- (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper {
+    return nil;
+}
+
+- (id) parseResponse:(NSString *)responseString {
+    return nil;
+}
+
+- (void) sendNotificationOnSuccess:(id)value {
+    // empty implementation
 }
          
 #pragma mark - private methods
@@ -42,6 +60,15 @@
     UTLLog(@"Caught %@", description);
     self.responseData = nil;
     self.connection = nil;
+}
+
+- (void) sendSoapRequest:(NSURLRequest *)request {
+    @try {
+        connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    }
+    @catch (NSException *exception) {
+        [self fail:[NSString stringWithFormat:@"%@%@", [exception name], [exception reason]]];
+    }
 }
          
 #pragma mark - connection callbacks 
@@ -72,12 +99,15 @@
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {	
-    NSString * string = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
-    NSLog(@"%@", string);
-    RXMLElement * rxml = [RXMLElement elementFromXMLString:string];
-    RXMLElement * userInfo = [rxml child:@"soap:Body.GetUserInfoResponse.GetUserInfoResult.GetUserInfo.User"];
-    NSLog(@"%@", [userInfo attribute:@"LoginName"]);
-    [string release];
+    NSString * responseString = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
+    UTLLog(@"%@", responseString);
+    id responseObject = [self parseResponse:responseString];
+    [responseString release];
+    if (responseObject) {
+        [self sendNotificationOnSuccess:responseObject];
+    } else {
+        [self fail:@"Failure during convert response string to object"];
+    }
     self.responseData = nil;
     self.connection = nil;
 }

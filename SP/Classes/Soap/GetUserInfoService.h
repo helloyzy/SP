@@ -15,6 +15,4 @@
 
 @property (nonatomic, retain) GetUserInfo * userInfo;
 
-- (void) request;
-
 @end
