@@ -96,6 +96,8 @@
     
     // Set up the cell...
 	NSString *cellValue = [listOfItems objectAtIndex:indexPath.row];
+    
+    NSLog(@"%@",@"Test");
 	cell.textLabel.text = cellValue;
     
     return cell;
