@@ -7,6 +7,7 @@
 //
 
 #import "SoapServiceBase.h"
+
 @protocol DataSourceDelegate <NSObject>
 - (void) dataSourceReturn: (NSMutableArray*) datasource;
 @end
@@ -23,9 +24,6 @@
 
 @property (nonatomic ,retain) NSMutableArray *listOfItems;
 @property (nonatomic, retain) ListInfo *listInfo;
-@property (nonatomic, retain) id delegate;
-
-- (void) request;
-- (void) connectionDidFinishLoading:(NSURLConnection *)connection;
+@property (nonatomic, assign) id delegate;
 
 @end

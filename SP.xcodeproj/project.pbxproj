@@ -54,16 +54,16 @@
 		0B9A65BB14564D220031E5C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659B14564D220031E5C2 /* UIKit.framework */; };
 		0B9A65BC14564D220031E5C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659D14564D220031E5C2 /* Foundation.framework */; };
 		0B9A65C414564D220031E5C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B9A65C214564D220031E5C2 /* InfoPlist.strings */; };
-		AD7E6056145F947E0093FFA3 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E6055145F947E0093FFA3 /* GDataXMLNode.m */; };
-		AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E6057145F94960093FFA3 /* ListInfo.m */; };
-		AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */; };
-		AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7E6061145F95480093FFA3 /* libxml2.dylib */; };
-  		0BAAF4F5145904A9003B4640 /* NSObject+AssociativeReferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */; };
+		0BAAF4F5145904A9003B4640 /* NSObject+AssociativeReferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */; };
 		0BAAF50214591ACE003B4640 /* NSObjAssoRefTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF50114591ACE003B4640 /* NSObjAssoRefTests.m */; };
 		0BAAF512145940FD003B4640 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF50D145940FD003B4640 /* NSDataAdditions.m */; };
 		0BAAF513145940FD003B4640 /* RXMLElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF50F145940FD003B4640 /* RXMLElement.m */; };
 		0BAAF514145940FD003B4640 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF511145940FD003B4640 /* TBXML.m */; };
 		0BAAF5171459413E003B4640 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAAF5161459413E003B4640 /* libz.dylib */; };
+		0BC2F9401460F93100292406 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC2F93F1460F93100292406 /* GDataXMLNode.m */; };
+		AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E6057145F94960093FFA3 /* ListInfo.m */; };
+		AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */; };
+		AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7E6061145F95480093FFA3 /* libxml2.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,13 +166,6 @@
 		0B9A65B914564D220031E5C2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0B9A65C114564D220031E5C2 /* SPTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SPTests-Info.plist"; sourceTree = "<group>"; };
 		0B9A65C314564D220031E5C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		AD7E6054145F947E0093FFA3 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
-		AD7E6055145F947E0093FFA3 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
-		AD7E6057145F94960093FFA3 /* ListInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListInfo.m; sourceTree = "<group>"; };
-		AD7E6058145F94960093FFA3 /* ListInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListInfo.h; sourceTree = "<group>"; };
-		AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListCollectionService.m; sourceTree = "<group>"; };
-		AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListCollectionService.h; sourceTree = "<group>"; };
-		AD7E6061145F95480093FFA3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		0BAAF4F3145904A9003B4640 /* NSObject+AssociativeReferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociativeReferences.h"; sourceTree = "<group>"; };
 		0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociativeReferences.m"; sourceTree = "<group>"; };
 		0BAAF50014591ACE003B4640 /* NSObjAssoRefTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjAssoRefTests.h; sourceTree = "<group>"; };
@@ -184,6 +177,13 @@
 		0BAAF510145940FD003B4640 /* TBXML.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TBXML.h; sourceTree = "<group>"; };
 		0BAAF511145940FD003B4640 /* TBXML.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TBXML.m; sourceTree = "<group>"; };
 		0BAAF5161459413E003B4640 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		0BC2F93E1460F93100292406 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		0BC2F93F1460F93100292406 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		AD7E6057145F94960093FFA3 /* ListInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListInfo.m; sourceTree = "<group>"; };
+		AD7E6058145F94960093FFA3 /* ListInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListInfo.h; sourceTree = "<group>"; };
+		AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListCollectionService.m; sourceTree = "<group>"; };
+		AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListCollectionService.h; sourceTree = "<group>"; };
+		AD7E6061145F95480093FFA3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,10 +217,9 @@
 		0B672D351456B4EE00EAE589 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
-				AD7E6054145F947E0093FFA3 /* GDataXMLNode.h */,
-				AD7E6055145F947E0093FFA3 /* GDataXMLNode.m */,
-				0BAAF50B145940FD003B4640 /* RaptureXML */,
+				0BC2F93D1460F8D300292406 /* GoogleXML */,
 				0B672D451456BBD800EAE589 /* iBoost */,
+				0BAAF50B145940FD003B4640 /* RaptureXML */,
 			);
 			path = 3rdParty;
 			sourceTree = "<group>";
@@ -426,10 +425,10 @@
 		0B672DBE1456C41000EAE589 /* SoapEntity */ = {
 			isa = PBXGroup;
 			children = (
-				AD7E6057145F94960093FFA3 /* ListInfo.m */,
-				AD7E6058145F94960093FFA3 /* ListInfo.h */,
 				0B672DC61456C4BD00EAE589 /* GetUserInfo.h */,
 				0B672DC71456C4BD00EAE589 /* GetUserInfo.m */,
+				AD7E6058145F94960093FFA3 /* ListInfo.h */,
+				AD7E6057145F94960093FFA3 /* ListInfo.m */,
 			);
 			name = SoapEntity;
 			sourceTree = "<group>";
@@ -437,8 +436,8 @@
 		0B672DBF1456C41E00EAE589 /* SoapService */ = {
 			isa = PBXGroup;
 			children = (
-				AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */,
 				AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */,
+				AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */,
 				0B672DC91456C4D000EAE589 /* GetUserInfoService.h */,
 				0B672DCA1456C4D000EAE589 /* GetUserInfoService.m */,
 			);
@@ -448,8 +447,6 @@
 		0B9A658C14564D210031E5C2 = {
 			isa = PBXGroup;
 			children = (
-				AD7E6061145F95480093FFA3 /* libxml2.dylib */,
-				0BAAF5161459413E003B4640 /* libz.dylib */,
 				0B9A65A114564D220031E5C2 /* SP */,
 				0B9A65BF14564D220031E5C2 /* SPTests */,
 				0B9A659A14564D220031E5C2 /* Frameworks */,
@@ -473,6 +470,8 @@
 				0B9A659F14564D220031E5C2 /* CoreGraphics.framework */,
 				0B672D9E1456BD5800EAE589 /* CoreText.framework */,
 				0B9A659D14564D220031E5C2 /* Foundation.framework */,
+				AD7E6061145F95480093FFA3 /* libxml2.dylib */,
+				0BAAF5161459413E003B4640 /* libz.dylib */,
 				0B9A65B914564D220031E5C2 /* SenTestingKit.framework */,
 				0B9A659B14564D220031E5C2 /* UIKit.framework */,
 			);
@@ -557,6 +556,15 @@
 				0BAAF511145940FD003B4640 /* TBXML.m */,
 			);
 			path = RaptureXML;
+			sourceTree = "<group>";
+		};
+		0BC2F93D1460F8D300292406 /* GoogleXML */ = {
+			isa = PBXGroup;
+			children = (
+				0BC2F93E1460F93100292406 /* GDataXMLNode.h */,
+				0BC2F93F1460F93100292406 /* GDataXMLNode.m */,
+			);
+			path = GoogleXML;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -703,13 +711,13 @@
 				0B672DD71456C54000EAE589 /* UTLDebug.m in Sources */,
 				0B672DDC1456C94C00EAE589 /* SPAppDelegate.m in Sources */,
 				0B672DDD1456C94C00EAE589 /* SPViewController.m in Sources */,
-				AD7E6056145F947E0093FFA3 /* GDataXMLNode.m in Sources */,
 				AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */,
 				AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */,
 				0BAAF4F5145904A9003B4640 /* NSObject+AssociativeReferences.m in Sources */,
 				0BAAF512145940FD003B4640 /* NSDataAdditions.m in Sources */,
 				0BAAF513145940FD003B4640 /* RXMLElement.m in Sources */,
 				0BAAF514145940FD003B4640 /* TBXML.m in Sources */,
+				0BC2F9401460F93100292406 /* GDataXMLNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,6 +789,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-UTLDEBUG";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

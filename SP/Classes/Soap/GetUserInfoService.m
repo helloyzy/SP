@@ -16,7 +16,7 @@
 
 @synthesize userInfo;
 
-#pragma mark - default implementations for protected methods
+#pragma mark - protected methods implementations
 
 - (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper {
     if (userInfo) {
