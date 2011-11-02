@@ -95,13 +95,7 @@
     
     
     // Set up the cell...
-<<<<<<< HEAD
-	NSString *cellValue = [listOfItems objectAtIndex:indexPath.row];
-    
-    NSLog(@"%@",@"Test");
-=======
 	NSString *cellValue = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] title];
->>>>>>> reorganize the project structure and merge Spark's code
 	cell.textLabel.text = cellValue;
     
     return cell;
