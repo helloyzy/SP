@@ -7,12 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SoapServiceBase.h"
+#import "SPSoapService.h"
 
 @class GetUserInfo;
 
-@interface GetUserInfoService : SoapServiceBase
-
-@property (nonatomic, retain) GetUserInfo * userInfo;
+@interface GetUserInfoService : SPSoapService
 
 @end

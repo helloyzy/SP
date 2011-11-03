@@ -61,6 +61,10 @@
 		0BAAF514145940FD003B4640 /* TBXML.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF511145940FD003B4640 /* TBXML.m */; };
 		0BAAF5171459413E003B4640 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0BAAF5161459413E003B4640 /* libz.dylib */; };
 		0BC2F9401460F93100292406 /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BC2F93F1460F93100292406 /* GDataXMLNode.m */; };
+		0BDDD7971461307000FD34D2 /* SoapEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDDD7961461307000FD34D2 /* SoapEntity.m */; };
+		0BDDD79A146147C100FD34D2 /* SPSoapService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDDD799146147C100FD34D2 /* SPSoapService.m */; };
+		0BDDD7A21461586C00FD34D2 /* SPCachedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDDD7A11461586C00FD34D2 /* SPCachedData.m */; };
+		0BDDD7A51461607300FD34D2 /* NSObject+SPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDDD7A41461607300FD34D2 /* NSObject+SPExtensions.m */; };
 		AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E6057145F94960093FFA3 /* ListInfo.m */; };
 		AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */; };
 		AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7E6061145F95480093FFA3 /* libxml2.dylib */; };
@@ -179,6 +183,15 @@
 		0BAAF5161459413E003B4640 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		0BC2F93E1460F93100292406 /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
 		0BC2F93F1460F93100292406 /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		0BDDD7951461306F00FD34D2 /* SoapEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapEntity.h; sourceTree = "<group>"; };
+		0BDDD7961461307000FD34D2 /* SoapEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapEntity.m; sourceTree = "<group>"; };
+		0BDDD798146147C100FD34D2 /* SPSoapService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSoapService.h; sourceTree = "<group>"; };
+		0BDDD799146147C100FD34D2 /* SPSoapService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSoapService.m; sourceTree = "<group>"; };
+		0BDDD79D146156A200FD34D2 /* SPConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPConst.h; sourceTree = "<group>"; };
+		0BDDD7A01461586C00FD34D2 /* SPCachedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCachedData.h; sourceTree = "<group>"; };
+		0BDDD7A11461586C00FD34D2 /* SPCachedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCachedData.m; sourceTree = "<group>"; };
+		0BDDD7A31461607300FD34D2 /* NSObject+SPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SPExtensions.h"; sourceTree = "<group>"; };
+		0BDDD7A41461607300FD34D2 /* NSObject+SPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPExtensions.m"; sourceTree = "<group>"; };
 		AD7E6057145F94960093FFA3 /* ListInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListInfo.m; sourceTree = "<group>"; };
 		AD7E6058145F94960093FFA3 /* ListInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListInfo.h; sourceTree = "<group>"; };
 		AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListCollectionService.m; sourceTree = "<group>"; };
@@ -232,6 +245,7 @@
 				0B672DDA1456C94B00EAE589 /* SPViewController.h */,
 				0B672DDB1456C94B00EAE589 /* SPViewController.m */,
 				0B9A65B014564D220031E5C2 /* SPViewController.xib */,
+				0BDDD79B1461552900FD34D2 /* Common */,
 				0B672DB01456C0B900EAE589 /* Soap */,
 			);
 			path = Classes;
@@ -401,6 +415,8 @@
 		0B672DB01456C0B900EAE589 /* Soap */ = {
 			isa = PBXGroup;
 			children = (
+				0BDDD7951461306F00FD34D2 /* SoapEntity.h */,
+				0BDDD7961461307000FD34D2 /* SoapEntity.m */,
 				0B672DCC1456C4F100EAE589 /* SoapEnveloper.h */,
 				0B672DCD1456C4F100EAE589 /* SoapEnveloper.m */,
 				0B672DCE1456C4F100EAE589 /* SoapServiceBase.h */,
@@ -440,6 +456,8 @@
 				AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */,
 				0B672DC91456C4D000EAE589 /* GetUserInfoService.h */,
 				0B672DCA1456C4D000EAE589 /* GetUserInfoService.m */,
+				0BDDD798146147C100FD34D2 /* SPSoapService.h */,
+				0BDDD799146147C100FD34D2 /* SPSoapService.m */,
 			);
 			name = SoapService;
 			sourceTree = "<group>";
@@ -565,6 +583,18 @@
 				0BC2F93F1460F93100292406 /* GDataXMLNode.m */,
 			);
 			path = GoogleXML;
+			sourceTree = "<group>";
+		};
+		0BDDD79B1461552900FD34D2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0BDDD7A31461607300FD34D2 /* NSObject+SPExtensions.h */,
+				0BDDD7A41461607300FD34D2 /* NSObject+SPExtensions.m */,
+				0BDDD7A01461586C00FD34D2 /* SPCachedData.h */,
+				0BDDD7A11461586C00FD34D2 /* SPCachedData.m */,
+				0BDDD79D146156A200FD34D2 /* SPConst.h */,
+			);
+			name = Common;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -718,6 +748,10 @@
 				0BAAF513145940FD003B4640 /* RXMLElement.m in Sources */,
 				0BAAF514145940FD003B4640 /* TBXML.m in Sources */,
 				0BC2F9401460F93100292406 /* GDataXMLNode.m in Sources */,
+				0BDDD7971461307000FD34D2 /* SoapEntity.m in Sources */,
+				0BDDD79A146147C100FD34D2 /* SPSoapService.m in Sources */,
+				0BDDD7A21461586C00FD34D2 /* SPCachedData.m in Sources */,
+				0BDDD7A51461607300FD34D2 /* NSObject+SPExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,7 +823,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				OTHER_CFLAGS = "-UTLDEBUG";
+				OTHER_CFLAGS = "-DUTLDEBUG";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};

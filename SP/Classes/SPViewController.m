@@ -11,6 +11,15 @@
 #import "GetUserInfoService.h"
 #import "ListInfo.h"
 #import "GetListCollectionService.h"
+#import "SPConst.h"
+#import "RXMLElement.h"
+
+@interface SPViewController ()
+
+- (void) testGetUserInfo;
+- (void) testLists;
+
+@end
 
 @implementation SPViewController
 
@@ -25,39 +34,34 @@
 
 #pragma mark - View lifecycle
 
-/*- (void)viewDidLoad
-{
-    [super viewDidLoad];    
-    
+- (void)viewDidLoad {       
+    [super viewDidLoad];
+    [self testGetUserInfo];
+}
+
+- (void) testGetUserInfo {
     GetUserInfo * userInfo = [[GetUserInfo alloc] init];
     userInfo.userLoginName = @"Perficient\\spark.pan";
     GetUserInfoService * userInfoService = [[GetUserInfoService alloc] init];
-    userInfoService.userInfo = userInfo;
+    userInfoService.soapRequestParam = userInfo;
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-    [center addObserver:self selector:@selector(onNotification:) name:@"UserInfo" object:userInfoService];
+    [center addObserver:self selector:@selector(onNotification:) name:SP_NOTIFICATION_GETUSERINFO_SUCCESS object:userInfoService];
     [userInfoService request];
     [userInfo release];
     [userInfoService release];
-    
-}*/
+}
 
-
-- (void)viewDidLoad
-{
+- (void) testLists {
     ListInfo * listInfo = [[ListInfo alloc] init];
     //userInfo.userLoginName = @"Perficient\\spark.pan";
     GetListCollectionService * listInfoService = [[GetListCollectionService alloc] init];
-    listInfoService.listInfo = listInfo;
+    listInfoService.soapRequestParam = listInfo;
     [listInfoService request];
     
     listInfoService.delegate = self;
     
     [listInfo release];
     [listInfoService release];
-    
-    
-    [super viewDidLoad];   
-    
 }
 
 - (void) dataSourceReturn:(NSMutableArray *)datasource {
@@ -67,7 +71,8 @@
 
 - (void)onNotification:(NSNotification *)notification {
     NSDictionary * dict = [notification userInfo];
-    NSLog(@"%@ 1212121", [dict objectForKey:@"value"]);
+    RXMLElement * ele = (RXMLElement *) [dict objectForKey:SP_NOTIFICATION_KEY_USERINFO];
+    NSLog(@"%@", [ele attribute:@"LoginName"]);
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self];
 }

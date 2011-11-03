@@ -7,14 +7,11 @@
 //
 
 #import "ListInfo.h"
-#import "XMLSerializable.h"
-#import "Macros.h"
-#import "XMLWriter.h"
+
 @implementation ListInfo
 
 @synthesize title;
 @synthesize description;
-
 
 - (void) write:(XMLWriter *)writer {
     [writer setDefaultNamespace:@"http://schemas.microsoft.com/sharepoint/soap/directory/"];
@@ -22,10 +19,9 @@
     [writer writeEndElement];
 }
 
-
 - (void) dealloc {
-    SAFE_RELEASE(title);
-    SAFE_RELEASE(description);
+    self.title = nil;
+    self.description = nil;
     [super dealloc];
 }
 @end

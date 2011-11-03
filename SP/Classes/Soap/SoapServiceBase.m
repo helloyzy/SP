@@ -9,7 +9,7 @@
 #import "SoapServiceBase.h"
 #import "Macros.h"
 #import "UTLDebug.h"
-#import "SoapEnveloper.h"
+#import "SPCachedData.h"
 
 @interface SoapServiceBase () 
 
@@ -23,40 +23,32 @@
 
 @implementation SoapServiceBase
 
+@synthesize soapRequestParam;
 @synthesize responseData;
 @synthesize connection;
 
 #pragma mark - public methods
 
-- (void) request {
-    SoapEnveloper * soapEnveloper = [[SoapEnveloper alloc] init];
-    NSURLRequest * request = [self buildRequest:soapEnveloper];
-    [soapEnveloper release];
-    if (request) {
-        [self sendSoapRequest:request];
+- (void) request {    
+    if (soapRequestParam) {
+        SoapEnveloper * soapEnveloper = [[SoapEnveloper alloc] init];
+        [soapEnveloper write:soapRequestParam];
+        NSURLRequest * request = [self buildRequest:soapEnveloper];
+        [soapEnveloper release];
+        if (request) {
+            [self sendSoapRequest:request];
+        } else {
+            [self fail:@"Failed to build the request"];
+        }
     } else {
-        [self fail:@"Failed to build the request"];
+        [self fail:@"Can not find SOAP request parameter to build up request"]; 
     }
-}
-
-#pragma mark - default implementations for protected methods
-
-- (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper {
-    return nil;
-}
-
-- (id) parseResponse:(NSString *)responseString {
-    return nil;
-}
-
-- (void) sendNotificationOnSuccess:(id)value {
-    // empty implementation
 }
          
 #pragma mark - private methods
          
 - (void) fail:(NSString *)description {
-    UTLLog(@"Caught %@", description);
+    UTLLog(@"Exception caught: %@", description);
     self.responseData = nil;
     self.connection = nil;
 }
@@ -74,15 +66,13 @@
 
 - (void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge {
     if ([challenge previousFailureCount] == 0) {
-        NSURLCredential *newCredential;
-        newCredential=[NSURLCredential credentialWithUser:@"Perficient\\spark.pan" password:@"zhe@812Bl" persistence:NSURLCredentialPersistenceForSession];
-        [[challenge sender] useCredential:newCredential forAuthenticationChallenge:challenge];
-    } else {
-        [[challenge sender] cancelAuthenticationChallenge:challenge];
-        // inform the user that the user name and password
-        // in the preferences are incorrect
-        //[self showPreferencesCredentialsAreIncorrectPanel:self];
-    }
+        [[challenge sender] useCredential:[SPCachedData credential] forAuthenticationChallenge:challenge];
+        return;
+    } 
+    [[challenge sender] cancelAuthenticationChallenge:challenge];
+    // inform the user that the user name and password
+    // in the preferences are incorrect
+    //[self showPreferencesCredentialsAreIncorrectPanel:self];
 }
 
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -98,7 +88,7 @@
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {	
-    NSString * responseString = [[NSString alloc] initWithData:responseData encoding:NSASCIIStringEncoding];
+    NSString * responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     UTLLog(@"%@", responseString);
     id responseObject = [self parseResponse:responseString];
     [responseString release];
@@ -114,10 +104,10 @@
 #pragma mark - destroy related
 
 - (void) dealloc {
-    SAFE_RELEASE(responseData);
-    SAFE_RELEASE(connection);
+    self.soapRequestParam = nil;
+    self.responseData = nil;
+    self.connection = nil;
     [super dealloc];
 }
-
 
 @end

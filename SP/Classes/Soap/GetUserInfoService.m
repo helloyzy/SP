@@ -7,43 +7,28 @@
 //
 
 #import "GetUserInfoService.h"
-#import "GetUserInfo.h"
-#import "SoapUtil.h"
-#import "SoapEnveloper.h"
-#import "RXMLElement.h"
+#import "NSObject+SPExtensions.h"
 
 @implementation GetUserInfoService
 
-@synthesize userInfo;
-
 #pragma mark - protected methods implementations
-
-- (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper {
-    if (userInfo) {
-        [enveloper write:userInfo];
-        NSURLRequest * request = [SoapUtil buildRequestWithUrl:@"https://sharepoint.perficient.com/sites/gdc/_vti_bin/UserGroup.asmx" soapMsg:enveloper headProps:nil];
-        return request;
-    } else {
-        return nil;
-    }
+ 
+- (void) prepareUrlAndHeadProps {
+    self.serviceUrl = SP_SOAP_URL_GETUSERINFO;
 }
 
-- (id) parseResponse:(NSString *)responseString {
-    RXMLElement * rxml = [RXMLElement elementFromXMLString:responseString];
-    RXMLElement * userEle = [rxml child:@"soap:Body.GetUserInfoResponse.GetUserInfoResult.GetUserInfo.User"];
-    NSLog(@"%@", [userEle attribute:@"LoginName"]);
+- (id) parseResponseWithXml:(RXMLElement *)xml {
+    RXMLElement * userEle = [xml child:@"soap:Body.GetUserInfoResponse.GetUserInfoResult.GetUserInfo.User"];
     return userEle;
 }
 
 - (void) sendNotificationOnSuccess:(id)value {
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-    [center postNotificationName:@"UserInfo" object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:value, @"value", nil]];
+    [self postNotification:SP_NOTIFICATION_GETUSERINFO_SUCCESS withValue:value];
 }
 
 #pragma mark - destroy methods
 
 - (void) dealloc {
-    self.userInfo = nil;
     [super dealloc];
 }
 

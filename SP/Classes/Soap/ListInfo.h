@@ -7,13 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XMLSerializable.h"
-@interface ListInfo : NSObject<XMLSerializable> {
+#import "SoapEntity.h"
 
-    NSString *title;
-    NSString *description;
-}
+@interface ListInfo : SoapEntity
 
-@property(nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *description;
+@property(nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSString * description;
+
 @end

@@ -7,25 +7,20 @@
 //
 
 #import "GetUserInfo.h"
-#import "XMLSerializable.h"
-#import "Macros.h"
-#import "XMLWriter.h"
 
 @implementation GetUserInfo 
 
 @synthesize userLoginName;
 
 - (void) write:(XMLWriter *)writer {
-    [writer setDefaultNamespace:@"http://schemas.microsoft.com/sharepoint/soap/directory/"];
+    [super write:writer];
     [writer writeStartElement:@"GetUserInfo"];
-    [writer writeStartElement:@"userLoginName"];
-    [writer writeCharacters:userLoginName];
-    [writer writeEndElement];
+    [self writeElement:writer tagName:@"userLoginName" withStringValue:userLoginName];
     [writer writeEndElement];
 }
 
 - (void) dealloc {
-    SAFE_RELEASE(userLoginName);
+    self.userLoginName = nil;
     [super dealloc];
 }
 

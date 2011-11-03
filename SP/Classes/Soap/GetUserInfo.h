@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XMLSerializable.h"
+#import "SoapEntity.h"
 
-@interface GetUserInfo : NSObject <XMLSerializable>
+@interface GetUserInfo : SoapEntity
 
 @property (nonatomic, retain) NSString * userLoginName;
 
