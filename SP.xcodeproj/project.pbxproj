@@ -36,7 +36,6 @@
 		0B672D9F1456BD5800EAE589 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9E1456BD5800EAE589 /* CoreText.framework */; };
 		0B672DA41456BF4400EAE589 /* SPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DA31456BF4400EAE589 /* SPTests.m */; };
 		0B672DAF1456C07900EAE589 /* XMLWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DAE1456C07900EAE589 /* XMLWriter.m */; };
-		0B672DC81456C4BD00EAE589 /* GetUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DC71456C4BD00EAE589 /* GetUserInfo.m */; };
 		0B672DCB1456C4D000EAE589 /* GetUserInfoService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DCA1456C4D000EAE589 /* GetUserInfoService.m */; };
 		0B672DD21456C4F100EAE589 /* SoapEnveloper.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DCD1456C4F100EAE589 /* SoapEnveloper.m */; };
 		0B672DD31456C4F100EAE589 /* SoapServiceBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DCF1456C4F100EAE589 /* SoapServiceBase.m */; };
@@ -54,6 +53,9 @@
 		0B9A65BB14564D220031E5C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659B14564D220031E5C2 /* UIKit.framework */; };
 		0B9A65BC14564D220031E5C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659D14564D220031E5C2 /* Foundation.framework */; };
 		0B9A65C414564D220031E5C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B9A65C214564D220031E5C2 /* InfoPlist.strings */; };
+		0BA7EB641463B2BB0055255D /* SPSimpleSoapRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7EB631463B2BB0055255D /* SPSimpleSoapRequest.m */; };
+		0BA7EB681463BF560055255D /* SoapRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7EB671463BF550055255D /* SoapRequest.m */; };
+		0BA7EB6B1463C3B10055255D /* SPSoapRequestBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7EB6A1463C3B00055255D /* SPSoapRequestBuilder.m */; };
 		0BAAF4F5145904A9003B4640 /* NSObject+AssociativeReferences.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */; };
 		0BAAF50214591ACE003B4640 /* NSObjAssoRefTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF50114591ACE003B4640 /* NSObjAssoRefTests.m */; };
 		0BAAF512145940FD003B4640 /* NSDataAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BAAF50D145940FD003B4640 /* NSDataAdditions.m */; };
@@ -141,8 +143,6 @@
 		0B672DAC1456C07900EAE589 /* XMLSerializable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLSerializable.h; sourceTree = "<group>"; };
 		0B672DAD1456C07900EAE589 /* XMLWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMLWriter.h; sourceTree = "<group>"; };
 		0B672DAE1456C07900EAE589 /* XMLWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMLWriter.m; sourceTree = "<group>"; };
-		0B672DC61456C4BD00EAE589 /* GetUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserInfo.h; sourceTree = "<group>"; };
-		0B672DC71456C4BD00EAE589 /* GetUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserInfo.m; sourceTree = "<group>"; };
 		0B672DC91456C4D000EAE589 /* GetUserInfoService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserInfoService.h; sourceTree = "<group>"; };
 		0B672DCA1456C4D000EAE589 /* GetUserInfoService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserInfoService.m; sourceTree = "<group>"; };
 		0B672DCC1456C4F100EAE589 /* SoapEnveloper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapEnveloper.h; sourceTree = "<group>"; };
@@ -170,6 +170,12 @@
 		0B9A65B914564D220031E5C2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0B9A65C114564D220031E5C2 /* SPTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SPTests-Info.plist"; sourceTree = "<group>"; };
 		0B9A65C314564D220031E5C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		0BA7EB621463B2BB0055255D /* SPSimpleSoapRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSimpleSoapRequest.h; sourceTree = "<group>"; };
+		0BA7EB631463B2BB0055255D /* SPSimpleSoapRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSimpleSoapRequest.m; sourceTree = "<group>"; };
+		0BA7EB661463BF540055255D /* SoapRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoapRequest.h; sourceTree = "<group>"; };
+		0BA7EB671463BF550055255D /* SoapRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SoapRequest.m; sourceTree = "<group>"; };
+		0BA7EB691463C3B00055255D /* SPSoapRequestBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSoapRequestBuilder.h; sourceTree = "<group>"; };
+		0BA7EB6A1463C3B00055255D /* SPSoapRequestBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSoapRequestBuilder.m; sourceTree = "<group>"; };
 		0BAAF4F3145904A9003B4640 /* NSObject+AssociativeReferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+AssociativeReferences.h"; sourceTree = "<group>"; };
 		0BAAF4F4145904A9003B4640 /* NSObject+AssociativeReferences.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+AssociativeReferences.m"; sourceTree = "<group>"; };
 		0BAAF50014591ACE003B4640 /* NSObjAssoRefTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSObjAssoRefTests.h; sourceTree = "<group>"; };
@@ -419,6 +425,8 @@
 				0BDDD7961461307000FD34D2 /* SoapEntity.m */,
 				0B672DCC1456C4F100EAE589 /* SoapEnveloper.h */,
 				0B672DCD1456C4F100EAE589 /* SoapEnveloper.m */,
+				0BA7EB661463BF540055255D /* SoapRequest.h */,
+				0BA7EB671463BF550055255D /* SoapRequest.m */,
 				0B672DCE1456C4F100EAE589 /* SoapServiceBase.h */,
 				0B672DCF1456C4F100EAE589 /* SoapServiceBase.m */,
 				0B672DD01456C4F100EAE589 /* SoapUtil.h */,
@@ -441,10 +449,12 @@
 		0B672DBE1456C41000EAE589 /* SoapEntity */ = {
 			isa = PBXGroup;
 			children = (
-				0B672DC61456C4BD00EAE589 /* GetUserInfo.h */,
-				0B672DC71456C4BD00EAE589 /* GetUserInfo.m */,
 				AD7E6058145F94960093FFA3 /* ListInfo.h */,
 				AD7E6057145F94960093FFA3 /* ListInfo.m */,
+				0BA7EB621463B2BB0055255D /* SPSimpleSoapRequest.h */,
+				0BA7EB631463B2BB0055255D /* SPSimpleSoapRequest.m */,
+				0BA7EB691463C3B00055255D /* SPSoapRequestBuilder.h */,
+				0BA7EB6A1463C3B00055255D /* SPSoapRequestBuilder.m */,
 			);
 			name = SoapEntity;
 			sourceTree = "<group>";
@@ -733,7 +743,6 @@
 				0B672D9A1456BBD800EAE589 /* MessageCenter.m in Sources */,
 				0B672D9B1456BBD800EAE589 /* MessageProcessor.m in Sources */,
 				0B672DAF1456C07900EAE589 /* XMLWriter.m in Sources */,
-				0B672DC81456C4BD00EAE589 /* GetUserInfo.m in Sources */,
 				0B672DCB1456C4D000EAE589 /* GetUserInfoService.m in Sources */,
 				0B672DD21456C4F100EAE589 /* SoapEnveloper.m in Sources */,
 				0B672DD31456C4F100EAE589 /* SoapServiceBase.m in Sources */,
@@ -752,6 +761,9 @@
 				0BDDD79A146147C100FD34D2 /* SPSoapService.m in Sources */,
 				0BDDD7A21461586C00FD34D2 /* SPCachedData.m in Sources */,
 				0BDDD7A51461607300FD34D2 /* NSObject+SPExtensions.m in Sources */,
+				0BA7EB641463B2BB0055255D /* SPSimpleSoapRequest.m in Sources */,
+				0BA7EB681463BF560055255D /* SoapRequest.m in Sources */,
+				0BA7EB6B1463C3B10055255D /* SPSoapRequestBuilder.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

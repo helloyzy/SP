@@ -7,12 +7,14 @@
 //
 
 #import "SPViewController.h"
-#import "GetUserInfo.h"
 #import "GetUserInfoService.h"
 #import "ListInfo.h"
 #import "GetListCollectionService.h"
 #import "SPConst.h"
 #import "RXMLElement.h"
+#import "UTLDebug.h"
+#import "SPSimpleSoapRequest.h"
+#import "SPSoapRequestBuilder.h"
 
 @interface SPViewController ()
 
@@ -36,31 +38,26 @@
 
 - (void)viewDidLoad {       
     [super viewDidLoad];
-    [self testGetUserInfo];
+    // [self testGetUserInfo];
+    [self testLists];
 }
 
 - (void) testGetUserInfo {
-    GetUserInfo * userInfo = [[GetUserInfo alloc] init];
-    userInfo.userLoginName = @"Perficient\\spark.pan";
+    SoapRequest * request = [SPSoapRequestBuilder buildGetUserInfoRequest:@"Perficient\\spark.pan"];
     GetUserInfoService * userInfoService = [[GetUserInfoService alloc] init];
-    userInfoService.soapRequestParam = userInfo;
+    userInfoService.soapRequestParam = request;
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     [center addObserver:self selector:@selector(onNotification:) name:SP_NOTIFICATION_GETUSERINFO_SUCCESS object:userInfoService];
     [userInfoService request];
-    [userInfo release];
     [userInfoService release];
 }
 
 - (void) testLists {
-    ListInfo * listInfo = [[ListInfo alloc] init];
-    //userInfo.userLoginName = @"Perficient\\spark.pan";
+    SoapRequest * request = [SPSoapRequestBuilder buildListInfoRequest];
     GetListCollectionService * listInfoService = [[GetListCollectionService alloc] init];
-    listInfoService.soapRequestParam = listInfo;
-    [listInfoService request];
-    
+    listInfoService.soapRequestParam = request;    
     listInfoService.delegate = self;
-    
-    [listInfo release];
+    [listInfoService request];    
     [listInfoService release];
 }
 
@@ -104,6 +101,10 @@
 	cell.textLabel.text = cellValue;
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self testGetUserInfo];
 }
 
 

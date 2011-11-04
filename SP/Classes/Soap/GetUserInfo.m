@@ -15,7 +15,7 @@
 - (void) write:(XMLWriter *)writer {
     [super write:writer];
     [writer writeStartElement:@"GetUserInfo"];
-    [self writeElement:writer tagName:@"userLoginName" withStringValue:userLoginName];
+    [writer writeElement:@"userLoginName" withStringValue:userLoginName];
     [writer writeEndElement];
 }
 

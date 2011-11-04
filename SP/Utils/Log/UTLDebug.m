@@ -31,5 +31,6 @@ void UTLDebug(const char *fileName, int lineNumber, NSString * format, ...) {
     
     [logmsg release];
     [filePath release];
+    va_end(args);
 }
 

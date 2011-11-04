@@ -20,7 +20,7 @@
     
     // add default head properties
     [theRequest addValue:@"text/xml; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    [theRequest addValue:@"sharepoint.perficient.com" forHTTPHeaderField:@"Host"];
+    // [theRequest addValue:@"sharepoint.perficient.com" forHTTPHeaderField:@"Host"];
     [theRequest addValue:msgLength forHTTPHeaderField:@"Content-Length"];
     
     // add customized properties

@@ -7,9 +7,8 @@
 //
 
 #import "SoapServiceBase.h"
-#import "Macros.h"
+#import "SoapRequest.h"
 #import "UTLDebug.h"
-#import "SPCachedData.h"
 
 @interface SoapServiceBase () 
 
@@ -32,7 +31,8 @@
 - (void) request {    
     if (soapRequestParam) {
         SoapEnveloper * soapEnveloper = [[SoapEnveloper alloc] init];
-        [soapEnveloper write:soapRequestParam];
+        [soapEnveloper write:soapRequestParam];        
+        UTLLog(@"Request to send: %@", [soapEnveloper toString]);
         NSURLRequest * request = [self buildRequest:soapEnveloper];
         [soapEnveloper release];
         if (request) {
@@ -62,19 +62,6 @@
     }
 }
          
-#pragma mark - connection callbacks 
-
-- (void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge {
-    if ([challenge previousFailureCount] == 0) {
-        [[challenge sender] useCredential:[SPCachedData credential] forAuthenticationChallenge:challenge];
-        return;
-    } 
-    [[challenge sender] cancelAuthenticationChallenge:challenge];
-    // inform the user that the user name and password
-    // in the preferences are incorrect
-    //[self showPreferencesCredentialsAreIncorrectPanel:self];
-}
-
 - (void) connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
     self.responseData = [NSMutableData data];
 }
@@ -94,11 +81,11 @@
     [responseString release];
     if (responseObject) {
         [self sendNotificationOnSuccess:responseObject];
+        self.responseData = nil;
+        self.connection = nil;
     } else {
         [self fail:@"Failure during convert response string to object"];
     }
-    self.responseData = nil;
-    self.connection = nil;
 }
 
 #pragma mark - destroy related

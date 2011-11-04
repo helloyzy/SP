@@ -14,6 +14,7 @@ static SPCachedData * sharedInstance;
 
 @synthesize user;
 @synthesize pwd;
+@synthesize serviceHost;
 
 #pragma public methods
 
@@ -33,11 +34,20 @@ static SPCachedData * sharedInstance;
     return [NSURLCredential credentialWithUser:data.user password:data.pwd persistence:NSURLCredentialPersistenceForSession];
 }
 
++ (NSString *) serviceHost {
+    NSString * result = [self sharedInstance].serviceHost;
+    if(!result) {
+        result = @"sharepoint.perficient.com";
+    }
+    return result;
+}
+
 #pragma destroy methods 
 
 - (void) dealloc {
     self.user = nil;
     self.pwd = nil;
+    self.serviceHost = nil;
     [super dealloc];
 }
 

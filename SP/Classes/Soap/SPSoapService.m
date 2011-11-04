@@ -8,6 +8,7 @@
 
 #import "SPSoapService.h"
 #import "SoapUtil.h"
+#import "SPCachedData.h"
 
 @implementation SPSoapService
 
@@ -30,6 +31,8 @@
 
 - (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper {
     [self prepareUrlAndHeadProps];
+    // add host header property
+    [self addHeadProp:@"Host" withValue:[SPCachedData serviceHost]];
     return [SoapUtil buildRequestWithUrl:serviceUrl soapMsg:enveloper headProps:headProps];
 }
 
@@ -37,6 +40,20 @@
     RXMLElement * xml = [RXMLElement elementFromXMLString:responseString];
     return [self parseResponseWithXml:xml];
 }
+
+#pragma mark - connection callbacks 
+
+- (void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge {
+    if ([challenge previousFailureCount] == 0) {
+        [[challenge sender] useCredential:[SPCachedData credential] forAuthenticationChallenge:challenge];
+        return;
+    } 
+    [[challenge sender] cancelAuthenticationChallenge:challenge];
+    // inform the user that the user name and password
+    // in the preferences are incorrect
+    //[self showPreferencesCredentialsAreIncorrectPanel:self];
+}
+
 
 #pragma mark - destroy methods
 

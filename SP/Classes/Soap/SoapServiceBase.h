@@ -7,14 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SoapEntity.h"
 #import "SoapEnveloper.h"
 
 @class SoapEnveloper;
+@class SoapRequest;
 
 @interface SoapServiceBase : NSObject
 
-@property (nonatomic, retain) SoapEntity * soapRequestParam;
+@property (nonatomic, retain) SoapRequest * soapRequestParam;
 
 - (void) request;
 

@@ -13,12 +13,6 @@
 @synthesize title;
 @synthesize description;
 
-- (void) write:(XMLWriter *)writer {
-    [writer setDefaultNamespace:@"http://schemas.microsoft.com/sharepoint/soap/directory/"];
-    [writer writeStartElement:@"GetListCollection"];
-    [writer writeEndElement];
-}
-
 - (void) dealloc {
     self.title = nil;
     self.description = nil;

@@ -7,11 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "XMLSerializable.h"
-#import "XMLWriter.h"
 
-@interface SoapEntity : NSObject <XMLSerializable>
+@interface SoapEntity : NSObject
 
-- (void) writeElement:(XMLWriter *)writer tagName:(NSString *)tagName withStringValue:(NSString *)value;
 
 @end
+
