@@ -37,7 +37,7 @@
 #pragma mark - overridden protected methods 
 
 - (void) write:(XMLWriter *)writer {
-    [writer setDefaultNamespace:SP_SOAP_NS_DEFAULT];
+    [super write:writer];
     [writer writeStartElement:rootTagName];
     // add child elements if any
     if (elementsAndValues) {

@@ -15,7 +15,6 @@
 @property (nonatomic, retain) NSMutableData * responseData;
 @property (nonatomic, retain) NSURLConnection * connection;
 
-- (void) fail:(NSString *)description;
 - (void) sendSoapRequest:(NSURLRequest *)request;
 
 @end
@@ -44,11 +43,22 @@
         [self fail:@"Can not find SOAP request parameter to build up request"]; 
     }
 }
+
+#pragma mark - protected methods, default implementations
+
+- (void) sendNotificationOnSuccess:(id)value {
+    
+}
+
+- (void) sendNotificationOnFailure:(NSString *)reason {
+    
+}
          
 #pragma mark - private methods
          
 - (void) fail:(NSString *)description {
     UTLLog(@"Exception caught: %@", description);
+    [self sendNotificationOnFailure:description];
     self.responseData = nil;
     self.connection = nil;
 }

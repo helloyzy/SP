@@ -43,6 +43,9 @@
 		0B672DD71456C54000EAE589 /* UTLDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DD61456C54000EAE589 /* UTLDebug.m */; };
 		0B672DDC1456C94C00EAE589 /* SPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DD91456C94B00EAE589 /* SPAppDelegate.m */; };
 		0B672DDD1456C94C00EAE589 /* SPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DDB1456C94B00EAE589 /* SPViewController.m */; };
+		0B930F7414676EF9007189E7 /* SPLoginAuthenticationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B930F7314676EF9007189E7 /* SPLoginAuthenticationService.m */; };
+		0B930F77146777BB007189E7 /* SPModeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B930F76146777BB007189E7 /* SPModeService.m */; };
+		0B930F7A1467AC18007189E7 /* SPSoapRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B930F791467AC18007189E7 /* SPSoapRequest.m */; };
 		0B9A659C14564D220031E5C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659B14564D220031E5C2 /* UIKit.framework */; };
 		0B9A659E14564D220031E5C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659D14564D220031E5C2 /* Foundation.framework */; };
 		0B9A65A014564D220031E5C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659F14564D220031E5C2 /* CoreGraphics.framework */; };
@@ -157,6 +160,12 @@
 		0B672DD91456C94B00EAE589 /* SPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAppDelegate.m; sourceTree = "<group>"; };
 		0B672DDA1456C94B00EAE589 /* SPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPViewController.h; sourceTree = "<group>"; };
 		0B672DDB1456C94B00EAE589 /* SPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPViewController.m; sourceTree = "<group>"; };
+		0B930F7214676EF9007189E7 /* SPLoginAuthenticationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLoginAuthenticationService.h; sourceTree = "<group>"; };
+		0B930F7314676EF9007189E7 /* SPLoginAuthenticationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLoginAuthenticationService.m; sourceTree = "<group>"; };
+		0B930F75146777BB007189E7 /* SPModeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPModeService.h; sourceTree = "<group>"; };
+		0B930F76146777BB007189E7 /* SPModeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPModeService.m; sourceTree = "<group>"; };
+		0B930F781467AC17007189E7 /* SPSoapRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSoapRequest.h; sourceTree = "<group>"; };
+		0B930F791467AC18007189E7 /* SPSoapRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSoapRequest.m; sourceTree = "<group>"; };
 		0B9A659714564D220031E5C2 /* SP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9A659B14564D220031E5C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0B9A659D14564D220031E5C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -453,6 +462,8 @@
 				AD7E6057145F94960093FFA3 /* ListInfo.m */,
 				0BA7EB621463B2BB0055255D /* SPSimpleSoapRequest.h */,
 				0BA7EB631463B2BB0055255D /* SPSimpleSoapRequest.m */,
+				0B930F781467AC17007189E7 /* SPSoapRequest.h */,
+				0B930F791467AC18007189E7 /* SPSoapRequest.m */,
 				0BA7EB691463C3B00055255D /* SPSoapRequestBuilder.h */,
 				0BA7EB6A1463C3B00055255D /* SPSoapRequestBuilder.m */,
 			);
@@ -466,6 +477,10 @@
 				AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */,
 				0B672DC91456C4D000EAE589 /* GetUserInfoService.h */,
 				0B672DCA1456C4D000EAE589 /* GetUserInfoService.m */,
+				0B930F7214676EF9007189E7 /* SPLoginAuthenticationService.h */,
+				0B930F7314676EF9007189E7 /* SPLoginAuthenticationService.m */,
+				0B930F75146777BB007189E7 /* SPModeService.h */,
+				0B930F76146777BB007189E7 /* SPModeService.m */,
 				0BDDD798146147C100FD34D2 /* SPSoapService.h */,
 				0BDDD799146147C100FD34D2 /* SPSoapService.m */,
 			);
@@ -764,6 +779,9 @@
 				0BA7EB641463B2BB0055255D /* SPSimpleSoapRequest.m in Sources */,
 				0BA7EB681463BF560055255D /* SoapRequest.m in Sources */,
 				0BA7EB6B1463C3B10055255D /* SPSoapRequestBuilder.m in Sources */,
+				0B930F7414676EF9007189E7 /* SPLoginAuthenticationService.m in Sources */,
+				0B930F77146777BB007189E7 /* SPModeService.m in Sources */,
+				0B930F7A1467AC18007189E7 /* SPSoapRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

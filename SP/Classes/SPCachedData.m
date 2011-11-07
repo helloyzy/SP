@@ -31,7 +31,7 @@ static SPCachedData * sharedInstance;
         data.user = @"Perficient\\spark.pan";
         data.pwd = @"zhe@812Bl";
     }
-    return [NSURLCredential credentialWithUser:data.user password:data.pwd persistence:NSURLCredentialPersistenceForSession];
+    return [NSURLCredential credentialWithUser:data.user password:data.pwd persistence:NSURLCredentialPersistenceNone];
 }
 
 + (NSString *) serviceHost {

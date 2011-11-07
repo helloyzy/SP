@@ -12,7 +12,9 @@
 
 @interface SPSoapRequestBuilder : NSObject
 
++ (SoapRequest *) buildAuthenticationRequest;
 + (SoapRequest *) buildListInfoRequest;
 + (SoapRequest *) buildGetUserInfoRequest:(NSString *)userLoginName;
++ (SoapRequest *) buildModeRequest;
 
 @end

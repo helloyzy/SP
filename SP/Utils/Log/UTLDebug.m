@@ -14,7 +14,7 @@ void UTLDebug(const char *fileName, int lineNumber, NSString * format, ...) {
     static NSDateFormatter * debugFormatter = nil;
     if (!debugFormatter) {
         debugFormatter = [[NSDateFormatter alloc] init];
-        [debugFormatter setDateFormat:@"yyyyMMdd HH:mm:ss"];
+        [debugFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
     }
     
     NSString * logmsg = [[NSString alloc] initWithFormat:format arguments:args];

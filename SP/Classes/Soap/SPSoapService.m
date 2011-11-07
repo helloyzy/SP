@@ -9,6 +9,7 @@
 #import "SPSoapService.h"
 #import "SoapUtil.h"
 #import "SPCachedData.h"
+#import "UTLDebug.h"
 
 @implementation SPSoapService
 
@@ -45,9 +46,11 @@
 
 - (void) connection:(NSURLConnection *)connection didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge*)challenge {
     if ([challenge previousFailureCount] == 0) {
+        UTLLog(@"Receive new authentication challenge");
         [[challenge sender] useCredential:[SPCachedData credential] forAuthenticationChallenge:challenge];
         return;
-    } 
+    }     
+    NSLog(@"Authentication failure!");
     [[challenge sender] cancelAuthenticationChallenge:challenge];
     // inform the user that the user name and password
     // in the preferences are incorrect

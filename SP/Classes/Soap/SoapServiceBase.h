@@ -23,8 +23,10 @@
 @interface SoapServiceBase (Protected) 
 
 - (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper;
+- (void) fail:(NSString *)description;
 
 - (id) parseResponse:(NSString *)responseString;
 - (void) sendNotificationOnSuccess:(id)value;
+- (void) sendNotificationOnFailure:(NSString *)reason;
 
 @end

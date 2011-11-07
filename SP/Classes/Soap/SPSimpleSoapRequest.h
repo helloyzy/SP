@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SoapRequest.h"
+#import "SPSoapRequest.h"
 
-@interface SPSimpleSoapRequest : SoapRequest
+@interface SPSimpleSoapRequest : SPSoapRequest
 
 @property (nonatomic, retain) NSString * rootTagName;
 
