@@ -73,7 +73,21 @@
     [listInfoService release];
 }
 
+- (void) requestSubFolder: (NSString *) folderName {
+    SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:folderName];
+    GetListItemsService* listItemsService = [[GetListItemsService alloc]init];
+    listItemsService.soapRequestParam = request;    
+    listItemsService.delegate = self;
+    [listItemsService request];    
+    [listItemsService release];
+}
+
 - (void) dataSourceReturn:(NSMutableArray *)datasource {
+    self.listOfItems = datasource;
+    [tableview reloadData];
+}
+
+- (void) ListsReturn:(NSMutableArray *)datasource {
     self.listOfItems = datasource;
     [tableview reloadData];
 }
@@ -109,15 +123,29 @@
     
     
     // Set up the cell...
-	NSString *cellValue = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] title];
-	cell.textLabel.text = cellValue;
+	NSString *title = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] title];
+	    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 25)];
+    titleLabel.text = title;
+    titleLabel.font = [UIFont fontWithName:@"Arial" size:20];
+    [cell.contentView addSubview:titleLabel];
+    [titleLabel release];
     
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+<<<<<<< HEAD
     // [SPLoginAuthenticationService resetAuthentication];
     [self testGetUserInfo];
+=======
+    //[self testGetUserInfo];
+    
+    NSString * folderName = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
+    [self requestSubFolder: folderName];
+>>>>>>> add get list items service
 }
 
 

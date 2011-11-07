@@ -40,4 +40,11 @@
     return request;
 }
 
++ (SoapRequest *) buildGetListItemsRequest: (NSString *)folderName {
+    SPSimpleSoapRequest * request = [SPSimpleSoapRequest soapRequest];
+    request.rootTagName = @"GetListItems";
+    [request addElement:@"listName" withStringValue:folderName];
+    return request;
+}                     
+
 @end

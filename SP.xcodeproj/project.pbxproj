@@ -73,6 +73,7 @@
 		AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E6057145F94960093FFA3 /* ListInfo.m */; };
 		AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */; };
 		AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7E6061145F95480093FFA3 /* libxml2.dylib */; };
+		ADAD75291467A6DE004C7704 /* GetListItemsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75281467A6DE004C7704 /* GetListItemsService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,6 +213,8 @@
 		AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListCollectionService.m; sourceTree = "<group>"; };
 		AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListCollectionService.h; sourceTree = "<group>"; };
 		AD7E6061145F95480093FFA3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		ADAD75271467A6DE004C7704 /* GetListItemsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListItemsService.h; sourceTree = "<group>"; };
+		ADAD75281467A6DE004C7704 /* GetListItemsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListItemsService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -483,6 +486,8 @@
 				0B930F76146777BB007189E7 /* SPModeService.m */,
 				0BDDD798146147C100FD34D2 /* SPSoapService.h */,
 				0BDDD799146147C100FD34D2 /* SPSoapService.m */,
+				ADAD75271467A6DE004C7704 /* GetListItemsService.h */,
+				ADAD75281467A6DE004C7704 /* GetListItemsService.m */,
 			);
 			name = SoapService;
 			sourceTree = "<group>";
@@ -779,9 +784,13 @@
 				0BA7EB641463B2BB0055255D /* SPSimpleSoapRequest.m in Sources */,
 				0BA7EB681463BF560055255D /* SoapRequest.m in Sources */,
 				0BA7EB6B1463C3B10055255D /* SPSoapRequestBuilder.m in Sources */,
+<<<<<<< HEAD
 				0B930F7414676EF9007189E7 /* SPLoginAuthenticationService.m in Sources */,
 				0B930F77146777BB007189E7 /* SPModeService.m in Sources */,
 				0B930F7A1467AC18007189E7 /* SPSoapRequest.m in Sources */,
+=======
+				ADAD75291467A6DE004C7704 /* GetListItemsService.m in Sources */,
+>>>>>>> add get list items service
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

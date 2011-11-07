@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GetListCollectionService.h"
+#import "GetListItemsService.h"
 
-@interface SPViewController : UIViewController <DataSourceDelegate> {
+@interface SPViewController : UIViewController <DataSourceDelegate, ListItemsDelegate> {
     NSMutableData* responseData;
     IBOutlet UITableView *tableview;
     NSMutableArray * listOfItems;
