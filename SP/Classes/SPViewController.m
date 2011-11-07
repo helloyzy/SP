@@ -15,11 +15,13 @@
 #import "UTLDebug.h"
 #import "SPSimpleSoapRequest.h"
 #import "SPSoapRequestBuilder.h"
+#import "SPLoginAuthenticationService.h"
 
 @interface SPViewController ()
 
 - (void) testGetUserInfo;
 - (void) testLists;
+- (void) testAuthentication;
 
 @end
 
@@ -40,6 +42,16 @@
     [super viewDidLoad];
     // [self testGetUserInfo];
     [self testLists];
+    // [self testAuthentication];
+}
+
+- (void) testAuthentication {
+    SoapRequest * request = [SPSoapRequestBuilder buildAuthenticationRequest];
+    SPLoginAuthenticationService * authService = [[SPLoginAuthenticationService alloc] init];
+    authService.soapRequestParam = request;
+    [authService request];
+    [authService release];
+    
 }
 
 - (void) testGetUserInfo {
@@ -104,6 +116,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // [SPLoginAuthenticationService resetAuthentication];
     [self testGetUserInfo];
 }
 
@@ -135,7 +148,7 @@
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
+    {
     // Return YES for supported orientations
     return YES;
 }
