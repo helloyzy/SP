@@ -20,12 +20,12 @@
 @implementation SPAppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize splitViewController;
+@synthesize tabBarController;
 
 - (void)dealloc
 {
     [_window release];
-    [_viewController release];
     [tabBarController release];
     [splitViewController release];
     [super dealloc];
@@ -33,9 +33,9 @@
 
 - (void) setupTabView {
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-    self.viewController = [[[SPViewController alloc] initWithNibName:@"SPViewController" bundle:nil] autorelease];
+    SPViewController * viewController = [[[SPViewController alloc] initWithNibName:@"SPViewController" bundle:nil] autorelease];
     SPAuthenticationView * authView = [[[SPAuthenticationView alloc] initWithNibName:@"SPAuthenticationView" bundle:nil] autorelease];
-    tabBarController.viewControllers = [NSArray arrayWithObjects:_viewController, authView, nil];
+    tabBarController.viewControllers = [NSArray arrayWithObjects:viewController, authView, nil];
     tabBarController.selectedIndex = 0;
     self.window.rootViewController = tabBarController;
 }

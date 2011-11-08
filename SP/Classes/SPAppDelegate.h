@@ -10,10 +10,7 @@
 
 @class RootViewController;
 
-@interface SPAppDelegate : UIResponder <UIApplicationDelegate> {
-    UIWindow *window;
-    UISplitViewController *splitViewController;
-}
+@interface SPAppDelegate : UIResponder <UIApplicationDelegate> 
 
 @property (retain, nonatomic) IBOutlet UIWindow *window;
 
@@ -21,6 +18,6 @@
 
 @property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
 
-@property (retain, nonatomic) UITabBarController * tabBarController;
+@property (nonatomic, retain) UITabBarController * tabBarController;
 
 @end
