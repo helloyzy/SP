@@ -46,6 +46,8 @@
 		0B930F7414676EF9007189E7 /* SPLoginAuthenticationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B930F7314676EF9007189E7 /* SPLoginAuthenticationService.m */; };
 		0B930F77146777BB007189E7 /* SPModeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B930F76146777BB007189E7 /* SPModeService.m */; };
 		0B930F7A1467AC18007189E7 /* SPSoapRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B930F791467AC18007189E7 /* SPSoapRequest.m */; };
+		0B930F7E1467B8B1007189E7 /* SPAuthenticationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B930F7C1467B8AB007189E7 /* SPAuthenticationView.m */; };
+		0B930F7F1467B8B1007189E7 /* SPAuthenticationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B930F7D1467B8AF007189E7 /* SPAuthenticationView.xib */; };
 		0B9A659C14564D220031E5C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659B14564D220031E5C2 /* UIKit.framework */; };
 		0B9A659E14564D220031E5C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659D14564D220031E5C2 /* Foundation.framework */; };
 		0B9A65A014564D220031E5C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659F14564D220031E5C2 /* CoreGraphics.framework */; };
@@ -172,6 +174,9 @@
 		0B930F76146777BB007189E7 /* SPModeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPModeService.m; sourceTree = "<group>"; };
 		0B930F781467AC17007189E7 /* SPSoapRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSoapRequest.h; sourceTree = "<group>"; };
 		0B930F791467AC18007189E7 /* SPSoapRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSoapRequest.m; sourceTree = "<group>"; };
+		0B930F7B1467B8AB007189E7 /* SPAuthenticationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAuthenticationView.h; sourceTree = "<group>"; };
+		0B930F7C1467B8AB007189E7 /* SPAuthenticationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAuthenticationView.m; sourceTree = "<group>"; };
+		0B930F7D1467B8AF007189E7 /* SPAuthenticationView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SPAuthenticationView.xib; sourceTree = "<group>"; };
 		0B9A659714564D220031E5C2 /* SP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9A659B14564D220031E5C2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		0B9A659D14564D220031E5C2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -277,6 +282,9 @@
 				AD9F833D1468F17E005EE9A7 /* FirstDetailViewController.h */,
 				0B672DD81456C94B00EAE589 /* SPAppDelegate.h */,
 				0B672DD91456C94B00EAE589 /* SPAppDelegate.m */,
+				0B930F7B1467B8AB007189E7 /* SPAuthenticationView.h */,
+				0B930F7C1467B8AB007189E7 /* SPAuthenticationView.m */,
+				0B930F7D1467B8AF007189E7 /* SPAuthenticationView.xib */,
 				0B672DDA1456C94B00EAE589 /* SPViewController.h */,
 				0B672DDB1456C94B00EAE589 /* SPViewController.m */,
 				0B9A65B014564D220031E5C2 /* SPViewController.xib */,
@@ -725,6 +733,7 @@
 				0B9A65B214564D220031E5C2 /* SPViewController.xib in Resources */,
 				AD9F83321468F098005EE9A7 /* MainWindow.xib in Resources */,
 				AD9F83371468F173005EE9A7 /* FirstDetailView.xib in Resources */,
+				0B930F7F1467B8B1007189E7 /* SPAuthenticationView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +823,7 @@
 				ADAD75351467B9BF004C7704 /* SPGetListItemsRequest.m in Sources */,
 				AD9F833F1468F17E005EE9A7 /* RootViewController.m in Sources */,
 				AD9F83401468F17E005EE9A7 /* FirstDetailViewController.m in Sources */,
+				0B930F7E1467B8B1007189E7 /* SPAuthenticationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

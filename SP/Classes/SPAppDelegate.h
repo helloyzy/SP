@@ -21,4 +21,6 @@
 
 @property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
 
+@property (retain, nonatomic) UITabBarController * tabBarController;
+
 @end

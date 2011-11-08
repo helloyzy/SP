@@ -52,9 +52,7 @@
     }     
     NSLog(@"Authentication failure!");
     [[challenge sender] cancelAuthenticationChallenge:challenge];
-    // inform the user that the user name and password
-    // in the preferences are incorrect
-    //[self showPreferencesCredentialsAreIncorrectPanel:self];
+    // inform the user that the user name and password in the preferences are incorrect
 }
 
 

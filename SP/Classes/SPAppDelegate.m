@@ -1,7 +1,7 @@
 //
 //  SPAppDelegate.m
 //  SP
-///Users/sparkpan/Documents/CH8/Table Views 1/Table Views 1.xcodeproj
+//
 //  Created by Whitman Yang on 10/25/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
@@ -9,19 +9,35 @@
 #import "SPAppDelegate.h"
 
 #import "SPViewController.h"
+#import "SPAuthenticationView.h"
+
+@interface SPAppDelegate ()
+
+- (void) setupTabView;
+
+@end
 
 @implementation SPAppDelegate
 
-@synthesize window;
-//@synthesize viewController;
-@synthesize splitViewController;
+@synthesize window = _window;
+@synthesize viewController = _viewController;
 
 - (void)dealloc
 {
-    [window release];
+    [_window release];
+    [_viewController release];
+    [tabBarController release];
     [splitViewController release];
-    //[viewController release];
     [super dealloc];
+}
+
+- (void) setupTabView {
+    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
+    self.viewController = [[[SPViewController alloc] initWithNibName:@"SPViewController" bundle:nil] autorelease];
+    SPAuthenticationView * authView = [[[SPAuthenticationView alloc] initWithNibName:@"SPAuthenticationView" bundle:nil] autorelease];
+    tabBarController.viewControllers = [NSArray arrayWithObjects:_viewController, authView, nil];
+    tabBarController.selectedIndex = 0;
+    self.window.rootViewController = tabBarController;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
