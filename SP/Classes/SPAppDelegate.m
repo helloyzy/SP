@@ -1,7 +1,7 @@
 //
 //  SPAppDelegate.m
 //  SP
-//
+///Users/sparkpan/Documents/CH8/Table Views 1/Table Views 1.xcodeproj
 //  Created by Whitman Yang on 10/25/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
@@ -12,23 +12,29 @@
 
 @implementation SPAppDelegate
 
-@synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize window;
+//@synthesize viewController;
+@synthesize splitViewController;
 
 - (void)dealloc
 {
-    [_window release];
-    [_viewController release];
+    [window release];
+    [splitViewController release];
+    //[viewController release];
     [super dealloc];
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    /**self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.viewController = [[[SPViewController alloc] initWithNibName:@"SPViewController" bundle:nil] autorelease];
     self.window.rootViewController = self.viewController;
+    [self.window makeKeyAndVisible];*/
+    
+    [self.window addSubview:splitViewController.view];
     [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

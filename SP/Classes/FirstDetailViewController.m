@@ -1,12 +1,5 @@
-//
-//  SPViewController.m
-//  SP
-//
-//  Created by Whitman Yang on 10/25/11.
-//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
-//
-
-#import "SPViewController.h"
+#import "FirstDetailViewController.h"
+#import "FirstDetailViewController.h"
 #import "GetUserInfoService.h"
 #import "ListInfo.h"
 #import "GetListCollectionService.h"
@@ -17,34 +10,58 @@
 #import "SPSoapRequestBuilder.h"
 #import "SPLoginAuthenticationService.h"
 
-@interface SPViewController ()
+
+@interface FirstDetailViewController ()
 
 - (void) testGetUserInfo;
 - (void) testLists;
 - (void) testAuthentication;
-
+- (void) requestSubFolder: (NSString *) listName;
 @end
 
-@implementation SPViewController
+@implementation FirstDetailViewController
 
-@synthesize tableview;
-@synthesize listOfItems;
+@synthesize toolbar, listOfItems, tableview, listName;
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Release any cached data, images, etc that aren't in use.
-}
+#pragma mark -
+#pragma mark View lifecycle
 
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad {       
+- (void)viewDidLoad {
+    
     [super viewDidLoad];
-    // [self testGetUserInfo];
-    [self testLists];
-    // [self testAuthentication];
+    [self requestSubFolder: [self listName]];
     
 }
+
+- (void)viewDidUnload {
+	[super viewDidUnload];
+    
+	self.toolbar = nil;
+}
+
+#pragma mark -
+#pragma mark Managing the popover
+
+- (void)showRootPopoverButtonItem:(UIBarButtonItem *)barButtonItem {
+    
+    // Add the popover button to the toolbar.
+    NSMutableArray *itemsArray = [toolbar.items mutableCopy];
+    [itemsArray insertObject:barButtonItem atIndex:0];
+    [toolbar setItems:itemsArray animated:NO];
+    [itemsArray release];
+}
+
+
+- (void)invalidateRootPopoverButtonItem:(UIBarButtonItem *)barButtonItem {
+    
+    // Remove the popover button from the toolbar.
+    NSMutableArray *itemsArray = [toolbar.items mutableCopy];
+    [itemsArray removeObject:barButtonItem];
+    [toolbar setItems:itemsArray animated:NO];
+    [itemsArray release];
+}
+
+
 
 - (void) testAuthentication {
     SoapRequest * request = [SPSoapRequestBuilder buildAuthenticationRequest];
@@ -85,12 +102,12 @@
 
 - (void) dataSourceReturn:(NSMutableArray *)datasource {
     self.listOfItems = datasource;
-    [tableview reloadData];
+    [self.tableview reloadData];
 }
 
 - (void) ListsReturn:(NSMutableArray *)datasource {
     self.listOfItems = datasource;
-    [tableview reloadData];
+    [self.tableview reloadData];
 }
 
 - (void)onNotification:(NSNotification *)notification {
@@ -100,14 +117,6 @@
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
     [center removeObserver:self];
 }
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
 
 
 // Customize the number of rows in the table view.
@@ -125,7 +134,7 @@
     
     // Set up the cell...
 	NSString *title = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] title];
-	    
+    
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 25)];
     titleLabel.text = title;
     titleLabel.font = [UIFont fontWithName:@"Arial" size:20];
@@ -133,51 +142,29 @@
     [titleLabel release];
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        
+    
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // [SPLoginAuthenticationService resetAuthentication];
-    //[self testGetUserInfo];
+#pragma mark -
+#pragma mark Rotation support
 
-    //[self testGetUserInfo];
-    
-    NSString * folderName = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
-    [self requestSubFolder: folderName];
-}
-
-
-- (void)dealloc {
-    
-    [tableview release];
-    [listOfItems release];
-    [super release];
-}
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
-}
-
-- (void)viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-	[super viewWillDisappear:animated];
-}
-
-- (void)viewDidDisappear:(BOOL)animated
-{
-	[super viewDidDisappear:animated];
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-    {
-    // Return YES for supported orientations
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
     return YES;
 }
+
+
+#pragma mark -
+#pragma mark Memory management
+
+- (void)dealloc {
+    [toolbar release];
+    [tableview release];
+    [listName release];
+    [listOfItems release];
+    
+    [super dealloc];
+}	
+
 
 @end

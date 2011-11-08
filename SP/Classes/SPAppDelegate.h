@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@class SPViewController;
+@class RootViewController;
 
-@interface SPAppDelegate : UIResponder <UIApplicationDelegate>
+@interface SPAppDelegate : UIResponder <UIApplicationDelegate> {
+    UIWindow *window;
+    UISplitViewController *splitViewController;
+}
 
-@property (retain, nonatomic) UIWindow *window;
+@property (retain, nonatomic) IBOutlet UIWindow *window;
 
-@property (retain, nonatomic) SPViewController *viewController;
+//@property (retain, nonatomic) SPViewController *viewController;
+
+@property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
 
 @end

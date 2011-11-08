@@ -7,29 +7,35 @@
 //
 
 #import "GetListItemsService.h"
-
+#import "ListInfo.h"
 
 @implementation GetListItemsService
 
 @synthesize delegate;
+
 - (void) prepareUrlAndHeadProps {
     self.serviceUrl = SP_SOAP_URL_LISTS;
-    [self addSoapActionHeadProp:@"GetListCollection"];
+    [self addSoapActionHeadProp:@"GetListItems"];
 }
 
 - (id) parseResponseWithXml:(RXMLElement *)xml {
     NSMutableArray * listOfItems = [NSMutableArray array];
-    [xml iterate:@"soap:Body.GetListItemsResponse.GetListItemsResult.listitems.data.row" with:^(RXMLElement * listEle) {
-        [listOfItems addObject:[listEle attribute:@"ows_LinkFilename"]];
+    [xml iterate:@"soap:Body.GetListItemsResponse.GetListItemsResult.listitems.rs:data.z:row" with:^(RXMLElement * listEle) {
+       
+        ListInfo * list = [[ListInfo alloc] init];
+        list.title = [listEle attribute:@"ows_LinkFilename"];
+        //list.description = [listEle attribute:@"Description"];
+        [listOfItems addObject:list];
+        [list release];
     }];
     return listOfItems;
 }
 
 - (void) sendNotificationOnSuccess:(id)value {
     //Is anyone listening
-    if([delegate respondsToSelector:@selector(ListItemsDelegate:)]) {
+    if([delegate respondsToSelector:@selector(ListsReturn:)]) {
         //send the delegate function with the amount entered by the user
-        [delegate ListItemsDelegate:value];
+        [delegate ListsReturn:value];
     }
 }
 

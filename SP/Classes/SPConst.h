@@ -19,7 +19,7 @@ static NSString * SP_SOAP_HEAD_KEY_SOAPACTION = @"SOAPAction";
 static NSString * SP_SOAP_HEAD_SOAPACTION_PREFIX = @"http://schemas.microsoft.com/sharepoint/soap/";
 
 // Namespaces
-static NSString * SP_SOAP_NS_DEFAULT = @"http://schemas.microsoft.com/sharepoint/soap/directory/";
+static NSString * SP_SOAP_NS_DEFAULT = @"http://schemas.microsoft.com/sharepoint/soap/";
 
 // Notifications 
 static NSString * SP_NOTIFICATION_KEY_USERINFO = @"VALUE";

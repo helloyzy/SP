@@ -9,6 +9,8 @@
 #import "SPSoapRequestBuilder.h"
 #import "SPSimpleSoapRequest.h"
 #import "SPCachedData.h"
+#import "SPSoapRequest.h"
+#import "SPGetListItemsRequest.h"
 
 @implementation SPSoapRequestBuilder
 
@@ -40,10 +42,12 @@
     return request;
 }
 
-+ (SoapRequest *) buildGetListItemsRequest: (NSString *)folderName {
-    SPSimpleSoapRequest * request = [SPSimpleSoapRequest soapRequest];
-    request.rootTagName = @"GetListItems";
-    [request addElement:@"listName" withStringValue:folderName];
++ (SoapRequest *) buildGetListItemsRequest: (NSString *)listName {
+    if (!listName) {
+        return nil;
+    }
+    SPGetListItemsRequest * request = [SPGetListItemsRequest soapRequest];
+    request.listName = listName;
     return request;
 }                     
 
