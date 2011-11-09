@@ -19,6 +19,6 @@
     
 }
 
-@property (nonatomic, assign) id delegate;
+@property (nonatomic, retain) id delegate;
 
 @end
