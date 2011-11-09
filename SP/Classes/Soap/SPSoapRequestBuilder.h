@@ -17,6 +17,6 @@
 + (SoapRequest *) buildGetUserInfoRequest:(NSString *)userLoginName;
 + (SoapRequest *) buildModeRequest;
 
-+ (SoapRequest *) buildGetListItemsRequest: (NSString *)folderName;
++ (SoapRequest *) buildGetListItemsRequest: (NSString *)listName withFolder: (NSString *)folder;
 
 @end

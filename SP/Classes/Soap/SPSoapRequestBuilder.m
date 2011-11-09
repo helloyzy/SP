@@ -42,12 +42,13 @@
     return request;
 }
 
-+ (SoapRequest *) buildGetListItemsRequest: (NSString *)listName {
++ (SoapRequest *) buildGetListItemsRequest: (NSString *)listName withFolder: (NSString *)folder {
     if (!listName) {
         return nil;
     }
     SPGetListItemsRequest * request = [SPGetListItemsRequest soapRequest];
     request.listName = listName;
+    request.folderName = folder;
     return request;
 }                     
 

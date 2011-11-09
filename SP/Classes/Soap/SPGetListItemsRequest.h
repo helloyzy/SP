@@ -12,10 +12,12 @@
 @interface SPGetListItemsRequest : SPSoapRequest {
 
     NSString * listName;
+    NSString * folderName;
     
 }
 
 @property(nonatomic, retain) NSString * listName;
+@property(nonatomic, retain) NSString * folderName;
 
 + (SPGetListItemsRequest *) soapRequest;
 

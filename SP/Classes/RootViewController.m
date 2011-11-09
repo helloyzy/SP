@@ -16,7 +16,7 @@
 - (void) testGetUserInfo;
 - (void) testLists;
 - (void) testAuthentication;
-- (void) requestSubFolder: (NSString *) foldeName;
+- (void) requestSubFolder: (NSString *) topListName withFolder:(NSString *) folderName;
 @end
 @implementation RootViewController
 
@@ -72,8 +72,8 @@
     [listInfoService release];
 }
 
-- (void) requestSubFolder: (NSString *) folderName {
-    SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:folderName];
+- (void) requestSubFolder: (NSString *) topListName withFolder:(NSString *)folderName {
+    SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:topListName withFolder:folderName];
     GetListItemsService* listItemsService = [[GetListItemsService alloc]init];
     listItemsService.soapRequestParam = request;    
     listItemsService.delegate = self;

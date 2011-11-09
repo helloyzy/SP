@@ -24,7 +24,15 @@
        
         ListInfo * list = [[ListInfo alloc] init];
         list.title = [listEle attribute:@"ows_LinkFilename"];
-        //list.description = [listEle attribute:@"Description"];
+        
+        NSString* fileType = [listEle attribute:@"ows_FSObjType"];
+        list.type = [[fileType componentsSeparatedByString:@"#"] objectAtIndex:1];
+        
+        NSString * fileRef = [listEle attribute:@"ows_FileRef"];
+        list.fileRef = [[fileRef componentsSeparatedByString:@"#"] objectAtIndex:1];
+        
+        NSLog(@"%@ - %@  - %@",list.type, list.title, list.fileRef);
+        
         [listOfItems addObject:list];
         [list release];
     }];

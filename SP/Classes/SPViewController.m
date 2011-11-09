@@ -74,8 +74,8 @@
     [listInfoService release];
 }
 
-- (void) requestSubFolder: (NSString *) folderName {
-    SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:folderName];
+- (void) requestSubFolder: (NSString *) listName withFolder:(NSString *)folderName {
+    SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:listName withFolder:folderName];
     GetListItemsService* listItemsService = [[GetListItemsService alloc]init];
     listItemsService.soapRequestParam = request;    
     listItemsService.delegate = self;
@@ -143,8 +143,8 @@
 
     //[self testGetUserInfo];
     
-    NSString * folderName = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
-    [self requestSubFolder: folderName];
+    NSString * listName = [[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
+    [self requestSubFolder: listName withFolder:[NSString stringWithFormat:@"sites/SP/%@",  listName]];
 }
 
 

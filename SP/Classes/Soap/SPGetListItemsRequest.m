@@ -10,7 +10,7 @@
 
 @implementation SPGetListItemsRequest
 
-@synthesize listName;
+@synthesize listName,folderName;
 
 #pragma mark - public methods
 + (SPGetListItemsRequest *) soapRequest {
@@ -31,7 +31,7 @@
     [writer writeStartElement:@"QueryOptions"];
     [writer writeElement:@"IncludeMandatoryColumns" withStringValue:@"TRUE"];
     [writer writeElement:@"DateInUtc" withStringValue:@"TRUE"];
-    [writer writeElement:@"Folder" withStringValue: [NSString stringWithFormat:@"https://sharepoint.perficient.com/sites/SP/%@",[self listName]]];
+    [writer writeElement:@"Folder" withStringValue: [NSString stringWithFormat:@"https://sharepoint.perficient.com/%@",[self folderName]]];
     [writer writeEndElement];
     [writer writeEndElement];
       

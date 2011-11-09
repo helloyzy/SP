@@ -16,7 +16,7 @@
 - (void) testGetUserInfo;
 - (void) testLists;
 - (void) testAuthentication;
-- (void) requestSubFolder: (NSString *) listName;
+- (void) requestSubFolder: (NSString *) topListName withFolder: (NSString *) folder;
 @end
 
 @implementation FirstDetailViewController
@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [self requestSubFolder: [self listName]];
+    [self requestSubFolder: [self listName] withFolder:[NSString stringWithFormat:@"sites/SP/%@", [self listName]]];
     
 }
 
@@ -91,8 +91,8 @@
     [listInfoService release];
 }
 
-- (void) requestSubFolder: (NSString *) folderName {
-    SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:folderName];
+- (void) requestSubFolder: (NSString *) topListName withFolder: (NSString *) folder{
+    SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:topListName withFolder:folder];
     GetListItemsService* listItemsService = [[GetListItemsService alloc]init];
     listItemsService.soapRequestParam = request;    
     listItemsService.delegate = self;
@@ -134,6 +134,9 @@
     
     // Set up the cell...
 	NSString *title = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] title];
+    //NSString *type = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] type];
+    //NSString *fileRef = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] fileRef];
+    
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 25)];
     titleLabel.text = title;
@@ -146,6 +149,24 @@
     return cell;
 }
 
+
+
+#pragma mark -
+#pragma mark Table view selection
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *type = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] type];
+    //NSString * subListName = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] title];
+    NSString *fileRef = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] fileRef];
+    if ([type isEqualToString:@"1"]) {
+        [self requestSubFolder:listName withFolder: (NSString *) fileRef];
+    } else {
+    //TODO open the item as the URL -- https://sharepoint.perficient.com/sites/SP/TestDocument/sub_1/sub_2/mazda3.JPG
+          
+      
+    }
+    
+}
 #pragma mark -
 #pragma mark Rotation support
 
