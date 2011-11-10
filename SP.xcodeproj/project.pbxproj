@@ -72,11 +72,11 @@
 		0BDDD79A146147C100FD34D2 /* SPSoapService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDDD799146147C100FD34D2 /* SPSoapService.m */; };
 		0BDDD7A21461586C00FD34D2 /* SPCachedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDDD7A11461586C00FD34D2 /* SPCachedData.m */; };
 		0BDDD7A51461607300FD34D2 /* NSObject+SPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDDD7A41461607300FD34D2 /* NSObject+SPExtensions.m */; };
+		AD3D8B0A146A6832009F7D49 /* FirstDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD3D8B09146A6832009F7D49 /* FirstDetailView.xib */; };
+		AD3D8B13146A6962009F7D49 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD3D8B12146A6962009F7D49 /* MainWindow.xib */; };
 		AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E6057145F94960093FFA3 /* ListInfo.m */; };
 		AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */; };
 		AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7E6061145F95480093FFA3 /* libxml2.dylib */; };
-		AD9F83321468F098005EE9A7 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD9F83311468F098005EE9A7 /* MainWindow.xib */; };
-		AD9F83371468F173005EE9A7 /* FirstDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD9F83351468F173005EE9A7 /* FirstDetailView.xib */; };
 		AD9F833F1468F17E005EE9A7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9F833A1468F17E005EE9A7 /* RootViewController.m */; };
 		AD9F83401468F17E005EE9A7 /* FirstDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */; };
 		ADAD75291467A6DE004C7704 /* GetListItemsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75281467A6DE004C7704 /* GetListItemsService.m */; };
@@ -218,20 +218,20 @@
 		0BDDD7A11461586C00FD34D2 /* SPCachedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCachedData.m; sourceTree = "<group>"; };
 		0BDDD7A31461607300FD34D2 /* NSObject+SPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SPExtensions.h"; sourceTree = "<group>"; };
 		0BDDD7A41461607300FD34D2 /* NSObject+SPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPExtensions.m"; sourceTree = "<group>"; };
+		AD3D8B09146A6832009F7D49 /* FirstDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstDetailView.xib; sourceTree = "<group>"; };
+		AD3D8B12146A6962009F7D49 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		AD7E6057145F94960093FFA3 /* ListInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListInfo.m; sourceTree = "<group>"; };
 		AD7E6058145F94960093FFA3 /* ListInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListInfo.h; sourceTree = "<group>"; };
 		AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListCollectionService.m; sourceTree = "<group>"; };
 		AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListCollectionService.h; sourceTree = "<group>"; };
 		AD7E6061145F95480093FFA3 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
-		AD9F83311468F098005EE9A7 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		AD9F83351468F173005EE9A7 /* FirstDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstDetailView.xib; sourceTree = "<group>"; };
 		AD9F833A1468F17E005EE9A7 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		AD9F833B1468F17E005EE9A7 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstDetailViewController.m; sourceTree = "<group>"; };
 		AD9F833D1468F17E005EE9A7 /* FirstDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstDetailViewController.h; sourceTree = "<group>"; };
 		ADAD75271467A6DE004C7704 /* GetListItemsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListItemsService.h; sourceTree = "<group>"; };
 		ADAD75281467A6DE004C7704 /* GetListItemsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListItemsService.m; sourceTree = "<group>"; };
-		ADAD75331467B9BC004C7704 /* SPGetListItemsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SPGetListItemsRequest.h; sourceTree = "<group>"; };
+		ADAD75331467B9BC004C7704 /* SPGetListItemsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGetListItemsRequest.h; sourceTree = "<group>"; };
 		ADAD75341467B9BD004C7704 /* SPGetListItemsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGetListItemsRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -567,8 +567,8 @@
 		0B9A65A214564D220031E5C2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				AD9F83351468F173005EE9A7 /* FirstDetailView.xib */,
-				AD9F83311468F098005EE9A7 /* MainWindow.xib */,
+				AD3D8B12146A6962009F7D49 /* MainWindow.xib */,
+				AD3D8B09146A6832009F7D49 /* FirstDetailView.xib */,
 				0B9A65A314564D220031E5C2 /* SP-Info.plist */,
 				0B9A65A414564D220031E5C2 /* InfoPlist.strings */,
 				0B9A65A714564D220031E5C2 /* main.m */,
@@ -731,9 +731,9 @@
 			files = (
 				0B9A65A614564D220031E5C2 /* InfoPlist.strings in Resources */,
 				0B9A65B214564D220031E5C2 /* SPViewController.xib in Resources */,
-				AD9F83321468F098005EE9A7 /* MainWindow.xib in Resources */,
-				AD9F83371468F173005EE9A7 /* FirstDetailView.xib in Resources */,
 				0B930F7F1467B8B1007189E7 /* SPAuthenticationView.xib in Resources */,
+				AD3D8B0A146A6832009F7D49 /* FirstDetailView.xib in Resources */,
+				AD3D8B13146A6962009F7D49 /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

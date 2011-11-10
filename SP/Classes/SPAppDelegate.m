@@ -22,6 +22,8 @@
 @synthesize window = _window;
 @synthesize splitViewController;
 @synthesize tabBarController;
+@synthesize rootViewController;
+@synthesize firstDetailViewController;
 
 - (void)dealloc
 {

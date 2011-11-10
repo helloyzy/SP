@@ -10,7 +10,6 @@
 #import "SPSoapRequestBuilder.h"
 #import "SPLoginAuthenticationService.h"
 
-
 @interface FirstDetailViewController ()
 
 - (void) testGetUserInfo;
@@ -19,18 +18,47 @@
 - (void) requestSubFolder: (NSString *) topListName withFolder: (NSString *) folder;
 @end
 
+
+
+
 @implementation FirstDetailViewController
 
-@synthesize toolbar, listOfItems, tableview, listName;
+@synthesize toolbar, listOfItems, tableview, popoverController, listInfo;
+
 
 #pragma mark -
 #pragma mark View lifecycle
 
+
+/**
+When setting the detail item, update the view and dismiss the popover controller if it's showing.
+*/
+- (void)setListInfo:(ListInfo *) newlistInfo {
+    	
+    if (listInfo != newlistInfo) {
+        [listInfo release];
+        listInfo = [newlistInfo retain];
+        
+    }
+
+    [self requestSubFolder:listInfo.title withFolder:listInfo.fileRef];
+  
+    
+    
+    if (popoverController != nil) {
+        [popoverController dismissPopoverAnimated:YES];
+    }        
+}
+
+
+
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    [self requestSubFolder: [self listName] withFolder:[NSString stringWithFormat:@"sites/SP/%@", [self listName]]];
     
+    
+    [self setTitle:listInfo.title];
+        
 }
 
 - (void)viewDidUnload {
@@ -38,29 +66,29 @@
     
 	self.toolbar = nil;
 }
-
 #pragma mark -
-#pragma mark Managing the popover
+#pragma mark Split view support
 
-- (void)showRootPopoverButtonItem:(UIBarButtonItem *)barButtonItem {
+
+- (void)splitViewController:(UISplitViewController*)svc 
+     willHideViewController:(UIViewController *)aViewController 
+          withBarButtonItem:(UIBarButtonItem*)barButtonItem 
+       forPopoverController:(UIPopoverController*)pc
+{
     
-    // Add the popover button to the toolbar.
-    NSMutableArray *itemsArray = [toolbar.items mutableCopy];
-    [itemsArray insertObject:barButtonItem atIndex:0];
-    [toolbar setItems:itemsArray animated:NO];
-    [itemsArray release];
+    [barButtonItem setTitle:@"List"];
+    [[self navigationItem] setLeftBarButtonItem:barButtonItem];
+    [self setPopoverController:pc];
 }
 
 
-- (void)invalidateRootPopoverButtonItem:(UIBarButtonItem *)barButtonItem {
-    
-    // Remove the popover button from the toolbar.
-    NSMutableArray *itemsArray = [toolbar.items mutableCopy];
-    [itemsArray removeObject:barButtonItem];
-    [toolbar setItems:itemsArray animated:NO];
-    [itemsArray release];
+- (void)splitViewController:(UISplitViewController*)svc 
+     willShowViewController:(UIViewController *)aViewController 
+  invalidatingBarButtonItem:(UIBarButtonItem *)barButtonItem
+{
+    [[self navigationItem] setLeftBarButtonItem:nil];
+    [self setPopoverController:nil];
 }
-
 
 
 - (void) testAuthentication {
@@ -156,14 +184,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *type = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] type];
-    //NSString * subListName = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] title];
     NSString *fileRef = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] fileRef];
-    if ([type isEqualToString:@"1"]) {
-        [self requestSubFolder:listName withFolder: (NSString *) fileRef];
-    } else {
-    //TODO open the item as the URL -- https://sharepoint.perficient.com/sites/SP/TestDocument/sub_1/sub_2/mazda3.JPG
-          
       
+   if ([type isEqualToString:@"1"]) {
+        FirstDetailViewController *controller = [[FirstDetailViewController alloc] init];
+       listInfo.fileRef = fileRef;
+       controller.listInfo = listInfo;
+        [[self navigationController] pushViewController:controller animated:YES];
+        
+    } else {
+        //TODO open the item as the URL -- https://sharepoint.perficient.com/sites/SP/TestDocument/sub_1/sub_2/mazda3.JPG
+        
+        
     }
     
 }
@@ -181,7 +213,7 @@
 - (void)dealloc {
     [toolbar release];
     [tableview release];
-    [listName release];
+    [listInfo release];
     [listOfItems release];
     
     [super dealloc];

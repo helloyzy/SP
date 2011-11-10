@@ -1,18 +1,22 @@
 #import <UIKit/UIKit.h>
 #import "RootViewController.h"
 
-@interface FirstDetailViewController : UIViewController <SubstitutableDetailViewController,DataSourceDelegate, ListItemsDelegate> {
+#import "ListInfo.h"
+
+@interface FirstDetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate,DataSourceDelegate, ListItemsDelegate> {
 
     UIToolbar *toolbar;
     NSMutableData* responseData;
     NSMutableArray * listOfItems;
     IBOutlet UITableView *tableview;
-    NSString * listName;
+    ListInfo * listInfo;
+    UIPopoverController *popoverController;
 }
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;
 @property (nonatomic, retain) NSMutableArray * listOfItems;
 @property (nonatomic, retain) IBOutlet UITableView *tableview;
-@property (nonatomic, retain) NSString * listName;
+@property (nonatomic, retain) ListInfo * listInfo;
+@property (nonatomic, retain) UIPopoverController *popoverController;
 
 @end

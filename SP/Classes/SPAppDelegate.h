@@ -9,15 +9,21 @@
 #import <UIKit/UIKit.h>
 
 @class RootViewController;
+@class FirstDetailViewController;
 
-@interface SPAppDelegate : UIResponder <UIApplicationDelegate> 
+@interface SPAppDelegate : NSObject <UIApplicationDelegate> {
+    UIView * window;
+    UISplitViewController *splitViewController;
+    FirstDetailViewController *firstDetailViewController;
+    RootViewController * rootViewController;
+    UITabBarController * tabBarController;
+    
+}
 
-@property (retain, nonatomic) IBOutlet UIWindow *window;
-
-//@property (retain, nonatomic) SPViewController *viewController;
-
+@property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UISplitViewController *splitViewController;
-
-@property (nonatomic, retain) UITabBarController * tabBarController;
+@property (nonatomic, retain) IBOutlet RootViewController *rootViewController;
+@property (nonatomic, retain) IBOutlet FirstDetailViewController *firstDetailViewController;
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
 @end

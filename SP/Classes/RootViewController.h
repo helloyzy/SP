@@ -2,32 +2,16 @@
 #import "GetListCollectionService.h"
 #import "GetListItemsService.h"
 
-/*
- SubstitutableDetailViewController defines the protocol that detail view controllers must adopt. The protocol specifies methods to hide and show the bar button item controlling the popover.
+@class FirstDetailViewController;
 
- */
-@protocol SubstitutableDetailViewController
-- (void)showRootPopoverButtonItem:(UIBarButtonItem *)barButtonItem;
-- (void)invalidateRootPopoverButtonItem:(UIBarButtonItem *)barButtonItem;
-@end
-
-
-@interface RootViewController : UITableViewController <UISplitViewControllerDelegate,DataSourceDelegate, ListItemsDelegate> {
+@interface RootViewController : UITableViewController <DataSourceDelegate, ListItemsDelegate> {
 	
-	UISplitViewController *splitViewController;
-    
-    UIPopoverController *popoverController;    
-    UIBarButtonItem *rootPopoverButtonItem;
+	FirstDetailViewController *firstDetailViewController;   
     
     NSMutableData* responseData;
     NSMutableArray * listOfItems;
 }
-
-@property (nonatomic, assign) IBOutlet UISplitViewController *splitViewController;
-
-@property (nonatomic, retain) UIPopoverController *popoverController;
-@property (nonatomic, retain) UIBarButtonItem *rootPopoverButtonItem;
-
+@property (nonatomic, assign) IBOutlet FirstDetailViewController *firstDetailViewController;
 @property(nonatomic, retain) NSMutableArray *listOfItems;
 
 @end
