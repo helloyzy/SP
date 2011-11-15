@@ -9,6 +9,8 @@
 #import "SPSimpleSoapRequest.h"
 #import "SPSoapRequestBuilder.h"
 #import "SPLoginAuthenticationService.h"
+#import "ASIWebPageRequest.h"
+#import "ASIDownloadCache.h"
 #import "ASIHTTPRequest.h"
 
 @interface FirstDetailViewController ()
@@ -17,6 +19,7 @@
 - (void) testLists;
 - (void) testAuthentication;
 - (void) requestSubFolder: (NSString *) topListName withFolder: (NSString *) folder;
+- (void) loadImage:(NSString *) url;
 @end
 
 
@@ -24,7 +27,7 @@
 
 @implementation FirstDetailViewController
 
-@synthesize toolbar, listOfItems, tableview, popoverController, listInfo;
+@synthesize toolbar, listOfItems, tableview, popoverController, listInfo, item, webView;
 
 
 #pragma mark -
@@ -194,28 +197,80 @@ When setting the detail item, update the view and dismiss the popover controller
         [[self navigationController] pushViewController:controller animated:YES];
         
     } else {
-        //TODO open the item as the URL -- https://sharepoint.perficient.com/sites/SP/TestDocument/sub_1/sub_2/mazda3.JPG
-        //http://www.floral-directory.com/flower.gif
-        /**webView = [[UIWebView alloc] initWithFrame:CGRectMake(10, 10, 300, 400)];
-        NSString* url = @"http://www.floral-directory.com/flower.gif";
-
-        NSURL *targetURL = [NSURL URLWithString:url];
-        NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];
-        [webView loadRequest:request];
+        NSString * url = [NSString stringWithFormat:@"https://sharepoint.perficient.com/%@", fileRef];
         
-        [self.view addSubview:webView];
-        [webView release];
-*/
-        NSString* url = @"https://sharepoint.perficient.com/sites/SP/TestDocument/sub_1/sub_2/mazda3.JPG";
-         NSURL *targetURL = [NSURL URLWithString:url];
-        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:targetURL];
-        [request setDownloadDestinationPath:@"/mazda3.JPG"];
-        
-        [request startSynchronous];  
-       
+        [self loadImage:url];
     }
     
 }
+
+- (void)loadImage: (NSString *) url {
+    NSURL *targetURL = [NSURL URLWithString:url];
+    NSString* theFileName = [url lastPathComponent];
+    
+    ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:targetURL];
+    NSString * destinationPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:theFileName];
+    
+    NSLog(@"%@", destinationPath);
+    
+    [request setDelegate:self];
+    [request setDownloadDestinationPath:destinationPath];
+    [request setDidFailSelector:@selector(webPageFetchFailed:)];
+    [request setDidFinishSelector:@selector(webPageFetchSucceeded:)];
+    
+    [request setUsername:@"Perficient\\spark.pan"];
+    [request setPassword:@"zhe@812Bl"];
+    [request setUseSessionPersistence:YES];
+    
+    [request startAsynchronous];  
+
+}
+
+- (void)webPageFetchFailed:(ASIHTTPRequest *)theRequest
+{
+    // Obviously you should handle the error properly...
+    NSLog(@"%@",[theRequest error]);
+}
+
+- (void)webPageFetchSucceeded:(ASIHTTPRequest *)theRequest
+{
+    NSLog(@"%@",[theRequest downloadDestinationPath]);
+    NSFileManager* myManager = [NSFileManager defaultManager];  
+    
+    if([myManager fileExistsAtPath:[theRequest downloadDestinationPath]]){
+        
+        NSLog(@"Loading Saved Copy!");
+        webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 786, 960)];
+        //Create a URL object.
+        NSURL *url = [NSURL fileURLWithPath:[theRequest downloadDestinationPath] isDirectory:NO];
+        //URL Requst Object
+        NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
+        //Load the request in the UIWebView.
+        [webView loadRequest:requestObj];
+        [self.view addSubview:webView];
+        UIBarButtonItem *infoButton = [[UIBarButtonItem alloc] 
+                                       initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(info_clicked:)];
+        
+        self.navigationItem.leftBarButtonItem = infoButton;
+
+
+    }
+
+}
+
+- (void) info_clicked:(id)sender {
+    
+    self.navigationItem.leftBarButtonItem = nil;
+    [webView removeFromSuperview];
+}
+
+
+
+
+- (IBAction)toggleMasterView:(id)sender {
+    
+}
+
 #pragma mark -
 #pragma mark Rotation support
 
@@ -232,7 +287,7 @@ When setting the detail item, update the view and dismiss the popover controller
     [tableview release];
     [listInfo release];
     [listOfItems release];
-    
+    [webView release];
     [super dealloc];
 }	
 

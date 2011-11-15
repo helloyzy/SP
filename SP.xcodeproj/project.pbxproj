@@ -93,6 +93,7 @@
 		AD9F83401468F17E005EE9A7 /* FirstDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */; };
 		ADAD75291467A6DE004C7704 /* GetListItemsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75281467A6DE004C7704 /* GetListItemsService.m */; };
 		ADAD75351467B9BF004C7704 /* SPGetListItemsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75341467B9BD004C7704 /* SPGetListItemsRequest.m */; };
+		ADB92F6014722B2C00572116 /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB92F5F14722B2C00572116 /* ASIWebPageRequest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -270,6 +271,8 @@
 		ADAD75281467A6DE004C7704 /* GetListItemsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListItemsService.m; sourceTree = "<group>"; };
 		ADAD75331467B9BC004C7704 /* SPGetListItemsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGetListItemsRequest.h; sourceTree = "<group>"; };
 		ADAD75341467B9BD004C7704 /* SPGetListItemsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGetListItemsRequest.m; sourceTree = "<group>"; };
+		ADB92F5E14722B2C00572116 /* ASIWebPageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIWebPageRequest.h; sourceTree = "<group>"; };
+		ADB92F5F14722B2C00572116 /* ASIWebPageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIWebPageRequest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -703,6 +706,7 @@
 		AD1555DE146CF833001ACF38 /* ASIHTTPRequest */ = {
 			isa = PBXGroup;
 			children = (
+				ADB92F5D14722B2C00572116 /* ASIWebPageRequest */,
 				AD1555E3146CF884001ACF38 /* ASIProgressDelegate.h */,
 				AD1555E4146CF884001ACF38 /* ASINetworkQueue.m */,
 				AD1555E5146CF884001ACF38 /* ASINetworkQueue.h */,
@@ -727,6 +731,15 @@
 				AD1555E1146CF85B001ACF38 /* Reachability.h */,
 			);
 			name = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		ADB92F5D14722B2C00572116 /* ASIWebPageRequest */ = {
+			isa = PBXGroup;
+			children = (
+				ADB92F5E14722B2C00572116 /* ASIWebPageRequest.h */,
+				ADB92F5F14722B2C00572116 /* ASIWebPageRequest.m */,
+			);
+			path = ASIWebPageRequest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -906,6 +919,7 @@
 				AD1555FC146CF884001ACF38 /* ASIDataDecompressor.m in Sources */,
 				AD1555FD146CF884001ACF38 /* ASIDataCompressor.m in Sources */,
 				AD1555FE146CF884001ACF38 /* ASIAuthenticationDialog.m in Sources */,
+				ADB92F6014722B2C00572116 /* ASIWebPageRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
