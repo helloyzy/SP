@@ -11,6 +11,8 @@
     IBOutlet UITableView *tableview;
     ListInfo * listInfo;
     UIPopoverController *popoverController;
+    UIWebView * webView;
+    UIImageView * imageView;
 }
 
 @property (nonatomic, retain) IBOutlet UIToolbar *toolbar;

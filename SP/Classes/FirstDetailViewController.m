@@ -9,6 +9,7 @@
 #import "SPSimpleSoapRequest.h"
 #import "SPSoapRequestBuilder.h"
 #import "SPLoginAuthenticationService.h"
+#import "ASIHTTPRequest.h"
 
 @interface FirstDetailViewController ()
 
@@ -194,8 +195,24 @@ When setting the detail item, update the view and dismiss the popover controller
         
     } else {
         //TODO open the item as the URL -- https://sharepoint.perficient.com/sites/SP/TestDocument/sub_1/sub_2/mazda3.JPG
+        //http://www.floral-directory.com/flower.gif
+        /**webView = [[UIWebView alloc] initWithFrame:CGRectMake(10, 10, 300, 400)];
+        NSString* url = @"http://www.floral-directory.com/flower.gif";
+
+        NSURL *targetURL = [NSURL URLWithString:url];
+        NSURLRequest *request = [NSURLRequest requestWithURL:targetURL];
+        [webView loadRequest:request];
         
+        [self.view addSubview:webView];
+        [webView release];
+*/
+        NSString* url = @"https://sharepoint.perficient.com/sites/SP/TestDocument/sub_1/sub_2/mazda3.JPG";
+         NSURL *targetURL = [NSURL URLWithString:url];
+        ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:targetURL];
+        [request setDownloadDestinationPath:@"/mazda3.JPG"];
         
+        [request startSynchronous];  
+       
     }
     
 }
