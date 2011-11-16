@@ -156,12 +156,17 @@
     [self presentModalViewController:controller animated:YES];
 }
 
+- (IBAction) refreshLists:(id)sender {
+    [self testLists];
+}
+
 #pragma mark -
 #pragma mark Memory management
 
 - (void)dealloc {
     [firstDetailViewController release];
     [listOfItems release];
+    [tableView release];
     [super dealloc];
 }
 

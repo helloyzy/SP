@@ -18,4 +18,5 @@
 
 
 - (IBAction) logonSites:(id)sender;
+- (IBAction) refreshLists:(id)sender;
 @end
