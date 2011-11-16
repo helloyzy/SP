@@ -46,7 +46,7 @@ When setting the detail item, update the view and dismiss the popover controller
     }
 
     [self requestSubFolder:listInfo.title withFolder:listInfo.fileRef];
-  
+    [self setTitle:listInfo.fileRef];
     
     
     if (popoverController != nil) {
@@ -58,11 +58,7 @@ When setting the detail item, update the view and dismiss the popover controller
 
 - (void)viewDidLoad {
     
-    [super viewDidLoad];
-    
-    
-    [self setTitle:listInfo.title];
-        
+    [super viewDidLoad];        
 }
 
 - (void)viewDidUnload {

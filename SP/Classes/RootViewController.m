@@ -9,6 +9,7 @@
 #import "SPSimpleSoapRequest.h"
 #import "SPSoapRequestBuilder.h"
 #import "SPLoginAuthenticationService.h"
+#import "SPAuthenticationView.h"
 
 
 @interface RootViewController ()
@@ -20,7 +21,7 @@
 @end
 @implementation RootViewController
 
-@synthesize firstDetailViewController, listOfItems;
+@synthesize firstDetailViewController, listOfItems, tableView;
 
 
 
@@ -30,7 +31,7 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    self.clearsSelectionOnViewWillAppear = NO;
+    //self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
 
     [self setTitle:@"List Collection"];
@@ -150,6 +151,10 @@
     //firstDetailViewController.folderName = [NSString stringWithFormat:@"sites/SP/%@", listName];
    }
 
+- (IBAction) logonSites:(id)sender {
+    SPAuthenticationView *controller = [[SPAuthenticationView alloc] initWithNibName:@"SPAuthenticationView" bundle:nil];
+    [self presentModalViewController:controller animated:YES];
+}
 
 #pragma mark -
 #pragma mark Memory management

@@ -91,6 +91,7 @@
 		AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7E6061145F95480093FFA3 /* libxml2.dylib */; };
 		AD9F833F1468F17E005EE9A7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9F833A1468F17E005EE9A7 /* RootViewController.m */; };
 		AD9F83401468F17E005EE9A7 /* FirstDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */; };
+		ADA0709314738D9D001A52D1 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA0709214738D9D001A52D1 /* RootView.xib */; };
 		ADAD75291467A6DE004C7704 /* GetListItemsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75281467A6DE004C7704 /* GetListItemsService.m */; };
 		ADAD75351467B9BF004C7704 /* SPGetListItemsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75341467B9BD004C7704 /* SPGetListItemsRequest.m */; };
 		ADB92F6014722B2C00572116 /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB92F5F14722B2C00572116 /* ASIWebPageRequest.m */; };
@@ -267,6 +268,7 @@
 		AD9F833B1468F17E005EE9A7 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstDetailViewController.m; sourceTree = "<group>"; };
 		AD9F833D1468F17E005EE9A7 /* FirstDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstDetailViewController.h; sourceTree = "<group>"; };
+		ADA0709214738D9D001A52D1 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		ADAD75271467A6DE004C7704 /* GetListItemsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListItemsService.h; sourceTree = "<group>"; };
 		ADAD75281467A6DE004C7704 /* GetListItemsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListItemsService.m; sourceTree = "<group>"; };
 		ADAD75331467B9BC004C7704 /* SPGetListItemsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGetListItemsRequest.h; sourceTree = "<group>"; };
@@ -620,6 +622,7 @@
 				0B9A65A414564D220031E5C2 /* InfoPlist.strings */,
 				0B9A65A714564D220031E5C2 /* main.m */,
 				0B9A65A914564D220031E5C2 /* SP-Prefix.pch */,
+				ADA0709214738D9D001A52D1 /* RootView.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -820,6 +823,7 @@
 				0B930F7F1467B8B1007189E7 /* SPAuthenticationView.xib in Resources */,
 				AD3D8B0A146A6832009F7D49 /* FirstDetailView.xib in Resources */,
 				AD3D8B13146A6962009F7D49 /* MainWindow.xib in Resources */,
+				ADA0709314738D9D001A52D1 /* RootView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
