@@ -10,6 +10,8 @@
 
 @implementation SPAuthenticationView
 
+@synthesize txtUserName, txtPassword, indicator;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -25,6 +27,12 @@
     [super didReceiveMemoryWarning];
     
     // Release any cached data, images, etc that aren't in use.
+}
+
+#pragma mark - UI callback methods
+
+- (IBAction)verify:(id)sender {
+    NSLog(@"hello");
 }
 
 #pragma mark - View lifecycle
@@ -46,6 +54,15 @@
 {
     // Return YES for supported orientations
 	return YES;
+}
+
+#pragma mark - Destroy methods
+
+- (void) dealloc {
+    self.txtUserName = nil;
+    self.txtPassword = nil;
+    self.indicator = nil;
+    [super dealloc];
 }
 
 @end

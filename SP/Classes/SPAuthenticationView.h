@@ -10,4 +10,12 @@
 
 @interface SPAuthenticationView : UIViewController
 
+@property (nonatomic, retain) IBOutlet UITextField * txtUserName;
+
+@property (nonatomic, retain) IBOutlet UITextField * txtPassword;
+
+@property (nonatomic, retain) IBOutlet UIActivityIndicatorView * indicator;
+
+- (IBAction)verify:(id)sender;
+
 @end
