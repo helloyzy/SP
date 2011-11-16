@@ -15,6 +15,7 @@
  
 - (void) prepareUrlAndHeadProps {
     self.serviceUrl = SP_SOAP_URL_GETUSERINFO;
+    [self addSoapActionHeadProp:@"directory/GetUserInfo"];
 }
 
 - (id) parseResponseWithXml:(RXMLElement *)xml {

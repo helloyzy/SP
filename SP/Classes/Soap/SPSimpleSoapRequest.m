@@ -18,14 +18,21 @@
 @implementation SPSimpleSoapRequest
 
 @synthesize rootTagName;
+@synthesize rootDefaultNS;
 @synthesize elementsAndValues;
 
 #pragma mark - public methods
 
 + (SPSimpleSoapRequest *) soapRequest {
     SPSimpleSoapRequest * result = [[SPSimpleSoapRequest alloc] init];
+    result.rootDefaultNS = SP_SOAP_NS_DEFAULT;
     return [result autorelease];
 }
+
++ (SPSimpleSoapRequest *) soapRequestWithDirectoryNS {
+    SPSimpleSoapRequest * result = [[SPSimpleSoapRequest alloc] init];
+    result.rootDefaultNS = [SP_SOAP_NS_DEFAULT stringByAppendingString:@"directory/"];
+    return [result autorelease];}
 
 -(void) addElement:(NSString *)tagName withStringValue:(NSString *)value {
     if (!elementsAndValues) {
@@ -37,7 +44,12 @@
 #pragma mark - overridden protected methods 
 
 - (void) write:(XMLWriter *)writer {
-    [super write:writer];
+    // [super write:writer];
+    if (self.rootDefaultNS) {
+        [writer setDefaultNamespace:self.rootDefaultNS];
+    } else {
+        [super write:writer];
+    }
     [writer writeStartElement:rootTagName];
     // add child elements if any
     if (elementsAndValues) {
@@ -52,6 +64,7 @@
 
 - (void) dealloc {
     self.rootTagName = nil;
+    self.rootDefaultNS = nil;
     self.elementsAndValues = nil;
     [super dealloc];
 }

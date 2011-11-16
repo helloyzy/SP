@@ -12,4 +12,6 @@
 
 - (void) postNotification:(NSString *)msgName withValue:(id)value;
 
+- (void) registerNotification:(NSString *)msgName withSelector:(SEL)selector;
+
 @end

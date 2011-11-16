@@ -7,6 +7,10 @@
 //
 
 #import "SPAuthenticationView.h"
+#import "SPSoapRequestBuilder.h"
+#import "SoapRequest.h"
+#import "GetUserInfoService.h"
+#import "SPCachedData.h"
 
 @implementation SPAuthenticationView
 
@@ -32,7 +36,15 @@
 #pragma mark - UI callback methods
 
 - (IBAction)verify:(id)sender {
-    NSLog(@"hello");
+    NSString * userName = txtUserName.text;
+    NSString * password = txtPassword.text;
+    [SPCachedData sharedInstance].user = userName;
+    [SPCachedData sharedInstance].pwd = password;
+    SoapRequest * request = [SPSoapRequestBuilder buildGetUserInfoRequest:userName];
+    GetUserInfoService * userInfoService = [[GetUserInfoService alloc] init];
+    userInfoService.soapRequestParam = request;
+    [userInfoService request];
+    [userInfoService release];    
 }
 
 #pragma mark - View lifecycle

@@ -16,4 +16,9 @@
     [center postNotificationName:msgName object:self userInfo:[NSDictionary dictionaryWithObjectsAndKeys:value, SP_NOTIFICATION_KEY_USERINFO, nil]];
 }
 
+- (void) registerNotification:(NSString *)msgName withSelector:(SEL)selector {
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:selector name:msgName object:nil];
+}
+
 @end

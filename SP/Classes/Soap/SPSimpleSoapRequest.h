@@ -12,8 +12,11 @@
 @interface SPSimpleSoapRequest : SPSoapRequest
 
 @property (nonatomic, retain) NSString * rootTagName;
+@property (nonatomic, retain) NSString * rootDefaultNS;
 
 + (SPSimpleSoapRequest *) soapRequest;
++ (SPSimpleSoapRequest *) soapRequestWithDirectoryNS;
 - (void) addElement:(NSString *)tagName withStringValue:(NSString *)value;
 
 @end
+ 

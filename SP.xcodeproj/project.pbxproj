@@ -322,10 +322,10 @@
 		0B672D361456B4EE00EAE589 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				AD9F833A1468F17E005EE9A7 /* RootViewController.m */,
 				AD9F833B1468F17E005EE9A7 /* RootViewController.h */,
-				AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */,
+				AD9F833A1468F17E005EE9A7 /* RootViewController.m */,
 				AD9F833D1468F17E005EE9A7 /* FirstDetailViewController.h */,
+				AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */,
 				0B672DD81456C94B00EAE589 /* SPAppDelegate.h */,
 				0B672DD91456C94B00EAE589 /* SPAppDelegate.m */,
 				0B930F7B1467B8AB007189E7 /* SPAuthenticationView.h */,

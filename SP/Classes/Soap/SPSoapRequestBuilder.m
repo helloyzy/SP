@@ -30,7 +30,7 @@
 }
 
 + (SoapRequest *) buildGetUserInfoRequest:(NSString *)userLoginName {
-    SPSimpleSoapRequest * request = [SPSimpleSoapRequest soapRequest];
+    SPSimpleSoapRequest * request = [SPSimpleSoapRequest soapRequestWithDirectoryNS];
     request.rootTagName = @"GetUserInfo";
     [request addElement:@"userLoginName" withStringValue:userLoginName];
     return request;
