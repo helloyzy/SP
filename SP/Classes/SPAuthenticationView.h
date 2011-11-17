@@ -20,6 +20,12 @@
 
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView * indicator;
 
+@property (nonatomic, retain) IBOutlet UILabel * lblResultTip;
+
+@property (nonatomic, retain) IBOutlet UILabel * lblProcessingTip;
+
+@property (nonatomic, retain) IBOutlet UIButton * btnVerify;
+
 - (IBAction)verify:(id)sender;
 
 @end

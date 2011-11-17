@@ -27,6 +27,10 @@
     [self postNotification:SP_NOTIFICATION_GETUSERINFO_SUCCESS withValue:value];
 }
 
+- (void) sendNotificationOnFailure:(NSString *)reason {
+    [self postNotification:SP_NOTIFICATION_GETUSERINFO_FAILURE withValue:reason];
+}
+
 #pragma mark - destroy methods
 
 - (void) dealloc {

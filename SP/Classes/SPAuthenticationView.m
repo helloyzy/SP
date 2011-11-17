@@ -15,14 +15,20 @@
 
 @interface SPAuthenticationView ()
 
-- (void) info:(NSString *)infoMsg;
+- (void) showInfo:(NSString *)infoMsg;
 - (void) showError:(NSString *)errorMsg;
+- (void) showMessage:(NSString *)message withTextColor:(UIColor *)textColor;
+- (void)onVerificationSuccess:(NSNotification *)notification;
+- (void)onVerificationFailure:(NSNotification *)notification;
+- (void)hideResultHints;
+- (void)hideProcessingHints;
+- (void)showProcessingHints;
 
 @end
 
 @implementation SPAuthenticationView
 
-@synthesize lblLoginName, lblPassword,txtUserName, txtPassword, indicator;
+@synthesize lblLoginName, lblPassword,txtUserName, txtPassword, indicator, lblResultTip, lblProcessingTip, btnVerify;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,25 +49,49 @@
 
 #pragma mark - private methods
 
-- (void) info:(NSString *)infoMsg {
-    
+- (void) showMessage:(NSString *)message withTextColor:(UIColor *)textColor {
+    [self hideProcessingHints];
+    self.lblResultTip.hidden = NO;
+    self.lblResultTip.textColor = textColor;
+    self.lblResultTip.text = message;
+}
+
+- (void) showInfo:(NSString *)infoMsg {
+    [self showMessage:infoMsg withTextColor:[UIColor blueColor]];
 }
 
 - (void) showError:(NSString *)errorMsg {
-    
+    [self showMessage:errorMsg withTextColor:[UIColor redColor]];
 }
 
 - (void)onVerificationSuccess:(NSNotification *)notification {
     RXMLElement * ele = (RXMLElement *) [self valueFromSPNotification:notification];
     NSLog(@"%@", [ele attribute:@"LoginName"]);
-    [self info:@"Verification succeed"];
+    [self showInfo:@"Verification succeed"];
+    self.btnVerify.enabled = YES;
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
     NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
     [self showError:errorMsg];
+    self.btnVerify.enabled = YES;
 }
 
+- (void)hideResultHints {
+    self.lblResultTip.hidden = YES;
+}
+
+- (void)hideProcessingHints {
+    self.lblProcessingTip.hidden = YES;
+    [self.indicator stopAnimating];
+    self.indicator.hidden = YES;
+}
+
+- (void)showProcessingHints {
+    self.lblProcessingTip.hidden = NO;
+    [self.indicator startAnimating];
+    self.indicator.hidden = NO;
+}
 
 #pragma mark - UI callback methods
 
@@ -72,6 +102,9 @@
         [self showError:@"User Name and Password are required fields!"];
         return;
     }
+    [self hideResultHints];
+    [self showProcessingHints];
+    self.btnVerify.enabled = NO;
     [SPCachedData sharedInstance].user = userName;
     [SPCachedData sharedInstance].pwd = password;
     SoapRequest * request = [SPSoapRequestBuilder buildGetUserInfoRequest:userName];
@@ -89,6 +122,8 @@
     // Do any additional setup after loading the view from its nib.
     [self registerNotification:SP_NOTIFICATION_GETUSERINFO_SUCCESS withSelector:@selector(onVerificationSuccess:)];
     [self registerNotification:SP_NOTIFICATION_GETUSERINFO_FAILURE withSelector:@selector(onVerificationFailure:)];
+    [self hideProcessingHints];
+    [self hideResultHints];
 }
 
 - (void)viewDidUnload
@@ -101,6 +136,9 @@
     self.txtUserName = nil;
     self.txtPassword = nil;
     self.indicator = nil;
+    self.lblResultTip = nil;
+    self.lblProcessingTip = nil;
+    self.btnVerify = nil;
     [self unregisterNotification];
 }
 

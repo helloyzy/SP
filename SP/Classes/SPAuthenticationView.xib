@@ -155,7 +155,7 @@
 						<string key="NSFrame">{{132, 255}, {37, 37}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="728269274"/>
+						<reference key="NSNextKeyView" ref="1024896998"/>
 						<string key="NSReuseIdentifierKey">_NS:982</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -190,7 +190,7 @@
 						<reference key="IBUIFontDescription" ref="574273753"/>
 						<reference key="IBUIFont" ref="736022734"/>
 					</object>
-					<object class="IBUILabel" id="337821460">
+					<object class="IBUILabel" id="859410226">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{119, 42}, {531, 21}}</string>
@@ -221,7 +221,7 @@
 							<int key="NSfFlags">16</int>
 						</object>
 					</object>
-					<object class="IBUILabel" id="728269274">
+					<object class="IBUILabel" id="1024896998">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{188, 263}, {250, 21}}</string>
@@ -253,7 +253,7 @@
 				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="337821460"/>
+				<reference key="NSNextKeyView" ref="859410226"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MC42MDAwMDAwMjM4IDAuNjAwMDAwMDIzOCAwLjYwMDAwMDAyMzgAA</bytes>
@@ -308,6 +308,30 @@
 					</object>
 					<int key="connectionID">20</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblProcessingTip</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="1024896998"/>
+					</object>
+					<int key="connectionID">21</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">lblResultTip</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="859410226"/>
+					</object>
+					<int key="connectionID">22</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">btnVerify</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="772026077"/>
+					</object>
+					<int key="connectionID">23</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -338,8 +362,8 @@
 							<reference ref="772026077"/>
 							<reference ref="480523029"/>
 							<reference ref="975013817"/>
-							<reference ref="728269274"/>
-							<reference ref="337821460"/>
+							<reference ref="1024896998"/>
+							<reference ref="859410226"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -381,13 +405,13 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">18</int>
-						<reference key="object" ref="337821460"/>
+						<reference key="object" ref="859410226"/>
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">lblResultTip</string>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">19</int>
-						<reference key="object" ref="728269274"/>
+						<reference key="object" ref="1024896998"/>
 						<reference key="parent" ref="766721923"/>
 						<string key="objectName">lblProcessingTip</string>
 					</object>
@@ -412,7 +436,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">20</int>
+			<int key="maxID">23</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -431,13 +455,20 @@
 						</object>
 					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="btnVerify">UIButton</string>
 						<string key="indicator">UIActivityIndicatorView</string>
 						<string key="lblLoginName">UILabel</string>
 						<string key="lblPassword">UILabel</string>
+						<string key="lblProcessingTip">UILabel</string>
+						<string key="lblResultTip">UILabel</string>
 						<string key="txtPassword">UITextField</string>
 						<string key="txtUserName">UITextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="btnVerify">
+							<string key="name">btnVerify</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="indicator">
 							<string key="name">indicator</string>
 							<string key="candidateClassName">UIActivityIndicatorView</string>
@@ -448,6 +479,14 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="lblPassword">
 							<string key="name">lblPassword</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblProcessingTip">
+							<string key="name">lblProcessingTip</string>
+							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="lblResultTip">
+							<string key="name">lblResultTip</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="txtPassword">
