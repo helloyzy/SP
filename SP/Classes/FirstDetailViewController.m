@@ -35,16 +35,16 @@
 
 
 /**
-When setting the detail item, update the view and dismiss the popover controller if it's showing.
-*/
+ When setting the detail item, update the view and dismiss the popover controller if it's showing.
+ */
 - (void)setListInfo:(ListInfo *) newlistInfo {
-    	
+    
     if (listInfo != newlistInfo) {
         [listInfo release];
         listInfo = [newlistInfo retain];
         
     }
-
+    
     [self requestSubFolder:listInfo.title withFolder:listInfo.fileRef];
     [self setTitle:listInfo.fileRef];
     
@@ -166,18 +166,32 @@ When setting the detail item, update the view and dismiss the popover controller
     //NSString *fileRef = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] fileRef];
     
     
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 300, 25)];
-    titleLabel.text = title;
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 500, 50)];
+   
     titleLabel.font = [UIFont fontWithName:@"Arial" size:20];
     [cell.contentView addSubview:titleLabel];
     [titleLabel release];
+    
+    NSString *type = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] type];
+    
+    if ([type isEqualToString:@"1"]) {
+       titleLabel.text = title;
+    } else {
+        titleLabel.text = [NSString stringWithFormat:@"%@ \n Last updated by Spark.Pan 2011-11-11",title];  
+    }
+    
+    titleLabel.numberOfLines = 2;
+    //titleLabel.lineBreakMode = UILineBreakModeWordWrap;
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     return cell;
 }
 
-
+-(CGFloat) tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
+	     
+    return 60;
+}
 
 #pragma mark -
 #pragma mark Table view selection
@@ -185,11 +199,11 @@ When setting the detail item, update the view and dismiss the popover controller
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     NSString *type = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] type];
     NSString *fileRef = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] fileRef];
-      
-   if ([type isEqualToString:@"1"]) {
+    
+    if ([type isEqualToString:@"1"]) {
         FirstDetailViewController *controller = [[FirstDetailViewController alloc] init];
-       listInfo.fileRef = fileRef;
-       controller.listInfo = listInfo;
+        listInfo.fileRef = fileRef;
+        controller.listInfo = listInfo;
         [[self navigationController] pushViewController:controller animated:YES];
         
     } else {
@@ -219,7 +233,7 @@ When setting the detail item, update the view and dismiss the popover controller
     [request setUseSessionPersistence:YES];
     
     [request startAsynchronous];  
-
+    
 }
 
 - (void)webPageFetchFailed:(ASIHTTPRequest *)theRequest
@@ -248,10 +262,10 @@ When setting the detail item, update the view and dismiss the popover controller
                                        initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(info_clicked:)];
         
         self.navigationItem.leftBarButtonItem = infoButton;
-
-
+        
+        
     }
-
+    
 }
 
 - (void) info_clicked:(id)sender {
