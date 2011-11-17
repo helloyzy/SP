@@ -12,6 +12,8 @@
 #import "ASIWebPageRequest.h"
 #import "ASIDownloadCache.h"
 #import "ASIHTTPRequest.h"
+#import "TaskViewController.h"
+#import "LanguageListController.h"
 
 @interface FirstDetailViewController ()
 
@@ -27,7 +29,7 @@
 
 @implementation FirstDetailViewController
 
-@synthesize toolbar, listOfItems, tableview, popoverController, listInfo, item, webView;
+@synthesize toolbar, listOfItems, tableview, popoverController, listInfo, buttonItem, webView,languagePopoverController;
 
 
 #pragma mark -
@@ -52,6 +54,10 @@
     if (popoverController != nil) {
         [popoverController dismissPopoverAnimated:YES];
     }        
+    
+    if (languagePopoverController != nil) {
+        [languagePopoverController dismissPopoverAnimated:YES];
+    } 
 }
 
 
@@ -275,10 +281,17 @@
 }
 
 
-
-
 - (IBAction)toggleMasterView:(id)sender {
-    
+    LanguageListController *languageListController = [[LanguageListController alloc]
+													  init];
+    UIPopoverController *poc = [[UIPopoverController alloc]
+								initWithContentViewController:languageListController];
+    [poc presentPopoverFromBarButtonItem:buttonItem 
+                permittedArrowDirections:UIPopoverArrowDirectionAny 
+                                animated:YES];
+    self.popoverController = poc;
+    [poc release];
+    [languageListController release];
 }
 
 #pragma mark -
@@ -297,7 +310,9 @@
     [tableview release];
     [listInfo release];
     [listOfItems release];
+    [buttonItem release];
     [webView release];
+    [languagePopoverController release];
     [super dealloc];
 }	
 

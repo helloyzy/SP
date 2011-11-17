@@ -93,6 +93,9 @@
 		AD9F833F1468F17E005EE9A7 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9F833A1468F17E005EE9A7 /* RootViewController.m */; };
 		AD9F83401468F17E005EE9A7 /* FirstDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */; };
 		ADA0709314738D9D001A52D1 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA0709214738D9D001A52D1 /* RootView.xib */; };
+		ADA070C51474E042001A52D1 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA070C31474E042001A52D1 /* TaskViewController.m */; };
+		ADA070C61474E042001A52D1 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA070C41474E042001A52D1 /* TaskViewController.xib */; };
+		ADA070EA1474F0D2001A52D1 /* LanguageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E91474F0D2001A52D1 /* LanguageListController.m */; };
 		ADAD75291467A6DE004C7704 /* GetListItemsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75281467A6DE004C7704 /* GetListItemsService.m */; };
 		ADAD75351467B9BF004C7704 /* SPGetListItemsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75341467B9BD004C7704 /* SPGetListItemsRequest.m */; };
 		ADB92F6014722B2C00572116 /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB92F5F14722B2C00572116 /* ASIWebPageRequest.m */; };
@@ -272,6 +275,11 @@
 		AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstDetailViewController.m; sourceTree = "<group>"; };
 		AD9F833D1468F17E005EE9A7 /* FirstDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstDetailViewController.h; sourceTree = "<group>"; };
 		ADA0709214738D9D001A52D1 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		ADA070C21474E042001A52D1 /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
+		ADA070C31474E042001A52D1 /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
+		ADA070C41474E042001A52D1 /* TaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskViewController.xib; sourceTree = "<group>"; };
+		ADA070E81474F0D1001A52D1 /* LanguageListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageListController.h; sourceTree = "<group>"; };
+		ADA070E91474F0D2001A52D1 /* LanguageListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageListController.m; sourceTree = "<group>"; };
 		ADAD75271467A6DE004C7704 /* GetListItemsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListItemsService.h; sourceTree = "<group>"; };
 		ADAD75281467A6DE004C7704 /* GetListItemsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListItemsService.m; sourceTree = "<group>"; };
 		ADAD75331467B9BC004C7704 /* SPGetListItemsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGetListItemsRequest.h; sourceTree = "<group>"; };
@@ -325,6 +333,8 @@
 		0B672D361456B4EE00EAE589 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ADA070E81474F0D1001A52D1 /* LanguageListController.h */,
+				ADA070E91474F0D2001A52D1 /* LanguageListController.m */,
 				AD9F833B1468F17E005EE9A7 /* RootViewController.h */,
 				AD9F833A1468F17E005EE9A7 /* RootViewController.m */,
 				AD9F833D1468F17E005EE9A7 /* FirstDetailViewController.h */,
@@ -337,6 +347,9 @@
 				0B672DDA1456C94B00EAE589 /* SPViewController.h */,
 				0B672DDB1456C94B00EAE589 /* SPViewController.m */,
 				0B9A65B014564D220031E5C2 /* SPViewController.xib */,
+				ADA070C21474E042001A52D1 /* TaskViewController.h */,
+				ADA070C31474E042001A52D1 /* TaskViewController.m */,
+				ADA070C41474E042001A52D1 /* TaskViewController.xib */,
 				0BDDD79B1461552900FD34D2 /* Common */,
 				0B672DB01456C0B900EAE589 /* Soap */,
 			);
@@ -829,6 +842,7 @@
 				AD3D8B0A146A6832009F7D49 /* FirstDetailView.xib in Resources */,
 				AD3D8B13146A6962009F7D49 /* MainWindow.xib in Resources */,
 				ADA0709314738D9D001A52D1 /* RootView.xib in Resources */,
+				ADA070C61474E042001A52D1 /* TaskViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -930,6 +944,8 @@
 				AD1555FE146CF884001ACF38 /* ASIAuthenticationDialog.m in Sources */,
 				ADB92F6014722B2C00572116 /* ASIWebPageRequest.m in Sources */,
 				00B128CF1474AF2C007F65B6 /* UtilsFunc.m in Sources */,
+				ADA070C51474E042001A52D1 /* TaskViewController.m in Sources */,
+				ADA070EA1474F0D2001A52D1 /* LanguageListController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
