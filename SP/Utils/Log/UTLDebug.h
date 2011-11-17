@@ -15,3 +15,6 @@
 #import <Foundation/Foundation.h>
 
 void UTLDebug(const char *fileName, int lineNumber, NSString * format, ...);
+
+
+void SLog(NSString * format, ...);

@@ -34,3 +34,29 @@ void UTLDebug(const char *fileName, int lineNumber, NSString * format, ...) {
     va_end(args);
 }
 
+void SLog(NSString * format, ...) {
+    NSString * debugFlag = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"DebugFlag"];
+    if (debugFlag && [[debugFlag uppercaseString] isEqualToString:@"YES"]) {
+        va_list args;
+        va_start(args, format);
+        static NSDateFormatter * debugFormatter = nil;
+        if (!debugFormatter) {
+            debugFormatter = [[NSDateFormatter alloc] init];
+            [debugFormatter setDateFormat:@"MM/dd/yyyy HH:mm:ss"];
+        }
+        
+        NSString * logmsg = [[NSString alloc] initWithFormat:format arguments:args];
+        NSString * timeStamp = [debugFormatter stringFromDate:[NSDate date]];
+        
+        NSDictionary * infoDict = [[NSBundle mainBundle] infoDictionary];
+        fprintf(stdout, "%s %s %s\n",
+                [timeStamp UTF8String],
+                [[infoDict objectForKey:(NSString *)kCFBundleNameKey] UTF8String],
+                [logmsg UTF8String]);
+        
+        [logmsg release];
+        va_end(args);
+    }
+}
+
+
