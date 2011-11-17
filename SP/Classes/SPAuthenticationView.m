@@ -11,10 +11,18 @@
 #import "SoapRequest.h"
 #import "GetUserInfoService.h"
 #import "SPCachedData.h"
+#import "NSObject+SPExtensions.h"
+
+@interface SPAuthenticationView ()
+
+- (void) info:(NSString *)infoMsg;
+- (void) showError:(NSString *)errorMsg;
+
+@end
 
 @implementation SPAuthenticationView
 
-@synthesize txtUserName, txtPassword, indicator;
+@synthesize lblLoginName, lblPassword,txtUserName, txtPassword, indicator;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,11 +41,37 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
+#pragma mark - private methods
+
+- (void) info:(NSString *)infoMsg {
+    
+}
+
+- (void) showError:(NSString *)errorMsg {
+    
+}
+
+- (void)onVerificationSuccess:(NSNotification *)notification {
+    RXMLElement * ele = (RXMLElement *) [self valueFromSPNotification:notification];
+    NSLog(@"%@", [ele attribute:@"LoginName"]);
+    [self info:@"Verification succeed"];
+}
+
+- (void)onVerificationFailure:(NSNotification *)notification {
+    NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
+    [self showError:errorMsg];
+}
+
+
 #pragma mark - UI callback methods
 
 - (IBAction)verify:(id)sender {
     NSString * userName = txtUserName.text;
     NSString * password = txtPassword.text;
+    if (IS_EMPTY_STRING(userName) || IS_EMPTY_STRING(password)) {
+        [self showError:@"User Name and Password are required fields!"];
+        return;
+    }
     [SPCachedData sharedInstance].user = userName;
     [SPCachedData sharedInstance].pwd = password;
     SoapRequest * request = [SPSoapRequestBuilder buildGetUserInfoRequest:userName];
@@ -53,6 +87,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self registerNotification:SP_NOTIFICATION_GETUSERINFO_SUCCESS withSelector:@selector(onVerificationSuccess:)];
+    [self registerNotification:SP_NOTIFICATION_GETUSERINFO_FAILURE withSelector:@selector(onVerificationFailure:)];
 }
 
 - (void)viewDidUnload
@@ -60,6 +96,12 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    self.lblLoginName = nil;
+    self.lblPassword = nil;
+    self.txtUserName = nil;
+    self.txtPassword = nil;
+    self.indicator = nil;
+    [self unregisterNotification];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -71,9 +113,6 @@
 #pragma mark - Destroy methods
 
 - (void) dealloc {
-    self.txtUserName = nil;
-    self.txtPassword = nil;
-    self.indicator = nil;
     [super dealloc];
 }
 

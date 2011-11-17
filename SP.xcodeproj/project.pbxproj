@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00B128CF1474AF2C007F65B6 /* UtilsFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B128CE1474AF2C007F65B6 /* UtilsFunc.m */; };
 		0B672D831456BBD800EAE589 /* IBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672D481456BBD800EAE589 /* IBButton.m */; };
 		0B672D841456BBD800EAE589 /* IBCoreTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672D4A1456BBD800EAE589 /* IBCoreTextLabel.m */; };
 		0B672D851456BBD800EAE589 /* IBHTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672D4C1456BBD800EAE589 /* IBHTableView.m */; };
@@ -108,6 +109,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00B128CD1474AF2C007F65B6 /* UtilsFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsFunc.h; sourceTree = "<group>"; };
+		00B128CE1474AF2C007F65B6 /* UtilsFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilsFunc.m; sourceTree = "<group>"; };
 		0B672D471456BBD800EAE589 /* IBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBButton.h; sourceTree = "<group>"; };
 		0B672D481456BBD800EAE589 /* IBButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IBButton.m; sourceTree = "<group>"; };
 		0B672D491456BBD800EAE589 /* IBCoreTextLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBCoreTextLabel.h; sourceTree = "<group>"; };
@@ -346,6 +349,8 @@
 				0BAAF4F11459046F003B4640 /* Extensions */,
 				0B672DBA1456C37900EAE589 /* Log */,
 				0B672DAA1456C07900EAE589 /* XML */,
+				00B128CD1474AF2C007F65B6 /* UtilsFunc.h */,
+				00B128CE1474AF2C007F65B6 /* UtilsFunc.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -924,6 +929,7 @@
 				AD1555FD146CF884001ACF38 /* ASIDataCompressor.m in Sources */,
 				AD1555FE146CF884001ACF38 /* ASIAuthenticationDialog.m in Sources */,
 				ADB92F6014722B2C00572116 /* ASIWebPageRequest.m in Sources */,
+				00B128CF1474AF2C007F65B6 /* UtilsFunc.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1029,25 +1035,7 @@
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "SP/SP-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../AAATrunk_V1/BingMaps/MapControl\"",
-					"\"$(SRCROOT)/../AAATrunk_V1/OpenSSL\"",
-					"\"$(SRCROOT)/../AAATrunk_V1/SQLCipher/build/Debug-iphonesimulator\"",
-					"\"$(SRCROOT)/../AAATrunk_V1/SQLCipher/build/Release-iphoneos\"",
-					"\"$(SRCROOT)/../AAATrunk_V1/SQLCipher/build/sqlcipher.build/Release-iphoneos/sqlcipher.build/Objects-normal/armv6\"",
-					"\"$(SRCROOT)/../AAATrunk_V1/SQLCipher/build/sqlcipher.build/Release-iphoneos/sqlcipher.build/Objects-normal/armv7\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/BingMaps/MapControl\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/OpenSSL\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/Debug-iphoneos\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/Debug-iphonesimulator\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/Release-iphoneos\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/sqlcipher.build/Debug-iphoneos/sqlcipher.build/Objects-normal/armv6\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/sqlcipher.build/Debug-iphoneos/sqlcipher.build/Objects-normal/armv7\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/sqlcipher.build/Release-iphoneos/sqlcipher.build/Objects-normal/armv6\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/sqlcipher.build/Release-iphoneos/sqlcipher.build/Objects-normal/armv7\"",
-					"\"$(SRCROOT)/../iBoost/libGHUnitIPhone4_0-0.4.22\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
@@ -1062,25 +1050,7 @@
 				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				INFOPLIST_FILE = "SP/SP-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../AAATrunk_V1/BingMaps/MapControl\"",
-					"\"$(SRCROOT)/../AAATrunk_V1/OpenSSL\"",
-					"\"$(SRCROOT)/../AAATrunk_V1/SQLCipher/build/Debug-iphonesimulator\"",
-					"\"$(SRCROOT)/../AAATrunk_V1/SQLCipher/build/Release-iphoneos\"",
-					"\"$(SRCROOT)/../AAATrunk_V1/SQLCipher/build/sqlcipher.build/Release-iphoneos/sqlcipher.build/Objects-normal/armv6\"",
-					"\"$(SRCROOT)/../AAATrunk_V1/SQLCipher/build/sqlcipher.build/Release-iphoneos/sqlcipher.build/Objects-normal/armv7\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/BingMaps/MapControl\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/OpenSSL\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/Debug-iphoneos\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/Debug-iphonesimulator\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/Release-iphoneos\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/sqlcipher.build/Debug-iphoneos/sqlcipher.build/Objects-normal/armv6\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/sqlcipher.build/Debug-iphoneos/sqlcipher.build/Objects-normal/armv7\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/sqlcipher.build/Release-iphoneos/sqlcipher.build/Objects-normal/armv6\"",
-					"\"$(SRCROOT)/../AAATrunk_V2/SQLCipher/build/sqlcipher.build/Release-iphoneos/sqlcipher.build/Objects-normal/armv7\"",
-					"\"$(SRCROOT)/../iBoost/libGHUnitIPhone4_0-0.4.22\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;

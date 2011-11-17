@@ -10,6 +10,10 @@
 
 @interface SPAuthenticationView : UIViewController
 
+@property (nonatomic, retain) IBOutlet UILabel * lblLoginName;
+
+@property (nonatomic, retain) IBOutlet UILabel * lblPassword;
+
 @property (nonatomic, retain) IBOutlet UITextField * txtUserName;
 
 @property (nonatomic, retain) IBOutlet UITextField * txtPassword;

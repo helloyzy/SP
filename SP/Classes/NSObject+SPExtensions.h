@@ -10,8 +10,16 @@
 
 @interface NSObject (SPExtensions)
 
+// section for notification related ----------
 - (void) postNotification:(NSString *)msgName withValue:(id)value;
 
 - (void) registerNotification:(NSString *)msgName withSelector:(SEL)selector;
+
+- (void) unregisterNotification;
+
+- (void) unregisterNotification:(NSString *)msgName;
+
+- (id) valueFromSPNotification:(NSNotification *)notification;
+// section for notification related ----------
 
 @end
