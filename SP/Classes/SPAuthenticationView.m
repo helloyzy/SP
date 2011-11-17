@@ -23,6 +23,7 @@
 - (void)hideResultHints;
 - (void)hideProcessingHints;
 - (void)showProcessingHints;
+- (void)hideKeyBoard;
 
 @end
 
@@ -49,6 +50,11 @@
 
 #pragma mark - private methods
 
+- (void)hideKeyBoard {
+    [self.txtUserName resignFirstResponder];
+    [self.txtPassword resignFirstResponder];
+}
+
 - (void) showMessage:(NSString *)message withTextColor:(UIColor *)textColor {
     [self hideProcessingHints];
     self.lblResultTip.hidden = NO;
@@ -69,12 +75,15 @@
     NSLog(@"%@", [ele attribute:@"LoginName"]);
     [self showInfo:@"Verification succeed"];
     self.btnVerify.enabled = YES;
+    [self reset];
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
     NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
     [self showError:errorMsg];
     self.btnVerify.enabled = YES;
+    self.txtPassword.text = @"";
+    [self.txtPassword becomeFirstResponder];
 }
 
 - (void)hideResultHints {
@@ -102,6 +111,7 @@
         [self showError:@"User Name and Password are required fields!"];
         return;
     }
+    [self hideKeyBoard];
     [self hideResultHints];
     [self showProcessingHints];
     self.btnVerify.enabled = NO;
@@ -114,16 +124,24 @@
     [userInfoService release];    
 }
 
+- (IBAction)backToParent:(id)sender {
+    [self hideKeyBoard];
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)reset {
+    self.txtUserName.text = @"";
+    self.txtPassword.text = @"";
+    [self hideKeyBoard];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self registerNotification:SP_NOTIFICATION_GETUSERINFO_SUCCESS withSelector:@selector(onVerificationSuccess:)];
-    [self registerNotification:SP_NOTIFICATION_GETUSERINFO_FAILURE withSelector:@selector(onVerificationFailure:)];
-    [self hideProcessingHints];
-    [self hideResultHints];
+    
 }
 
 - (void)viewDidUnload
@@ -139,6 +157,18 @@
     self.lblResultTip = nil;
     self.lblProcessingTip = nil;
     self.btnVerify = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self registerNotification:SP_NOTIFICATION_GETUSERINFO_SUCCESS withSelector:@selector(onVerificationSuccess:)];
+    [self registerNotification:SP_NOTIFICATION_GETUSERINFO_FAILURE withSelector:@selector(onVerificationFailure:)];
+    [self hideProcessingHints];
+    [self hideResultHints];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
     [self unregisterNotification];
 }
 

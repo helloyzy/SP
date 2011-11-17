@@ -28,4 +28,8 @@
 
 - (IBAction)verify:(id)sender;
 
+- (IBAction)backToParent:(id)sender;
+
+- (IBAction)reset;
+
 @end
