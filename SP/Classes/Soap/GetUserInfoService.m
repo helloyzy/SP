@@ -20,6 +20,9 @@
 
 - (id) parseResponseWithXml:(RXMLElement *)xml {
     RXMLElement * userEle = [xml child:@"soap:Body.GetUserInfoResponse.GetUserInfoResult.GetUserInfo.User"];
+    if (!userEle) {
+        self.errorObj = @"Error in retrieving user information!";
+    }
     return userEle;
 }
 
@@ -27,8 +30,8 @@
     [self postNotification:SP_NOTIFICATION_GETUSERINFO_SUCCESS withValue:value];
 }
 
-- (void) sendNotificationOnFailure:(NSString *)reason {
-    [self postNotification:SP_NOTIFICATION_GETUSERINFO_FAILURE withValue:reason];
+- (void) sendNotificationOnFailure:(id)errorInfo {
+    [self postNotification:SP_NOTIFICATION_GETUSERINFO_FAILURE withValue:errorInfo];
 }
 
 #pragma mark - destroy methods

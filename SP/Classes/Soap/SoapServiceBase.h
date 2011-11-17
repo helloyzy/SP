@@ -14,6 +14,7 @@
 
 @interface SoapServiceBase : NSObject
 
+@property (nonatomic, retain) NSObject * errorObj; // for child class to set error information
 @property (nonatomic, retain) SoapRequest * soapRequestParam;
 
 - (void) request;
@@ -24,9 +25,11 @@
 
 - (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper;
 - (void) fail:(NSString *)description;
+- (void) failWithErrorInfo:(id)errorInfo;
 
 - (id) parseResponse:(NSString *)responseString;
+- (NSString *) parseError;
 - (void) sendNotificationOnSuccess:(id)value;
-- (void) sendNotificationOnFailure:(NSString *)reason;
+- (void) sendNotificationOnFailure:(id)errorInfo;
 
 @end

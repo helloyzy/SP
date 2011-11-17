@@ -51,6 +51,7 @@
         return;
     }     
     NSLog(@"Authentication failure!");
+    self.errorObj = @"User not exist or password not match!";
     [[challenge sender] cancelAuthenticationChallenge:challenge];
     // inform the user that the user name and password in the preferences are incorrect
 }
