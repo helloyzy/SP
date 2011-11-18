@@ -10,9 +10,9 @@
 
 // URLs for SP web services
 static NSString * SP_SOAP_URL_GETUSERINFO = @"UserGroup.asmx";
-static NSString * SP_SOAP_URL_LISTS = @"https://sharepoint.perficient.com/sites/sp/_vti_bin/Lists.asmx";
-static NSString * SP_SOAP_URL_AUTHENTICATION = @"https://sharepoint.perficient.com/sites/sp/_vti_bin/authentication.asmx";
-static NSString * SP_SOAP_URL_MODE = @"https://sharepoint.perficient.com/sites/sp/_vti_bin/authentication.asmx";
+static NSString * SP_SOAP_URL_LISTS = @"Lists.asmx";
+static NSString * SP_SOAP_URL_AUTHENTICATION = @"authentication.asmx";
+static NSString * SP_SOAP_URL_MODE = @"authentication.asmx";
 
 // Head properties for SP web services
 static NSString * SP_SOAP_HEAD_KEY_SOAPACTION = @"SOAPAction";

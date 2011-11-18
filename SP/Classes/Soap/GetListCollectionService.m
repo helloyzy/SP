@@ -20,7 +20,8 @@
 #pragma mark - protected methods implementations
 
 - (void) prepareUrlAndHeadProps {
-    self.serviceUrl = SP_SOAP_URL_LISTS;
+    // self.serviceUrl = SP_SOAP_URL_LISTS;
+    [self buildServiceUrlWithName:SP_SOAP_URL_LISTS];    
     [self addSoapActionHeadProp:@"GetListCollection"];
 }
 

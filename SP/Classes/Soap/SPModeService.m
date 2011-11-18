@@ -13,7 +13,8 @@
 #pragma mark - protected methods implementations
 
 - (void) prepareUrlAndHeadProps {
-    self.serviceUrl = SP_SOAP_URL_MODE;
+    // self.serviceUrl = SP_SOAP_URL_MODE;
+    [self buildServiceUrlWithName:SP_SOAP_URL_MODE];
     [self addSoapActionHeadProp:@"Mode"];
 }
 

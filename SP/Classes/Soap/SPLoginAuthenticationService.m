@@ -41,7 +41,8 @@
 #pragma mark - protected methods implementations
 
 - (void) prepareUrlAndHeadProps {
-    self.serviceUrl = SP_SOAP_URL_AUTHENTICATION;
+    // self.serviceUrl = SP_SOAP_URL_AUTHENTICATION;
+    [self buildServiceUrlWithName:SP_SOAP_URL_AUTHENTICATION];
     [self addSoapActionHeadProp:@"Login"];
 }
 

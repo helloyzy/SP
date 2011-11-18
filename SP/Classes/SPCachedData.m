@@ -38,7 +38,7 @@ static SPCachedData * sharedInstance;
 + (NSString *) serviceUrlPrefix {
     NSString * result = [self sharedInstance].serviceUrlPrefix;
     if (!result) {
-        result = @"https://sharepoint.perficient.com/sites/sp/";
+        result = @"https://sharepoint.perficient.com/sites/sp/_vti_bin/";
     }
     return result;
 }

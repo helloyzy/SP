@@ -31,7 +31,8 @@
 }
 
 - (void) buildServiceUrlWithName:(NSString *)serviceName {
-    self.serviceUrl = [[SPCachedData sharedInstance].serviceUrlPrefix stringByAppendingString:serviceName];
+    NSString * serviceUrlPrefix = [SPCachedData serviceUrlPrefix];
+    self.serviceUrl = [serviceUrlPrefix stringByAppendingString:serviceName];
 }
 
 - (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper {
