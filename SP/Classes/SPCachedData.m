@@ -14,6 +14,7 @@ static SPCachedData * sharedInstance;
 
 @synthesize user;
 @synthesize pwd;
+@synthesize serviceUrlPrefix;
 @synthesize serviceHost;
 
 #pragma public methods
@@ -34,6 +35,14 @@ static SPCachedData * sharedInstance;
     return [NSURLCredential credentialWithUser:data.user password:data.pwd persistence:NSURLCredentialPersistenceNone];
 }
 
++ (NSString *) serviceUrlPrefix {
+    NSString * result = [self sharedInstance].serviceUrlPrefix;
+    if (!result) {
+        result = @"https://sharepoint.perficient.com/sites/sp/";
+    }
+    return result;
+}
+
 + (NSString *) serviceHost {
     NSString * result = [self sharedInstance].serviceHost;
     if(!result) {
@@ -47,6 +56,7 @@ static SPCachedData * sharedInstance;
 - (void) dealloc {
     self.user = nil;
     self.pwd = nil;
+    self.serviceUrlPrefix = nil;
     self.serviceHost = nil;
     [super dealloc];
 }

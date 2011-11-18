@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 // URLs for SP web services
-static NSString * SP_SOAP_URL_GETUSERINFO = @"https://sharepoint.perficient.com/sites/sp/_vti_bin/UserGroup.asmx";
+static NSString * SP_SOAP_URL_GETUSERINFO = @"UserGroup.asmx";
 static NSString * SP_SOAP_URL_LISTS = @"https://sharepoint.perficient.com/sites/sp/_vti_bin/Lists.asmx";
 static NSString * SP_SOAP_URL_AUTHENTICATION = @"https://sharepoint.perficient.com/sites/sp/_vti_bin/authentication.asmx";
 static NSString * SP_SOAP_URL_MODE = @"https://sharepoint.perficient.com/sites/sp/_vti_bin/authentication.asmx";

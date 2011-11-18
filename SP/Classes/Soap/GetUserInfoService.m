@@ -14,7 +14,8 @@
 #pragma mark - protected methods implementations
  
 - (void) prepareUrlAndHeadProps {
-    self.serviceUrl = SP_SOAP_URL_GETUSERINFO;
+    //self.serviceUrl = SP_SOAP_URL_GETUSERINFO;
+    [self buildServiceUrlWithName:SP_SOAP_URL_GETUSERINFO];
     [self addSoapActionHeadProp:@"directory/GetUserInfo"];
 }
 

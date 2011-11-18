@@ -18,6 +18,8 @@
 
 @property (nonatomic, retain) IBOutlet UITextField * txtPassword;
 
+@property (nonatomic, retain) IBOutlet UITextField * txtSite;
+
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView * indicator;
 
 @property (nonatomic, retain) IBOutlet UILabel * lblResultTip;

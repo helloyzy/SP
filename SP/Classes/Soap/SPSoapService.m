@@ -30,6 +30,10 @@
     [self addHeadProp:SP_SOAP_HEAD_KEY_SOAPACTION withValue:soapActionUrl];
 }
 
+- (void) buildServiceUrlWithName:(NSString *)serviceName {
+    self.serviceUrl = [[SPCachedData sharedInstance].serviceUrlPrefix stringByAppendingString:serviceName];
+}
+
 - (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper {
     [self prepareUrlAndHeadProps];
     // add host header property

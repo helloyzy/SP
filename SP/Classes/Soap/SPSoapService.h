@@ -22,6 +22,7 @@
 
 - (void) addHeadProp:(NSString *)key withValue:(id)value;
 - (void) addSoapActionHeadProp:(NSString *)soapAction;
+- (void) buildServiceUrlWithName:(NSString *)serviceName;
 
 - (id) parseResponseWithXml:(RXMLElement *)xml;
 - (void) prepareUrlAndHeadProps;

@@ -12,6 +12,7 @@
 #import "GetUserInfoService.h"
 #import "SPCachedData.h"
 #import "NSObject+SPExtensions.h"
+#import "UTLDebug.h"
 
 @interface SPAuthenticationView ()
 
@@ -24,12 +25,13 @@
 - (void)hideProcessingHints;
 - (void)showProcessingHints;
 - (void)hideKeyBoard;
+- (BOOL)verifySite:(NSString *)site;
 
 @end
 
 @implementation SPAuthenticationView
 
-@synthesize lblLoginName, lblPassword,txtUserName, txtPassword, indicator, lblResultTip, lblProcessingTip, btnVerify;
+@synthesize lblLoginName, lblPassword,txtUserName, txtPassword, txtSite,indicator, lblResultTip, lblProcessingTip, btnVerify;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -102,21 +104,53 @@
     self.indicator.hidden = NO;
 }
 
+- (BOOL)verifySite:(NSString *)site {
+    if ([site hasPrefix:@"http"] || [site hasPrefix:@"https"]) {
+        NSURL * url = [NSURL URLWithString:site];
+        NSString * host = [url host];
+        UTLLog(@"Host from site %@ is:%@", site, host);
+        if (IS_POPULATED_STRING(host)) {
+            [SPCachedData sharedInstance].serviceHost = host;
+            return YES;
+        }
+    }
+    return NO;
+}
+
 #pragma mark - UI callback methods
 
 - (IBAction)verify:(id)sender {
     NSString * userName = txtUserName.text;
     NSString * password = txtPassword.text;
+    NSString * site = txtSite.text;
     if (IS_EMPTY_STRING(userName) || IS_EMPTY_STRING(password)) {
         [self showError:@"User Name and Password are required fields!"];
         return;
     }
+    if (IS_EMPTY_STRING(site)) {
+        [self showError:@"Sharepoint Site is a required field!"];
+        return;
+    }
+    // add the trailing "/" for the url if necessary
+    if ([site hasSuffix:@"/"]) {
+        site = [site stringByAppendingString:@"/"];
+    }
+    if (![self verifySite:site]) {
+        [self showError:@"Sharepoint Site is not a valid URL, please check it!"];
+        return;
+    }
+    
     [self hideKeyBoard];
     [self hideResultHints];
     [self showProcessingHints];
     self.btnVerify.enabled = NO;
+    
     [SPCachedData sharedInstance].user = userName;
     [SPCachedData sharedInstance].pwd = password;
+    // adding the service suffix
+    site = [site stringByAppendingString:@"_vti_bin/"];
+    [SPCachedData sharedInstance].serviceUrlPrefix = site;
+    
     SoapRequest * request = [SPSoapRequestBuilder buildGetUserInfoRequest:userName];
     GetUserInfoService * userInfoService = [[GetUserInfoService alloc] init];
     userInfoService.soapRequestParam = request;
@@ -132,6 +166,7 @@
 - (IBAction)reset {
     self.txtUserName.text = @"";
     self.txtPassword.text = @"";
+    self.txtSite.text = @"";
     [self hideKeyBoard];
 }
 
@@ -153,6 +188,7 @@
     self.lblPassword = nil;
     self.txtUserName = nil;
     self.txtPassword = nil;
+    self.txtSite = nil;
     self.indicator = nil;
     self.lblResultTip = nil;
     self.lblProcessingTip = nil;
