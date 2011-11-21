@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		001642BA147A1B72005C3DF8 /* bg_btn_verify.png in Resources */ = {isa = PBXBuildFile; fileRef = 001642B8147A1B72005C3DF8 /* bg_btn_verify.png */; };
+		001642BB147A1B72005C3DF8 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 001642B9147A1B72005C3DF8 /* bg.png */; };
+		001642BD147A1BE3005C3DF8 /* bg_btn_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 001642BC147A1BE3005C3DF8 /* bg_btn_clear.png */; };
 		00B128CF1474AF2C007F65B6 /* UtilsFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B128CE1474AF2C007F65B6 /* UtilsFunc.m */; };
 		0B672D831456BBD800EAE589 /* IBButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672D481456BBD800EAE589 /* IBButton.m */; };
 		0B672D841456BBD800EAE589 /* IBCoreTextLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672D4A1456BBD800EAE589 /* IBCoreTextLabel.m */; };
@@ -112,6 +115,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		001642B8147A1B72005C3DF8 /* bg_btn_verify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_verify.png; sourceTree = "<group>"; };
+		001642B9147A1B72005C3DF8 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		001642BC147A1BE3005C3DF8 /* bg_btn_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_clear.png; sourceTree = "<group>"; };
 		00B128CD1474AF2C007F65B6 /* UtilsFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsFunc.h; sourceTree = "<group>"; };
 		00B128CE1474AF2C007F65B6 /* UtilsFunc.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilsFunc.m; sourceTree = "<group>"; };
 		0B672D471456BBD800EAE589 /* IBButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IBButton.h; sourceTree = "<group>"; };
@@ -319,6 +325,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		001642B6147A1AA6005C3DF8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				001642BC147A1BE3005C3DF8 /* bg_btn_clear.png */,
+				001642B8147A1B72005C3DF8 /* bg_btn_verify.png */,
+				001642B9147A1B72005C3DF8 /* bg.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		0B672D351456B4EE00EAE589 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -623,6 +639,7 @@
 		0B9A65A114564D220031E5C2 /* SP */ = {
 			isa = PBXGroup;
 			children = (
+				001642B6147A1AA6005C3DF8 /* Resources */,
 				0B672D351456B4EE00EAE589 /* 3rdParty */,
 				0B672D361456B4EE00EAE589 /* Classes */,
 				0B672D371456B4EE00EAE589 /* Utils */,
@@ -843,6 +860,9 @@
 				AD3D8B13146A6962009F7D49 /* MainWindow.xib in Resources */,
 				ADA0709314738D9D001A52D1 /* RootView.xib in Resources */,
 				ADA070C61474E042001A52D1 /* TaskViewController.xib in Resources */,
+				001642BA147A1B72005C3DF8 /* bg_btn_verify.png in Resources */,
+				001642BB147A1B72005C3DF8 /* bg.png in Resources */,
+				001642BD147A1BE3005C3DF8 /* bg_btn_clear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

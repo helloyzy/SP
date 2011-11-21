@@ -13,6 +13,7 @@
 #import "SPCachedData.h"
 #import "NSObject+SPExtensions.h"
 #import "UTLDebug.h"
+#import "UIView+Boost.h"
 
 @interface SPAuthenticationView ()
 
@@ -31,7 +32,7 @@
 
 @implementation SPAuthenticationView
 
-@synthesize lblLoginName, lblPassword,txtUserName, txtPassword, txtSite,indicator, lblResultTip, lblProcessingTip, btnVerify;
+@synthesize lblLoginName, lblPassword,txtUserName, txtPassword, txtSite,indicator, lblResultTip, lblProcessingTip, btnVerify, container;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -132,8 +133,12 @@
         return;
     }
     // add the trailing "/" for the url if necessary
-    if ([site hasSuffix:@"/"]) {
+    if (![site hasSuffix:@"/"]) {
         site = [site stringByAppendingString:@"/"];
+    }
+    // add the service suffix if necessary
+    if (![site hasSuffix:@"_vti_bin/"]) {
+        site = [site stringByAppendingString:@"_vti_bin/"];
     }
     if (![self verifySite:site]) {
         [self showError:@"Sharepoint Site is not a valid URL, please check it!"];
@@ -147,8 +152,6 @@
     
     [SPCachedData sharedInstance].user = userName;
     [SPCachedData sharedInstance].pwd = password;
-    // adding the service suffix
-    site = [site stringByAppendingString:@"_vti_bin/"];
     [SPCachedData sharedInstance].serviceUrlPrefix = site;
     
     SoapRequest * request = [SPSoapRequestBuilder buildGetUserInfoRequest:userName];
@@ -160,7 +163,8 @@
 
 - (IBAction)backToParent:(id)sender {
     [self hideKeyBoard];
-    [self dismissModalViewControllerAnimated:YES];
+    // [self dismissModalViewControllerAnimated:YES];
+    [self.container dismissPopoverAnimated:YES];
 }
 
 - (IBAction)reset {
@@ -176,7 +180,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
+    // UIColor * bgColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
+    // self.view.backgroundColor = bgColor;
+    self.contentSizeForViewInPopover = CGSizeMake(320,230);
+    self.txtUserName.text = [SPCachedData credential].user;
+    self.txtPassword.text = [SPCachedData credential].password;
+    self.txtSite.text = [SPCachedData serviceUrlPrefix];
 }
 
 - (void)viewDidUnload

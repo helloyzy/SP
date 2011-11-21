@@ -21,7 +21,7 @@
 @end
 @implementation RootViewController
 
-@synthesize firstDetailViewController, listOfItems, tableView;
+@synthesize firstDetailViewController, listOfItems, tableView, authenticatePopover, siteItem;
 
 
 
@@ -153,7 +153,14 @@
 
 - (IBAction) logonSites:(id)sender {
     SPAuthenticationView *controller = [[SPAuthenticationView alloc] initWithNibName:@"SPAuthenticationView" bundle:nil];
-    [self presentModalViewController:controller animated:YES];
+    // [self presentModalViewController:controller animated:YES];
+    
+    UIPopoverController * popOver = [[UIPopoverController alloc] initWithContentViewController:controller];
+    [popOver presentPopoverFromBarButtonItem:siteItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    controller.container = popOver;
+    self.authenticatePopover = popOver;
+    [controller release];
+    [popOver release];
 }
 
 - (IBAction) refreshLists:(id)sender {
@@ -167,6 +174,10 @@
     [firstDetailViewController release];
     [listOfItems release];
     [tableView release];
+    // first dismiss
+    [self.authenticatePopover dismissPopoverAnimated:NO];
+    self.authenticatePopover = nil;
+    self.siteItem = nil;
     [super dealloc];
 }
 

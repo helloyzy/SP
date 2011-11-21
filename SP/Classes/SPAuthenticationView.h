@@ -28,6 +28,8 @@
 
 @property (nonatomic, retain) IBOutlet UIButton * btnVerify;
 
+@property (nonatomic, assign) UIPopoverController * container;
+
 - (IBAction)verify:(id)sender;
 
 - (IBAction)backToParent:(id)sender;
