@@ -221,7 +221,8 @@
 }
 
 - (void)loadImage: (NSString *) url {
-    NSURL *targetURL = [NSURL URLWithString:url];
+    NSString * escapedUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *targetURL = [NSURL URLWithString:escapedUrl];
     NSString* theFileName = [url lastPathComponent];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:targetURL];
