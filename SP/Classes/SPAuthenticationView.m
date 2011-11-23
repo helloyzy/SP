@@ -14,6 +14,7 @@
 #import "NSObject+SPExtensions.h"
 #import "UTLDebug.h"
 #import "UIView+Boost.h"
+#import "SPCommon.h"
 
 @interface SPAuthenticationView ()
 
@@ -26,7 +27,6 @@
 - (void)hideProcessingHints;
 - (void)showProcessingHints;
 - (void)hideKeyBoard;
-- (BOOL)verifySite:(NSString *)site;
 
 @end
 
@@ -105,19 +105,6 @@
     self.indicator.hidden = NO;
 }
 
-- (BOOL)verifySite:(NSString *)site {
-    if ([site hasPrefix:@"http"] || [site hasPrefix:@"https"]) {
-        NSURL * url = [NSURL URLWithString:site];
-        NSString * host = [url host];
-        UTLLog(@"Host from site %@ is:%@", site, host);
-        if (IS_POPULATED_STRING(host)) {
-            [SPCachedData sharedInstance].serviceHost = host;
-            return YES;
-        }
-    }
-    return NO;
-}
-
 #pragma mark - UI callback methods
 
 - (IBAction)verify:(id)sender {
@@ -131,16 +118,8 @@
     if (IS_EMPTY_STRING(site)) {
         [self showError:@"Sharepoint Site is a required field!"];
         return;
-    }
-    // add the trailing "/" for the url if necessary
-    if (![site hasSuffix:@"/"]) {
-        site = [site stringByAppendingString:@"/"];
-    }
-    // add the service suffix if necessary
-    if (![site hasSuffix:@"_vti_bin/"]) {
-        site = [site stringByAppendingString:@"_vti_bin/"];
-    }
-    if (![self verifySite:site]) {
+    }    
+    if (![SPCommon isValidSite:site]) {
         [self showError:@"Sharepoint Site is not a valid URL, please check it!"];
         return;
     }
@@ -150,9 +129,8 @@
     [self showProcessingHints];
     self.btnVerify.enabled = NO;
     
-    [SPCachedData sharedInstance].user = userName;
-    [SPCachedData sharedInstance].pwd = password;
-    [SPCachedData sharedInstance].serviceUrlPrefix = site;
+    [SPCachedData fillCredentialWithUser:userName password:password];
+    [SPCachedData fillSiteInfo:site];
     
     SoapRequest * request = [SPSoapRequestBuilder buildGetUserInfoRequest:userName];
     GetUserInfoService * userInfoService = [[GetUserInfoService alloc] init];
@@ -185,7 +163,7 @@
     self.contentSizeForViewInPopover = CGSizeMake(320,230);
     self.txtUserName.text = [SPCachedData credential].user;
     self.txtPassword.text = [SPCachedData credential].password;
-    self.txtSite.text = [SPCachedData serviceUrlPrefix];
+    self.txtSite.text = [SPCachedData userInputSite];
 }
 
 - (void)viewDidUnload

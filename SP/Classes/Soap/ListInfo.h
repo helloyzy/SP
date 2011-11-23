@@ -15,5 +15,6 @@
 @property (nonatomic, retain) NSString * description;
 @property(nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSString * fileRef;
+@property (nonatomic, retain) NSString * listName;
 
 @end

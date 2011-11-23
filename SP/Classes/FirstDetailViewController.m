@@ -14,6 +14,7 @@
 #import "ASIHTTPRequest.h"
 #import "TaskViewController.h"
 #import "LanguageListController.h"
+#import "SPCachedData.h"
 
 @interface FirstDetailViewController ()
 
@@ -21,7 +22,7 @@
 - (void) testLists;
 - (void) testAuthentication;
 - (void) requestSubFolder: (NSString *) topListName withFolder: (NSString *) folder;
-- (void) loadImage:(NSString *) url;
+- (void) loadImage:(ListInfo *)listItem;
 @end
 
 
@@ -213,22 +214,27 @@
         [[self navigationController] pushViewController:controller animated:YES];
         
     } else {
-        NSString * url = [NSString stringWithFormat:@"https://sharepoint.perficient.com/%@", fileRef];
+        // NSString * url = [NSString stringWithFormat:@"https://sharepoint.perficient.com/%@", fileRef];
         
-        [self loadImage:url];
+        [self loadImage:(ListInfo *)[listOfItems objectAtIndex:indexPath.row]];
     }
     
 }
 
-- (void)loadImage: (NSString *) url {
-    NSString * escapedUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSURL *targetURL = [NSURL URLWithString:escapedUrl];
+- (void)loadImage:(ListInfo *) listItem{    
+    
+    NSString * imageUrlPrefix = [SPCachedData resDownloadHost];
+    NSString * url = [imageUrlPrefix stringByAppendingString:listItem.fileRef];
+    
     NSString* theFileName = [url lastPathComponent];
+    NSString * escapedUrl = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    UTLLog(@"The resource to download is - %@", escapedUrl);
+    NSURL *targetURL = [NSURL URLWithString:escapedUrl];
     
     ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:targetURL];
     NSString * destinationPath = [[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"] stringByAppendingPathComponent:theFileName];
     
-    NSLog(@"%@", destinationPath);
+    UTLLog(@"The resource will saved into local directory - %@", destinationPath);
     
     [request setDelegate:self];
     [request setDownloadDestinationPath:destinationPath];
@@ -251,12 +257,11 @@
 
 - (void)webPageFetchSucceeded:(ASIHTTPRequest *)theRequest
 {
-    NSLog(@"%@",[theRequest downloadDestinationPath]);
     NSFileManager* myManager = [NSFileManager defaultManager];  
     
-    if([myManager fileExistsAtPath:[theRequest downloadDestinationPath]]){
+    if([myManager fileExistsAtPath:[theRequest downloadDestinationPath]]) {
         
-        NSLog(@"Loading Saved Copy!");
+        UTLLog(@"The local resource will be loaded - %@", [theRequest downloadDestinationPath]);
         webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 786, 960)];
         //Create a URL object.
         NSURL *url = [NSURL fileURLWithPath:[theRequest downloadDestinationPath] isDirectory:NO];

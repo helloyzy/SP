@@ -14,12 +14,14 @@
 @synthesize description;
 @synthesize type;
 @synthesize fileRef;
+@synthesize listName;
 
 - (void) dealloc {
     self.title = nil;
     self.description = nil;
     self.type = nil;
     self.fileRef = nil;
+    self.listName = nil;
     [super dealloc];
 }
 @end
