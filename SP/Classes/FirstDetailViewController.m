@@ -13,11 +13,8 @@
 #import "ASIDownloadCache.h"
 #import "ASIHTTPRequest.h"
 #import "TaskViewController.h"
-<<<<<<< HEAD
-#import "LanguageListController.h"
 #import "SPCachedData.h"
-=======
->>>>>>> add mockup UI for edit the item which type is task
+
 
 @interface FirstDetailViewController ()
 
@@ -25,7 +22,6 @@
 - (void) loadImage:(ListInfo *)listItem;
 
 @end
-
 
 
 
@@ -174,39 +170,31 @@
 #pragma mark Table view selection
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-<<<<<<< HEAD
+
     ListInfo * selectedItem = (ListInfo *)[listOfItems objectAtIndex:indexPath.row];
     
-    if ([selectedItem.type isEqualToString:@"1"]) {
-=======
-    NSString *type = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] type];
-    NSString *fileRef = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] fileRef];
+    NSString *fileRef = [selectedItem fileRef];
     NSString* fileName = [fileRef lastPathComponent];
-    if ([type isEqualToString:@"1"]) {
->>>>>>> add mockup UI for edit the item which type is task
-        FirstDetailViewController *controller = [[FirstDetailViewController alloc] init];
+    
+    if ([selectedItem.type isEqualToString:@"1"]) {
+    
+     FirstDetailViewController *controller = [[FirstDetailViewController alloc] init];
         selectedItem.listName = listInfo.listName;
         controller.listInfo = selectedItem;
         [[self navigationController] pushViewController:controller animated:YES];
-<<<<<<< HEAD
-    } else {
-        [self loadImage:(ListInfo *)[listOfItems objectAtIndex:indexPath.row]];
-=======
-        
+
     } else if ([fileName isEqualToString:@"1_.000" ]) {
     TaskViewController *controller = [[TaskViewController alloc] initWithNibName:@"TaskViewController" bundle:nil];        
          [[self navigationController] pushViewController:controller animated:YES];
         [controller release];
     } else {
-        NSString * url = [NSString stringWithFormat:@"https://sharepoint.perficient.com/%@", fileRef];
-        [self loadImage:url];
+       
+        [self loadImage:(ListInfo *)[listOfItems objectAtIndex:indexPath.row]];
 
->>>>>>> add mockup UI for edit the item which type is task
     }
     
 }
-
-- (void)loadImage:(ListInfo *) listItem{    
+   - (void) loadImage:(ListInfo *)listItem {
     
     NSString * imageUrlPrefix = [SPCachedData serviceHostUrl];
     NSString * url = [imageUrlPrefix stringByAppendingString:listItem.fileRef];

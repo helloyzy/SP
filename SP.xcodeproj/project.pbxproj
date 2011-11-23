@@ -970,12 +970,8 @@
 				ADB92F6014722B2C00572116 /* ASIWebPageRequest.m in Sources */,
 				00B128CF1474AF2C007F65B6 /* UtilsFunc.m in Sources */,
 				ADA070C51474E042001A52D1 /* TaskViewController.m in Sources */,
-<<<<<<< HEAD
-				ADA070EA1474F0D2001A52D1 /* LanguageListController.m in Sources */,
 				00476A21147C8D2B008C42D6 /* SPCommon.m in Sources */,
-=======
 				ADA070EA1474F0D2001A52D1 /* ItemMenuListController.m in Sources */,
->>>>>>> add mockup UI for edit the item which type is task
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

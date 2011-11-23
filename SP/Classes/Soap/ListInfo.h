@@ -15,15 +15,14 @@
 @property (nonatomic, retain) NSString * description;
 @property(nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSString * fileRef;
-<<<<<<< HEAD
+
 @property (nonatomic, retain) NSString * listName;
-=======
+
 @property (nonatomic, retain) NSString * assignTo;
 @property (nonatomic, retain) NSString * status;
 @property (nonatomic, retain) NSString * priority;
 @property (nonatomic, retain) NSString * dueDate;
 @property (nonatomic, retain) NSString * percentComplete;
 
->>>>>>> add mockup UI for edit the item which type is task
 
 @end
