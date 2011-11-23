@@ -6,14 +6,13 @@
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 
-#import "LanguageListController.h"
+#import "ItemMenuListController.h"
 
 #import "TaskViewController.h"
 
-@implementation LanguageListController
+@implementation ItemMenuListController
 
-@synthesize languageNames;
-@synthesize languageCodes;
+@synthesize menuNames;
 
 
 #pragma mark -
@@ -36,12 +35,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.languageNames = [NSArray arrayWithObjects:@"English", @"French",
-						  @"German", @"Spanish", nil];
-    self.languageCodes = [NSArray arrayWithObjects:@"en", @"fr", @"de", @"es", nil];
+    self.menuNames = [NSArray arrayWithObjects:@"Edit The Item", @"Delete the Item",
+						  @"Add Attachments", nil];    
     self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 
-												  [self.languageCodes count] * 44.0);
+												  [self.menuNames count] * 44.0);
 }
 
 
@@ -84,7 +82,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [self.languageCodes count];
+    return [self.menuNames count];
 }
 
 
@@ -99,7 +97,7 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = [languageNames objectAtIndex:[indexPath row]];
+    cell.textLabel.text = [menuNames objectAtIndex:[indexPath row]];
     return cell;
 }
 
@@ -148,8 +146,6 @@
 #pragma mark Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    TaskViewController *controller = [[TaskViewController alloc] initWithNibName:@"TaskViewController" bundle:nil];
-    [self presentModalViewController:controller animated:YES];
     
 }
 
@@ -165,13 +161,11 @@
 }
 
 - (void)viewDidUnload {
-    self.languageNames = nil;
-    self.languageCodes = nil;
+    self.menuNames = nil;
 }
 
 - (void)dealloc {
-    [languageNames release];
-    [languageCodes release];
+    [menuNames release];
     [super dealloc];
 }
 
