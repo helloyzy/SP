@@ -99,7 +99,7 @@
 		ADA0709314738D9D001A52D1 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA0709214738D9D001A52D1 /* RootView.xib */; };
 		ADA070C51474E042001A52D1 /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA070C31474E042001A52D1 /* TaskViewController.m */; };
 		ADA070C61474E042001A52D1 /* TaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADA070C41474E042001A52D1 /* TaskViewController.xib */; };
-		ADA070EA1474F0D2001A52D1 /* LanguageListController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E91474F0D2001A52D1 /* LanguageListController.m */; };
+		ADA070EA1474F0D2001A52D1 /* ItemMenuListController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADA070E91474F0D2001A52D1 /* ItemMenuListController.m */; };
 		ADAD75291467A6DE004C7704 /* GetListItemsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75281467A6DE004C7704 /* GetListItemsService.m */; };
 		ADAD75351467B9BF004C7704 /* SPGetListItemsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75341467B9BD004C7704 /* SPGetListItemsRequest.m */; };
 		ADB92F6014722B2C00572116 /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB92F5F14722B2C00572116 /* ASIWebPageRequest.m */; };
@@ -287,8 +287,8 @@
 		ADA070C21474E042001A52D1 /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
 		ADA070C31474E042001A52D1 /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
 		ADA070C41474E042001A52D1 /* TaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskViewController.xib; sourceTree = "<group>"; };
-		ADA070E81474F0D1001A52D1 /* LanguageListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageListController.h; sourceTree = "<group>"; };
-		ADA070E91474F0D2001A52D1 /* LanguageListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageListController.m; sourceTree = "<group>"; };
+		ADA070E81474F0D1001A52D1 /* ItemMenuListController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ItemMenuListController.h; sourceTree = "<group>"; };
+		ADA070E91474F0D2001A52D1 /* ItemMenuListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemMenuListController.m; sourceTree = "<group>"; };
 		ADAD75271467A6DE004C7704 /* GetListItemsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListItemsService.h; sourceTree = "<group>"; };
 		ADAD75281467A6DE004C7704 /* GetListItemsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListItemsService.m; sourceTree = "<group>"; };
 		ADAD75331467B9BC004C7704 /* SPGetListItemsRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPGetListItemsRequest.h; sourceTree = "<group>"; };
@@ -352,8 +352,8 @@
 		0B672D361456B4EE00EAE589 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ADA070E81474F0D1001A52D1 /* LanguageListController.h */,
-				ADA070E91474F0D2001A52D1 /* LanguageListController.m */,
+				ADA070E81474F0D1001A52D1 /* ItemMenuListController.h */,
+				ADA070E91474F0D2001A52D1 /* ItemMenuListController.m */,
 				AD9F833B1468F17E005EE9A7 /* RootViewController.h */,
 				AD9F833A1468F17E005EE9A7 /* RootViewController.m */,
 				AD9F833D1468F17E005EE9A7 /* FirstDetailViewController.h */,
@@ -970,8 +970,12 @@
 				ADB92F6014722B2C00572116 /* ASIWebPageRequest.m in Sources */,
 				00B128CF1474AF2C007F65B6 /* UtilsFunc.m in Sources */,
 				ADA070C51474E042001A52D1 /* TaskViewController.m in Sources */,
+<<<<<<< HEAD
 				ADA070EA1474F0D2001A52D1 /* LanguageListController.m in Sources */,
 				00476A21147C8D2B008C42D6 /* SPCommon.m in Sources */,
+=======
+				ADA070EA1474F0D2001A52D1 /* ItemMenuListController.m in Sources */,
+>>>>>>> add mockup UI for edit the item which type is task
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

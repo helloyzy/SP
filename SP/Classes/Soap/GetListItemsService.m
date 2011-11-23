@@ -24,7 +24,19 @@
     [xml iterate:@"soap:Body.GetListItemsResponse.GetListItemsResult.listitems.rs:data.z:row" with:^(RXMLElement * listEle) {
        
         ListInfo * list = [[ListInfo alloc] init];
-        list.title = [listEle attribute:@"ows_LinkFilename"];
+        NSString * fileName = [listEle attribute:@"ows_LinkFilename"];
+        list.title = fileName;
+        
+        if (!fileName) {
+            list.title = [listEle attribute:@"ows_LinkTitle"];
+            
+            //TODO get the task info
+           list.assignTo = [listEle attribute:@"ows_AssignedTo"];
+           list.status= [listEle attribute:@"ows_Status"];
+           list.status = [listEle attribute:@"ows_Priority"];
+           list.dueDate  = [listEle attribute:@"ows_DueDate"];
+           list.percentComplete   = [listEle attribute:@"ows_PercentComplete"];            
+        }
         
         NSString* fileType = [listEle attribute:@"ows_FSObjType"];
         list.type = [[fileType componentsSeparatedByString:@"#"] objectAtIndex:1];

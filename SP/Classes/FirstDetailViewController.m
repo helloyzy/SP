@@ -13,8 +13,11 @@
 #import "ASIDownloadCache.h"
 #import "ASIHTTPRequest.h"
 #import "TaskViewController.h"
+<<<<<<< HEAD
 #import "LanguageListController.h"
 #import "SPCachedData.h"
+=======
+>>>>>>> add mockup UI for edit the item which type is task
 
 @interface FirstDetailViewController ()
 
@@ -28,7 +31,7 @@
 
 @implementation FirstDetailViewController
 
-@synthesize toolbar, listOfItems, tableview, popoverController, listInfo, buttonItem, webView,languagePopoverController;
+@synthesize listOfItems, tableview, popoverController, listInfo, webView;
 
 
 #pragma mark -
@@ -54,9 +57,7 @@
         [popoverController dismissPopoverAnimated:YES];
     }        
     
-    if (languagePopoverController != nil) {
-        [languagePopoverController dismissPopoverAnimated:YES];
-    } 
+    
 }
 
 
@@ -69,7 +70,7 @@
 - (void)viewDidUnload {
 	[super viewDidUnload];
     
-	self.toolbar = nil;
+	//self.toolbar = nil;
 }
 #pragma mark -
 #pragma mark Split view support
@@ -173,15 +174,34 @@
 #pragma mark Table view selection
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+<<<<<<< HEAD
     ListInfo * selectedItem = (ListInfo *)[listOfItems objectAtIndex:indexPath.row];
     
     if ([selectedItem.type isEqualToString:@"1"]) {
+=======
+    NSString *type = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] type];
+    NSString *fileRef = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] fileRef];
+    NSString* fileName = [fileRef lastPathComponent];
+    if ([type isEqualToString:@"1"]) {
+>>>>>>> add mockup UI for edit the item which type is task
         FirstDetailViewController *controller = [[FirstDetailViewController alloc] init];
         selectedItem.listName = listInfo.listName;
         controller.listInfo = selectedItem;
         [[self navigationController] pushViewController:controller animated:YES];
+<<<<<<< HEAD
     } else {
         [self loadImage:(ListInfo *)[listOfItems objectAtIndex:indexPath.row]];
+=======
+        
+    } else if ([fileName isEqualToString:@"1_.000" ]) {
+    TaskViewController *controller = [[TaskViewController alloc] initWithNibName:@"TaskViewController" bundle:nil];        
+         [[self navigationController] pushViewController:controller animated:YES];
+        [controller release];
+    } else {
+        NSString * url = [NSString stringWithFormat:@"https://sharepoint.perficient.com/%@", fileRef];
+        [self loadImage:url];
+
+>>>>>>> add mockup UI for edit the item which type is task
     }
     
 }
@@ -252,18 +272,7 @@
 }
 
 
-- (IBAction)toggleMasterView:(id)sender {
-    LanguageListController *languageListController = [[LanguageListController alloc]
-													  init];
-    UIPopoverController *poc = [[UIPopoverController alloc]
-								initWithContentViewController:languageListController];
-    [poc presentPopoverFromBarButtonItem:buttonItem 
-                permittedArrowDirections:UIPopoverArrowDirectionAny 
-                                animated:YES];
-    self.popoverController = poc;
-    [poc release];
-    [languageListController release];
-}
+
 
 #pragma mark -
 #pragma mark Rotation support
@@ -277,13 +286,11 @@
 #pragma mark Memory management
 
 - (void)dealloc {
-    [toolbar release];
+    //[toolbar release];
     [tableview release];
     [listInfo release];
     [listOfItems release];
-    [buttonItem release];
     [webView release];
-    [languagePopoverController release];
     [super dealloc];
 }	
 
