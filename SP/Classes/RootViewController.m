@@ -11,7 +11,6 @@
 #import "SPLoginAuthenticationService.h"
 #import "SPAuthenticationView.h"
 
-
 @interface RootViewController ()
 
 - (void) testGetUserInfo;
@@ -143,13 +142,9 @@
 #pragma mark Table view selection
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-
-    ListInfo * listinfo = (ListInfo *)[listOfItems objectAtIndex:indexPath.row];//[[[tableView cellForRowAtIndexPath:indexPath] textLabel] text];
-    listinfo.fileRef = [NSString stringWithFormat:@"sites/SP/%@", listinfo.title];
+    ListInfo * listinfo = (ListInfo *)[listOfItems objectAtIndex:indexPath.row];
     firstDetailViewController.listInfo = listinfo;
-    //firstDetailViewController.folderName = [NSString stringWithFormat:@"sites/SP/%@", listName];
-   }
+}
 
 - (IBAction) logonSites:(id)sender {
     SPAuthenticationView *controller = [[SPAuthenticationView alloc] initWithNibName:@"SPAuthenticationView" bundle:nil];

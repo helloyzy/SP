@@ -7,6 +7,7 @@
 //
 
 #import "SPGetListItemsRequest.h"
+#import "SPCachedData.h"
 
 @implementation SPGetListItemsRequest
 
@@ -31,7 +32,7 @@
     [writer writeStartElement:@"QueryOptions"];
     [writer writeElement:@"IncludeMandatoryColumns" withStringValue:@"TRUE"];
     [writer writeElement:@"DateInUtc" withStringValue:@"TRUE"];
-    [writer writeElement:@"Folder" withStringValue: [NSString stringWithFormat:@"https://sharepoint.perficient.com/%@",[self folderName]]];
+    [writer writeElement:@"Folder" withStringValue:[[SPCachedData serviceHostUrl] stringByAppendingString:[self folderName]]];
     [writer writeEndElement];
     [writer writeEndElement];
       

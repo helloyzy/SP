@@ -21,7 +21,7 @@ static SPCachedData * sharedInstance;
 
 @synthesize user, pwd;
 
-@synthesize userInputSite, serviceUrlPrefix, serviceHost, resDownloadHost;
+@synthesize userInputSite, serviceUrlPrefix, serviceHost, serviceHostUrl, serviceRelativePath;
 
 #pragma public methods
 
@@ -59,11 +59,14 @@ static SPCachedData * sharedInstance;
     NSString * site = siteUrl;
     NSURL * url = [NSURL URLWithString:site];
     NSString * host = [url host];
-    sharedInstance.serviceHost = host;    
+    // E.g. take "sharepoint.perficient.com" from "https://sharepoint.perficient.com/sites/SP"
+    sharedInstance.serviceHost = host; 
+    // E.g. take "sites/SP" from "https://sharepoint.perficient.com/sites/SP"
+    sharedInstance.serviceRelativePath = [[url relativePath] substringFromIndex:1];
     NSRange range = [site rangeOfString:host];
     // E.g. take "https://sharepoint.perficient.com" from "https://sharepoint.perficient.com/sites/SP" and add the trailing "/"
-    sharedInstance.resDownloadHost = [[site substringToIndex:(range.location + range.length)] stringByAppendingString:@"/"];
-    
+    sharedInstance.serviceHostUrl = [[site substringToIndex:(range.location + range.length)] stringByAppendingString:@"/"];
+       
     // add the trailing "/" for the url if necessary
     if (![site hasSuffix:@"/"]) {
         site = [site stringByAppendingString:@"/"];
@@ -72,7 +75,9 @@ static SPCachedData * sharedInstance;
     if (![site hasSuffix:@"_vti_bin/"]) {
         site = [site stringByAppendingString:@"_vti_bin/"];
     }
+    // E.g. convert "https://sharepoint.perficient.com/sites/SP" to "https://sharepoint.perficient.com/sites/SP/_vti_bin/"
     sharedInstance.serviceUrlPrefix = [site stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"%@, %@", [url relativePath], [url relativeString]);
 }
 
 + (NSString *) userInputSite {
@@ -87,8 +92,12 @@ static SPCachedData * sharedInstance;
     return [self stringIfNotEmpty:[self sharedInstance].serviceHost defaultIfEmpty:@"sharepoint.perficient.com"];
 }
 
-+ (NSString *) resDownloadHost {
-    return [self stringIfNotEmpty:[self sharedInstance].resDownloadHost defaultIfEmpty:@"https://sharepoint.perficient.com/"];
++ (NSString *) serviceHostUrl {
+    return [self stringIfNotEmpty:[self sharedInstance].serviceHostUrl defaultIfEmpty:@"https://sharepoint.perficient.com/"];
+}
+
++ (NSString *) serviceRelativePath {
+    return [self stringIfNotEmpty:[self sharedInstance].serviceRelativePath defaultIfEmpty:@"sites/SP"];
 }
 
 #pragma mark - private methods
@@ -106,9 +115,10 @@ static SPCachedData * sharedInstance;
     self.user = nil;
     self.pwd = nil;
     self.userInputSite = nil;
-    self.resDownloadHost = nil;
+    self.serviceHostUrl = nil;
     self.serviceUrlPrefix = nil;
     self.serviceHost = nil;
+    self.serviceRelativePath = nil;
     [super dealloc];
 }
 

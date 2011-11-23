@@ -12,6 +12,7 @@
 #import "ListInfo.h"
 #import "GDataXMLNode.h"
 #import "RXMLElement.h"
+#import "SPCachedData.h"
 
 @implementation GetListCollectionService 
 
@@ -30,6 +31,8 @@
     [xml iterate:@"soap:Body.GetListCollectionResponse.GetListCollectionResult.Lists.List" with:^(RXMLElement * listEle) {
         ListInfo * list = [[ListInfo alloc] init];
         list.title = [listEle attribute:@"Title"];
+        list.listName = list.title;
+        list.fileRef = [NSString stringWithFormat:@"%@/%@", [SPCachedData serviceRelativePath], list.title];
         list.description = [listEle attribute:@"Description"];
         [listOfItems addObject:list];
         [list release];

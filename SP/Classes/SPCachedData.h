@@ -16,7 +16,8 @@
 @property (nonatomic, retain) NSString * userInputSite;
 @property (nonatomic, retain) NSString * serviceUrlPrefix;
 @property (nonatomic, retain) NSString * serviceHost;
-@property (nonatomic, retain) NSString * resDownloadHost;
+@property (nonatomic, retain) NSString * serviceHostUrl;
+@property (nonatomic, retain) NSString * serviceRelativePath;
 
 + (SPCachedData *) sharedInstance;
 // current login credential for all the SP services
@@ -24,9 +25,15 @@
 + (void) fillCredentialWithUser:(NSString *)user password:(NSString *)pwd;
 
 + (void) fillSiteInfo:(NSString *)siteUrl;
+
 + (NSString *) userInputSite; // site url the user input in the authentication form
+// E.g. "https://sharepoint.perficient.com/sites/SP/_vti_bin/" from "https://sharepoint.perficient.com/sites/SP"
 + (NSString *) serviceUrlPrefix;
+// E.g. "sharepoint.perficient.com" from "https://sharepoint.perficient.com/sites/SP"
 + (NSString *) serviceHost;
-+ (NSString *) resDownloadHost;
+// E.g. "sites/SP" from "https://sharepoint.perficient.com/sites/SP"
++ (NSString *) serviceRelativePath;
+// E.g. "https://sharepoint.perficient.com/" from "https://sharepoint.perficient.com/sites/SP"
++ (NSString *) serviceHostUrl;
 
 @end

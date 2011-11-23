@@ -18,11 +18,9 @@
 
 @interface FirstDetailViewController ()
 
-- (void) testGetUserInfo;
-- (void) testLists;
-- (void) testAuthentication;
 - (void) requestSubFolder: (NSString *) topListName withFolder: (NSString *) folder;
 - (void) loadImage:(ListInfo *)listItem;
+
 @end
 
 
@@ -48,7 +46,7 @@
         
     }
     
-    [self requestSubFolder:listInfo.title withFolder:listInfo.fileRef];
+    [self requestSubFolder:listInfo.listName withFolder:listInfo.fileRef];
     [self setTitle:listInfo.fileRef];
     
     
@@ -95,35 +93,6 @@
 {
     [[self navigationItem] setLeftBarButtonItem:nil];
     [self setPopoverController:nil];
-}
-
-
-- (void) testAuthentication {
-    SoapRequest * request = [SPSoapRequestBuilder buildAuthenticationRequest];
-    SPLoginAuthenticationService * authService = [[SPLoginAuthenticationService alloc] init];
-    authService.soapRequestParam = request;
-    [authService request];
-    [authService release];
-    
-}
-
-- (void) testGetUserInfo {
-    SoapRequest * request = [SPSoapRequestBuilder buildGetUserInfoRequest:@"Perficient\\spark.pan"];
-    GetUserInfoService * userInfoService = [[GetUserInfoService alloc] init];
-    userInfoService.soapRequestParam = request;
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-    [center addObserver:self selector:@selector(onNotification:) name:SP_NOTIFICATION_GETUSERINFO_SUCCESS object:userInfoService];
-    [userInfoService request];
-    [userInfoService release];
-}
-
-- (void) testLists {
-    SoapRequest * request = [SPSoapRequestBuilder buildListInfoRequest];
-    GetListCollectionService * listInfoService = [[GetListCollectionService alloc] init];
-    listInfoService.soapRequestParam = request;    
-    listInfoService.delegate = self;
-    [listInfoService request];    
-    [listInfoService release];
 }
 
 - (void) requestSubFolder: (NSString *) topListName withFolder: (NSString *) folder{
@@ -204,18 +173,14 @@
 #pragma mark Table view selection
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *type = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] type];
-    NSString *fileRef = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] fileRef];
+    ListInfo * selectedItem = (ListInfo *)[listOfItems objectAtIndex:indexPath.row];
     
-    if ([type isEqualToString:@"1"]) {
+    if ([selectedItem.type isEqualToString:@"1"]) {
         FirstDetailViewController *controller = [[FirstDetailViewController alloc] init];
-        listInfo.fileRef = fileRef;
-        controller.listInfo = listInfo;
+        selectedItem.listName = listInfo.listName;
+        controller.listInfo = selectedItem;
         [[self navigationController] pushViewController:controller animated:YES];
-        
     } else {
-        // NSString * url = [NSString stringWithFormat:@"https://sharepoint.perficient.com/%@", fileRef];
-        
         [self loadImage:(ListInfo *)[listOfItems objectAtIndex:indexPath.row]];
     }
     
@@ -223,7 +188,7 @@
 
 - (void)loadImage:(ListInfo *) listItem{    
     
-    NSString * imageUrlPrefix = [SPCachedData resDownloadHost];
+    NSString * imageUrlPrefix = [SPCachedData serviceHostUrl];
     NSString * url = [imageUrlPrefix stringByAppendingString:listItem.fileRef];
     
     NSString* theFileName = [url lastPathComponent];
@@ -241,8 +206,8 @@
     [request setDidFailSelector:@selector(webPageFetchFailed:)];
     [request setDidFinishSelector:@selector(webPageFetchSucceeded:)];
     
-    [request setUsername:@"Perficient\\spark.pan"];
-    [request setPassword:@"zhe@812Bl"];
+    [request setUsername:[SPCachedData credential].user];
+    [request setPassword:[SPCachedData credential].password];
     [request setUseSessionPersistence:YES];
     
     [request startAsynchronous];  
