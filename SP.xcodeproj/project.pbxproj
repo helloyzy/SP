@@ -103,6 +103,8 @@
 		ADAD75291467A6DE004C7704 /* GetListItemsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75281467A6DE004C7704 /* GetListItemsService.m */; };
 		ADAD75351467B9BF004C7704 /* SPGetListItemsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75341467B9BD004C7704 /* SPGetListItemsRequest.m */; };
 		ADB92F6014722B2C00572116 /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB92F5F14722B2C00572116 /* ASIWebPageRequest.m */; };
+		ADF2477C147E0F040087A87E /* EditTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADF2477A147E0F040087A87E /* EditTaskViewController.m */; };
+		ADF2477D147E0F040087A87E /* EditTaskViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADF2477B147E0F040087A87E /* EditTaskViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -287,7 +289,7 @@
 		ADA070C21474E042001A52D1 /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
 		ADA070C31474E042001A52D1 /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
 		ADA070C41474E042001A52D1 /* TaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskViewController.xib; sourceTree = "<group>"; };
-		ADA070E81474F0D1001A52D1 /* ItemMenuListController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ItemMenuListController.h; sourceTree = "<group>"; };
+		ADA070E81474F0D1001A52D1 /* ItemMenuListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemMenuListController.h; sourceTree = "<group>"; };
 		ADA070E91474F0D2001A52D1 /* ItemMenuListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemMenuListController.m; sourceTree = "<group>"; };
 		ADAD75271467A6DE004C7704 /* GetListItemsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetListItemsService.h; sourceTree = "<group>"; };
 		ADAD75281467A6DE004C7704 /* GetListItemsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListItemsService.m; sourceTree = "<group>"; };
@@ -295,6 +297,9 @@
 		ADAD75341467B9BD004C7704 /* SPGetListItemsRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPGetListItemsRequest.m; sourceTree = "<group>"; };
 		ADB92F5E14722B2C00572116 /* ASIWebPageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIWebPageRequest.h; sourceTree = "<group>"; };
 		ADB92F5F14722B2C00572116 /* ASIWebPageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIWebPageRequest.m; sourceTree = "<group>"; };
+		ADF24779147E0F040087A87E /* EditTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditTaskViewController.h; sourceTree = "<group>"; };
+		ADF2477A147E0F040087A87E /* EditTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditTaskViewController.m; sourceTree = "<group>"; };
+		ADF2477B147E0F040087A87E /* EditTaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTaskViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -369,6 +374,9 @@
 				ADA070C21474E042001A52D1 /* TaskViewController.h */,
 				ADA070C31474E042001A52D1 /* TaskViewController.m */,
 				ADA070C41474E042001A52D1 /* TaskViewController.xib */,
+				ADF24779147E0F040087A87E /* EditTaskViewController.h */,
+				ADF2477A147E0F040087A87E /* EditTaskViewController.m */,
+				ADF2477B147E0F040087A87E /* EditTaskViewController.xib */,
 				0BDDD79B1461552900FD34D2 /* Common */,
 				0B672DB01456C0B900EAE589 /* Soap */,
 			);
@@ -868,6 +876,7 @@
 				001642BA147A1B72005C3DF8 /* bg_btn_verify.png in Resources */,
 				001642BB147A1B72005C3DF8 /* bg.png in Resources */,
 				001642BD147A1BE3005C3DF8 /* bg_btn_clear.png in Resources */,
+				ADF2477D147E0F040087A87E /* EditTaskViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -972,6 +981,7 @@
 				ADA070C51474E042001A52D1 /* TaskViewController.m in Sources */,
 				00476A21147C8D2B008C42D6 /* SPCommon.m in Sources */,
 				ADA070EA1474F0D2001A52D1 /* ItemMenuListController.m in Sources */,
+				ADF2477C147E0F040087A87E /* EditTaskViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
