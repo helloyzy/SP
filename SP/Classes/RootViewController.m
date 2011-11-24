@@ -147,15 +147,20 @@
 }
 
 - (IBAction) logonSites:(id)sender {
-    SPAuthenticationView *controller = [[SPAuthenticationView alloc] initWithNibName:@"SPAuthenticationView" bundle:nil];
-    // [self presentModalViewController:controller animated:YES];
-    
-    UIPopoverController * popOver = [[UIPopoverController alloc] initWithContentViewController:controller];
-    [popOver presentPopoverFromBarButtonItem:siteItem permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    controller.container = popOver;
-    self.authenticatePopover = popOver;
-    [controller release];
-    [popOver release];
+   
+    if (!authenticatePopover) { 
+        SPAuthenticationView *controller = [[SPAuthenticationView alloc] initWithNibName:@"SPAuthenticationView" bundle:nil];
+        UIPopoverController * popOver = [[UIPopoverController alloc] initWithContentViewController:controller];
+        self.authenticatePopover = popOver;        
+        controller.container = authenticatePopover;
+        [controller release];
+        [popOver release];
+    } 
+    if (authenticatePopover.isPopoverVisible) {
+        [authenticatePopover dismissPopoverAnimated:YES];
+    } else {
+        [authenticatePopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
 }
 
 - (IBAction) refreshLists:(id)sender {
