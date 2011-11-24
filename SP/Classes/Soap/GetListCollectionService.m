@@ -34,7 +34,13 @@
         list.listName = list.title;
         list.fileRef = [NSString stringWithFormat:@"%@/%@", [SPCachedData serviceRelativePath], list.title];
         list.description = [listEle attribute:@"Description"];
-        [listOfItems addObject:list];
+        
+        
+        NSString *hidden=[listEle attribute:@"Hidden"];
+        if([ hidden caseInsensitiveCompare:@"False"] == NSOrderedSame) {
+            [listOfItems addObject:list];
+        }
+        
         [list release];
     }];
     return listOfItems;
