@@ -282,7 +282,7 @@
 		AD1555FF146CF980001ACF38 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		AD155601146CF98F001ACF38 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AD155603146CF99C001ACF38 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		AD3D8B09146A6832009F7D49 /* FirstDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstDetailView.xib; sourceTree = "<group>"; };
+		AD3D8B09146A6832009F7D49 /* FirstDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FirstDetailView.xib; path = ../FirstDetailView.xib; sourceTree = "<group>"; };
 		AD3D8B12146A6962009F7D49 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		AD7E6057145F94960093FFA3 /* ListInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListInfo.m; sourceTree = "<group>"; };
 		AD7E6058145F94960093FFA3 /* ListInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListInfo.h; sourceTree = "<group>"; };
@@ -293,7 +293,7 @@
 		AD9F833B1468F17E005EE9A7 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstDetailViewController.m; sourceTree = "<group>"; };
 		AD9F833D1468F17E005EE9A7 /* FirstDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstDetailViewController.h; sourceTree = "<group>"; };
-		ADA0709214738D9D001A52D1 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		ADA0709214738D9D001A52D1 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RootView.xib; path = ../RootView.xib; sourceTree = "<group>"; };
 		ADA070C21474E042001A52D1 /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
 		ADA070C31474E042001A52D1 /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
 		ADA070C41474E042001A52D1 /* TaskViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskViewController.xib; sourceTree = "<group>"; };
@@ -516,6 +516,40 @@
 			path = ASIWebPageRequest;
 			sourceTree = "<group>";
 		};
+		00C7EF5A147F427000F21C6B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				ADA070E81474F0D1001A52D1 /* ItemMenuListController.h */,
+				ADA070E91474F0D2001A52D1 /* ItemMenuListController.m */,
+				0B930F7B1467B8AB007189E7 /* SPAuthenticationView.h */,
+				0B930F7C1467B8AB007189E7 /* SPAuthenticationView.m */,
+				0B930F7D1467B8AF007189E7 /* SPAuthenticationView.xib */,
+				0B672DDA1456C94B00EAE589 /* SPViewController.h */,
+				0B672DDB1456C94B00EAE589 /* SPViewController.m */,
+				0B9A65B014564D220031E5C2 /* SPViewController.xib */,
+				ADA070C21474E042001A52D1 /* TaskViewController.h */,
+				ADA070C31474E042001A52D1 /* TaskViewController.m */,
+				ADA070C41474E042001A52D1 /* TaskViewController.xib */,
+				ADF24779147E0F040087A87E /* EditTaskViewController.h */,
+				ADF2477A147E0F040087A87E /* EditTaskViewController.m */,
+				ADF2477B147E0F040087A87E /* EditTaskViewController.xib */,
+				AD9F833B1468F17E005EE9A7 /* RootViewController.h */,
+				AD9F833A1468F17E005EE9A7 /* RootViewController.m */,
+				ADA0709214738D9D001A52D1 /* RootView.xib */,
+				AD9F833D1468F17E005EE9A7 /* FirstDetailViewController.h */,
+				AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */,
+				AD3D8B09146A6832009F7D49 /* FirstDetailView.xib */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		00C7EF5B147F42EF00F21C6B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		0B672D351456B4EE00EAE589 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -530,27 +564,11 @@
 		0B672D361456B4EE00EAE589 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ADA070E81474F0D1001A52D1 /* ItemMenuListController.h */,
-				ADA070E91474F0D2001A52D1 /* ItemMenuListController.m */,
-				AD9F833B1468F17E005EE9A7 /* RootViewController.h */,
-				AD9F833A1468F17E005EE9A7 /* RootViewController.m */,
-				AD9F833D1468F17E005EE9A7 /* FirstDetailViewController.h */,
-				AD9F833C1468F17E005EE9A7 /* FirstDetailViewController.m */,
 				0B672DD81456C94B00EAE589 /* SPAppDelegate.h */,
 				0B672DD91456C94B00EAE589 /* SPAppDelegate.m */,
-				0B930F7B1467B8AB007189E7 /* SPAuthenticationView.h */,
-				0B930F7C1467B8AB007189E7 /* SPAuthenticationView.m */,
-				0B930F7D1467B8AF007189E7 /* SPAuthenticationView.xib */,
-				0B672DDA1456C94B00EAE589 /* SPViewController.h */,
-				0B672DDB1456C94B00EAE589 /* SPViewController.m */,
-				0B9A65B014564D220031E5C2 /* SPViewController.xib */,
-				ADA070C21474E042001A52D1 /* TaskViewController.h */,
-				ADA070C31474E042001A52D1 /* TaskViewController.m */,
-				ADA070C41474E042001A52D1 /* TaskViewController.xib */,
-				ADF24779147E0F040087A87E /* EditTaskViewController.h */,
-				ADF2477A147E0F040087A87E /* EditTaskViewController.m */,
-				ADF2477B147E0F040087A87E /* EditTaskViewController.xib */,
+				00C7EF5A147F427000F21C6B /* Controllers */,
 				0BDDD79B1461552900FD34D2 /* Common */,
+				00C7EF5B147F42EF00F21C6B /* Models */,
 				0B672DB01456C0B900EAE589 /* Soap */,
 			);
 			path = Classes;
@@ -712,12 +730,10 @@
 			isa = PBXGroup;
 			children = (
 				AD3D8B12146A6962009F7D49 /* MainWindow.xib */,
-				AD3D8B09146A6832009F7D49 /* FirstDetailView.xib */,
 				0B9A65A314564D220031E5C2 /* SP-Info.plist */,
 				0B9A65A414564D220031E5C2 /* InfoPlist.strings */,
 				0B9A65A714564D220031E5C2 /* main.m */,
 				0B9A65A914564D220031E5C2 /* SP-Prefix.pch */,
-				ADA0709214738D9D001A52D1 /* RootView.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";

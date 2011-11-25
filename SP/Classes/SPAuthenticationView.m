@@ -161,9 +161,6 @@
     // UIColor * bgColor = [[UIColor alloc] initWithPatternImage:[UIImage imageNamed:@"bg.png"]];
     // self.view.backgroundColor = bgColor;
     self.contentSizeForViewInPopover = CGSizeMake(320,230);
-    self.txtUserName.text = [SPCachedData credential].user;
-    self.txtPassword.text = [SPCachedData credential].password;
-    self.txtSite.text = [SPCachedData userInputSite];
 }
 
 - (void)viewDidUnload
@@ -186,6 +183,9 @@
     [super viewWillAppear:animated];
     [self registerNotification:SP_NOTIFICATION_GETUSERINFO_SUCCESS withSelector:@selector(onVerificationSuccess:)];
     [self registerNotification:SP_NOTIFICATION_GETUSERINFO_FAILURE withSelector:@selector(onVerificationFailure:)];
+    self.txtUserName.text = [SPCachedData credential].user;
+    self.txtPassword.text = [SPCachedData credential].password;
+    self.txtSite.text = [SPCachedData userInputSite];
     [self hideProcessingHints];
     [self hideResultHints];
 }
@@ -204,6 +204,15 @@
 #pragma mark - Destroy methods
 
 - (void) dealloc {
+    self.lblLoginName = nil;
+    self.lblPassword = nil;
+    self.txtUserName = nil;
+    self.txtPassword = nil;
+    self.txtSite = nil;
+    self.indicator = nil;
+    self.lblResultTip = nil;
+    self.lblProcessingTip = nil;
+    self.btnVerify = nil;
     [super dealloc];
 }
 
