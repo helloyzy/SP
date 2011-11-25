@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+/**
 BOOL IS_EMPTY_STRING(NSString * str);
 
 BOOL IS_POPULATED_STRING(NSString * str);
+*/

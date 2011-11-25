@@ -19,6 +19,7 @@
 
 #import "CoreDataStore.h"
 #import "Macros.h"
+#import "Functions.h"
 
 // global Core Data objects
 static NSManagedObjectModel *gManagedObjectModel;
@@ -58,7 +59,7 @@ static CoreDataStore *gMainStoreInstance;
 	// create the global persistent store
     gPersistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:gManagedObjectModel];
 	
-	NSString *storeLocation = [DOCUMENTS_DIR stringByAppendingPathComponent:@"CoreDataStore.sqlite"];
+	NSString *storeLocation = [DOCUMENTS_DIR() stringByAppendingPathComponent:@"CoreDataStore.sqlite"];
 	NSURL *storeURL = [NSURL fileURLWithPath:storeLocation];
 	
 	if (![gPersistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
@@ -96,7 +97,7 @@ static CoreDataStore *gMainStoreInstance;
 	SAFE_RELEASE(_managedObjectContext);
 	
 	// remove persistence file
-	NSString *storeLocation = [DOCUMENTS_DIR stringByAppendingPathComponent:@"CoreDataStore.sqlite"];
+	NSString *storeLocation = [DOCUMENTS_DIR() stringByAppendingPathComponent:@"CoreDataStore.sqlite"];
 	NSURL *storeURL = [NSURL fileURLWithPath:storeLocation];
 	
 	// remove

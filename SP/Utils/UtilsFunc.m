@@ -8,6 +8,7 @@
 
 #import "UtilsFunc.h"
 
+/**
 BOOL IS_EMPTY_STRING(NSString * str) {
     return (!str || ![str isKindOfClass:NSString.class] || [str length] == 0);
 }
@@ -15,3 +16,4 @@ BOOL IS_EMPTY_STRING(NSString * str) {
 BOOL IS_POPULATED_STRING(NSString * str) {
     return (str && [str isKindOfClass:NSString.class] && [str length] > 0);
 }
+*/

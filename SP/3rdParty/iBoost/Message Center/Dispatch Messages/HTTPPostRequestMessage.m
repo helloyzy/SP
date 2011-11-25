@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "Macros.h"
 #import "MessageCenter.h"
+#import "Functions.h"
 
 @implementation HTTPPostRequestMessage
 

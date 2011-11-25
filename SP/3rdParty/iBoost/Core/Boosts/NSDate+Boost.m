@@ -23,76 +23,96 @@
 
 @implementation NSDate (Boost)
 
++ (NSDate *)dateDaysAgo:(NSInteger)numDays {
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    NSDateComponents *_datecomp = [_calendar components:NSDayCalendarUnit fromDate:[NSDate date]];
+    [_datecomp setDay:[_datecomp day] - numDays];
+    return [_calendar dateFromComponents:_datecomp];
+}
+
++ (NSDate *)dateWeeksAgo:(NSInteger)numWeeks {
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    NSDateComponents *_datecomp = [_calendar components:NSWeekCalendarUnit fromDate:[NSDate date]];
+    [_datecomp setWeek:[_datecomp week] - numWeeks];
+    return [_calendar dateFromComponents:_datecomp];
+}
+
 - (NSInteger)utcYear {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = gmtime(&rawTime);
-	return time->tm_year + 1900;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    [_calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    NSDateComponents *_datecomp = [_calendar components:NSYearCalendarUnit fromDate:self];
+    return [_datecomp year];
 }
 
 - (NSInteger)utcMonth {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = gmtime(&rawTime);
-	return time->tm_mon + 1;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    [_calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    NSDateComponents *_datecomp = [_calendar components:NSMonthCalendarUnit fromDate:self];
+    return [_datecomp month];
 }
 
 - (NSInteger)utcDay {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = gmtime(&rawTime);
-	return time->tm_mday;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    [_calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    NSDateComponents *_datecomp = [_calendar components:NSDayCalendarUnit fromDate:self];
+    return [_datecomp day];
 }
 
 - (NSInteger)utcHour {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = gmtime(&rawTime);
-	return time->tm_hour;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    [_calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    NSDateComponents *_datecomp = [_calendar components:NSHourCalendarUnit fromDate:self];
+    return [_datecomp hour];
 }
 
 - (NSInteger)utcMinute {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = gmtime(&rawTime);
-	return time->tm_min;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    [_calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    NSDateComponents *_datecomp = [_calendar components:NSMinuteCalendarUnit fromDate:self];
+    return [_datecomp minute];
 }
 
 - (NSInteger)utcSecond {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = gmtime(&rawTime);
-	return time->tm_sec;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    [_calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    NSDateComponents *_datecomp = [_calendar components:NSSecondCalendarUnit fromDate:self];
+    return [_datecomp second];
 }
 
 - (NSInteger)year {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = localtime(&rawTime);
-	return time->tm_year + 1900;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    NSDateComponents *_datecomp = [_calendar components:NSYearCalendarUnit fromDate:self];
+    return [_datecomp year];
 }
 
 - (NSInteger)month {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = localtime(&rawTime);
-	return time->tm_mon + 1;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    NSDateComponents *_datecomp = [_calendar components:NSMonthCalendarUnit fromDate:self];
+    return [_datecomp month];
 }
 
 - (NSInteger)day {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = localtime(&rawTime);
-	return time->tm_mday;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    NSDateComponents *_datecomp = [_calendar components:NSDayCalendarUnit fromDate:self];
+    return [_datecomp day];
 }
 
 - (NSInteger)hour {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = localtime(&rawTime);
-	return time->tm_hour;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    NSDateComponents *_datecomp = [_calendar components:NSHourCalendarUnit fromDate:self];
+    return [_datecomp hour];
 }
 
 - (NSInteger)minute {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = localtime(&rawTime);
-	return time->tm_min;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    NSDateComponents *_datecomp = [_calendar components:NSMinuteCalendarUnit fromDate:self];
+    return [_datecomp minute];
 }
 
 - (NSInteger)second {
-	time_t rawTime = [self timeIntervalSince1970];
-	struct tm *time = localtime(&rawTime);
-	return time->tm_sec;
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    NSDateComponents *_datecomp = [_calendar components:NSSecondCalendarUnit fromDate:self];
+    return [_datecomp second];
 }
 
 - (NSString *)formattedUTCDateStyle:(NSDateFormatterStyle)dateStyle {
@@ -168,7 +188,11 @@
 }
 
 - (NSDate *)dateAsMidnight {
-	return [NSDate dateWithTimeIntervalSince1970:((long)[self timeIntervalSince1970] / (long)SECONDS_IN_DAY * (long)SECONDS_IN_DAY)];
+    NSCalendar *_calendar = [NSCalendar currentCalendar];
+    [_calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
+    NSDateComponents *_datecomp = [_calendar components:NSMonthCalendarUnit|NSDayCalendarUnit|NSYearCalendarUnit fromDate:self];
+    NSLog(@"Current Date: %@",[_calendar dateFromComponents:_datecomp]);
+	return [_calendar dateFromComponents:_datecomp];
 }
 @end
 

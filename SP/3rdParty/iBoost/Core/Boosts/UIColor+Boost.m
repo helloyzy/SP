@@ -19,6 +19,7 @@
 
 #import "UIColor+Boost.h"
 #import "Macros.h"
+#import "Functions.h"
 
 // constants
 const NSInteger MAX_RGB_COLOR_VALUE = 0xff;

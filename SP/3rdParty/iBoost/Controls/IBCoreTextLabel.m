@@ -9,6 +9,7 @@
 #import "IBCoreTextLabel.h"
 #import <CoreText/CoreText.h>
 #import "Macros.h"
+#import "Functions.h"
 
 @interface IBCoreTextLabel (PRIVATE)
 

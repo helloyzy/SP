@@ -36,6 +36,9 @@
 @property (nonatomic, readonly) NSInteger minute;
 @property (nonatomic, readonly) NSInteger second;
 
++ (NSDate *)dateDaysAgo:(NSInteger)numDays;
++ (NSDate *)dateWeeksAgo:(NSInteger)numWeeks;
+
 - (NSString *)formattedDateStyle:(NSDateFormatterStyle)dateStyle;
 - (NSString *)formattedTimeStyle:(NSDateFormatterStyle)timeStyle;
 - (NSString *)formattedDateStyle:(NSDateFormatterStyle)dateStyle timeStyle:(NSDateFormatterStyle)timeStyle;
