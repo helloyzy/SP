@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="837" systemVersion="11C74" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="SPListItem" representedClassName="SPListItem">
+        <attribute name="assignTo" optional="YES" attributeType="String"/>
+        <attribute name="dueDate" optional="YES" attributeType="String"/>
+        <attribute name="fileRef" optional="YES" attributeType="String"/>
+        <attribute name="listDescription" optional="YES" attributeType="String"/>
+        <attribute name="listName" optional="YES" attributeType="String"/>
+        <attribute name="percentComplete" optional="YES" attributeType="String"/>
+        <attribute name="priority" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <relationship name="parentItem" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="SPListItem" inverseName="subItems" inverseEntity="SPListItem"/>
+        <relationship name="subItems" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SPListItem" inverseName="parentItem" inverseEntity="SPListItem"/>
+    </entity>
+    <entity name="SPSettings" representedClassName="SPSettings">
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="siteUrl" optional="YES" attributeType="String"/>
+        <attribute name="userName" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="SPSettings" positionX="-3177" positionY="-1449" width="128" height="90"/>
+        <element name="SPListItem" positionX="-2990" positionY="-1449" width="128" height="225"/>
+    </elements>
+</model>

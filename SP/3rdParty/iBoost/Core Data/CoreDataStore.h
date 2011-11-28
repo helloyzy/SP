@@ -29,6 +29,8 @@
 + (CoreDataStore *)mainStore;
 + (CoreDataStore *)createStore;
 
++ (void) initCoreDataEnv;
+
 /* Clears all data from peristent store and re-initializes (great for unit testing!) */
 - (void)clearAllData;
 

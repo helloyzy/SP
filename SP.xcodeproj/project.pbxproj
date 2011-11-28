@@ -49,6 +49,10 @@
 		00C7EF57147F3F1400F21C6B /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C7EF49147F3F1400F21C6B /* ASINetworkQueue.m */; };
 		00C7EF58147F3F1400F21C6B /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C7EF4D147F3F1400F21C6B /* ASIWebPageRequest.m */; };
 		00C7EF59147F3F1400F21C6B /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C7EF4F147F3F1400F21C6B /* Reachability.m */; };
+		00E24E021483608000B203D8 /* SPDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E001483608000B203D8 /* SPDataModel.xcdatamodeld */; };
+		00E24E0614836FDB00B203D8 /* SPCoreDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E0514836FDB00B203D8 /* SPCoreDataUtil.m */; };
+		00E24E09148370CB00B203D8 /* SPListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E08148370CB00B203D8 /* SPListItem.m */; };
+		00E24E0C148370E600B203D8 /* SPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E0B148370E600B203D8 /* SPSettings.m */; };
 		0B672D9D1456BD4900EAE589 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9C1456BD4900EAE589 /* CoreData.framework */; };
 		0B672D9F1456BD5800EAE589 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9E1456BD5800EAE589 /* CoreText.framework */; };
 		0B672DA41456BF4400EAE589 /* SPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DA31456BF4400EAE589 /* SPTests.m */; };
@@ -208,6 +212,13 @@
 		00C7EF4D147F3F1400F21C6B /* ASIWebPageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIWebPageRequest.m; sourceTree = "<group>"; };
 		00C7EF4E147F3F1400F21C6B /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		00C7EF4F147F3F1400F21C6B /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		00E24E011483608000B203D8 /* SPDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SPDataModel.xcdatamodel; sourceTree = "<group>"; };
+		00E24E0414836FDB00B203D8 /* SPCoreDataUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCoreDataUtil.h; sourceTree = "<group>"; };
+		00E24E0514836FDB00B203D8 /* SPCoreDataUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCoreDataUtil.m; sourceTree = "<group>"; };
+		00E24E07148370CB00B203D8 /* SPListItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPListItem.h; sourceTree = "<group>"; };
+		00E24E08148370CB00B203D8 /* SPListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPListItem.m; sourceTree = "<group>"; };
+		00E24E0A148370E600B203D8 /* SPSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSettings.h; sourceTree = "<group>"; };
+		00E24E0B148370E600B203D8 /* SPSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSettings.m; sourceTree = "<group>"; };
 		0B672D9C1456BD4900EAE589 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0B672D9E1456BD5800EAE589 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0B672DA21456BF4400EAE589 /* SPTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTests.h; sourceTree = "<group>"; };
@@ -546,6 +557,10 @@
 		00C7EF5B147F42EF00F21C6B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				00E24E0A148370E600B203D8 /* SPSettings.h */,
+				00E24E0B148370E600B203D8 /* SPSettings.m */,
+				00E24E07148370CB00B203D8 /* SPListItem.h */,
+				00E24E08148370CB00B203D8 /* SPListItem.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -734,6 +749,7 @@
 				0B9A65A414564D220031E5C2 /* InfoPlist.strings */,
 				0B9A65A714564D220031E5C2 /* main.m */,
 				0B9A65A914564D220031E5C2 /* SP-Prefix.pch */,
+				00E24E001483608000B203D8 /* SPDataModel.xcdatamodeld */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -815,6 +831,8 @@
 				00476A1F147C8D2B008C42D6 /* SPCommon.h */,
 				00476A20147C8D2B008C42D6 /* SPCommon.m */,
 				0BDDD79D146156A200FD34D2 /* SPConst.h */,
+				00E24E0414836FDB00B203D8 /* SPCoreDataUtil.h */,
+				00E24E0514836FDB00B203D8 /* SPCoreDataUtil.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1010,6 +1028,10 @@
 				00C7EF58147F3F1400F21C6B /* ASIWebPageRequest.m in Sources */,
 				00C7EF59147F3F1400F21C6B /* Reachability.m in Sources */,
 				ADDD79E414834DE600C22DC0 /* TaskEditViewController.m in Sources */,
+				00E24E021483608000B203D8 /* SPDataModel.xcdatamodeld in Sources */,
+				00E24E0614836FDB00B203D8 /* SPCoreDataUtil.m in Sources */,
+				00E24E09148370CB00B203D8 /* SPListItem.m in Sources */,
+				00E24E0C148370E600B203D8 /* SPSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1202,6 +1224,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		00E24E001483608000B203D8 /* SPDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				00E24E011483608000B203D8 /* SPDataModel.xcdatamodel */,
+			);
+			currentVersion = 00E24E011483608000B203D8 /* SPDataModel.xcdatamodel */;
+			path = SPDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 0B9A658E14564D210031E5C2 /* Project object */;
 }

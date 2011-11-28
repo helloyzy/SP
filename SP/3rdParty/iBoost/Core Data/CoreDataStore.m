@@ -50,12 +50,18 @@ static CoreDataStore *gMainStoreInstance;
 	return [[[CoreDataStore alloc] init] autorelease];
 }
 
+/**
 + (void)initialize {
-	NSError *error = nil;
+	 
+}
+ */
 
++ (void) initCoreDataEnv {
+    NSError *error = nil;
+    
 	// create the global managed object model
 	gManagedObjectModel = [[NSManagedObjectModel mergedModelFromBundles:nil] retain];    
-
+    
 	// create the global persistent store
     gPersistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:gManagedObjectModel];
 	
@@ -65,7 +71,7 @@ static CoreDataStore *gMainStoreInstance;
 	if (![gPersistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
 		NSLog(@"Error creating persistantStoreCoordinator: %@, %@", error, [error userInfo]);
 		abort();
-    }    
+    }   
 }
 
 - (id)init {
@@ -108,7 +114,7 @@ static CoreDataStore *gMainStoreInstance;
 	}
 	
 	// init again
-	[CoreDataStore initialize];
+	[CoreDataStore initCoreDataEnv];
 	[self createManagedObjectContext];
 }
 

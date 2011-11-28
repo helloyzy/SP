@@ -10,10 +10,12 @@
 
 #import "SPViewController.h"
 #import "SPAuthenticationView.h"
+#import "SPCoreDataUtil.h"
 
 @interface SPAppDelegate ()
 
 - (void) setupTabView;
+- (void) initCoreDataEnv;
 
 @end
 
@@ -49,6 +51,8 @@
     self.viewController = [[[SPViewController alloc] initWithNibName:@"SPViewController" bundle:nil] autorelease];
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];*/
+    
+    [SPCoreDataUtil initCoreDataEnv];
     
     [self.window addSubview:splitViewController.view];
     [self.window makeKeyAndVisible];
@@ -93,6 +97,12 @@
      Save data if appropriate.
      See also applicationDidEnterBackground:.
      */
+}
+
+#pragma mark - private methods
+
+- (void)initCoreDataEnv {
+    [SPCoreDataUtil initCoreDataEnv];
 }
 
 @end
