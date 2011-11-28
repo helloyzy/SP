@@ -11,6 +11,8 @@
 
 @implementation TaskViewController
 
+@synthesize taskInfo;
+
 @synthesize myTableView, buttonItem, popoverController, taskInfoName, taskInfoValue;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,7 +47,7 @@
     lblKey.text = [taskInfoName objectAtIndex:[indexPath row]];
     lblKey.textAlignment = UITextAlignmentLeft;
     lblKey.font = [UIFont fontWithName:@"Arial" size:20];
-     [cell.contentView addSubview:lblKey];
+    [cell.contentView addSubview:lblKey];
     
     UILabel *lblValue = [[UILabel alloc] initWithFrame:CGRectMake(300,10,300,25)];		
     //set the background color
@@ -56,7 +58,7 @@
     lblValue.font = [UIFont fontWithName:@"Arial" size:18];
     [cell.contentView addSubview:lblValue];
     [lblKey release];
-
+    
     return cell;
 }
 
@@ -71,7 +73,8 @@
 
 - (IBAction)toggleMasterView:(id)sender {
     ItemMenuListController *menuListController = [[ItemMenuListController alloc]
-													  init];
+                                                  init];
+    menuListController.taskInfo = taskInfo;
     UIPopoverController *poc = [[UIPopoverController alloc]
 								initWithContentViewController:menuListController];
     [poc presentPopoverFromBarButtonItem:buttonItem 
@@ -97,13 +100,18 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.taskInfoName = [NSArray arrayWithObjects:@"Title:", @"Assigned To:",
-                      @"Status:", @"Priority:", @"% Complete:",@"Due Date:", nil];    
+    self.taskInfoName = [NSArray arrayWithObjects:@"Title:",@"Priority", 
+                         @"Status:",  @"% Complete:",@"Assigned To:", @"Description",@"Due Date:", @"Attachment", nil];    
     
-    self.taskInfoValue = [NSArray arrayWithObjects:@"Task222", @"Whitman.Yang",
-                         @"In Progress", @"(1) High", @"30%",@"2012-12-31", nil];    
+    //self.taskInfoValue = [NSArray arrayWithObjects:@"Task222", @"Whitman.Yang",
+    //                   @"In Progress", @"(1) High", @"30%",@"2012-12-31", nil];    
+    
+    self.taskInfoValue = [NSArray arrayWithObjects:[taskInfo title], [taskInfo priority],
+                          [taskInfo status], [taskInfo percentComplete], [taskInfo assignTo],@"jsut test it",[taskInfo dueDate], @"AAA.pdf" ,nil];  
+    
+    
     self.title = @"Task Detail";
-
+    
 }
 
 - (void)viewDidUnload
@@ -128,5 +136,6 @@
     [popoverController release];
     [taskInfoName release];
     [taskInfoValue release];
+    [taskInfo release];
 }
 @end

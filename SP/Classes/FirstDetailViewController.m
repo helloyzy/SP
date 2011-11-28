@@ -184,7 +184,8 @@
         [[self navigationController] pushViewController:controller animated:YES];
 
     } else if ([fileName isEqualToString:@"1_.000" ]) {
-    TaskViewController *controller = [[TaskViewController alloc] initWithNibName:@"TaskViewController" bundle:nil];        
+    TaskViewController *controller = [[TaskViewController alloc] initWithNibName:@"TaskViewController" bundle:nil];    
+        controller.taskInfo = selectedItem;
          [[self navigationController] pushViewController:controller animated:YES];
         [controller release];
     } else {

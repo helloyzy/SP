@@ -33,7 +33,7 @@
             //TODO get the task info
            list.assignTo = [listEle attribute:@"ows_AssignedTo"];
            list.status= [listEle attribute:@"ows_Status"];
-           list.status = [listEle attribute:@"ows_Priority"];
+           list.priority = [listEle attribute:@"ows_Priority"];
            list.dueDate  = [listEle attribute:@"ows_DueDate"];
            list.percentComplete   = [listEle attribute:@"ows_PercentComplete"];            
         }

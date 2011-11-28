@@ -13,7 +13,7 @@
 
 @implementation ItemMenuListController
 
-@synthesize menuNames;
+@synthesize menuNames, taskInfo;
 
 
 #pragma mark -
@@ -113,6 +113,7 @@
         TaskEditViewController *editTaskViewController = [[TaskEditViewController alloc]
                                                           init];
         
+        editTaskViewController.taskInfo = taskInfo;
         UIPopoverController *secondPopoverController = [[UIPopoverController alloc] initWithContentViewController:editTaskViewController];
         secondPopoverController.popoverContentSize = CGSizeMake(600, 600);
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
@@ -180,8 +181,9 @@
 }
 
 - (void)dealloc {
-    [menuNames release];
     [super dealloc];
+    [menuNames release];
+    [taskInfo release];
 }
 
 @end
