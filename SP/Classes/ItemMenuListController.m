@@ -9,7 +9,7 @@
 #import "ItemMenuListController.h"
 
 #import "TaskViewController.h"
-#import "EditTaskViewController.h"
+#import "TaskEditViewController.h"
 
 @implementation ItemMenuListController
 
@@ -110,11 +110,11 @@
     
     if (indexPath.row == 0) {
         
-        EditTaskViewController *editTaskViewController = [[EditTaskViewController alloc]
+        TaskEditViewController *editTaskViewController = [[TaskEditViewController alloc]
                                                           init];
         
         UIPopoverController *secondPopoverController = [[UIPopoverController alloc] initWithContentViewController:editTaskViewController];
-        secondPopoverController.popoverContentSize = CGSizeMake(450, 400);
+        secondPopoverController.popoverContentSize = CGSizeMake(600, 600);
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [secondPopoverController presentPopoverFromRect:cell.bounds inView:cell.contentView 
                                permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
