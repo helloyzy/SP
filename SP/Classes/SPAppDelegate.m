@@ -52,7 +52,7 @@
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];*/
     
-    [SPCoreDataUtil initCoreDataEnv];
+    [self initCoreDataEnv];
     
     [self.window addSubview:splitViewController.view];
     [self.window makeKeyAndVisible];
