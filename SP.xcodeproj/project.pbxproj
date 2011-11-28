@@ -53,6 +53,7 @@
 		00E24E0614836FDB00B203D8 /* SPCoreDataUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E0514836FDB00B203D8 /* SPCoreDataUtil.m */; };
 		00E24E09148370CB00B203D8 /* SPListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E08148370CB00B203D8 /* SPListItem.m */; };
 		00E24E0C148370E600B203D8 /* SPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E0B148370E600B203D8 /* SPSettings.m */; };
+		00E24E121483AC2B00B203D8 /* NSManagedObject+SPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E111483AC2B00B203D8 /* NSManagedObject+SPExtensions.m */; };
 		0B672D9D1456BD4900EAE589 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9C1456BD4900EAE589 /* CoreData.framework */; };
 		0B672D9F1456BD5800EAE589 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9E1456BD5800EAE589 /* CoreText.framework */; };
 		0B672DA41456BF4400EAE589 /* SPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DA31456BF4400EAE589 /* SPTests.m */; };
@@ -219,6 +220,8 @@
 		00E24E08148370CB00B203D8 /* SPListItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPListItem.m; sourceTree = "<group>"; };
 		00E24E0A148370E600B203D8 /* SPSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPSettings.h; sourceTree = "<group>"; };
 		00E24E0B148370E600B203D8 /* SPSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSettings.m; sourceTree = "<group>"; };
+		00E24E101483AC2B00B203D8 /* NSManagedObject+SPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+SPExtensions.h"; sourceTree = "<group>"; };
+		00E24E111483AC2B00B203D8 /* NSManagedObject+SPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+SPExtensions.m"; sourceTree = "<group>"; };
 		0B672D9C1456BD4900EAE589 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0B672D9E1456BD5800EAE589 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0B672DA21456BF4400EAE589 /* SPTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTests.h; sourceTree = "<group>"; };
@@ -824,6 +827,8 @@
 		0BDDD79B1461552900FD34D2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				00E24E101483AC2B00B203D8 /* NSManagedObject+SPExtensions.h */,
+				00E24E111483AC2B00B203D8 /* NSManagedObject+SPExtensions.m */,
 				0BDDD7A31461607300FD34D2 /* NSObject+SPExtensions.h */,
 				0BDDD7A41461607300FD34D2 /* NSObject+SPExtensions.m */,
 				0BDDD7A01461586C00FD34D2 /* SPCachedData.h */,
@@ -1032,6 +1037,7 @@
 				00E24E0614836FDB00B203D8 /* SPCoreDataUtil.m in Sources */,
 				00E24E09148370CB00B203D8 /* SPListItem.m in Sources */,
 				00E24E0C148370E600B203D8 /* SPSettings.m in Sources */,
+				00E24E121483AC2B00B203D8 /* NSManagedObject+SPExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
