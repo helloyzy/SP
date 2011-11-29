@@ -8,20 +8,24 @@
 
 #import "SPCachedData.h"
 #import "SPCommon.h"
+#import "SPCoreDataUtil.h"
+#import "SPSettings.h"
+#import "NSManagedObject+SPExtensions.h"
 
 static SPCachedData * sharedInstance;
 
 @interface SPCachedData()
 
 + (NSString *) stringIfNotEmpty:(NSString *)value defaultIfEmpty:(NSString *)defaultValue;
++ (void) translateSiteUrl:(NSString *)siteUrl;
 
 @end
 
 @implementation SPCachedData
 
-@synthesize user, pwd;
+@synthesize settings;
 
-@synthesize userInputSite, serviceUrlPrefix, serviceHost, serviceHostUrl, serviceRelativePath;
+@synthesize serviceUrlPrefix, serviceHost, serviceHostUrl, serviceRelativePath;
 
 #pragma public methods
 
@@ -32,30 +36,45 @@ static SPCachedData * sharedInstance;
     return sharedInstance;
 }
 
++ (void) loadSettings {
+    SPSettings * settings = [SPCoreDataUtil firstInstanceByEntityClass:[SPSettings class]];
+    if (!settings) {
+        settings = [SPCoreDataUtil createInstanceFromEntityClass:[SPSettings class]];
+        settings.userName = @"Perficient\\spark.pan";
+        settings.password = @"zhe@812Bl";
+        settings.siteUrl = @"https://sharepoint.perficient.com/sites/SP";
+        [settings save];
+    }
+    [self sharedInstance].settings = settings;
+    [self translateSiteUrl:settings.siteUrl];
+}
+
 #pragma mark - authentication related
 
 + (void) fillCredentialWithUser:(NSString *)user password:(NSString *)pwd {
     SPCachedData * data = [self sharedInstance];
-    data.user = user;
-    data.pwd = pwd;
+    data.settings.userName = user;
+    data.settings.password = pwd;
+    [data.settings save];
 }
 
 + (NSURLCredential *) credential {
     SPCachedData * data = [self sharedInstance];
-    if (!data.user || !data.pwd) {
-        data.user = @"Perficient\\spark.pan";
-        data.pwd = @"zhe@812Bl";
-    }
-    return [NSURLCredential credentialWithUser:data.user password:data.pwd persistence:NSURLCredentialPersistenceNone];
+    return [NSURLCredential credentialWithUser:data.settings.userName password:data.settings.password persistence:NSURLCredentialPersistenceNone];
 }
 
 #pragma mark - site url related
 
 // Precondition: the siteUrl has been verified as a valid URL
 + (void) fillSiteInfo:(NSString *)siteUrl {
+    [self sharedInstance].settings.siteUrl = siteUrl;
+    [[self sharedInstance].settings save];
+    [self translateSiteUrl:siteUrl];
+}
+
++ (void) translateSiteUrl:(NSString *)siteUrl {
     SPCachedData * sharedInstance = [self sharedInstance];
-    sharedInstance.userInputSite = siteUrl;
-    
+
     NSString * site = siteUrl;
     NSURL * url = [NSURL URLWithString:site];
     NSString * host = [url host];
@@ -66,7 +85,7 @@ static SPCachedData * sharedInstance;
     NSRange range = [site rangeOfString:host];
     // E.g. take "https://sharepoint.perficient.com" from "https://sharepoint.perficient.com/sites/SP" and add the trailing "/"
     sharedInstance.serviceHostUrl = [[site substringToIndex:(range.location + range.length)] stringByAppendingString:@"/"];
-       
+    
     // add the trailing "/" for the url if necessary
     if (![site hasSuffix:@"/"]) {
         site = [site stringByAppendingString:@"/"];
@@ -81,7 +100,7 @@ static SPCachedData * sharedInstance;
 }
 
 + (NSString *) userInputSite {
-    return [self stringIfNotEmpty:[self sharedInstance].userInputSite defaultIfEmpty:@"https://sharepoint.perficient.com/sites/SP"]; 
+    return [self sharedInstance].settings.siteUrl;
 }
 
 + (NSString *) serviceUrlPrefix {
@@ -112,13 +131,11 @@ static SPCachedData * sharedInstance;
 #pragma destroy methods 
 
 - (void) dealloc {
-    self.user = nil;
-    self.pwd = nil;
-    self.userInputSite = nil;
     self.serviceHostUrl = nil;
     self.serviceUrlPrefix = nil;
     self.serviceHost = nil;
     self.serviceRelativePath = nil;
+    self.settings = nil;
     [super dealloc];
 }
 

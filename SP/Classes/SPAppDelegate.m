@@ -11,11 +11,13 @@
 #import "SPViewController.h"
 #import "SPAuthenticationView.h"
 #import "SPCoreDataUtil.h"
+#import "SPCachedData.h"
 
 @interface SPAppDelegate ()
 
 - (void) setupTabView;
 - (void) initCoreDataEnv;
+- (void) initCache;
 
 @end
 
@@ -53,6 +55,7 @@
     [self.window makeKeyAndVisible];*/
     
     [self initCoreDataEnv];
+    [self initCache];
     
     [self.window addSubview:splitViewController.view];
     [self.window makeKeyAndVisible];
@@ -103,6 +106,10 @@
 
 - (void)initCoreDataEnv {
     [SPCoreDataUtil initCoreDataEnv];
+}
+
+- (void)initCache {
+    [SPCachedData loadSettings];
 }
 
 @end

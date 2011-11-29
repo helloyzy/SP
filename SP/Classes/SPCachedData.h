@@ -8,18 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class SPSettings;
+
 @interface SPCachedData : NSObject
 
-@property (nonatomic, retain) NSString * user;
-@property (nonatomic, retain) NSString * pwd;
+@property (nonatomic, retain) SPSettings * settings;
 
-@property (nonatomic, retain) NSString * userInputSite;
 @property (nonatomic, retain) NSString * serviceUrlPrefix;
 @property (nonatomic, retain) NSString * serviceHost;
 @property (nonatomic, retain) NSString * serviceHostUrl;
 @property (nonatomic, retain) NSString * serviceRelativePath;
 
 + (SPCachedData *) sharedInstance;
++ (void) loadSettings;
 // current login credential for all the SP services
 + (NSURLCredential *) credential;
 + (void) fillCredentialWithUser:(NSString *)user password:(NSString *)pwd;

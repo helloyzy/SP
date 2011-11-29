@@ -30,7 +30,7 @@
 #pragma mark - public methods
 
 + (void) initCoreDataEnv {
-    //[[CoreDataStore mainStore] clearAllData];
+    // [[CoreDataStore mainStore] clearAllData];
     [CoreDataStore initCoreDataEnv];
 }
 
