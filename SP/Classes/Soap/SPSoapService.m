@@ -16,7 +16,16 @@
 @synthesize headProps;
 @synthesize serviceUrl;
 
-#pragma mark - protected methods implementations
+#pragma mark - overridden methods from super class
+
+- (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper {
+    [self prepareUrlAndHeadProps];
+    // add host header property
+    [self addHeadProp:@"Host" withValue:[SPCachedData serviceHost]];
+    return [SoapUtil buildRequestWithUrl:serviceUrl soapMsg:enveloper headProps:headProps];
+}
+
+#pragma mark - protected methods designated for child classes to use
 
 - (void) addHeadProp:(NSString *)key withValue:(id)value {
     if (!headProps) {
@@ -35,16 +44,19 @@
     self.serviceUrl = [serviceUrlPrefix stringByAppendingString:serviceName];
 }
 
-- (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper {
-    [self prepareUrlAndHeadProps];
-    // add host header property
-    [self addHeadProp:@"Host" withValue:[SPCachedData serviceHost]];
-    return [SoapUtil buildRequestWithUrl:serviceUrl soapMsg:enveloper headProps:headProps];
-}
-
 - (id) parseResponse:(NSString *)responseString {
     RXMLElement * xml = [RXMLElement elementFromXMLString:responseString];
     return [self parseResponseWithXml:xml];
+}
+
+#pragma mark - protected methods which needs child classes to override
+
+- (id) parseResponseWithXml:(RXMLElement *)xml {
+    return nil;
+}
+
+- (void) prepareUrlAndHeadProps {
+    
 }
 
 #pragma mark - connection callbacks 

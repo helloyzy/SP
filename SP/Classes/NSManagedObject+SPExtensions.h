@@ -12,5 +12,7 @@
 @interface NSManagedObject (SPExtensions)
 
 - (void) save;
+- (void) remove;
+- (void) remove:(BOOL)autoSaveFlag;
 
 @end

@@ -47,7 +47,11 @@
     }
 }
 
-#pragma mark - protected methods, default implementations
+#pragma mark - protected methods, default implementations, child classes need to override these methods to perform customized behaviours
+
+- (NSURLRequest *) buildRequest:(SoapEnveloper *)enveloper {
+    return nil;
+}
 
 - (void) sendNotificationOnSuccess:(id)value {
     
@@ -61,7 +65,7 @@
     return (NSString *) errorObj;
 }
          
-#pragma mark - private methods
+#pragma mark - protected methods, generic methods for child classes to use, do not override unless with designated purposes
          
 - (void) fail:(NSString *)description {
     UTLLog(@"Exception caught: %@", description);
@@ -73,6 +77,8 @@
     self.responseData = nil;
     self.connection = nil;
 }
+
+#pragma mark - private methods
 
 - (void) sendSoapRequest:(NSURLRequest *)request {
     @try {

@@ -15,4 +15,15 @@
     [[CoreDataStore mainStore] save];
 }
 
+- (void) remove {
+    [self remove:NO];
+}
+
+- (void) remove:(BOOL)autoSaveFlag {
+    [[CoreDataStore mainStore] removeEntity:self];
+    if (autoSaveFlag) {
+        [self save];
+    }
+}
+
 @end

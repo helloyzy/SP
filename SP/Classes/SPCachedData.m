@@ -37,14 +37,7 @@ static SPCachedData * sharedInstance;
 }
 
 + (void) loadSettings {
-    SPSettings * settings = [SPCoreDataUtil firstInstanceByEntityClass:[SPSettings class]];
-    if (!settings) {
-        settings = [SPCoreDataUtil createInstanceFromEntityClass:[SPSettings class]];
-        settings.userName = @"Perficient\\spark.pan";
-        settings.password = @"zhe@812Bl";
-        settings.siteUrl = @"https://sharepoint.perficient.com/sites/SP";
-        [settings save];
-    }
+    SPSettings * settings = [SPCoreDataUtil settingsInfo];
     [self sharedInstance].settings = settings;
     [self translateSiteUrl:settings.siteUrl];
 }

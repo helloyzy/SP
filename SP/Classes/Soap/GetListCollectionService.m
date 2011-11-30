@@ -13,6 +13,9 @@
 #import "GDataXMLNode.h"
 #import "RXMLElement.h"
 #import "SPCachedData.h"
+#import "SPListItem.h"
+#import "SPCoreDataUtil.h"
+#import "NSManagedObject+SPExtensions.h"
 
 @implementation GetListCollectionService 
 
@@ -27,6 +30,8 @@
 }
 
 - (id) parseResponseWithXml:(RXMLElement *)xml {
+    // remove all the top-level list items from data store
+    [SPCoreDataUtil removeTopLevelLists];
     NSMutableArray * listOfItems = [NSMutableArray array];
     [xml iterate:@"soap:Body.GetListCollectionResponse.GetListCollectionResult.Lists.List" with:^(RXMLElement * listEle) {
         ListInfo * list = [[ListInfo alloc] init];
@@ -39,9 +44,17 @@
         NSString *hidden=[listEle attribute:@"Hidden"];
         if([ hidden caseInsensitiveCompare:@"False"] == NSOrderedSame) {
             [listOfItems addObject:list];
+            SPListItem * listItem = [SPCoreDataUtil createListItem];
+            listItem.title = list.title;
+            listItem.listName = list.listName;
+            listItem.fileRef = list.fileRef;
+            listItem.listDescription = list.description;
+            [listItem save];
         }
         
         [list release];
+        
+        
     }];
     return listOfItems;
 }
