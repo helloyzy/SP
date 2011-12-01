@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ListInfo.h"
 
-
 @interface TaskViewController : UIViewController<UITableViewDataSource> {
-    
     IBOutlet UITableView * myTableView;
     IBOutlet UIBarButtonItem *buttonItem;
     UIPopoverController *popoverController;

@@ -1,3 +1,10 @@
+//
+//  RootViewController.m
+//  SP
+//
+//  Created by spark pan on 11/25/11.
+//  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
+//
 #import "RootViewController.h"
 #import "FirstDetailViewController.h"
 #import "GetUserInfoService.h"
@@ -10,14 +17,13 @@
 #import "SPSoapRequestBuilder.h"
 #import "SPLoginAuthenticationService.h"
 #import "SPAuthenticationView.h"
+#import "NSObject+SPExtensions.h"
+#import "SPConst.h"
 
 @interface RootViewController ()
-
-- (void) testGetUserInfo;
-- (void) testLists;
-- (void) testAuthentication;
-- (void) requestSubFolder: (NSString *) topListName withFolder:(NSString *) folderName;
+- (void) fetchTopListCollection;
 @end
+
 @implementation RootViewController
 
 @synthesize firstDetailViewController, listOfItems, tableView, authenticatePopover, siteItem;
@@ -27,44 +33,38 @@
 #pragma mark -
 #pragma mark View lifecycle
 
-- (void)viewDidLoad {
-    
+- (void)viewDidLoad {    
     [super viewDidLoad];
-    //self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
-
     [self setTitle:@"List Collection"];
-    
-    [self testLists];
+    [self fetchTopListCollection];
 }
 
 -(void) viewDidUnload {
-	[super viewDidUnload];
-	
+	[super viewDidUnload];	
 	self.firstDetailViewController = nil;
+    [self.authenticatePopover dismissPopoverAnimated:NO];
+    self.authenticatePopover = nil;
+    self.siteItem = nil;
 }
 
-
-- (void) testAuthentication {
-    SoapRequest * request = [SPSoapRequestBuilder buildAuthenticationRequest];
-    SPLoginAuthenticationService * authService = [[SPLoginAuthenticationService alloc] init];
-    authService.soapRequestParam = request;
-    [authService request];
-    [authService release];
+- (void) viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_SUCCESS withSelector:@selector(onVerificationSuccess:)];
+    [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_FAILURE withSelector:@selector(onVerificationFailure:)];
     
 }
 
-- (void) testGetUserInfo {
-    SoapRequest * request = [SPSoapRequestBuilder buildGetUserInfoRequest:@"Perficient\\spark.pan"];
-    GetUserInfoService * userInfoService = [[GetUserInfoService alloc] init];
-    userInfoService.soapRequestParam = request;
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-    [center addObserver:self selector:@selector(onNotification:) name:SP_NOTIFICATION_GETUSERINFO_SUCCESS object:userInfoService];
-    [userInfoService request];
-    [userInfoService release];
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self unregisterNotification];
 }
 
-- (void) testLists {
+#pragma mark -
+#pragma sharepoint soap web service call method
+
+- (void) fetchTopListCollection {
     SoapRequest * request = [SPSoapRequestBuilder buildListInfoRequest];
     GetListCollectionService * listInfoService = [[GetListCollectionService alloc] init];
     listInfoService.soapRequestParam = request;    
@@ -73,31 +73,17 @@
     [listInfoService release];
 }
 
-- (void) requestSubFolder: (NSString *) topListName withFolder:(NSString *)folderName {
-    SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:topListName withFolder:folderName];
-    GetListItemsService* listItemsService = [[GetListItemsService alloc]init];
-    listItemsService.soapRequestParam = request;    
-    listItemsService.delegate = self;
-    [listItemsService request];    
-    [listItemsService release];
+- (void)onVerificationSuccess:(NSNotification *)notification {
+    NSMutableArray * lists = (NSMutableArray *) [self valueFromSPNotification:notification];
+    NSLog(@"%@", lists);
+    self.listOfItems = lists;
+    [self.tableView reloadData];
 }
 
-- (void) dataSourceReturn:(NSMutableArray *)datasource {
-    self.listOfItems = datasource;
-    [[self tableView] reloadData];
-}
-
-- (void) ListsReturn:(NSMutableArray *)datasource {
-    self.listOfItems = datasource;
-    [[self tableView]reloadData];
-}
-
-- (void)onNotification:(NSNotification *)notification {
-    NSDictionary * dict = [notification userInfo];
-    RXMLElement * ele = (RXMLElement *) [dict objectForKey:SP_NOTIFICATION_KEY_USERINFO];
-    NSLog(@"%@", [ele attribute:@"LoginName"]);
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self];
+- (void)onVerificationFailure:(NSNotification *)notification {
+    NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
+    NSLog(@"%@", errorMsg);
+    //[self showError:errorMsg];
 }
 
 #pragma mark -
@@ -111,18 +97,13 @@
 #pragma mark Table view data source
 
 - (NSInteger)tableView:(UITableView *)aTableView numberOfRowsInSection:(NSInteger)section {
-    
-    // Two sections, one for each detail view controller.
     return [listOfItems count];
 }
 
-
-- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
+- (UITableViewCell *)tableView:(UITableView *)aTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath { 
     static NSString *CellIdentifier = @"Cell";
 	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    
-    
+       
     // Set up the cell...
 	NSString *title = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] title];
     
@@ -146,8 +127,17 @@
     firstDetailViewController.listInfo = listinfo;
 }
 
+
+#pragma mark -
+#pragma mark the bottom toolbar buttons' call method
+
+
+- (IBAction) refreshLists:(id)sender {
+    [self fetchTopListCollection];
+}
+
 - (IBAction) logonSites:(id)sender {
-   
+    
     if (!authenticatePopover) { 
         SPAuthenticationView *controller = [[SPAuthenticationView alloc] initWithNibName:@"SPAuthenticationView" bundle:nil];
         UIPopoverController * popOver = [[UIPopoverController alloc] initWithContentViewController:controller];
@@ -163,10 +153,6 @@
     }
 }
 
-- (IBAction) refreshLists:(id)sender {
-    [self testLists];
-}
-
 #pragma mark -
 #pragma mark Memory management
 
@@ -174,10 +160,6 @@
     [firstDetailViewController release];
     [listOfItems release];
     [tableView release];
-    // first dismiss
-    [self.authenticatePopover dismissPopoverAnimated:NO];
-    self.authenticatePopover = nil;
-    self.siteItem = nil;
     [super dealloc];
 }
 

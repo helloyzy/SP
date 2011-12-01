@@ -9,12 +9,6 @@
 #import "SoapServiceBase.h"
 #import "SPSoapService.h"
 
-@protocol DataSourceDelegate <NSObject>
-
-- (void) dataSourceReturn: (NSMutableArray*) datasource;
-
-@end
-
 @interface GetListCollectionService : SPSoapService
 
 @property (nonatomic, retain) id delegate;

@@ -14,16 +14,20 @@
 #import "ASIHTTPRequest.h"
 #import "TaskViewController.h"
 #import "SPCachedData.h"
+#import "NSObject+SPExtensions.h"
 
 
 @interface FirstDetailViewController ()
 
 - (void) requestSubFolder: (NSString *) topListName withFolder: (NSString *) folder;
 - (void) loadImage:(ListInfo *)listItem;
+- (void)onVerificationSuccess:(NSNotification *)notification;
+- (void)onVerificationFailure:(NSNotification *)notification;
+//- (void) showInfo:(NSString *)infoMsg;
+//- (void) showError:(NSString *)errorMsg;
+//- (void) showMessage:(NSString *)message withTextColor:(UIColor *)textColor;
 
 @end
-
-
 
 @implementation FirstDetailViewController
 
@@ -32,7 +36,6 @@
 
 #pragma mark -
 #pragma mark View lifecycle
-
 
 /**
  When setting the detail item, update the view and dismiss the popover controller if it's showing.
@@ -56,18 +59,29 @@
     
 }
 
-
-
 - (void)viewDidLoad {
     
     [super viewDidLoad];        
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    
+    [super viewWillAppear:animated];
+    [self registerNotification:SP_NOTIFICATION_GETLISTITEMS_SUCCESS withSelector:@selector(onVerificationSuccess:)];
+    [self registerNotification:SP_NOTIFICATION_GETLISTITEMS_FAILURE withSelector:@selector(onVerificationFailure:)];
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self unregisterNotification];
+}
+
+
 - (void)viewDidUnload {
 	[super viewDidUnload];
-    
-	//self.toolbar = nil;
 }
+
 #pragma mark -
 #pragma mark Split view support
 
@@ -92,6 +106,10 @@
     [self setPopoverController:nil];
 }
 
+
+#pragma mark -
+#pragma sharepoint soap web service call method
+
 - (void) requestSubFolder: (NSString *) topListName withFolder: (NSString *) folder{
     SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:topListName withFolder:folder];
     GetListItemsService* listItemsService = [[GetListItemsService alloc]init];
@@ -101,24 +119,22 @@
     [listItemsService release];
 }
 
-- (void) dataSourceReturn:(NSMutableArray *)datasource {
-    self.listOfItems = datasource;
+
+- (void)onVerificationSuccess:(NSNotification *)notification {
+    NSMutableArray * lists = (NSMutableArray *) [self valueFromSPNotification:notification];
+    NSLog(@"%@", lists);
+    self.listOfItems = lists;
     [self.tableview reloadData];
 }
 
-- (void) ListsReturn:(NSMutableArray *)datasource {
-    self.listOfItems = datasource;
-    [self.tableview reloadData];
+- (void)onVerificationFailure:(NSNotification *)notification {
+    NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
+    NSLog(@"%@", errorMsg);
+    //[self showError:errorMsg];
 }
 
-- (void)onNotification:(NSNotification *)notification {
-    NSDictionary * dict = [notification userInfo];
-    RXMLElement * ele = (RXMLElement *) [dict objectForKey:SP_NOTIFICATION_KEY_USERINFO];
-    NSLog(@"%@", [ele attribute:@"LoginName"]);
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter];
-    [center removeObserver:self];
-}
-
+#pragma mark -
+#pragma mark Table view data source
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -134,13 +150,10 @@
     
     
     // Set up the cell...
-	NSString *title = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] title];
-    //NSString *type = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] type];
-    //NSString *fileRef = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] fileRef];
-    
+	NSString *title = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] title];    
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 500, 50)];
-   
+    
     titleLabel.font = [UIFont fontWithName:@"Arial" size:20];
     [cell.contentView addSubview:titleLabel];
     [titleLabel release];
@@ -148,13 +161,12 @@
     NSString *type = [(ListInfo *)[listOfItems objectAtIndex:indexPath.row] type];
     
     if ([type isEqualToString:@"1"]) {
-       titleLabel.text = title;
+        titleLabel.text = title;
     } else {
         titleLabel.text = [NSString stringWithFormat:@"%@ \n Last updated by Spark.Pan 2011-11-11",title];  
     }
     
     titleLabel.numberOfLines = 2;
-    //titleLabel.lineBreakMode = UILineBreakModeWordWrap;
     
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
@@ -162,7 +174,7 @@
 }
 
 -(CGFloat) tableView:(UITableView *) tableView heightForRowAtIndexPath:(NSIndexPath *) indexPath {
-	     
+    
     return 60;
 }
 
@@ -170,32 +182,37 @@
 #pragma mark Table view selection
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
     ListInfo * selectedItem = (ListInfo *)[listOfItems objectAtIndex:indexPath.row];
     
     NSString *fileRef = [selectedItem fileRef];
     NSString* fileName = [fileRef lastPathComponent];
     
     if ([selectedItem.type isEqualToString:@"1"]) {
-    
-     FirstDetailViewController *controller = [[FirstDetailViewController alloc] init];
+        
+        FirstDetailViewController *controller = [[FirstDetailViewController alloc] init];
         selectedItem.listName = listInfo.listName;
         controller.listInfo = selectedItem;
         [[self navigationController] pushViewController:controller animated:YES];
-
+        
     } else if ([fileName isEqualToString:@"1_.000" ]) {
-    TaskViewController *controller = [[TaskViewController alloc] initWithNibName:@"TaskViewController" bundle:nil];    
+        TaskViewController *controller = [[TaskViewController alloc] initWithNibName:@"TaskViewController" bundle:nil];    
         controller.taskInfo = selectedItem;
-         [[self navigationController] pushViewController:controller animated:YES];
+        [[self navigationController] pushViewController:controller animated:YES];
         [controller release];
     } else {
-       
+        
         [self loadImage:(ListInfo *)[listOfItems objectAtIndex:indexPath.row]];
-
+        
     }
     
 }
-   - (void) loadImage:(ListInfo *)listItem {
+
+
+#pragma mark -
+#pragma mark view the document method
+
+- (void) loadImage:(ListInfo *)listItem {
     
     NSString * imageUrlPrefix = [SPCachedData serviceHostUrl];
     NSString * url = [imageUrlPrefix stringByAppendingString:listItem.fileRef];
@@ -254,13 +271,14 @@
     
 }
 
+#pragma mark -
+#pragma mark left top button call method
+
 - (void) info_clicked:(id)sender {
     
     self.navigationItem.leftBarButtonItem = nil;
     [webView removeFromSuperview];
 }
-
-
 
 
 #pragma mark -
@@ -275,13 +293,10 @@
 #pragma mark Memory management
 
 - (void)dealloc {
-    //[toolbar release];
     [tableview release];
     [listInfo release];
     [listOfItems release];
     [webView release];
     [super dealloc];
 }	
-
-
 @end

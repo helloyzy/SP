@@ -1,19 +1,16 @@
 //
-//  GetListItemsService.h
+//  UpdateListItemsService.h
 //  SP
 //
-//  Created by spark pan on 11/7/11.
+//  Created by spark pan on 11/28/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "SPSoapService.h"
 
 
-@interface GetListItemsService : SPSoapService {
-    
+@interface UpdateListItemsService : SPSoapService {
+
 }
-
 @property (nonatomic, retain) id delegate;
-
 @end

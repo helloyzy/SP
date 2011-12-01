@@ -7,28 +7,63 @@
 //
 
 #import "TaskEditViewController.h"
+#import "NSObject+SPExtensions.h"
+#import "SPConst.h"
+
+
+@interface TaskEditViewController ()
+- (void)onVerificationSuccess:(NSNotification *)notification;
+- (void)onVerificationFailure:(NSNotification *)notification;
+//- (void) showInfo:(NSString *)infoMsg;
+//- (void) showError:(NSString *)errorMsg;
+//- (void) showMessage:(NSString *)message withTextColor:(UIColor *)textColor;
+
+@end
 
 @implementation TaskEditViewController
 
 @synthesize titleLabel,titleTextField,priorityLabel,priorityTextField,statusLabel,statusTextField,assignedToLabel,assignedToTextField,completeLabel,completeTextField,dueDateLabel,dueDateTextField,attachmentLabel, descLabel,descTextField,attachmenTextField, taskInfo, cancelButton, saveButton;
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [super viewDidLoad];
+    titleTextField.text =[taskInfo title];
+    assignedToTextField.text =[taskInfo assignTo];
+    statusTextField.text =[taskInfo status];
+    statusTextField.delegate = self;
+    priorityTextField.text =[taskInfo priority];
+    completeTextField.text =[taskInfo percentComplete];
+    dueDateTextField.text =[taskInfo dueDate];
+    descTextField.text =@"just test it...";
+    attachmenTextField.text =@"AAA.PDF";
+    
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
+- (void) viewWillAppear:(BOOL)animated {
     
-    // Release any cached data, images, etc that aren't in use.
+    [super viewWillAppear:animated];
+    [self registerNotification:SP_NOTIFICATION_UPDATEITEM_SUCCESS withSelector:@selector(onVerificationSuccess:)];
+    [self registerNotification:SP_NOTIFICATION_UPDATEITEM_FAILURE withSelector:@selector(onVerificationFailure:)];
+    
 }
+
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self unregisterNotification];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
 
 #pragma mark -
 #pragma mark UITextFieldDelegate methods
@@ -43,28 +78,6 @@
     [alert show];
     [alert release];
     return NO;
-}
-
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    //self.taskInfoValue = [NSMutableArray arrayWithObjects:@"Task222", @"Whitman.Yang",
-      //                    @"In Progress", @"(1) High", @"30%",@"2012-12-31", nil];   
-    titleTextField.text =[taskInfo title];
-    assignedToTextField.text =[taskInfo assignTo];
-    statusTextField.text =[taskInfo status];
-    statusTextField.delegate = self;
-    priorityTextField.text =[taskInfo priority];
-    completeTextField.text =[taskInfo percentComplete];
-    dueDateTextField.text =[taskInfo dueDate];
-    descTextField.text =@"just test it...";
-    attachmenTextField.text =@"AAA.PDF";
-    
 }
 
 - (IBAction)cancelChanges:(id)sender {
@@ -88,49 +101,51 @@
     [alert release];
 }
 
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+#pragma mark -
+#pragma sharepoint soap web service call method
+
+- (void)onVerificationSuccess:(NSNotification *)notification {
+    NSMutableArray * lists = (NSMutableArray *) [self valueFromSPNotification:notification];
+    NSLog(@"%@", lists);    
 }
+
+- (void)onVerificationFailure:(NSNotification *)notification {
+    NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
+    NSLog(@"%@", errorMsg);
+    //[self showError:errorMsg];
+}
+
+
+#pragma mark -
+#pragma mark Rotation support
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
 	return YES;
 }
+
 -(void) dealloc {
     [super dealloc];
     [titleLabel release];
     [titleTextField release];
-    
     [priorityLabel release];
-    [priorityTextField release];
-    
+    [priorityTextField release];    
     [statusLabel release];
-    [statusTextField release];
-    
+    [statusTextField release];    
     [assignedToLabel release];
-    [assignedToTextField release];
-    
+    [assignedToTextField release];    
     [completeLabel release];
     [completeTextField release];
-    
     [dueDateLabel release];
-    [dueDateTextField release];
-    
+    [dueDateTextField release];    
     [attachmentLabel release];
-    [attachmenTextField release];
-    
+    [attachmenTextField release];    
     [descLabel release];
-    [descTextField release];
-    
+    [descTextField release];    
     [taskInfo release];
     [cancelButton release];
-    [saveButton release];
-    
+    [saveButton release];    
 }
 
 @end

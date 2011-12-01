@@ -64,7 +64,6 @@
 		0B672DD41456C4F100EAE589 /* SoapUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DD11456C4F100EAE589 /* SoapUtil.m */; };
 		0B672DD71456C54000EAE589 /* UTLDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DD61456C54000EAE589 /* UTLDebug.m */; };
 		0B672DDC1456C94C00EAE589 /* SPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DD91456C94B00EAE589 /* SPAppDelegate.m */; };
-		0B672DDD1456C94C00EAE589 /* SPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DDB1456C94B00EAE589 /* SPViewController.m */; };
 		0B930F7414676EF9007189E7 /* SPLoginAuthenticationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B930F7314676EF9007189E7 /* SPLoginAuthenticationService.m */; };
 		0B930F77146777BB007189E7 /* SPModeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B930F76146777BB007189E7 /* SPModeService.m */; };
 		0B930F7A1467AC18007189E7 /* SPSoapRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B930F791467AC18007189E7 /* SPSoapRequest.m */; };
@@ -75,7 +74,6 @@
 		0B9A65A014564D220031E5C2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659F14564D220031E5C2 /* CoreGraphics.framework */; };
 		0B9A65A614564D220031E5C2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0B9A65A414564D220031E5C2 /* InfoPlist.strings */; };
 		0B9A65A814564D220031E5C2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B9A65A714564D220031E5C2 /* main.m */; };
-		0B9A65B214564D220031E5C2 /* SPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B9A65B014564D220031E5C2 /* SPViewController.xib */; };
 		0B9A65BA14564D220031E5C2 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A65B914564D220031E5C2 /* SenTestingKit.framework */; };
 		0B9A65BB14564D220031E5C2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659B14564D220031E5C2 /* UIKit.framework */; };
 		0B9A65BC14564D220031E5C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B9A659D14564D220031E5C2 /* Foundation.framework */; };
@@ -241,8 +239,6 @@
 		0B672DD61456C54000EAE589 /* UTLDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTLDebug.m; sourceTree = "<group>"; };
 		0B672DD81456C94B00EAE589 /* SPAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPAppDelegate.h; sourceTree = "<group>"; };
 		0B672DD91456C94B00EAE589 /* SPAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPAppDelegate.m; sourceTree = "<group>"; };
-		0B672DDA1456C94B00EAE589 /* SPViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPViewController.h; sourceTree = "<group>"; };
-		0B672DDB1456C94B00EAE589 /* SPViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPViewController.m; sourceTree = "<group>"; };
 		0B930F7214676EF9007189E7 /* SPLoginAuthenticationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPLoginAuthenticationService.h; sourceTree = "<group>"; };
 		0B930F7314676EF9007189E7 /* SPLoginAuthenticationService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPLoginAuthenticationService.m; sourceTree = "<group>"; };
 		0B930F75146777BB007189E7 /* SPModeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPModeService.h; sourceTree = "<group>"; };
@@ -260,7 +256,6 @@
 		0B9A65A514564D220031E5C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0B9A65A714564D220031E5C2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0B9A65A914564D220031E5C2 /* SP-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SP-Prefix.pch"; sourceTree = "<group>"; };
-		0B9A65B114564D220031E5C2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SPViewController.xib; sourceTree = "<group>"; };
 		0B9A65B814564D220031E5C2 /* SPTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SPTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B9A65B914564D220031E5C2 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		0B9A65C114564D220031E5C2 /* SPTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SPTests-Info.plist"; sourceTree = "<group>"; };
@@ -541,9 +536,6 @@
 				0B930F7B1467B8AB007189E7 /* SPAuthenticationView.h */,
 				0B930F7C1467B8AB007189E7 /* SPAuthenticationView.m */,
 				0B930F7D1467B8AF007189E7 /* SPAuthenticationView.xib */,
-				0B672DDA1456C94B00EAE589 /* SPViewController.h */,
-				0B672DDB1456C94B00EAE589 /* SPViewController.m */,
-				0B9A65B014564D220031E5C2 /* SPViewController.xib */,
 				ADA070C21474E042001A52D1 /* TaskViewController.h */,
 				ADA070C31474E042001A52D1 /* TaskViewController.m */,
 				ADA070C41474E042001A52D1 /* TaskViewController.xib */,
@@ -916,7 +908,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B9A65A614564D220031E5C2 /* InfoPlist.strings in Resources */,
-				0B9A65B214564D220031E5C2 /* SPViewController.xib in Resources */,
 				0B930F7F1467B8B1007189E7 /* SPAuthenticationView.xib in Resources */,
 				AD3D8B0A146A6832009F7D49 /* FirstDetailView.xib in Resources */,
 				AD3D8B13146A6962009F7D49 /* MainWindow.xib in Resources */,
@@ -968,7 +959,6 @@
 				0B672DD41456C4F100EAE589 /* SoapUtil.m in Sources */,
 				0B672DD71456C54000EAE589 /* UTLDebug.m in Sources */,
 				0B672DDC1456C94C00EAE589 /* SPAppDelegate.m in Sources */,
-				0B672DDD1456C94C00EAE589 /* SPViewController.m in Sources */,
 				AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */,
 				AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */,
 				0BAAF4F5145904A9003B4640 /* NSObject+AssociativeReferences.m in Sources */,
@@ -1067,15 +1057,6 @@
 				0B9A65A514564D220031E5C2 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		0B9A65B014564D220031E5C2 /* SPViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0B9A65B114564D220031E5C2 /* en */,
-			);
-			name = SPViewController.xib;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		0B9A65C214564D220031E5C2 /* InfoPlist.strings */ = {

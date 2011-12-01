@@ -15,15 +15,25 @@
 
 @synthesize myTableView, buttonItem, popoverController, taskInfoName, taskInfoValue;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+
+#pragma mark - View lifecycle
+
+- (void)viewDidLoad
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    [super viewDidLoad];
+    
+    self.taskInfoName = [NSArray arrayWithObjects:@"Title:",@"Priority", 
+                         @"Status:",  @"% Complete:",@"Assigned To:", @"Description",@"Due Date:", @"Attachment", nil];    
+    self.taskInfoValue = [NSArray arrayWithObjects:[taskInfo title], [taskInfo priority],
+                          [taskInfo status], [taskInfo percentComplete], [taskInfo assignTo],@"jsut test it",[taskInfo dueDate],@"AAA.pdf" ,nil];          
+    self.title = @"Task Detail";
+    
 }
 
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+}
 
 #pragma mark -
 #pragma mark Table view data source
@@ -38,7 +48,6 @@
     static NSString *CellIdentifier = @"Cell";
 	UITableViewCell *cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     // Configure the cell...
-    //cell.textLabel.text = [taskInfoValue objectAtIndex:[indexPath row]];
     
     UILabel *lblKey = [[UILabel alloc] initWithFrame:CGRectMake(10,10,300,25)];		
     //set the background color
@@ -70,6 +79,8 @@
     
 }
 
+#pragma mark -
+#pragma mark button toolbar call method
 
 - (IBAction)toggleMasterView:(id)sender {
     ItemMenuListController *menuListController = [[ItemMenuListController alloc]
@@ -85,41 +96,6 @@
     [menuListController release];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    
-    self.taskInfoName = [NSArray arrayWithObjects:@"Title:",@"Priority", 
-                         @"Status:",  @"% Complete:",@"Assigned To:", @"Description",@"Due Date:", @"Attachment", nil];    
-    
-    //self.taskInfoValue = [NSArray arrayWithObjects:@"Task222", @"Whitman.Yang",
-    //                   @"In Progress", @"(1) High", @"30%",@"2012-12-31", nil];    
-    
-    self.taskInfoValue = [NSArray arrayWithObjects:[taskInfo title], [taskInfo priority],
-                          [taskInfo status], [taskInfo percentComplete], [taskInfo assignTo],@"jsut test it",[taskInfo dueDate], @"AAA.pdf" ,nil];  
-    
-    
-    self.title = @"Task Detail";
-    
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {

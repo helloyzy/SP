@@ -8,6 +8,7 @@
 
 #import "GetListItemsService.h"
 #import "ListInfo.h"
+#import "NSObject+SPExtensions.h"
 
 @implementation GetListItemsService
 
@@ -53,11 +54,11 @@
 }
 
 - (void) sendNotificationOnSuccess:(id)value {
-    //Is anyone listening
-    if([delegate respondsToSelector:@selector(ListsReturn:)]) {
-        //send the delegate function with the amount entered by the user
-        [delegate ListsReturn:value];
-    }
+    [self postNotification:SP_NOTIFICATION_GETLISTITEMS_SUCCESS withValue:value];
+}
+
+- (void) sendNotificationOnFailure:(id)errorInfo {
+    [self postNotification:SP_NOTIFICATION_GETLISTITEMS_FAILURE withValue:errorInfo];
 }
 
 - (void) dealloc {

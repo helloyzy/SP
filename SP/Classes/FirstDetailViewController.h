@@ -3,9 +3,7 @@
 
 #import "ListInfo.h"
 
-@interface FirstDetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate,DataSourceDelegate, ListItemsDelegate> {
-
-   
+@interface FirstDetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
     NSMutableData* responseData;
     NSMutableArray * listOfItems;
     IBOutlet UITableView *tableview;

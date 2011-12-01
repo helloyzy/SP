@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ListInfo.h"
 
+
 @interface TaskEditViewController : UIViewController<UITextFieldDelegate> {
     IBOutlet UILabel * titleLabel;
     IBOutlet UILabel * priorityLabel;
@@ -18,8 +19,7 @@
     IBOutlet UILabel * descLabel;
     IBOutlet UILabel * dueDateLabel;
     IBOutlet UILabel * attachmentLabel;
-    
-    
+        
     IBOutlet UITextField * titleTextField;
     IBOutlet UITextField * priorityTextField;
     IBOutlet UITextField * statusTextField;
@@ -61,6 +61,4 @@
 
 -(IBAction) cancelChanges:(id)sender;
 -(IBAction) saveChanges:(id)sender;
-
-
 @end

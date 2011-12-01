@@ -16,6 +16,7 @@
 #import "SPListItem.h"
 #import "SPCoreDataUtil.h"
 #import "NSManagedObject+SPExtensions.h"
+#import "NSObject+SPExtensions.h"
 
 @implementation GetListCollectionService 
 
@@ -60,12 +61,13 @@
 }
 
 - (void) sendNotificationOnSuccess:(id)value {
-    //Is anyone listening
-    if([delegate respondsToSelector:@selector(dataSourceReturn:)]) {
-        //send the delegate function with the amount entered by the user
-        [delegate dataSourceReturn:value];
-    }
+    [self postNotification:SP_NOTIFICATION_GETLISTCOLLECTION_SUCCESS withValue:value];
 }
+
+- (void) sendNotificationOnFailure:(id)errorInfo {
+    [self postNotification:SP_NOTIFICATION_GETLISTCOLLECTION_FAILURE withValue:errorInfo];
+}
+
 
 - (void) dealloc {
     self.delegate = nil;

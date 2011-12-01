@@ -7,8 +7,6 @@
 //
 
 #import "SPAppDelegate.h"
-
-#import "SPViewController.h"
 #import "SPAuthenticationView.h"
 #import "SPCoreDataUtil.h"
 #import "SPCachedData.h"
@@ -38,12 +36,7 @@
 }
 
 - (void) setupTabView {
-    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-    SPViewController * viewController = [[[SPViewController alloc] initWithNibName:@"SPViewController" bundle:nil] autorelease];
-    SPAuthenticationView * authView = [[[SPAuthenticationView alloc] initWithNibName:@"SPAuthenticationView" bundle:nil] autorelease];
-    tabBarController.viewControllers = [NSArray arrayWithObjects:viewController, authView, nil];
-    tabBarController.selectedIndex = 0;
-    self.window.rootViewController = tabBarController;
+    
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
