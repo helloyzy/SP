@@ -9,8 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "ListInfo.h"
 
+<<<<<<< HEAD
 
 @interface TaskEditViewController : UIViewController<UITextFieldDelegate> {
+=======
+@interface TaskEditViewController : UIViewController<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UIActionSheetDelegate> {
+>>>>>>> status,priority,due date picker
     IBOutlet UILabel * titleLabel;
     IBOutlet UILabel * priorityLabel;
     IBOutlet UILabel * statusLabel;
@@ -27,12 +31,23 @@
     IBOutlet UITextField * assignedToTextField;
     IBOutlet UITextField * descTextField;
     IBOutlet UITextField * dueDateTextField;
-    IBOutlet UITextField * attachmenTextField;    
+    IBOutlet UITextField * attachmenTextField; 
     
     ListInfo * taskInfo;
     
     IBOutlet UIButton * cancelButton;
     IBOutlet UIButton * saveButton;
+    
+    IBOutlet UIButton *prioritySelectButton;
+    IBOutlet UIButton *statusSelectButton;
+    IBOutlet UIButton *dueDateSelectButton;
+    NSArray *priorityNameList;
+    NSArray *statusNameList;
+    UIPickerView *statusPicker;
+    UIPickerView *priorityPicker;
+    UIDatePicker *dueDatePicker;
+    UIActionSheet *menu;
+    BOOL pickerFlag;
 }
 
 
@@ -59,6 +74,23 @@
 @property (nonatomic, retain) IBOutlet UIButton * cancelButton;
 @property (nonatomic, retain) IBOutlet UIButton * saveButton;
 
+@property (nonatomic,retain) UIButton *prioritySelectButton;
+@property (nonatomic,retain) UIButton *statusSelectButton;
+@property (nonatomic,retain) UIButton *dueDateSelectButton;
+@property (nonatomic,retain) NSArray *priorityNameList;
+@property (nonatomic,retain) NSArray *statusNameList;
+@property (nonatomic,retain) UIPickerView *statusPicker;
+@property (nonatomic,retain) UIPickerView *priorityPicker;
+@property (nonatomic,retain) UIDatePicker *dueDatePicker;
+@property (nonatomic,retain) UIActionSheet *menu;
+
 -(IBAction) cancelChanges:(id)sender;
 -(IBAction) saveChanges:(id)sender;
+<<<<<<< HEAD
+=======
+-(IBAction) showStatusPicker:(id)sender;
+-(IBAction) showPriorityPicker:(id)sender;
+-(IBAction) showDueDatePicker:(id)sender;
+
+>>>>>>> status,priority,due date picker
 @end
