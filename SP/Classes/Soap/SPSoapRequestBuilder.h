@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class SoapRequest;
+@class ListInfo;
 
 @interface SPSoapRequestBuilder : NSObject
 
@@ -18,5 +19,6 @@
 + (SoapRequest *) buildModeRequest;
 
 + (SoapRequest *) buildGetListItemsRequest: (NSString *)listName withFolder: (NSString *)folder;
++ (SoapRequest *) buildUpdateItemsRequest: (NSString *)listName withFolder: (ListInfo *)itemDetail;
 
 @end

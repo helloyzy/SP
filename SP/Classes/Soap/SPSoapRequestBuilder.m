@@ -11,6 +11,7 @@
 #import "SPCachedData.h"
 #import "SPSoapRequest.h"
 #import "SPGetListItemsRequest.h"
+#import "SPUpdateItemRequest.h"
 
 @implementation SPSoapRequestBuilder
 
@@ -50,6 +51,16 @@
     request.listName = listName;
     request.folderName = folder;
     return request;
-}                     
+}        
+
++ (SoapRequest *) buildUpdateItemsRequest: (NSString *)listName withFolder: (ListInfo *)itemDetail {
+    if (!listName) {
+        return nil;
+    }
+    SPUpdateItemRequest * request = [SPUpdateItemRequest soapRequest];
+    request.listName = listName;
+    request.taskInfo = itemDetail;
+    return request;
+}
 
 @end

@@ -113,6 +113,8 @@
 		ADAD75351467B9BF004C7704 /* SPGetListItemsRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADAD75341467B9BD004C7704 /* SPGetListItemsRequest.m */; };
 		ADDD79E414834DE600C22DC0 /* TaskEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ADDD79E214834DE600C22DC0 /* TaskEditViewController.m */; };
 		ADDD79E514834DE600C22DC0 /* TaskEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ADDD79E314834DE600C22DC0 /* TaskEditViewController.xib */; };
+		ADFA66491488ABAC002DDCFA /* SPUpdateItemRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFA66461488ABAC002DDCFA /* SPUpdateItemRequest.m */; };
+		ADFA664A1488ABAC002DDCFA /* UpdateListItemsService.m in Sources */ = {isa = PBXBuildFile; fileRef = ADFA66481488ABAC002DDCFA /* UpdateListItemsService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,6 +325,10 @@
 		ADDD79E114834DE600C22DC0 /* TaskEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskEditViewController.h; sourceTree = "<group>"; };
 		ADDD79E214834DE600C22DC0 /* TaskEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskEditViewController.m; sourceTree = "<group>"; };
 		ADDD79E314834DE600C22DC0 /* TaskEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaskEditViewController.xib; sourceTree = "<group>"; };
+		ADFA66451488ABAC002DDCFA /* SPUpdateItemRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPUpdateItemRequest.h; sourceTree = "<group>"; };
+		ADFA66461488ABAC002DDCFA /* SPUpdateItemRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPUpdateItemRequest.m; sourceTree = "<group>"; };
+		ADFA66471488ABAC002DDCFA /* UpdateListItemsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateListItemsService.h; sourceTree = "<group>"; };
+		ADFA66481488ABAC002DDCFA /* UpdateListItemsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UpdateListItemsService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -685,6 +691,8 @@
 				0BA7EB6A1463C3B00055255D /* SPSoapRequestBuilder.m */,
 				ADAD75331467B9BC004C7704 /* SPGetListItemsRequest.h */,
 				ADAD75341467B9BD004C7704 /* SPGetListItemsRequest.m */,
+				ADFA66451488ABAC002DDCFA /* SPUpdateItemRequest.h */,
+				ADFA66461488ABAC002DDCFA /* SPUpdateItemRequest.m */,
 			);
 			name = SoapEntity;
 			sourceTree = "<group>";
@@ -704,6 +712,8 @@
 				0BDDD799146147C100FD34D2 /* SPSoapService.m */,
 				ADAD75271467A6DE004C7704 /* GetListItemsService.h */,
 				ADAD75281467A6DE004C7704 /* GetListItemsService.m */,
+				ADFA66471488ABAC002DDCFA /* UpdateListItemsService.h */,
+				ADFA66481488ABAC002DDCFA /* UpdateListItemsService.m */,
 			);
 			name = SoapService;
 			sourceTree = "<group>";
@@ -1052,6 +1062,8 @@
 				00E24E121483AC2B00B203D8 /* NSManagedObject+SPExtensions.m in Sources */,
 				00F02D971488723A00885225 /* MBProgressHUD.m in Sources */,
 				00F02D9E1488978200885225 /* MBProgressHUD+Extensions.m in Sources */,
+				ADFA66491488ABAC002DDCFA /* SPUpdateItemRequest.m in Sources */,
+				ADFA664A1488ABAC002DDCFA /* UpdateListItemsService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
