@@ -55,6 +55,8 @@
 		00E24E0C148370E600B203D8 /* SPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E0B148370E600B203D8 /* SPSettings.m */; };
 		00E24E121483AC2B00B203D8 /* NSManagedObject+SPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E111483AC2B00B203D8 /* NSManagedObject+SPExtensions.m */; };
 		00F02D971488723A00885225 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F02D961488723A00885225 /* MBProgressHUD.m */; };
+		00F02D9E1488978200885225 /* MBProgressHUD+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F02D9D1488978200885225 /* MBProgressHUD+Extensions.m */; };
+		00F02DA01488984900885225 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F02D9F1488984900885225 /* checkmark.png */; };
 		0B672D9D1456BD4900EAE589 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9C1456BD4900EAE589 /* CoreData.framework */; };
 		0B672D9F1456BD5800EAE589 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9E1456BD5800EAE589 /* CoreText.framework */; };
 		0B672DA41456BF4400EAE589 /* SPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DA31456BF4400EAE589 /* SPTests.m */; };
@@ -223,6 +225,9 @@
 		00E24E111483AC2B00B203D8 /* NSManagedObject+SPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+SPExtensions.m"; sourceTree = "<group>"; };
 		00F02D951488723A00885225 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		00F02D961488723A00885225 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		00F02D9C1488978200885225 /* MBProgressHUD+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Extensions.h"; sourceTree = "<group>"; };
+		00F02D9D1488978200885225 /* MBProgressHUD+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Extensions.m"; sourceTree = "<group>"; };
+		00F02D9F1488984900885225 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
 		0B672D9C1456BD4900EAE589 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0B672D9E1456BD5800EAE589 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0B672DA21456BF4400EAE589 /* SPTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTests.h; sourceTree = "<group>"; };
@@ -354,6 +359,7 @@
 		001642B6147A1AA6005C3DF8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				00F02D9F1488984900885225 /* checkmark.png */,
 				001642BC147A1BE3005C3DF8 /* bg_btn_clear.png */,
 				001642B8147A1B72005C3DF8 /* bg_btn_verify.png */,
 				001642B9147A1B72005C3DF8 /* bg.png */,
@@ -568,6 +574,8 @@
 			children = (
 				00F02D951488723A00885225 /* MBProgressHUD.h */,
 				00F02D961488723A00885225 /* MBProgressHUD.m */,
+				00F02D9C1488978200885225 /* MBProgressHUD+Extensions.h */,
+				00F02D9D1488978200885225 /* MBProgressHUD+Extensions.m */,
 			);
 			path = MBProgressHUD;
 			sourceTree = "<group>";
@@ -930,6 +938,7 @@
 				001642BB147A1B72005C3DF8 /* bg.png in Resources */,
 				001642BD147A1BE3005C3DF8 /* bg_btn_clear.png in Resources */,
 				ADDD79E514834DE600C22DC0 /* TaskEditViewController.xib in Resources */,
+				00F02DA01488984900885225 /* checkmark.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1042,6 +1051,7 @@
 				00E24E0C148370E600B203D8 /* SPSettings.m in Sources */,
 				00E24E121483AC2B00B203D8 /* NSManagedObject+SPExtensions.m in Sources */,
 				00F02D971488723A00885225 /* MBProgressHUD.m in Sources */,
+				00F02D9E1488978200885225 /* MBProgressHUD+Extensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

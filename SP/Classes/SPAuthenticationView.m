@@ -15,6 +15,7 @@
 #import "UTLDebug.h"
 #import "UIView+Boost.h"
 #import "SPCommon.h"
+#import "MBProgressHUD+Extensions.h"
 
 @interface SPAuthenticationView ()
 
@@ -76,9 +77,12 @@
 - (void)onVerificationSuccess:(NSNotification *)notification {
     RXMLElement * ele = (RXMLElement *) [self valueFromSPNotification:notification];
     NSLog(@"%@", [ele attribute:@"LoginName"]);
-    [self showInfo:@"Verification succeed"];
+    // [self showInfo:@"Verification succeed"];
     self.btnVerify.enabled = YES;
-    [self reset];
+    // [self reset];
+    // [self backToParent:nil];
+    [self hideProcessingHints];
+    [MBProgressHUD showConfirmationMsg:@"Authenticated!" withDelegate:self];
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
@@ -103,6 +107,12 @@
     self.lblProcessingTip.hidden = NO;
     [self.indicator startAnimating];
     self.indicator.hidden = NO;
+}
+
+#pragma mark - MBProgressHUD delegate 
+
+- (void) hudWasHidden:(MBProgressHUD *)hud {
+    [self backToParent:nil];
 }
 
 #pragma mark - UI callback methods
