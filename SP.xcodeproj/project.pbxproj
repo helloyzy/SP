@@ -54,6 +54,7 @@
 		00E24E09148370CB00B203D8 /* SPListItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E08148370CB00B203D8 /* SPListItem.m */; };
 		00E24E0C148370E600B203D8 /* SPSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E0B148370E600B203D8 /* SPSettings.m */; };
 		00E24E121483AC2B00B203D8 /* NSManagedObject+SPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E24E111483AC2B00B203D8 /* NSManagedObject+SPExtensions.m */; };
+		00F02D971488723A00885225 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F02D961488723A00885225 /* MBProgressHUD.m */; };
 		0B672D9D1456BD4900EAE589 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9C1456BD4900EAE589 /* CoreData.framework */; };
 		0B672D9F1456BD5800EAE589 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9E1456BD5800EAE589 /* CoreText.framework */; };
 		0B672DA41456BF4400EAE589 /* SPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DA31456BF4400EAE589 /* SPTests.m */; };
@@ -220,6 +221,8 @@
 		00E24E0B148370E600B203D8 /* SPSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPSettings.m; sourceTree = "<group>"; };
 		00E24E101483AC2B00B203D8 /* NSManagedObject+SPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObject+SPExtensions.h"; sourceTree = "<group>"; };
 		00E24E111483AC2B00B203D8 /* NSManagedObject+SPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObject+SPExtensions.m"; sourceTree = "<group>"; };
+		00F02D951488723A00885225 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		00F02D961488723A00885225 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		0B672D9C1456BD4900EAE589 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0B672D9E1456BD5800EAE589 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0B672DA21456BF4400EAE589 /* SPTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTests.h; sourceTree = "<group>"; };
@@ -560,12 +563,22 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		00F02D931488721B00885225 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				00F02D951488723A00885225 /* MBProgressHUD.h */,
+				00F02D961488723A00885225 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		0B672D351456B4EE00EAE589 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
 				00C7EF36147F3F1400F21C6B /* ASIHTTPRequest */,
 				0BC2F93D1460F8D300292406 /* GoogleXML */,
 				00C7EED9147F37F100F21C6B /* iBoost */,
+				00F02D931488721B00885225 /* MBProgressHUD */,
 				0BAAF50B145940FD003B4640 /* RaptureXML */,
 			);
 			path = 3rdParty;
@@ -1028,6 +1041,7 @@
 				00E24E09148370CB00B203D8 /* SPListItem.m in Sources */,
 				00E24E0C148370E600B203D8 /* SPSettings.m in Sources */,
 				00E24E121483AC2B00B203D8 /* NSManagedObject+SPExtensions.m in Sources */,
+				00F02D971488723A00885225 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
