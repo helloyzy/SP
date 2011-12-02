@@ -53,6 +53,7 @@
     [super viewWillAppear:animated];
     [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_SUCCESS withSelector:@selector(onVerificationSuccess:)];
     [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_FAILURE withSelector:@selector(onVerificationFailure:)];
+    [self registerNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withSelector:@selector(fetchTopListCollection)];
     
 }
 

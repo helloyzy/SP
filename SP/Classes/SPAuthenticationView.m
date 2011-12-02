@@ -75,9 +75,11 @@
 }
 
 - (void)onVerificationSuccess:(NSNotification *)notification {
-    RXMLElement * ele = (RXMLElement *) [self valueFromSPNotification:notification];
-    NSLog(@"%@", [ele attribute:@"LoginName"]);
+    // RXMLElement * ele = (RXMLElement *) [self valueFromSPNotification:notification];
     // [self showInfo:@"Verification succeed"];
+    
+    // send out notifications
+    [self postNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withValue:nil];
     self.btnVerify.enabled = YES;
     // [self reset];
     // [self backToParent:nil];
