@@ -9,12 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ListInfo.h"
 
-<<<<<<< HEAD
-
-@interface TaskEditViewController : UIViewController<UITextFieldDelegate> {
-=======
 @interface TaskEditViewController : UIViewController<UITextFieldDelegate,UIPickerViewDelegate,UIPickerViewDataSource,UIActionSheetDelegate> {
->>>>>>> status,priority,due date picker
     IBOutlet UILabel * titleLabel;
     IBOutlet UILabel * priorityLabel;
     IBOutlet UILabel * statusLabel;
@@ -86,11 +81,7 @@
 
 -(IBAction) cancelChanges:(id)sender;
 -(IBAction) saveChanges:(id)sender;
-<<<<<<< HEAD
-=======
 -(IBAction) showStatusPicker:(id)sender;
 -(IBAction) showPriorityPicker:(id)sender;
 -(IBAction) showDueDatePicker:(id)sender;
-
->>>>>>> status,priority,due date picker
 @end

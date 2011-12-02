@@ -27,21 +27,6 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    titleTextField.text =[taskInfo title];
-    assignedToTextField.text =[taskInfo assignTo];
-    statusTextField.text =[taskInfo status];
-    statusTextField.delegate = self;
-    priorityTextField.text =[taskInfo priority];
-    completeTextField.text =[taskInfo percentComplete];
-    dueDateTextField.text =[taskInfo dueDate];
-    descTextField.text =@"just test it...";
-    attachmenTextField.text =@"AAA.PDF";
-    
-}
-
 - (void) viewWillAppear:(BOOL)animated {
     
     [super viewWillAppear:animated];
@@ -63,10 +48,6 @@
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
-
-
-<<<<<<< HEAD
-=======
 
 -(IBAction) showDueDatePicker:(id)sender{
     menu = [[UIActionSheet alloc] initWithTitle:@"Select Date" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Done",nil];
@@ -93,21 +74,7 @@
 
     }
 }
->>>>>>> status,priority,due date picker
-#pragma mark -
-#pragma mark UITextFieldDelegate methods
 
-//- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-//{
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil 
-//                                                    message:@"status list here"
-//                                                   delegate:nil 
-//                                          cancelButtonTitle:@"OK" 
-//                                          otherButtonTitles:nil];
-//    [alert show];
-//    [alert release];
-//    return NO;
-//}
 
 -(NSInteger) numberOfComponentsInPickerView:(UIPickerView *) pickerView	{
 	return 1;
@@ -224,8 +191,6 @@
     [menu dismissWithClickedButtonIndex:0 animated:YES];
 }
 
-<<<<<<< HEAD
-=======
 
 #pragma mark - View lifecycle
 
@@ -254,7 +219,6 @@
     
 }
 
->>>>>>> status,priority,due date picker
 - (IBAction)cancelChanges:(id)sender {
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil 
