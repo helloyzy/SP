@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 
-@interface SPAuthenticationView : UIViewController <MBProgressHUDDelegate>
+@interface SPAuthenticationView : UIViewController <MBProgressHUDDelegate> {
+    MBProgressHUD * HUD;
+}
 
 @property (nonatomic, retain) IBOutlet UILabel * lblLoginName;
 

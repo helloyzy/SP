@@ -19,9 +19,16 @@
 #import "SPAuthenticationView.h"
 #import "NSObject+SPExtensions.h"
 #import "SPConst.h"
+#import "ProgressIndicator.h"
+#import "SPCachedData.h"
 
 @interface RootViewController ()
+
 - (void) fetchTopListCollection;
+- (void) popDetailViewToRoot;
+- (void) clearLists;
+- (void) showFirstDetailWithListsCleared;
+
 @end
 
 @implementation RootViewController
@@ -60,10 +67,26 @@
     [super viewWillDisappear:animated];
 }
 
+#pragma mark - private methods
+
+- (void) showFirstDetailWithListsCleared {
+    [self popDetailViewToRoot];
+    firstDetailViewController.title = [SPCachedData serviceRelativePath];
+    [firstDetailViewController clearLists];    
+}
+
+- (void) clearLists {
+    self.listOfItems = [NSMutableArray array];
+    [self.topListTableView reloadData];
+}
+
 #pragma mark -
 #pragma sharepoint soap web service call method
 
 - (void) fetchTopListCollection {
+    // [self clearLists];
+    [self showFirstDetailWithListsCleared];
+    
     SoapRequest * request = [SPSoapRequestBuilder buildListInfoRequest];
     GetListCollectionService * listInfoService = [[GetListCollectionService alloc] init];
     listInfoService.soapRequestParam = request;    
@@ -72,6 +95,7 @@
 }
 
 - (void)onVerificationSuccess:(NSNotification *)notification {
+    [ProgressIndicator hide];
     NSMutableArray * lists = (NSMutableArray *) [self valueFromSPNotification:notification];
     NSLog(@"%@", lists);
     self.listOfItems = lists;
@@ -79,6 +103,7 @@
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
+    [ProgressIndicator hide];
     NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
     NSLog(@"%@", errorMsg);
     //[self showError:errorMsg];
@@ -120,10 +145,18 @@
 #pragma mark -
 #pragma mark Table view selection
 
+- (void)popDetailViewToRoot {
+    UINavigationController * detailNavController = (UINavigationController *)firstDetailViewController.parentViewController;
+    [detailNavController popToRootViewControllerAnimated:NO];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    // The detail view should pop up to the root view controller which is the firstDetailViewController
+    [self popDetailViewToRoot];
     ListInfo * listinfo = (ListInfo *)[listOfItems objectAtIndex:indexPath.row];
     firstDetailViewController.listInfo = listinfo;
+    //NSLog(@"%@", firstDetailViewController.parentViewController.);
 }
 
 
@@ -132,22 +165,20 @@
 
 
 - (IBAction) refreshLists:(id)sender {
+    [ProgressIndicator show:@"Refreshing list collection"];
     [self fetchTopListCollection];
 }
 
 - (IBAction) logonSites:(id)sender {
-    
-    if (!authenticatePopover) { 
+    if (authenticatePopover && authenticatePopover.isPopoverVisible) {
+        [authenticatePopover dismissPopoverAnimated:YES];
+    } else {
         SPAuthenticationView *controller = [[SPAuthenticationView alloc] initWithNibName:@"SPAuthenticationView" bundle:nil];
         UIPopoverController * popOver = [[UIPopoverController alloc] initWithContentViewController:controller];
         self.authenticatePopover = popOver;        
         controller.container = authenticatePopover;
         [controller release];
         [popOver release];
-    } 
-    if (authenticatePopover.isPopoverVisible) {
-        [authenticatePopover dismissPopoverAnimated:YES];
-    } else {
         [authenticatePopover presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
     }
 }
