@@ -37,29 +37,27 @@
     [super viewDidLoad];
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 600.0);
     [self setTitle:@"List Collection"];
+    [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_SUCCESS withSelector:@selector(onVerificationSuccess:)];
+    [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_FAILURE withSelector:@selector(onVerificationFailure:)];
+    [self registerNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withSelector:@selector(fetchTopListCollection)];    
     [self fetchTopListCollection];
 }
 
 -(void) viewDidUnload {
 	[super viewDidUnload];	
+    [self unregisterNotification];
 	self.firstDetailViewController = nil;
     [self.authenticatePopover dismissPopoverAnimated:NO];
     self.authenticatePopover = nil;
     self.siteItem = nil;
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    
-    [super viewWillAppear:animated];
-    [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_SUCCESS withSelector:@selector(onVerificationSuccess:)];
-    [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_FAILURE withSelector:@selector(onVerificationFailure:)];
-    [self registerNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withSelector:@selector(fetchTopListCollection)];
-    
+- (void) viewWillAppear:(BOOL)animated {    
+    [super viewWillAppear:animated];    
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [self unregisterNotification];
 }
 
 #pragma mark -
