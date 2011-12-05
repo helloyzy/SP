@@ -40,7 +40,7 @@
     [writer writeAttribute:@"Cmd" value:@"Update"];
        
     [writer writeStartElement:@"Field"];
-    [writer writeAttribute:@"Name" value:@"id"];
+    [writer writeAttribute:@"Name" value:@"ID"];
     [writer writeCharacters:@"1"];
     [writer writeEndElement];
     
@@ -49,6 +49,7 @@
     [writer writeCharacters:[taskInfo title]];
     [writer writeEndElement];
     
+    /**
     [writer writeStartElement:@"Field"];
     [writer writeAttribute:@"Name" value:@"Body"];
     [writer writeCharacters:@"1"];
@@ -83,7 +84,7 @@
     [writer writeAttribute:@"Name" value:@"Priority"];
     [writer writeCharacters:@"1"];
     [writer writeEndElement];
-    
+    */
     [writer writeEndElement];
     [writer writeEndElement];
     [writer writeEndElement];

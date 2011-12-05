@@ -9,6 +9,8 @@
 #import "TaskEditViewController.h"
 #import "NSObject+SPExtensions.h"
 #import "SPConst.h"
+#import "SPSoapRequestBuilder.h"
+#import "UpdateListItemsService.h"
 
 
 @interface TaskEditViewController ()
@@ -17,6 +19,7 @@
 //- (void) showInfo:(NSString *)infoMsg;
 //- (void) showError:(NSString *)errorMsg;
 //- (void) showMessage:(NSString *)message withTextColor:(UIColor *)textColor;
+- (void) updateTaskDetail;
 
 @end
 
@@ -231,15 +234,30 @@
 }
 
 - (IBAction)saveChanges:(id)sender {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil 
-                                                    message:@"update the changes"
-                                                   delegate:nil 
-                                          cancelButtonTitle:@"OK" 
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
+    [self updateTaskDetail];
 }
 
+- (void) updateTaskDetail {
+    ListInfo * newTaskInfo = [[ListInfo alloc] init];
+    
+    newTaskInfo.title = titleTextField.text;
+    newTaskInfo.assignTo =assignedToTextField.text;
+    newTaskInfo.status =statusTextField.text;
+    newTaskInfo.priority =priorityTextField.text;
+    newTaskInfo.percentComplete =completeTextField.text;
+    newTaskInfo.dueDate =dueDateTextField.text;
+    newTaskInfo.listDescription =descTextField.text;
+    
+    NSLog(@"%@", taskInfo);
+    
+    SoapRequest * request = [SPSoapRequestBuilder buildUpdateItemsRequest:[taskInfo listName] withFolder:newTaskInfo];
+    UpdateListItemsService * updateItemService = [[UpdateListItemsService alloc] init];
+    updateItemService.soapRequestParam = request;    
+    updateItemService.delegate = self;
+    [updateItemService request];    
+    [updateItemService release];
+    [newTaskInfo release];
+}
 #pragma mark -
 #pragma sharepoint soap web service call method
 

@@ -6,7 +6,7 @@
 @interface FirstDetailViewController : UIViewController <UIPopoverControllerDelegate, UISplitViewControllerDelegate> {
     NSMutableData* responseData;
     NSMutableArray * listOfItems;
-    IBOutlet UITableView *tableview;
+    IBOutlet UITableView *detailTableView;
     ListInfo * listInfo;
     UIPopoverController *popoverController;
     UIWebView * webView;
@@ -14,7 +14,7 @@
 }
 
 @property (nonatomic, retain) NSMutableArray * listOfItems;
-@property (nonatomic, retain) IBOutlet UITableView *tableview;
+@property (nonatomic, retain) IBOutlet UITableView *detailTableView;
 @property (nonatomic, retain) ListInfo * listInfo;
 @property (nonatomic, retain) UIPopoverController *popoverController;
 @property (nonatomic, retain) UIWebView * webView;

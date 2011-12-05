@@ -26,7 +26,7 @@
 
 @implementation RootViewController
 
-@synthesize firstDetailViewController, listOfItems, tableView, authenticatePopover, siteItem;
+@synthesize firstDetailViewController, listOfItems, topListTableView, authenticatePopover, siteItem;
 
 
 
@@ -78,7 +78,7 @@
     NSMutableArray * lists = (NSMutableArray *) [self valueFromSPNotification:notification];
     NSLog(@"%@", lists);
     self.listOfItems = lists;
-    [self.tableView reloadData];
+    [self.topListTableView reloadData];
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
@@ -124,6 +124,7 @@
 #pragma mark Table view selection
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     ListInfo * listinfo = (ListInfo *)[listOfItems objectAtIndex:indexPath.row];
     firstDetailViewController.listInfo = listinfo;
 }
@@ -160,7 +161,7 @@
 - (void)dealloc {
     [firstDetailViewController release];
     [listOfItems release];
-    [tableView release];
+    [topListTableView release];
     [super dealloc];
 }
 

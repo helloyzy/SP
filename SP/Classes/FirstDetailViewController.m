@@ -31,7 +31,7 @@
 
 @implementation FirstDetailViewController
 
-@synthesize listOfItems, tableview, popoverController, listInfo, webView;
+@synthesize listOfItems, detailTableView, popoverController, listInfo, webView;
 
 
 #pragma mark -
@@ -48,7 +48,7 @@
         
     }
     
-    [self requestSubFolder:listInfo.listName withFolder:listInfo.fileRef];
+    [self requestSubFolder:listInfo.title withFolder:listInfo.fileRef];
     [self setTitle:listInfo.fileRef];
     
     
@@ -124,7 +124,7 @@
     NSMutableArray * lists = (NSMutableArray *) [self valueFromSPNotification:notification];
     NSLog(@"%@", lists);
     self.listOfItems = lists;
-    [self.tableview reloadData];
+    [self.detailTableView reloadData];
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
@@ -183,15 +183,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    ListInfo * selectedItem = (ListInfo *)[listOfItems objectAtIndex:indexPath.row];
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
+    ListInfo * selectedItem = (ListInfo *)[listOfItems objectAtIndex:indexPath.row];
+    selectedItem.listName = [listInfo listName];
+       
     NSString *fileRef = [selectedItem fileRef];
     NSString* fileName = [fileRef lastPathComponent];
     
     if ([selectedItem.type isEqualToString:@"1"]) {
         
         FirstDetailViewController *controller = [[FirstDetailViewController alloc] init];
-        selectedItem.listName = listInfo.listName;
+        selectedItem.title = listInfo.title;
         controller.listInfo = selectedItem;
         [[self navigationController] pushViewController:controller animated:YES];
         
@@ -293,7 +296,7 @@
 #pragma mark Memory management
 
 - (void)dealloc {
-    [tableview release];
+    [detailTableView release];
     [listInfo release];
     [listOfItems release];
     [webView release];

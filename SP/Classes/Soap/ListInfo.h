@@ -12,7 +12,7 @@
 @interface ListInfo : SoapRequest
 
 @property(nonatomic, retain) NSString * title;
-@property (nonatomic, retain) NSString * description;
+@property (nonatomic, retain) NSString * listDescription;
 @property(nonatomic, retain) NSString * type;
 @property (nonatomic, retain) NSString * fileRef;
 

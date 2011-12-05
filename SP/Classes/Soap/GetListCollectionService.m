@@ -37,9 +37,9 @@
     [xml iterate:@"soap:Body.GetListCollectionResponse.GetListCollectionResult.Lists.List" with:^(RXMLElement * listEle) {
         ListInfo * list = [[ListInfo alloc] init];
         list.title = [listEle attribute:@"Title"];
-        list.listName = list.title;
+        list.listName =[listEle attribute:@"Name"];
         list.fileRef = [NSString stringWithFormat:@"%@/%@", [SPCachedData serviceRelativePath], list.title];
-        list.description = [listEle attribute:@"Description"];
+        list.listDescription = [listEle attribute:@"Description"];
         
         
         NSString *hidden=[listEle attribute:@"Hidden"];

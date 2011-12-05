@@ -15,11 +15,11 @@
 	FirstDetailViewController *firstDetailViewController;   
     NSMutableData* responseData;
     NSMutableArray * listOfItems;
-    IBOutlet UITableView * tableView;
+    IBOutlet UITableView * topListTableView;
 }
 @property (nonatomic, assign) IBOutlet FirstDetailViewController *firstDetailViewController;
 @property(nonatomic, retain) NSMutableArray *listOfItems;
-@property(nonatomic, retain) IBOutlet UITableView *tableView;
+@property(nonatomic, retain) IBOutlet UITableView *topListTableView;
 @property(nonatomic, retain) UIPopoverController * authenticatePopover;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem * siteItem;
 

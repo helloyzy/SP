@@ -11,7 +11,7 @@
 @implementation ListInfo
 
 @synthesize title;
-@synthesize description;
+@synthesize listDescription;
 @synthesize type;
 @synthesize fileRef;
 
@@ -21,7 +21,7 @@
 
 - (void) dealloc {
     self.title = nil;
-    self.description = nil;
+    self.listDescription = nil;
     self.type = nil;
     self.fileRef = nil;
 
