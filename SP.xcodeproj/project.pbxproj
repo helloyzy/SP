@@ -57,6 +57,8 @@
 		00F02D971488723A00885225 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F02D961488723A00885225 /* MBProgressHUD.m */; };
 		00F02D9E1488978200885225 /* MBProgressHUD+Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F02D9D1488978200885225 /* MBProgressHUD+Extensions.m */; };
 		00F02DA01488984900885225 /* checkmark.png in Resources */ = {isa = PBXBuildFile; fileRef = 00F02D9F1488984900885225 /* checkmark.png */; };
+		00F02DB31488CB7D00885225 /* ProgressIndicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F02DB21488CB7D00885225 /* ProgressIndicator.m */; };
+		00F02DBB148B5A1300885225 /* UIViewController+SPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 00F02DBA148B5A1200885225 /* UIViewController+SPExtensions.m */; };
 		0B672D9D1456BD4900EAE589 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9C1456BD4900EAE589 /* CoreData.framework */; };
 		0B672D9F1456BD5800EAE589 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B672D9E1456BD5800EAE589 /* CoreText.framework */; };
 		0B672DA41456BF4400EAE589 /* SPTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0B672DA31456BF4400EAE589 /* SPTests.m */; };
@@ -230,6 +232,10 @@
 		00F02D9C1488978200885225 /* MBProgressHUD+Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+Extensions.h"; sourceTree = "<group>"; };
 		00F02D9D1488978200885225 /* MBProgressHUD+Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Extensions.m"; sourceTree = "<group>"; };
 		00F02D9F1488984900885225 /* checkmark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkmark.png; sourceTree = "<group>"; };
+		00F02DB11488CB7D00885225 /* ProgressIndicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressIndicator.h; sourceTree = "<group>"; };
+		00F02DB21488CB7D00885225 /* ProgressIndicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressIndicator.m; sourceTree = "<group>"; };
+		00F02DB9148B5A1200885225 /* UIViewController+SPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+SPExtensions.h"; sourceTree = "<group>"; };
+		00F02DBA148B5A1200885225 /* UIViewController+SPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+SPExtensions.m"; sourceTree = "<group>"; };
 		0B672D9C1456BD4900EAE589 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		0B672D9E1456BD5800EAE589 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0B672DA21456BF4400EAE589 /* SPTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPTests.h; sourceTree = "<group>"; };
@@ -854,6 +860,8 @@
 				00E24E111483AC2B00B203D8 /* NSManagedObject+SPExtensions.m */,
 				0BDDD7A31461607300FD34D2 /* NSObject+SPExtensions.h */,
 				0BDDD7A41461607300FD34D2 /* NSObject+SPExtensions.m */,
+				00F02DB11488CB7D00885225 /* ProgressIndicator.h */,
+				00F02DB21488CB7D00885225 /* ProgressIndicator.m */,
 				0BDDD7A01461586C00FD34D2 /* SPCachedData.h */,
 				0BDDD7A11461586C00FD34D2 /* SPCachedData.m */,
 				00476A1F147C8D2B008C42D6 /* SPCommon.h */,
@@ -861,6 +869,8 @@
 				0BDDD79D146156A200FD34D2 /* SPConst.h */,
 				00E24E0414836FDB00B203D8 /* SPCoreDataUtil.h */,
 				00E24E0514836FDB00B203D8 /* SPCoreDataUtil.m */,
+				00F02DB9148B5A1200885225 /* UIViewController+SPExtensions.h */,
+				00F02DBA148B5A1200885225 /* UIViewController+SPExtensions.m */,
 			);
 			name = Common;
 			sourceTree = "<group>";
@@ -1064,6 +1074,8 @@
 				00F02D9E1488978200885225 /* MBProgressHUD+Extensions.m in Sources */,
 				ADFA66491488ABAC002DDCFA /* SPUpdateItemRequest.m in Sources */,
 				ADFA664A1488ABAC002DDCFA /* UpdateListItemsService.m in Sources */,
+				00F02DB31488CB7D00885225 /* ProgressIndicator.m in Sources */,
+				00F02DBB148B5A1300885225 /* UIViewController+SPExtensions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
