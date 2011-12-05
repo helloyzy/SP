@@ -7,9 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "SoapRequest.h"
+#import "SoapEntity.h"
 
-@interface ListInfo : SoapRequest
+@interface ListInfo : SoapEntity
 
 @property(nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSString * listDescription;

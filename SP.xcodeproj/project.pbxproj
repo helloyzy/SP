@@ -102,6 +102,8 @@
 		AD155604146CF99C001ACF38 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD155603146CF99C001ACF38 /* MobileCoreServices.framework */; };
 		AD3D8B0A146A6832009F7D49 /* FirstDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD3D8B09146A6832009F7D49 /* FirstDetailView.xib */; };
 		AD3D8B13146A6962009F7D49 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = AD3D8B12146A6962009F7D49 /* MainWindow.xib */; };
+		AD69FBFB148CB6CB00EA4717 /* GetUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD69FBFA148CB6CB00EA4717 /* GetUserInfo.m */; };
+		AD69FBFF148CB6D500EA4717 /* GetUserCollectionFromSiteService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD69FBFE148CB6D500EA4717 /* GetUserCollectionFromSiteService.m */; };
 		AD7E6059145F94960093FFA3 /* ListInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E6057145F94960093FFA3 /* ListInfo.m */; };
 		AD7E605C145F949D0093FFA3 /* GetListCollectionService.m in Sources */ = {isa = PBXBuildFile; fileRef = AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */; };
 		AD7E6062145F95480093FFA3 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AD7E6061145F95480093FFA3 /* libxml2.dylib */; };
@@ -309,6 +311,10 @@
 		AD155603146CF99C001ACF38 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		AD3D8B09146A6832009F7D49 /* FirstDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FirstDetailView.xib; path = ../FirstDetailView.xib; sourceTree = "<group>"; };
 		AD3D8B12146A6962009F7D49 /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		AD69FBF9148CB6CB00EA4717 /* GetUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserInfo.h; sourceTree = "<group>"; };
+		AD69FBFA148CB6CB00EA4717 /* GetUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserInfo.m; sourceTree = "<group>"; };
+		AD69FBFD148CB6D500EA4717 /* GetUserCollectionFromSiteService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetUserCollectionFromSiteService.h; sourceTree = "<group>"; };
+		AD69FBFE148CB6D500EA4717 /* GetUserCollectionFromSiteService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetUserCollectionFromSiteService.m; sourceTree = "<group>"; };
 		AD7E6057145F94960093FFA3 /* ListInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListInfo.m; sourceTree = "<group>"; };
 		AD7E6058145F94960093FFA3 /* ListInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListInfo.h; sourceTree = "<group>"; };
 		AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetListCollectionService.m; sourceTree = "<group>"; };
@@ -687,6 +693,8 @@
 		0B672DBE1456C41000EAE589 /* SoapEntity */ = {
 			isa = PBXGroup;
 			children = (
+				AD69FBF9148CB6CB00EA4717 /* GetUserInfo.h */,
+				AD69FBFA148CB6CB00EA4717 /* GetUserInfo.m */,
 				AD7E6058145F94960093FFA3 /* ListInfo.h */,
 				AD7E6057145F94960093FFA3 /* ListInfo.m */,
 				0BA7EB621463B2BB0055255D /* SPSimpleSoapRequest.h */,
@@ -706,6 +714,8 @@
 		0B672DBF1456C41E00EAE589 /* SoapService */ = {
 			isa = PBXGroup;
 			children = (
+				AD69FBFD148CB6D500EA4717 /* GetUserCollectionFromSiteService.h */,
+				AD69FBFE148CB6D500EA4717 /* GetUserCollectionFromSiteService.m */,
 				AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */,
 				AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */,
 				0B672DC91456C4D000EAE589 /* GetUserInfoService.h */,
@@ -1076,6 +1086,8 @@
 				ADFA664A1488ABAC002DDCFA /* UpdateListItemsService.m in Sources */,
 				00F02DB31488CB7D00885225 /* ProgressIndicator.m in Sources */,
 				00F02DBB148B5A1300885225 /* UIViewController+SPExtensions.m in Sources */,
+				AD69FBFB148CB6CB00EA4717 /* GetUserInfo.m in Sources */,
+				AD69FBFF148CB6D500EA4717 /* GetUserCollectionFromSiteService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
