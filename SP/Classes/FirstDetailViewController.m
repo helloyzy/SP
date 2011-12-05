@@ -114,7 +114,6 @@
     SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:topListName withFolder:folder];
     GetListItemsService* listItemsService = [[GetListItemsService alloc]init];
     listItemsService.soapRequestParam = request;    
-    listItemsService.delegate = self;
     [listItemsService request];    
     [listItemsService release];
 }

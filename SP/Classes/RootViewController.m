@@ -69,7 +69,6 @@
     SoapRequest * request = [SPSoapRequestBuilder buildListInfoRequest];
     GetListCollectionService * listInfoService = [[GetListCollectionService alloc] init];
     listInfoService.soapRequestParam = request;    
-    listInfoService.delegate = self;
     [listInfoService request];    
     [listInfoService release];
 }
