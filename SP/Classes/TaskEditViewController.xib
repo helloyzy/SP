@@ -217,7 +217,7 @@
 					<object class="IBUITextField" id="239295033">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{157, 176}, {324, 31}}</string>
+						<string key="NSFrame">{{157, 176}, {282, 31}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="450312628"/>
@@ -235,6 +235,7 @@
 						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
+							<int key="IBUIKeyboardType">4</int>
 							<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="433369382"/>
@@ -540,6 +541,7 @@
 						<reference key="IBUIFontDescription" ref="29261987"/>
 						<reference key="IBUIFont" ref="934545177"/>
 					</object>
+<<<<<<< HEAD
 					<object class="IBUIButton" id="848891333">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
@@ -560,6 +562,26 @@
 						<reference key="IBUINormalTitleShadowColor" ref="441868963"/>
 						<reference key="IBUIFontDescription" ref="29261987"/>
 						<reference key="IBUIFont" ref="934545177"/>
+=======
+					<object class="IBUILabel" id="2040187">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{447, 176}, {42, 31}}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
+						<bool key="IBUIOpaque">NO</bool>
+						<bool key="IBUIClipsSubviews">YES</bool>
+						<int key="IBUIContentMode">7</int>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<string key="IBUIText">%</string>
+						<reference key="IBUITextColor" ref="138854490"/>
+						<nil key="IBUIHighlightedColor"/>
+						<int key="IBUIBaselineAdjustment">1</int>
+						<float key="IBUIMinimumFontSize">10</float>
+						<reference key="IBUIFontDescription" ref="218375619"/>
+						<reference key="IBUIFont" ref="1010242904"/>
+>>>>>>> complete, assign to updates
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
@@ -840,7 +862,11 @@
 							<reference ref="142436294"/>
 							<reference ref="847791408"/>
 							<reference ref="9899596"/>
+<<<<<<< HEAD
 							<reference ref="848891333"/>
+=======
+							<reference ref="2040187"/>
+>>>>>>> complete, assign to updates
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -951,7 +977,11 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">69</int>
+<<<<<<< HEAD
 						<reference key="object" ref="848891333"/>
+=======
+						<reference key="object" ref="2040187"/>
+>>>>>>> complete, assign to updates
 						<reference key="parent" ref="766721923"/>
 					</object>
 				</array>
@@ -989,7 +1019,11 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
+<<<<<<< HEAD
 			<int key="maxID">73</int>
+=======
+			<int key="maxID">69</int>
+>>>>>>> complete, assign to updates
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">

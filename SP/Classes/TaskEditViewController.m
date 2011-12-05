@@ -220,14 +220,16 @@
     //self.taskInfoValue = [NSMutableArray arrayWithObjects:@"Task222", @"Whitman.Yang",
       //                    @"In Progress", @"(1) High", @"30%",@"2012-12-31", nil];   
     titleTextField.text =[taskInfo title]; 
-    assignedToTextField.text =[taskInfo assignTo];
+    
+    assignedToTextField.text =[[taskInfo assignTo] substringFromIndex:3];
     statusTextField.text =[taskInfo status];
     statusTextField.delegate = self;
     statusTextField.enabled = NO;
     priorityTextField.enabled = NO;
     dueDateTextField.enabled = NO;
     priorityTextField.text =[taskInfo priority];
-    completeTextField.text =[taskInfo percentComplete];
+    NSInteger completeInt = [[taskInfo percentComplete] floatValue]*100;
+    completeTextField.text =[NSString stringWithFormat:@"%d",completeInt];
     dueDateTextField.text =[taskInfo dueDate];
     descTextField.text =@"just test it...";
     attachmenTextField.text =@"AAA.PDF";
