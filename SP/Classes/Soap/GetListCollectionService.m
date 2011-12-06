@@ -20,6 +20,7 @@
 
 @implementation GetListCollectionService 
 
+@synthesize delegate;
 
 #pragma mark - protected methods implementations
 
@@ -69,6 +70,7 @@
 
 
 - (void) dealloc {
+    self.delegate = nil;
     [super dealloc];
 }
 

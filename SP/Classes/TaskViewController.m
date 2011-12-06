@@ -22,14 +22,10 @@
 {
     [super viewDidLoad];
     
-    NSInteger completeInt = [[taskInfo percentComplete] floatValue]*100;
-    NSString *completeStr = [[NSString stringWithFormat:@"%d",completeInt] stringByAppendingString:@"%"];
-    NSString *assigntoStr = [[taskInfo assignTo] substringFromIndex:3];
-    
     self.taskInfoName = [NSArray arrayWithObjects:@"Title:",@"Priority", 
                          @"Status:",  @"% Complete:",@"Assigned To:", @"Description",@"Due Date:", @"Attachment", nil];    
     self.taskInfoValue = [NSArray arrayWithObjects:[taskInfo title], [taskInfo priority],
-                          [taskInfo status], completeStr, assigntoStr,@"jsut test it",[taskInfo dueDate],@"AAA.pdf" ,nil];   
+                          [taskInfo status], [taskInfo percentComplete], [taskInfo assignTo],@"jsut test it",[taskInfo dueDate],@"AAA.pdf" ,nil];          
     self.title = @"Task Detail";
     
 }

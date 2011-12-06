@@ -28,7 +28,6 @@
 - (void)hideProcessingHints;
 - (void)showProcessingHints;
 - (void)hideKeyBoard;
-- (void)hideHUD;
 
 @end
 
@@ -58,7 +57,6 @@
 - (void)hideKeyBoard {
     [self.txtUserName resignFirstResponder];
     [self.txtPassword resignFirstResponder];
-    [self.txtSite resignFirstResponder];
 }
 
 - (void) showMessage:(NSString *)message withTextColor:(UIColor *)textColor {
@@ -82,26 +80,17 @@
     
     // send out notifications
     [self postNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withValue:nil];
-    // self.btnVerify.enabled = YES;
+    self.btnVerify.enabled = YES;
     // [self reset];
     // [self backToParent:nil];
-    // [self hideProcessingHints];
-    // [MBProgressHUD showConfirmationMsg:@"Authenticated!" withDelegate:self];
-    
-    HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark.png"]] autorelease];	
-    // Set custom view mode
-    HUD.mode = MBProgressHUDModeCustomView;
-    HUD.labelText = @"Authenticated!";
-    HUD.delegate = self;
-    [self performSelector:@selector(hideHUD) withObject:nil afterDelay:2];
+    [self hideProcessingHints];
+    [MBProgressHUD showConfirmationMsg:@"Authenticated!" withDelegate:self];
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
-    HUD.delegate = nil;
-    [HUD hide:YES];
     NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
     [self showError:errorMsg];
-    // self.btnVerify.enabled = YES;
+    self.btnVerify.enabled = YES;
     self.txtPassword.text = @"";
     [self.txtPassword becomeFirstResponder];
 }
@@ -120,10 +109,6 @@
     self.lblProcessingTip.hidden = NO;
     [self.indicator startAnimating];
     self.indicator.hidden = NO;
-}
-
-- (void)hideHUD {
-    [HUD hide:YES];
 }
 
 #pragma mark - MBProgressHUD delegate 
@@ -153,16 +138,8 @@
     
     [self hideKeyBoard];
     [self hideResultHints];
-    // [self showProcessingHints];
-    // self.btnVerify.enabled = NO;
-    if (!HUD) {
-        UIWindow * mainWindow = [[UIApplication sharedApplication] keyWindow];
-        HUD = [[MBProgressHUD alloc] initWithWindow:mainWindow];
-        [mainWindow addSubview:HUD];
-        HUD.labelText = @"Verifying, please wait...";
-        HUD.dimBackground = YES;
-    }
-    [HUD show:YES];
+    [self showProcessingHints];
+    self.btnVerify.enabled = NO;
     
     [SPCachedData fillCredentialWithUser:userName password:password];
     [SPCachedData fillSiteInfo:site];
@@ -248,11 +225,6 @@
     self.lblResultTip = nil;
     self.lblProcessingTip = nil;
     self.btnVerify = nil;
-    if (HUD) {
-        [HUD removeFromSuperview];
-        [HUD release];
-        HUD = nil;
-    }
     [super dealloc];
 }
 

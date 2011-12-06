@@ -11,6 +11,7 @@
 
 @implementation UpdateListItemsService
 
+@synthesize delegate;
 - (void) prepareUrlAndHeadProps {
     // self.serviceUrl = SP_SOAP_URL_LISTS;
     [self buildServiceUrlWithName:SP_SOAP_URL_LISTS];
@@ -30,6 +31,7 @@
     [self postNotification:SP_NOTIFICATION_UPDATEITEM_FAILURE withValue:errorInfo];
 }
 - (void) dealloc {
+    self.delegate = nil;
     [super dealloc];
 }
 @end

@@ -24,7 +24,9 @@
     self.listDescription = nil;
     self.type = nil;
     self.fileRef = nil;
+
     self.listName = nil;
+
     self.assignTo = nil;
     self.status = nil;
     self.priority = nil;

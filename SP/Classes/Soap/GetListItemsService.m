@@ -12,6 +12,7 @@
 
 @implementation GetListItemsService
 
+@synthesize delegate;
 
 - (void) prepareUrlAndHeadProps {
     // self.serviceUrl = SP_SOAP_URL_LISTS;
@@ -61,6 +62,7 @@
 }
 
 - (void) dealloc {
+    self.delegate = nil;
     [super dealloc];
 }
 @end

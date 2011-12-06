@@ -49,43 +49,42 @@
     [writer writeCharacters:[taskInfo title]];
     [writer writeEndElement];
     
-    
+    /**
     [writer writeStartElement:@"Field"];
     [writer writeAttribute:@"Name" value:@"Body"];
-    [writer writeCharacters:[taskInfo listDescription]];
+    [writer writeCharacters:@"1"];
     [writer writeEndElement];
     
     [writer writeStartElement:@"Field"];
     [writer writeAttribute:@"Name" value:@"PercentComplete"];
-    [writer writeCharacters:[taskInfo percentComplete]];
+    [writer writeCharacters:@"1"];
     [writer writeEndElement];
     
     [writer writeStartElement:@"Field"];
     [writer writeAttribute:@"Name" value:@"Status"];
-    [writer writeCharacters:[taskInfo status]];
+    [writer writeCharacters:@"1"];
     [writer writeEndElement];
     
     [writer writeStartElement:@"Field"];
     [writer writeAttribute:@"Name" value:@"AssignedTo"];
-    [writer writeCharacters:[taskInfo assignTo]];
+    [writer writeCharacters:@"1"];
     [writer writeEndElement];
     
     [writer writeStartElement:@"Field"];
     [writer writeAttribute:@"Name" value:@"StartDate"];
-    [writer writeCharacters:[taskInfo dueDate]];
+    [writer writeCharacters:@"1"];
     [writer writeEndElement];
     
     [writer writeStartElement:@"Field"];
     [writer writeAttribute:@"Name" value:@"DueDate"];
-    [writer writeCharacters:[taskInfo dueDate]];
+    [writer writeCharacters:@"1"];
     [writer writeEndElement];
     
     [writer writeStartElement:@"Field"];
     [writer writeAttribute:@"Name" value:@"Priority"];
-    [writer writeCharacters:[taskInfo priority]];
+    [writer writeCharacters:@"1"];
     [writer writeEndElement];
-    
-    
+    */
     [writer writeEndElement];
     [writer writeEndElement];
     [writer writeEndElement];
