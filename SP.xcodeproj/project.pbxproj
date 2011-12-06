@@ -741,11 +741,8 @@
 		0B672DBF1456C41E00EAE589 /* SoapService */ = {
 			isa = PBXGroup;
 			children = (
-<<<<<<< HEAD
 				7312C2B1148CB0F900A54587 /* AddAttachmentService.h */,
 				7312C2B2148CB0FA00A54587 /* AddAttachmentService.m */,
-=======
->>>>>>> d07b8c437311d3ee422c1ea1e7ba78bca0a66184
 				AD69FBFD148CB6D500EA4717 /* GetUserCollectionFromSiteService.h */,
 				AD69FBFE148CB6D500EA4717 /* GetUserCollectionFromSiteService.m */,
 				AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */,
@@ -1122,14 +1119,11 @@
 				ADFA664A1488ABAC002DDCFA /* UpdateListItemsService.m in Sources */,
 				00F02DB31488CB7D00885225 /* ProgressIndicator.m in Sources */,
 				00F02DBB148B5A1300885225 /* UIViewController+SPExtensions.m in Sources */,
-<<<<<<< HEAD
 				7312C2A6148CA78200A54587 /* AttachmentGalleryViewController.m in Sources */,
 				7312C2A8148CA78200A54587 /* FileListViewController.m in Sources */,
 				7312C2AF148CA7C300A54587 /* Base64.m in Sources */,
 				7312C2B0148CA7C300A54587 /* Item.m in Sources */,
 				7312C2B3148CB10500A54587 /* AddAttachmentService.m in Sources */,
-=======
->>>>>>> d07b8c437311d3ee422c1ea1e7ba78bca0a66184
 				AD69FBFF148CB6D500EA4717 /* GetUserCollectionFromSiteService.m in Sources */,
 				AD69FC02148CB76200EA4717 /* UserInfo.m in Sources */,
 			);
