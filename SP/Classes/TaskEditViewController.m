@@ -11,11 +11,14 @@
 #import "SPConst.h"
 #import "SPSoapRequestBuilder.h"
 #import "UpdateListItemsService.h"
+#import "GetUserCollectionFromSiteService.h"
 
 
 @interface TaskEditViewController ()
 - (void)onVerificationSuccess:(NSNotification *)notification;
 - (void)onVerificationFailure:(NSNotification *)notification;
+- (void)onVerificationSuccessForUsers:(NSNotification *)notification;
+- (void)onVerificationFailureForUsers:(NSNotification *)notification;
 //- (void) showInfo:(NSString *)infoMsg;
 //- (void) showError:(NSString *)errorMsg;
 //- (void) showMessage:(NSString *)message withTextColor:(UIColor *)textColor;
@@ -25,7 +28,7 @@
 
 @implementation TaskEditViewController
 
-@synthesize titleLabel,titleTextField,priorityLabel,priorityTextField,statusLabel,statusTextField,assignedToLabel,assignedToTextField,completeLabel,completeTextField,dueDateLabel,dueDateTextField,attachmentLabel, descLabel,descTextField,attachmenTextField, taskInfo, cancelButton, saveButton, statusPicker, menu,statusNameList,statusSelectButton,prioritySelectButton,priorityNameList,priorityPicker,dueDateSelectButton,dueDatePicker;
+@synthesize titleLabel,titleTextField,priorityLabel,priorityTextField,statusLabel,statusTextField,assignedToLabel,assignedToTextField,completeLabel,completeTextField,dueDateLabel,dueDateTextField,attachmentLabel, descLabel,descTextField,attachmenTextField, taskInfo, cancelButton, saveButton, statusPicker, menu,statusNameList,statusSelectButton,prioritySelectButton,priorityNameList,priorityPicker,dueDateSelectButton,dueDatePicker, userSelectButton;
 
 
 #pragma mark - View lifecycle
@@ -35,6 +38,8 @@
     [super viewWillAppear:animated];
     [self registerNotification:SP_NOTIFICATION_UPDATEITEM_SUCCESS withSelector:@selector(onVerificationSuccess:)];
     [self registerNotification:SP_NOTIFICATION_UPDATEITEM_FAILURE withSelector:@selector(onVerificationFailure:)];
+    [self registerNotification:SP_NOTIFICATION_GETUSERCOLLCTION__SUCCESS withSelector:@selector(onVerificationSuccessForUsers:)];
+    [self registerNotification:SP_NOTIFICATION_GETUSERCOLLCTION__FAILURE withSelector:@selector(onVerificationFailureForUsers:)];
     
 }
 
@@ -103,6 +108,16 @@
     
 }
 
+
+- (IBAction)showUsersPicker:(id)sender {
+    SoapRequest * request = [SPSoapRequestBuilder buildGetUserForSiteRequest];
+    GetUserCollectionFromSiteService * getUsersService = [[GetUserCollectionFromSiteService alloc] init];
+    getUsersService.soapRequestParam = request;    
+    [getUsersService request];    
+    [getUsersService release];
+
+    
+}
 
 -(IBAction)showStatusPicker:(id)sender
 {   
@@ -205,14 +220,16 @@
     //self.taskInfoValue = [NSMutableArray arrayWithObjects:@"Task222", @"Whitman.Yang",
       //                    @"In Progress", @"(1) High", @"30%",@"2012-12-31", nil];   
     titleTextField.text =[taskInfo title]; 
-    assignedToTextField.text =[taskInfo assignTo];
+    
+    assignedToTextField.text =[[taskInfo assignTo] substringFromIndex:3];
     statusTextField.text =[taskInfo status];
     statusTextField.delegate = self;
     statusTextField.enabled = NO;
     priorityTextField.enabled = NO;
     dueDateTextField.enabled = NO;
     priorityTextField.text =[taskInfo priority];
-    completeTextField.text =[taskInfo percentComplete];
+    NSInteger completeInt = [[taskInfo percentComplete] floatValue]*100;
+    completeTextField.text =[NSString stringWithFormat:@"%d",completeInt];
     dueDateTextField.text =[taskInfo dueDate];
     descTextField.text =@"just test it...";
     attachmenTextField.text =@"AAA.PDF";
@@ -252,8 +269,7 @@
     
     SoapRequest * request = [SPSoapRequestBuilder buildUpdateItemsRequest:[taskInfo listName] withFolder:newTaskInfo];
     UpdateListItemsService * updateItemService = [[UpdateListItemsService alloc] init];
-    updateItemService.soapRequestParam = request;    
-    updateItemService.delegate = self;
+    updateItemService.soapRequestParam = request;   
     [updateItemService request];    
     [updateItemService release];
     [newTaskInfo release];
@@ -272,6 +288,16 @@
     //[self showError:errorMsg];
 }
 
+- (void)onVerificationSuccessForUsers:(NSNotification *)notification {
+    NSMutableArray * lists = (NSMutableArray *) [self valueFromSPNotification:notification];
+    NSLog(@"%@", lists);    
+
+}
+- (void)onVerificationFailureForUsers:(NSNotification *)notification {
+    NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
+    NSLog(@"%@", errorMsg);
+    //[self showError:errorMsg];
+}
 
 #pragma mark -
 #pragma mark Rotation support
@@ -303,6 +329,7 @@
     [taskInfo release];
     [cancelButton release];
     [saveButton release];    
+    [userSelectButton release];
 }
 
 @end

@@ -19,4 +19,7 @@
 @property (nonatomic, retain) UIPopoverController *popoverController;
 @property (nonatomic, retain) UIWebView * webView;
 
+
+- (void) clearLists;
+
 @end
