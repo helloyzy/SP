@@ -68,28 +68,26 @@
 
 -(void)buttonPressed:(id)sender {
      UIButton *button = (UIButton*)sender;
-//     NSLog(@"....CLICK IMAGE ....%@", [button titleForState:UIControlStateNormal]);
-//     UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil message:[button titleForState:UIControlStateNormal] 
-//                                                       delegate:nil 
-//                                              cancelButtonTitle:nil 
-//                                              otherButtonTitles:@"OK",nil];
-//     [alertview show];
-//     [alertview release];
+     NSLog(@"....CLICK IMAGE ....%@", [button titleForState:UIControlStateNormal]);
+     UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil message:[button titleForState:UIControlStateNormal] 
+                                                       delegate:nil 
+                                              cancelButtonTitle:nil 
+                                              otherButtonTitles:@"OK",nil];
+     [alertview show];
+     [alertview release];
     
     
-    
-    
-    
-    NSString *fileName = [button titleForState:UIControlStateNormal];           
-    
-    SoapRequest * request = [SPSoapRequestBuilder buildAddAttachmentRequest:fileName];
-    
-    //NSLog(@"attachment request is : %@",request);
-    
-    AddAttachmentService * addAttachmentService = [[AddAttachmentService alloc] init];
-    addAttachmentService.soapRequestParam = request;    
-    [addAttachmentService request];    
-    [addAttachmentService release];
+   
+//    NSString *fileName = [button titleForState:UIControlStateNormal];           
+//    
+//    SoapRequest * request = [SPSoapRequestBuilder buildAddAttachmentRequest:fileName];
+//    
+//    //NSLog(@"attachment request is : %@",request);
+//    
+//    AddAttachmentService * addAttachmentService = [[AddAttachmentService alloc] init];
+//    addAttachmentService.soapRequestParam = request;    
+//    [addAttachmentService request];    
+//    [addAttachmentService release];
 
 }
 
