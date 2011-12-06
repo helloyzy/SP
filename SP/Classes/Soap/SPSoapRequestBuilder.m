@@ -63,6 +63,7 @@
     return request;
 }
 
+<<<<<<< HEAD
 
 + (SoapRequest *) buildAddAttachmentRequest:(NSString *)fileName {
     SPSimpleSoapRequest * request = [SPSimpleSoapRequest soapRequest];
@@ -74,6 +75,8 @@
     return request;
 }
 
+=======
+>>>>>>> d07b8c437311d3ee422c1ea1e7ba78bca0a66184
 + (SoapRequest *) buildGetUserForSiteRequest {
     SPSimpleSoapRequest * request = [SPSimpleSoapRequest soapRequest];
     request.rootTagName = @"GetUserCollectionFromSite";
