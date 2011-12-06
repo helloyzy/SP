@@ -97,6 +97,13 @@
 		0BDDD79A146147C100FD34D2 /* SPSoapService.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDDD799146147C100FD34D2 /* SPSoapService.m */; };
 		0BDDD7A21461586C00FD34D2 /* SPCachedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDDD7A11461586C00FD34D2 /* SPCachedData.m */; };
 		0BDDD7A51461607300FD34D2 /* NSObject+SPExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BDDD7A41461607300FD34D2 /* NSObject+SPExtensions.m */; };
+		7312C2A6148CA78200A54587 /* AttachmentGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7312C2A1148CA78200A54587 /* AttachmentGalleryViewController.m */; };
+		7312C2A7148CA78200A54587 /* AttachmentGalleryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7312C2A2148CA78200A54587 /* AttachmentGalleryViewController.xib */; };
+		7312C2A8148CA78200A54587 /* FileListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7312C2A4148CA78200A54587 /* FileListViewController.m */; };
+		7312C2A9148CA78200A54587 /* FileListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7312C2A5148CA78200A54587 /* FileListViewController.xib */; };
+		7312C2AF148CA7C300A54587 /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7312C2AC148CA7C300A54587 /* Base64.m */; };
+		7312C2B0148CA7C300A54587 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = 7312C2AE148CA7C300A54587 /* Item.m */; };
+		7312C2B3148CB10500A54587 /* AddAttachmentService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7312C2B2148CB0FA00A54587 /* AddAttachmentService.m */; };
 		AD155600146CF980001ACF38 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD1555FF146CF980001ACF38 /* CFNetwork.framework */; };
 		AD155602146CF98F001ACF38 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD155601146CF98F001ACF38 /* SystemConfiguration.framework */; };
 		AD155604146CF99C001ACF38 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD155603146CF99C001ACF38 /* MobileCoreServices.framework */; };
@@ -304,6 +311,18 @@
 		0BDDD7A11461586C00FD34D2 /* SPCachedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCachedData.m; sourceTree = "<group>"; };
 		0BDDD7A31461607300FD34D2 /* NSObject+SPExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SPExtensions.h"; sourceTree = "<group>"; };
 		0BDDD7A41461607300FD34D2 /* NSObject+SPExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SPExtensions.m"; sourceTree = "<group>"; };
+		7312C2A0148CA78200A54587 /* AttachmentGalleryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttachmentGalleryViewController.h; sourceTree = "<group>"; };
+		7312C2A1148CA78200A54587 /* AttachmentGalleryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttachmentGalleryViewController.m; sourceTree = "<group>"; };
+		7312C2A2148CA78200A54587 /* AttachmentGalleryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttachmentGalleryViewController.xib; sourceTree = "<group>"; };
+		7312C2A3148CA78200A54587 /* FileListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileListViewController.h; sourceTree = "<group>"; };
+		7312C2A4148CA78200A54587 /* FileListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileListViewController.m; sourceTree = "<group>"; };
+		7312C2A5148CA78200A54587 /* FileListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileListViewController.xib; sourceTree = "<group>"; };
+		7312C2AB148CA7C300A54587 /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		7312C2AC148CA7C300A54587 /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
+		7312C2AD148CA7C300A54587 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		7312C2AE148CA7C300A54587 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		7312C2B1148CB0F900A54587 /* AddAttachmentService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAttachmentService.h; sourceTree = "<group>"; };
+		7312C2B2148CB0FA00A54587 /* AddAttachmentService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAttachmentService.m; sourceTree = "<group>"; };
 		AD1555FF146CF980001ACF38 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		AD155601146CF98F001ACF38 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		AD155603146CF99C001ACF38 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -549,6 +568,12 @@
 		00C7EF5A147F427000F21C6B /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				7312C2A0148CA78200A54587 /* AttachmentGalleryViewController.h */,
+				7312C2A1148CA78200A54587 /* AttachmentGalleryViewController.m */,
+				7312C2A2148CA78200A54587 /* AttachmentGalleryViewController.xib */,
+				7312C2A3148CA78200A54587 /* FileListViewController.h */,
+				7312C2A4148CA78200A54587 /* FileListViewController.m */,
+				7312C2A5148CA78200A54587 /* FileListViewController.xib */,
 				ADDD79E114834DE600C22DC0 /* TaskEditViewController.h */,
 				ADDD79E214834DE600C22DC0 /* TaskEditViewController.m */,
 				ADDD79E314834DE600C22DC0 /* TaskEditViewController.xib */,
@@ -573,6 +598,8 @@
 		00C7EF5B147F42EF00F21C6B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7312C2AD148CA7C300A54587 /* Item.h */,
+				7312C2AE148CA7C300A54587 /* Item.m */,
 				00E24E0A148370E600B203D8 /* SPSettings.h */,
 				00E24E0B148370E600B203D8 /* SPSettings.m */,
 				00E24E07148370CB00B203D8 /* SPListItem.h */,
@@ -706,6 +733,8 @@
 		0B672DBF1456C41E00EAE589 /* SoapService */ = {
 			isa = PBXGroup;
 			children = (
+				7312C2B1148CB0F900A54587 /* AddAttachmentService.h */,
+				7312C2B2148CB0FA00A54587 /* AddAttachmentService.m */,
 				AD7E605B145F949D0093FFA3 /* GetListCollectionService.h */,
 				AD7E605A145F949D0093FFA3 /* GetListCollectionService.m */,
 				0B672DC91456C4D000EAE589 /* GetUserInfoService.h */,
@@ -856,6 +885,8 @@
 		0BDDD79B1461552900FD34D2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7312C2AB148CA7C300A54587 /* Base64.h */,
+				7312C2AC148CA7C300A54587 /* Base64.m */,
 				00E24E101483AC2B00B203D8 /* NSManagedObject+SPExtensions.h */,
 				00E24E111483AC2B00B203D8 /* NSManagedObject+SPExtensions.m */,
 				0BDDD7A31461607300FD34D2 /* NSObject+SPExtensions.h */,
@@ -959,6 +990,8 @@
 				001642BD147A1BE3005C3DF8 /* bg_btn_clear.png in Resources */,
 				ADDD79E514834DE600C22DC0 /* TaskEditViewController.xib in Resources */,
 				00F02DA01488984900885225 /* checkmark.png in Resources */,
+				7312C2A7148CA78200A54587 /* AttachmentGalleryViewController.xib in Resources */,
+				7312C2A9148CA78200A54587 /* FileListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1076,6 +1109,11 @@
 				ADFA664A1488ABAC002DDCFA /* UpdateListItemsService.m in Sources */,
 				00F02DB31488CB7D00885225 /* ProgressIndicator.m in Sources */,
 				00F02DBB148B5A1300885225 /* UIViewController+SPExtensions.m in Sources */,
+				7312C2A6148CA78200A54587 /* AttachmentGalleryViewController.m in Sources */,
+				7312C2A8148CA78200A54587 /* FileListViewController.m in Sources */,
+				7312C2AF148CA7C300A54587 /* Base64.m in Sources */,
+				7312C2B0148CA7C300A54587 /* Item.m in Sources */,
+				7312C2B3148CB10500A54587 /* AddAttachmentService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

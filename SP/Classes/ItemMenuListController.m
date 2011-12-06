@@ -1,6 +1,8 @@
 #import "ItemMenuListController.h"
 #import "TaskViewController.h"
 #import "TaskEditViewController.h"
+#import "AttachmentGalleryViewController.h"
+#import "FileListViewController.h"
 @implementation ItemMenuListController
 
 @synthesize menuNames, taskInfo;
@@ -11,7 +13,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.menuNames = [NSArray arrayWithObjects:@"Edit The Item", @"Delete the Item",
-                      @"Add Attachments", nil];    
+                      @"Add Attachments", @"Add Photo", nil];    
     self.clearsSelectionOnViewWillAppear = NO;
     self.contentSizeForViewInPopover = CGSizeMake(320.0, 
 												  [self.menuNames count] * 44.0);
@@ -71,8 +73,32 @@
         
         [editTaskViewController release];
         // release popover in 'popoverControllerDidDismissPopover:' method
-    }
-    
+    }else if(indexPath.row == 2){
+        
+        FileListViewController *fileListViewController = [[FileListViewController alloc] init];        
+        
+        UIPopoverController *fileListPopoverController = [[UIPopoverController alloc] initWithContentViewController:fileListViewController];
+        fileListPopoverController.popoverContentSize = CGSizeMake(450, 400);
+        
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [fileListPopoverController presentPopoverFromRect:cell.bounds inView:cell.contentView 
+                                 permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        
+        [fileListViewController release];
+        
+    }else if(indexPath.row == 3){
+
+        AttachmentGalleryViewController *attachmentGalleryViewController = [[AttachmentGalleryViewController alloc] initWithNibName:@"AttachmentGalleryViewController" bundle:nil];
+        UIPopoverController *attachmentGalleryPopoverController = [[UIPopoverController alloc] initWithContentViewController:attachmentGalleryViewController];
+        attachmentGalleryPopoverController.popoverContentSize = CGSizeMake(500, 600);
+        //            
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [attachmentGalleryPopoverController presentPopoverFromRect:cell.bounds inView:cell.contentView 
+                                          permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        
+        [attachmentGalleryViewController release];
+        
+    }    
 }
 
 #pragma mark -
