@@ -22,7 +22,7 @@
     IBOutlet UITextField * titleTextField;
     IBOutlet UITextField * priorityTextField;
     IBOutlet UITextField * statusTextField;
-    IBOutlet UITextField * completeTextField;
+    IBOutlet UISlider * sliderLabel;
     IBOutlet UITextField * assignedToTextField;
     IBOutlet UITextField * descTextField;
     IBOutlet UITextField * dueDateTextField;
@@ -59,7 +59,7 @@
 @property (nonatomic, retain) IBOutlet UITextField * titleTextField;
 @property (nonatomic, retain) IBOutlet UITextField * priorityTextField;
 @property (nonatomic, retain) IBOutlet UITextField * statusTextField;
-@property (nonatomic, retain) IBOutlet UITextField * completeTextField;
+@property (nonatomic, retain) IBOutlet UISlider * sliderLabel;
 @property (nonatomic, retain) IBOutlet UITextField * assignedToTextField;
 @property (nonatomic, retain) IBOutlet UITextField * descTextField;
 @property (nonatomic, retain) IBOutlet UITextField * dueDateTextField;
@@ -87,4 +87,5 @@
 -(IBAction) showPriorityPicker:(id)sender;
 -(IBAction) showDueDatePicker:(id)sender;
 -(IBAction) showUsersPicker:(id)sender;
+-(IBAction)sliderChanged:(id)sender;
 @end

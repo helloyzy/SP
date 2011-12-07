@@ -28,7 +28,7 @@
 
 @implementation TaskEditViewController
 
-@synthesize titleLabel,titleTextField,priorityLabel,priorityTextField,statusLabel,statusTextField,assignedToLabel,assignedToTextField,completeLabel,completeTextField,dueDateLabel,dueDateTextField,attachmentLabel, descLabel,descTextField,attachmenTextField, taskInfo, cancelButton, saveButton, statusPicker, menu,statusNameList,statusSelectButton,prioritySelectButton,priorityNameList,priorityPicker,dueDateSelectButton,dueDatePicker, userSelectButton;
+@synthesize titleLabel,titleTextField,priorityLabel,priorityTextField,statusLabel,statusTextField,assignedToLabel,assignedToTextField,completeLabel,sliderLabel,dueDateLabel,dueDateTextField,attachmentLabel, descLabel,descTextField,attachmenTextField, taskInfo, cancelButton, saveButton, statusPicker, menu,statusNameList,statusSelectButton,prioritySelectButton,priorityNameList,priorityPicker,dueDateSelectButton,dueDatePicker, userSelectButton;
 
 
 #pragma mark - View lifecycle
@@ -229,7 +229,7 @@
     dueDateTextField.enabled = NO;
     priorityTextField.text =[taskInfo priority];
     NSInteger completeInt = [[taskInfo percentComplete] floatValue]*100;
-    completeTextField.text =[NSString stringWithFormat:@"%d",completeInt];
+    sliderLabel.value =completeInt;
     dueDateTextField.text =[taskInfo dueDate];
     descTextField.text =@"just test it...";
     attachmenTextField.text =@"AAA.PDF";
@@ -254,14 +254,22 @@
     [self updateTaskDetail];
 }
 
+-(IBAction)sliderChanged:(id)sender {
+    UISlider *slider = (UISlider *)sender;
+    NSInteger progressAsInt = (NSInteger)(slider.value + 0.5f);
+    sliderLabel.value =progressAsInt;
+}
+
 - (void) updateTaskDetail {
     ListInfo * newTaskInfo = [[ListInfo alloc] init];
     
     newTaskInfo.title = titleTextField.text;
-    newTaskInfo.assignTo =assignedToTextField.text;
+    //newTaskInfo.assignTo =assignedToTextField.text;
+    newTaskInfo.assignTo =@"1";
     newTaskInfo.status =statusTextField.text;
     newTaskInfo.priority =priorityTextField.text;
-    newTaskInfo.percentComplete =completeTextField.text;
+    NSLog(@"%f", sliderLabel.value);
+    newTaskInfo.percentComplete = [NSString stringWithFormat:@"%f", sliderLabel.value/100];
     newTaskInfo.dueDate =dueDateTextField.text;
     newTaskInfo.listDescription =descTextField.text;
     
@@ -319,7 +327,7 @@
     [assignedToLabel release];
     [assignedToTextField release];    
     [completeLabel release];
-    [completeTextField release];
+    [sliderLabel release];
     [dueDateLabel release];
     [dueDateTextField release];    
     [attachmentLabel release];
