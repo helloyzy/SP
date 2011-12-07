@@ -12,7 +12,7 @@
 #import "SPSoapRequest.h"
 #import "SPGetListItemsRequest.h"
 #import "SPUpdateItemRequest.h"
-
+#import "Base64.h"
 @implementation SPSoapRequestBuilder
 
 + (SoapRequest *) buildModeRequest {
@@ -66,6 +66,16 @@
 + (SoapRequest *) buildGetUserForSiteRequest {
     SPSimpleSoapRequest * request = [SPSimpleSoapRequest soapRequest];
     request.rootTagName = @"GetUserCollectionFromSite";
+    return request;
+}
+
++ (SoapRequest *) buildAddAttachmentRequest:(NSString *)fileName {
+    SPSimpleSoapRequest * request = [SPSimpleSoapRequest soapRequest];
+    request.rootTagName = @"AddAttachment";
+    [request addElement:@"listName" withStringValue:@"74C84711-4EDB-4DF2-952F-413A176EA0CC"];
+    [request addElement:@"listItemID" withStringValue:@"1"];
+    [request addElement:@"fileName" withStringValue:fileName];
+    [request addElement:@"attachment" withStringValue:[Base64 encodeWithFileName:fileName]];
     return request;
 }
 

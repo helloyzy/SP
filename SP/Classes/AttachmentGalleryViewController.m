@@ -68,7 +68,7 @@
 
 -(void)buttonPressed:(id)sender {
      UIButton *button = (UIButton*)sender;
-     NSLog(@"....CLICK IMAGE ....%@", [button titleForState:UIControlStateNormal]);
+     //NSLog(@"....CLICK IMAGE ....%@", [button titleForState:UIControlStateNormal]);
      UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:nil message:[button titleForState:UIControlStateNormal] 
                                                        delegate:nil 
                                               cancelButtonTitle:nil 
@@ -77,7 +77,9 @@
      [alertview release];
     
     
-   
+    
+    
+    
 //    NSString *fileName = [button titleForState:UIControlStateNormal];           
 //    
 //    SoapRequest * request = [SPSoapRequestBuilder buildAddAttachmentRequest:fileName];
