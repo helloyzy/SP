@@ -10,7 +10,12 @@
 #import "SoapRequest.h"
 #import "UTLDebug.h"
 
-@interface SoapServiceBase () 
+// Connection timeout setting (in seconds)
+static int SP_CONNECTION_TIMEOUT = 20;
+
+@interface SoapServiceBase () {
+    BOOL isTimeoutTimerCancelled;
+}
 
 @property (nonatomic, retain) NSMutableData * responseData;
 @property (nonatomic, retain) NSURLConnection * connection;
@@ -18,6 +23,7 @@
 - (void) sendSoapRequest:(NSURLRequest *)request;
 - (void) handleError:(NSError *)error;
 - (void) handleException:(NSException *)exception;
+- (void) timeout;
 
 @end
 
@@ -83,6 +89,9 @@
 - (void) sendSoapRequest:(NSURLRequest *)request {
     @try {
         connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        isTimeoutTimerCancelled = NO;
+        // schedule timeout checking
+        [self performSelector:@selector(timeout) withObject:nil afterDelay:SP_CONNECTION_TIMEOUT];
     } @catch (NSException *exception) {
         [self handleException:exception];
     }
@@ -109,7 +118,8 @@
     [responseData appendData:data];
 }
 
-- (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {   
+- (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {  
+    isTimeoutTimerCancelled = YES;
     // ignore the passed-in error if we have customized error information
     if (errorObj) {
         [self fail:[self parseError]];
@@ -119,6 +129,7 @@
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {	
+    isTimeoutTimerCancelled = YES;
     NSString * responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     UTLLog(@"%@", responseString);
     id responseObject = [self parseResponse:responseString];
@@ -131,6 +142,16 @@
         self.responseData = nil;
         self.connection = nil;
     }
+}
+
+#pragma mark - timeout 
+
+- (void) timeout {
+    if (isTimeoutTimerCancelled) {
+        return;
+    }
+    [self.connection cancel];
+    [self fail:@"Time out error."];    
 }
 
 #pragma mark - destroy related
