@@ -11,6 +11,4 @@
 
 @interface GetListCollectionService : SPSoapService
 
-@property (nonatomic, retain) id delegate;
-
 @end

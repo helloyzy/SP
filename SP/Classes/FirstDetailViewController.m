@@ -15,7 +15,7 @@
 #import "TaskViewController.h"
 #import "SPCachedData.h"
 #import "NSObject+SPExtensions.h"
-
+#import "ProgressIndicator.h"
 
 @interface FirstDetailViewController ()
 
@@ -33,6 +33,12 @@
 
 @synthesize listOfItems, detailTableView, popoverController, listInfo, webView;
 
+#pragma mark - public methods
+
+- (void)  clearLists {
+    self.listOfItems = [NSMutableArray array];
+    [self.detailTableView reloadData];
+}
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -41,6 +47,11 @@
  When setting the detail item, update the view and dismiss the popover controller if it's showing.
  */
 - (void)setListInfo:(ListInfo *) newlistInfo {
+    
+    if (popoverController != nil) {
+        [popoverController dismissPopoverAnimated:YES];
+    }   
+    [self clearLists];
     
     if (listInfo != newlistInfo) {
         [listInfo release];
@@ -51,12 +62,8 @@
     [self requestSubFolder:listInfo.title withFolder:listInfo.fileRef];
     [self setTitle:listInfo.fileRef];
     
-    
-    if (popoverController != nil) {
-        [popoverController dismissPopoverAnimated:YES];
-    }        
-    
-    
+    NSString * tip = [NSString stringWithFormat:@"Getting items under %@", self.title];
+    [ProgressIndicator show:tip];
 }
 
 - (void)viewDidLoad {
@@ -114,13 +121,13 @@
     SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:topListName withFolder:folder];
     GetListItemsService* listItemsService = [[GetListItemsService alloc]init];
     listItemsService.soapRequestParam = request;    
-    listItemsService.delegate = self;
     [listItemsService request];    
     [listItemsService release];
 }
 
 
 - (void)onVerificationSuccess:(NSNotification *)notification {
+    [ProgressIndicator hide];
     NSMutableArray * lists = (NSMutableArray *) [self valueFromSPNotification:notification];
     NSLog(@"%@", lists);
     self.listOfItems = lists;
@@ -128,6 +135,7 @@
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
+    [ProgressIndicator hide];
     NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
     NSLog(@"%@", errorMsg);
     //[self showError:errorMsg];

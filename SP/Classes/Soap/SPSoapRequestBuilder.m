@@ -63,4 +63,10 @@
     return request;
 }
 
++ (SoapRequest *) buildGetUserForSiteRequest {
+    SPSimpleSoapRequest * request = [SPSimpleSoapRequest soapRequest];
+    request.rootTagName = @"GetUserCollectionFromSite";
+    return request;
+}
+
 @end

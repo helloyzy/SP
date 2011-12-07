@@ -36,6 +36,7 @@
     IBOutlet UIButton *prioritySelectButton;
     IBOutlet UIButton *statusSelectButton;
     IBOutlet UIButton *dueDateSelectButton;
+    IBOutlet UIButton *userSelectButton;
     NSArray *priorityNameList;
     NSArray *statusNameList;
     UIPickerView *statusPicker;
@@ -72,6 +73,7 @@
 @property (nonatomic,retain) UIButton *prioritySelectButton;
 @property (nonatomic,retain) UIButton *statusSelectButton;
 @property (nonatomic,retain) UIButton *dueDateSelectButton;
+@property (nonatomic, retain) UIButton *userSelectButton;
 @property (nonatomic,retain) NSArray *priorityNameList;
 @property (nonatomic,retain) NSArray *statusNameList;
 @property (nonatomic,retain) UIPickerView *statusPicker;
@@ -84,4 +86,5 @@
 -(IBAction) showStatusPicker:(id)sender;
 -(IBAction) showPriorityPicker:(id)sender;
 -(IBAction) showDueDatePicker:(id)sender;
+-(IBAction) showUsersPicker:(id)sender;
 @end
