@@ -225,6 +225,9 @@
 
 - (void) loadImage:(ListInfo *)listItem {
     
+    NSString * tip = [NSString stringWithFormat:@"Loading the file..."];
+    [ProgressIndicator show:tip];
+    
     NSString * imageUrlPrefix = [SPCachedData serviceHostUrl];
     NSString * url = [imageUrlPrefix stringByAppendingString:listItem.fileRef];
     
@@ -259,6 +262,7 @@
 
 - (void)webPageFetchSucceeded:(ASIHTTPRequest *)theRequest
 {
+    [ProgressIndicator hide];
     NSFileManager* myManager = [NSFileManager defaultManager];  
     
     if([myManager fileExistsAtPath:[theRequest downloadDestinationPath]]) {

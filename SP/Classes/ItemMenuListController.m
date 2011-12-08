@@ -67,6 +67,7 @@
         editTaskViewController.taskInfo = taskInfo;
         UIPopoverController *secondPopoverController = [[UIPopoverController alloc] initWithContentViewController:editTaskViewController];
         secondPopoverController.popoverContentSize = CGSizeMake(600, 600);
+        editTaskViewController.container = secondPopoverController;
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [secondPopoverController presentPopoverFromRect:cell.bounds inView:cell.contentView 
                                permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];

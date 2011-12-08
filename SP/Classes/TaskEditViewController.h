@@ -81,6 +81,8 @@
 @property (nonatomic,retain) UIDatePicker *dueDatePicker;
 @property (nonatomic,retain) UIActionSheet *menu;
 
+@property (nonatomic, assign) UIPopoverController * container;
+
 -(IBAction) cancelChanges:(id)sender;
 -(IBAction) saveChanges:(id)sender;
 -(IBAction) showStatusPicker:(id)sender;

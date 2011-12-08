@@ -28,7 +28,7 @@
 
 @implementation TaskEditViewController
 
-@synthesize titleLabel,titleTextField,priorityLabel,priorityTextField,statusLabel,statusTextField,assignedToLabel,assignedToTextField,completeLabel,sliderLabel,dueDateLabel,dueDateTextField,attachmentLabel, descLabel,descTextField,attachmenTextField, taskInfo, cancelButton, saveButton, statusPicker, menu,statusNameList,statusSelectButton,prioritySelectButton,priorityNameList,priorityPicker,dueDateSelectButton,dueDatePicker, userSelectButton;
+@synthesize titleLabel,titleTextField,priorityLabel,priorityTextField,statusLabel,statusTextField,assignedToLabel,assignedToTextField,completeLabel,sliderLabel,dueDateLabel,dueDateTextField,attachmentLabel, descLabel,descTextField,attachmenTextField, taskInfo, cancelButton, saveButton, statusPicker, menu,statusNameList,statusSelectButton,prioritySelectButton,priorityNameList,priorityPicker,dueDateSelectButton,dueDatePicker, userSelectButton, container;
 
 
 #pragma mark - View lifecycle
@@ -240,14 +240,7 @@
 }
 
 - (IBAction)cancelChanges:(id)sender {
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil 
-                                                    message:@"cancel the changes"
-                                                   delegate:nil 
-                                          cancelButtonTitle:@"OK" 
-                                          otherButtonTitles:nil];
-    [alert show];
-    [alert release];
+    [self.container dismissPopoverAnimated:YES];
 }
 
 - (IBAction)saveChanges:(id)sender {
@@ -338,6 +331,7 @@
     [cancelButton release];
     [saveButton release];    
     [userSelectButton release];
+    [container release];
 }
 
 @end
