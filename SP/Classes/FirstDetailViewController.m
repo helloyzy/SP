@@ -15,6 +15,7 @@
 #import "TaskViewController.h"
 #import "SPCachedData.h"
 #import "NSObject+SPExtensions.h"
+#import "ProgressIndicator.h"
 
 @interface FirstDetailViewController ()
 
