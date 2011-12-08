@@ -13,7 +13,8 @@
 
 @synthesize taskInfo;
 
-@synthesize myTableView, buttonItem, popoverController, taskInfoName, taskInfoValue;
+@synthesize myTableView, buttonItem, popoverController, taskInfoName, 
+taskInfoValue;
 
 
 #pragma mark - View lifecycle
@@ -86,18 +87,24 @@
 #pragma mark -
 #pragma mark button toolbar call method
 
-- (IBAction)toggleMasterView:(id)sender {
-    ItemMenuListController *menuListController = [[ItemMenuListController alloc]
-                                                  init];
-    menuListController.taskInfo = taskInfo;
-    UIPopoverController *poc = [[UIPopoverController alloc]
-								initWithContentViewController:menuListController];
-    [poc presentPopoverFromBarButtonItem:buttonItem 
-                permittedArrowDirections:UIPopoverArrowDirectionAny 
-                                animated:YES];
-    self.popoverController = poc;
-    [poc release];
-    [menuListController release];
+- (IBAction)popTaskMenu:(id)sender {
+    if (popoverController && popoverController.popoverVisible) {
+        [popoverController dismissPopoverAnimated:YES];
+    } else {
+        ItemMenuListController *menuListController = [[ItemMenuListController alloc]
+                                                      init];
+        menuListController.taskInfo = taskInfo;
+        UIPopoverController *poc = [[UIPopoverController alloc]
+                                    initWithContentViewController:menuListController];
+        [poc presentPopoverFromBarButtonItem:buttonItem 
+                    permittedArrowDirections:UIPopoverArrowDirectionAny 
+                                    animated:YES];
+        self.popoverController = poc;
+        menuListController.container = popoverController;
+        [poc release];
+        [menuListController release];
+    }
+    
 }
 
 

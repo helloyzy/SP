@@ -69,11 +69,11 @@
     return request;
 }
 
-+ (SoapRequest *) buildAddAttachmentRequest:(NSString *)fileName {
++ (SoapRequest *) buildAddAttachmentRequest:(NSString *)fileName withListName:(NSString *) listName andListItem: (NSString *) listItemID {
     SPSimpleSoapRequest * request = [SPSimpleSoapRequest soapRequest];
     request.rootTagName = @"AddAttachment";
-    [request addElement:@"listName" withStringValue:@"74C84711-4EDB-4DF2-952F-413A176EA0CC"];
-    [request addElement:@"listItemID" withStringValue:@"1"];
+    [request addElement:@"listName" withStringValue:listName];
+    [request addElement:@"listItemID" withStringValue:listItemID];
     [request addElement:@"fileName" withStringValue:fileName];
     [request addElement:@"attachment" withStringValue:[Base64 encodeWithFileName:fileName]];
     return request;

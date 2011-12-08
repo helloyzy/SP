@@ -5,7 +5,7 @@
 #import "FileListViewController.h"
 @implementation ItemMenuListController
 
-@synthesize menuNames, taskInfo;
+@synthesize menuNames, taskInfo, container;
 
 #pragma mark -
 #pragma mark View lifecycle
@@ -85,6 +85,7 @@
         [fileListPopoverController presentPopoverFromRect:cell.bounds inView:cell.contentView 
                                  permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
         
+        fileListViewController.taskInfo = taskInfo;
         [fileListViewController release];
         
     }else if(indexPath.row == 3){
@@ -126,6 +127,7 @@
     [super dealloc];
     [menuNames release];
     [taskInfo release];
+    [container release];
 }
 
 @end

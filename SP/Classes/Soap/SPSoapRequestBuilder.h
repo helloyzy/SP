@@ -21,5 +21,5 @@
 + (SoapRequest *) buildGetListItemsRequest: (NSString *)listName withFolder: (NSString *)folder;
 + (SoapRequest *) buildUpdateItemsRequest: (NSString *)listName withFolder: (ListInfo *)itemDetail;
 + (SoapRequest *) buildGetUserForSiteRequest;
-+ (SoapRequest *) buildAddAttachmentRequest:(NSString *)fileName;
++ (SoapRequest *) buildAddAttachmentRequest:(NSString *)fileName withListName:(NSString *) listName andListItem: (NSString *) listItemID;
 @end

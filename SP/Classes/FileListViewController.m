@@ -20,6 +20,7 @@
 @synthesize indexPathForSelectRow;
 @synthesize indicator;
 @synthesize myAlertView;
+@synthesize taskInfo;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -126,7 +127,7 @@
 -(void)attachSelectFile{
     UITableViewCell *cell=[myTable  cellForRowAtIndexPath:self.indexPathForSelectRow];
     NSString *fileName = [[cell textLabel] text];               
-    SoapRequest *request = [SPSoapRequestBuilder buildAddAttachmentRequest:fileName];    
+    SoapRequest *request = [SPSoapRequestBuilder buildAddAttachmentRequest:fileName withListName:[taskInfo listName] andListItem:[taskInfo listItemID]];    
  
     //NSLog(@"attachment request is : %@",request);
     
@@ -178,6 +179,7 @@
     [indexPathForSelectRow release];
     [indicator release];
     [myAlertView release];
+    [taskInfo release];
     [super dealloc];
 }
 

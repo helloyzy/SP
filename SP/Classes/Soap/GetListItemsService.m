@@ -22,20 +22,19 @@
 - (id) parseResponseWithXml:(RXMLElement *)xml {
     NSMutableArray * listOfItems = [NSMutableArray array];
     [xml iterate:@"soap:Body.GetListItemsResponse.GetListItemsResult.listitems.rs:data.z:row" with:^(RXMLElement * listEle) {
-       
+        
         ListInfo * list = [[ListInfo alloc] init];
         NSString * fileName = [listEle attribute:@"ows_LinkFilename"];
         list.title = fileName;
         
         if (!fileName) {
             list.title = [listEle attribute:@"ows_LinkTitle"];
-            
-            //TODO get the task info
-           list.assignTo = [listEle attribute:@"ows_AssignedTo"];
-           list.status= [listEle attribute:@"ows_Status"];
-           list.priority = [listEle attribute:@"ows_Priority"];
-           list.dueDate  = [listEle attribute:@"ows_DueDate"];
-           list.percentComplete   = [listEle attribute:@"ows_PercentComplete"];            
+            list.assignTo = [listEle attribute:@"ows_AssignedTo"];
+            list.status= [listEle attribute:@"ows_Status"];
+            list.priority = [listEle attribute:@"ows_Priority"];
+            list.dueDate  = [listEle attribute:@"ows_DueDate"];
+            list.percentComplete   = [listEle attribute:@"ows_PercentComplete"];     
+            list.listItemID = [listEle attribute:@"ows_ID"];
         }
         
         NSString* fileType = [listEle attribute:@"ows_FSObjType"];
@@ -43,9 +42,7 @@
         
         NSString * fileRef = [listEle attribute:@"ows_FileRef"];
         list.fileRef = [[fileRef componentsSeparatedByString:@"#"] objectAtIndex:1];
-        
-        NSLog(@"%@ - %@  - %@",list.type, list.title, list.fileRef);
-        
+                
         [listOfItems addObject:list];
         [list release];
     }];

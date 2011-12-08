@@ -14,22 +14,22 @@
 @synthesize listDescription;
 @synthesize type;
 @synthesize fileRef;
-
+@synthesize listItemID;
 @synthesize listName;
-
 @synthesize assignTo, status, priority, dueDate, percentComplete;
 
 - (void) dealloc {
-    self.title = nil;
-    self.listDescription = nil;
-    self.type = nil;
-    self.fileRef = nil;
-    self.listName = nil;
-    self.assignTo = nil;
-    self.status = nil;
-    self.priority = nil;
-    self.dueDate = nil;
-    self.percentComplete = nil;
+    [title release];
+    [listDescription release];
+    [type release];
+    [fileRef release];
+    [listItemID release];
+    [listName release];
+    [assignTo release];
+    [status release];
+    [priority release];
+    [dueDate release];
+    [percentComplete release];
     [super dealloc];
 }
 @end

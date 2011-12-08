@@ -8,4 +8,6 @@
 
 @property (nonatomic, retain) NSArray *menuNames;
 @property (nonatomic, retain) ListInfo * taskInfo;
+
+@property (nonatomic, assign) UIPopoverController * container;
 @end

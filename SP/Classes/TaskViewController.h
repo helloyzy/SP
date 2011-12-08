@@ -24,5 +24,6 @@
 @property (nonatomic, retain) NSArray * taskInfoValue;
 @property (nonatomic, retain) ListInfo * taskInfo;
 
-- (IBAction)toggleMasterView:(id)sender;
+
+- (IBAction)popTaskMenu:(id)sender;
 @end
