@@ -9,13 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "MBProgressHUD.h"
 
-@interface SPAuthenticationView : UIViewController <MBProgressHUDDelegate> {
-    MBProgressHUD * HUD;
-}
-
-@property (nonatomic, retain) IBOutlet UILabel * lblLoginName;
-
-@property (nonatomic, retain) IBOutlet UILabel * lblPassword;
+@interface SPAuthenticationView : UIViewController <MBProgressHUDDelegate>
 
 @property (nonatomic, retain) IBOutlet UITextField * txtUserName;
 
@@ -23,11 +17,7 @@
 
 @property (nonatomic, retain) IBOutlet UITextField * txtSite;
 
-@property (nonatomic, retain) IBOutlet UIActivityIndicatorView * indicator;
-
 @property (nonatomic, retain) IBOutlet UILabel * lblResultTip;
-
-@property (nonatomic, retain) IBOutlet UILabel * lblProcessingTip;
 
 @property (nonatomic, retain) IBOutlet UIButton * btnVerify;
 

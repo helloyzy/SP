@@ -12,11 +12,15 @@
 @class SoapEnveloper;
 @class SoapRequest;
 
-@interface SoapServiceBase : NSObject
+@interface SoapServiceBase : NSObject {
+    BOOL _isShowProgressIndicator;
+    NSString * _progressIndicatorMsg;
+}
 
 @property (nonatomic, retain) NSObject * errorObj; // for child class to set error information
 @property (nonatomic, retain) SoapRequest * soapRequestParam;
 
+- (void) enableProgressIndicatorWithMsg:(NSString *)msg;
 - (void) request;
 
 @end

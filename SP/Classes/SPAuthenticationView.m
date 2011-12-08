@@ -15,7 +15,7 @@
 #import "UTLDebug.h"
 #import "UIView+Boost.h"
 #import "SPCommon.h"
-#import "MBProgressHUD+Extensions.h"
+#import "ProgressIndicator.h"
 
 @interface SPAuthenticationView ()
 
@@ -25,16 +25,14 @@
 - (void)onVerificationSuccess:(NSNotification *)notification;
 - (void)onVerificationFailure:(NSNotification *)notification;
 - (void)hideResultHints;
-- (void)hideProcessingHints;
-- (void)showProcessingHints;
 - (void)hideKeyBoard;
-- (void)hideHUD;
+- (void)notifyRefreshList;
 
 @end
 
 @implementation SPAuthenticationView
 
-@synthesize lblLoginName, lblPassword,txtUserName, txtPassword, txtSite,indicator, lblResultTip, lblProcessingTip, btnVerify, container;
+@synthesize txtUserName, txtPassword, txtSite, lblResultTip, btnVerify, container;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -62,7 +60,6 @@
 }
 
 - (void) showMessage:(NSString *)message withTextColor:(UIColor *)textColor {
-    [self hideProcessingHints];
     self.lblResultTip.hidden = NO;
     self.lblResultTip.textColor = textColor;
     self.lblResultTip.text = message;
@@ -80,28 +77,15 @@
     // RXMLElement * ele = (RXMLElement *) [self valueFromSPNotification:notification];
     // [self showInfo:@"Verification succeed"];
     
-    // send out notifications
-    [self postNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withValue:nil];
-    // self.btnVerify.enabled = YES;
-    // [self reset];
-    // [self backToParent:nil];
-    // [self hideProcessingHints];
-    // [MBProgressHUD showConfirmationMsg:@"Authenticated!" withDelegate:self];
-    
-    HUD.customView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark.png"]] autorelease];	
-    // Set custom view mode
-    HUD.mode = MBProgressHUDModeCustomView;
-    HUD.labelText = @"Authenticated!";
-    HUD.delegate = self;
-    [self performSelector:@selector(hideHUD) withObject:nil afterDelay:2];
+    [ProgressIndicator switchToCustomViewModes:SP_INDICATORMSG_VERIFYACCOUNT_SUCCESS];
+    [ProgressIndicator assignDelegate:self];
+    [self performSelector:@selector(notifyRefreshList) withObject:nil afterDelay:2];
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
-    HUD.delegate = nil;
-    [HUD hide:YES];
+    [ProgressIndicator hide];
     NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
     [self showError:errorMsg];
-    // self.btnVerify.enabled = YES;
     self.txtPassword.text = @"";
     [self.txtPassword becomeFirstResponder];
 }
@@ -110,25 +94,15 @@
     self.lblResultTip.hidden = YES;
 }
 
-- (void)hideProcessingHints {
-    self.lblProcessingTip.hidden = YES;
-    [self.indicator stopAnimating];
-    self.indicator.hidden = YES;
-}
-
-- (void)showProcessingHints {
-    self.lblProcessingTip.hidden = NO;
-    [self.indicator startAnimating];
-    self.indicator.hidden = NO;
-}
-
-- (void)hideHUD {
-    [HUD hide:YES];
+- (void)notifyRefreshList {
+    // send out notifications to list view
+    [self postNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withValue:nil];
 }
 
 #pragma mark - MBProgressHUD delegate 
 
 - (void) hudWasHidden:(MBProgressHUD *)hud {
+    [ProgressIndicator unassignDelegate];
     [self backToParent:nil];
 }
 
@@ -153,16 +127,8 @@
     
     [self hideKeyBoard];
     [self hideResultHints];
-    // [self showProcessingHints];
-    // self.btnVerify.enabled = NO;
-    if (!HUD) {
-        UIWindow * mainWindow = [[UIApplication sharedApplication] keyWindow];
-        HUD = [[MBProgressHUD alloc] initWithWindow:mainWindow];
-        [mainWindow addSubview:HUD];
-        HUD.labelText = @"Verifying, please wait...";
-        HUD.dimBackground = YES;
-    }
-    [HUD show:YES];
+    
+    [ProgressIndicator show:SP_INDICATORMSG_VERIFYACCOUNT];
     
     [SPCachedData fillCredentialWithUser:userName password:password];
     [SPCachedData fillSiteInfo:site];
@@ -203,14 +169,10 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-    self.lblLoginName = nil;
-    self.lblPassword = nil;
     self.txtUserName = nil;
     self.txtPassword = nil;
     self.txtSite = nil;
-    self.indicator = nil;
     self.lblResultTip = nil;
-    self.lblProcessingTip = nil;
     self.btnVerify = nil;
 }
 
@@ -221,7 +183,6 @@
     self.txtUserName.text = [SPCachedData credential].user;
     self.txtPassword.text = [SPCachedData credential].password;
     self.txtSite.text = [SPCachedData userInputSite];
-    [self hideProcessingHints];
     [self hideResultHints];
 }
 
@@ -239,20 +200,11 @@
 #pragma mark - Destroy methods
 
 - (void) dealloc {
-    self.lblLoginName = nil;
-    self.lblPassword = nil;
     self.txtUserName = nil;
     self.txtPassword = nil;
     self.txtSite = nil;
-    self.indicator = nil;
     self.lblResultTip = nil;
-    self.lblProcessingTip = nil;
     self.btnVerify = nil;
-    if (HUD) {
-        [HUD removeFromSuperview];
-        [HUD release];
-        HUD = nil;
-    }
     [super dealloc];
 }
 

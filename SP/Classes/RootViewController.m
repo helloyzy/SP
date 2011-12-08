@@ -19,7 +19,6 @@
 #import "SPAuthenticationView.h"
 #import "NSObject+SPExtensions.h"
 #import "SPConst.h"
-#import "ProgressIndicator.h"
 #import "SPCachedData.h"
 
 @interface RootViewController ()
@@ -46,8 +45,7 @@
     [self setTitle:@"List Collection"];
     [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_SUCCESS withSelector:@selector(onVerificationSuccess:)];
     [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_FAILURE withSelector:@selector(onVerificationFailure:)];
-    [self registerNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withSelector:@selector(fetchTopListCollection)];    
-    [self fetchTopListCollection];
+    [self registerNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withSelector:@selector(refreshLists:)];    
 }
 
 -(void) viewDidUnload {
@@ -65,6 +63,11 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
+}
+
+- (void) viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [self refreshLists:nil];
 }
 
 #pragma mark - private methods
@@ -89,13 +92,13 @@
     
     SoapRequest * request = [SPSoapRequestBuilder buildListInfoRequest];
     GetListCollectionService * listInfoService = [[GetListCollectionService alloc] init];
-    listInfoService.soapRequestParam = request;    
+    listInfoService.soapRequestParam = request;   
+    [listInfoService enableProgressIndicatorWithMsg:SP_INDICATORMSG_REFRESHLIST];
     [listInfoService request];    
     [listInfoService release];
 }
 
 - (void)onVerificationSuccess:(NSNotification *)notification {
-    [ProgressIndicator hide];
     NSMutableArray * lists = (NSMutableArray *) [self valueFromSPNotification:notification];
     NSLog(@"%@", lists);
     self.listOfItems = lists;
@@ -103,7 +106,6 @@
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
-    [ProgressIndicator hide];
     NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
     NSLog(@"%@", errorMsg);
     //[self showError:errorMsg];
@@ -165,7 +167,6 @@
 
 
 - (IBAction) refreshLists:(id)sender {
-    [ProgressIndicator show:@"Refreshing list collection"];
     [self fetchTopListCollection];
 }
 

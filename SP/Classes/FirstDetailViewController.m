@@ -15,7 +15,6 @@
 #import "TaskViewController.h"
 #import "SPCachedData.h"
 #import "NSObject+SPExtensions.h"
-#import "ProgressIndicator.h"
 
 @interface FirstDetailViewController ()
 
@@ -59,11 +58,8 @@
         
     }
     
-    [self requestSubFolder:listInfo.title withFolder:listInfo.fileRef];
     [self setTitle:listInfo.fileRef];
-    
-    NSString * tip = [NSString stringWithFormat:@"Getting items under %@", self.title];
-    [ProgressIndicator show:tip];
+    [self requestSubFolder:listInfo.title withFolder:listInfo.fileRef];
 }
 
 - (void)viewDidLoad {
@@ -120,14 +116,15 @@
 - (void) requestSubFolder: (NSString *) topListName withFolder: (NSString *) folder{
     SoapRequest * request = [SPSoapRequestBuilder buildGetListItemsRequest:topListName withFolder:folder];
     GetListItemsService* listItemsService = [[GetListItemsService alloc]init];
-    listItemsService.soapRequestParam = request;    
+    listItemsService.soapRequestParam = request; 
+    NSString * tip = [NSString stringWithFormat:@"Getting items under %@", folder];
+    [listItemsService enableProgressIndicatorWithMsg:tip];
     [listItemsService request];    
     [listItemsService release];
 }
 
 
 - (void)onVerificationSuccess:(NSNotification *)notification {
-    [ProgressIndicator hide];
     NSMutableArray * lists = (NSMutableArray *) [self valueFromSPNotification:notification];
     NSLog(@"%@", lists);
     self.listOfItems = lists;
@@ -135,7 +132,6 @@
 }
 
 - (void)onVerificationFailure:(NSNotification *)notification {
-    [ProgressIndicator hide];
     NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
     NSLog(@"%@", errorMsg);
     //[self showError:errorMsg];

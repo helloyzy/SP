@@ -8,11 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@class MBProgressHUD;
+@protocol MBProgressHUDDelegate;
+
 @interface ProgressIndicator : NSObject
 
-+ (void) showInView:(UIView *)view withMsg:(NSString *)msg;
++ (MBProgressHUD *) sharedIndicator;
++ (void) showInView:(UIView *)view withMsg:(NSString *)msg withDetailedMsg:(NSString *)detailedMsg;
 + (void) show:(NSString *)msg;
 + (void) hide;
 + (void) hide:(BOOL)animated;
++ (void) switchToCustomViewModes:(NSString *)msg;
++ (void) switchToNormalViewModes:(NSString *)msg;
+
++ (void) assignDelegate:(id<MBProgressHUDDelegate>)delegate;
++ (void) unassignDelegate;
 
 @end

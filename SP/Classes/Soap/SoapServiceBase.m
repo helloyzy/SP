@@ -9,21 +9,24 @@
 #import "SoapServiceBase.h"
 #import "SoapRequest.h"
 #import "UTLDebug.h"
+#import "ProgressIndicator.h"
 
 // Connection timeout setting (in seconds)
 static int SP_CONNECTION_TIMEOUT = 20;
 
-@interface SoapServiceBase () {
-    BOOL isTimeoutTimerCancelled;
-}
+@interface SoapServiceBase ()
 
 @property (nonatomic, retain) NSMutableData * responseData;
 @property (nonatomic, retain) NSURLConnection * connection;
+@property (nonatomic, assign) BOOL isShowProgressIndicator;
+@property (nonatomic, retain) NSString * progressIndicatorMsg;
 
 - (void) sendSoapRequest:(NSURLRequest *)request;
 - (void) handleError:(NSError *)error;
 - (void) handleException:(NSException *)exception;
-- (void) timeout;
+- (void) scheduleTimeout;
+- (void) onTimeout;
+- (void) cancleTimeout;
 
 @end
 
@@ -33,6 +36,8 @@ static int SP_CONNECTION_TIMEOUT = 20;
 @synthesize soapRequestParam;
 @synthesize responseData;
 @synthesize connection;
+@synthesize isShowProgressIndicator = _isShowProgressIndicator;
+@synthesize progressIndicatorMsg = _progressIndicatorMsg;
 
 #pragma mark - public methods
 
@@ -52,6 +57,15 @@ static int SP_CONNECTION_TIMEOUT = 20;
         [self fail:@"Can not find SOAP request parameter to build up request"]; 
     }
 }
+
+/**
+ * configure to show progress indicator
+ */
+- (void) enableProgressIndicatorWithMsg:(NSString *)msg {
+    self.isShowProgressIndicator = YES;
+    self.progressIndicatorMsg = msg;
+}
+
 
 #pragma mark - protected methods, default implementations, child classes need to override these methods to perform customized behaviours
 
@@ -89,9 +103,10 @@ static int SP_CONNECTION_TIMEOUT = 20;
 - (void) sendSoapRequest:(NSURLRequest *)request {
     @try {
         connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        isTimeoutTimerCancelled = NO;
-        // schedule timeout checking
-        [self performSelector:@selector(timeout) withObject:nil afterDelay:SP_CONNECTION_TIMEOUT];
+        [self scheduleTimeout];
+        if (self.isShowProgressIndicator) {
+            [ProgressIndicator show:self.progressIndicatorMsg];
+        }
     } @catch (NSException *exception) {
         [self handleException:exception];
     }
@@ -119,7 +134,10 @@ static int SP_CONNECTION_TIMEOUT = 20;
 }
 
 - (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {  
-    isTimeoutTimerCancelled = YES;
+    [self cancleTimeout];
+    if (self.isShowProgressIndicator) {
+        [ProgressIndicator hide];
+    }
     // ignore the passed-in error if we have customized error information
     if (errorObj) {
         [self fail:[self parseError]];
@@ -129,7 +147,10 @@ static int SP_CONNECTION_TIMEOUT = 20;
 }
 
 - (void) connectionDidFinishLoading:(NSURLConnection *)connection {	
-    isTimeoutTimerCancelled = YES;
+    [self cancleTimeout];
+    if (self.isShowProgressIndicator) {
+        [ProgressIndicator hide];
+    }
     NSString * responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     UTLLog(@"%@", responseString);
     id responseObject = [self parseResponse:responseString];
@@ -146,12 +167,20 @@ static int SP_CONNECTION_TIMEOUT = 20;
 
 #pragma mark - timeout 
 
-- (void) timeout {
-    if (isTimeoutTimerCancelled) {
-        return;
-    }
+- (void) scheduleTimeout {
+    [self performSelector:@selector(onTimeout) withObject:nil afterDelay:SP_CONNECTION_TIMEOUT];
+}
+
+- (void) onTimeout {
     [self.connection cancel];
+    if (self.isShowProgressIndicator) {
+        [ProgressIndicator hide];
+    }
     [self fail:@"Time out error."];    
+}
+
+- (void) cancleTimeout {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self];
 }
 
 #pragma mark - destroy related
@@ -161,6 +190,7 @@ static int SP_CONNECTION_TIMEOUT = 20;
     self.soapRequestParam = nil;
     self.responseData = nil;
     self.connection = nil;
+    self.progressIndicatorMsg = nil;
     [super dealloc];
 }
 

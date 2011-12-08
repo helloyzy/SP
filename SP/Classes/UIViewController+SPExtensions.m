@@ -12,7 +12,7 @@
 @implementation UIViewController (SPExtensions)
 
 - (void) showProgressIndicator:(NSString *)msg {
-    [ProgressIndicator showInView:self.view withMsg:msg];
+    [ProgressIndicator showInView:self.view withMsg:msg withDetailedMsg:nil];
 }
 
 - (void) hideProgressIndicator {

@@ -37,3 +37,8 @@ static NSString * SP_NOTIFICATION_ADDATTACHMENT_SUCCESS = @"SP_NOTIFICATION_ADDA
 static NSString * SP_NOTIFICATION_ADDATTACHMENT_FAILURE = @"SP_NOTIFICATION_ADDATTACHMENT_FAILURE";
 // Notification on site settings changed
 static NSString * SP_NOTIFICATION_SITESETTINGS_CHANGED = @"NOTIFICATION_SITESETTINGS_CHANGED";
+
+// Progress indicator messages
+static NSString * SP_INDICATORMSG_REFRESHLIST = @"Refresh list information";
+static NSString * SP_INDICATORMSG_VERIFYACCOUNT = @"Verifying sharepoint account";
+static NSString * SP_INDICATORMSG_VERIFYACCOUNT_SUCCESS = @"Sharepoint account gets authencticated!";
