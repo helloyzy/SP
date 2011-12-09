@@ -39,6 +39,9 @@ static MBProgressHUD * viewProgressIndicator;
  * show the indicator within the view, with a black background, model.
  */
 + (void) showInView:(UIView *)view withMsg:(NSString *)msg withDetailedMsg:(NSString *)detailedMsg {
+    if (!view) {  // no super view to be embedded, return
+        return;
+    }
     if ([self isIndicatorInSuperView:view]) {
         [self switchToMode:MBProgressHUDModeIndeterminate withMsg:msg withDetailedMsg:detailedMsg];
         return;

@@ -45,7 +45,8 @@
     [self setTitle:@"List Collection"];
     [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_SUCCESS withSelector:@selector(onVerificationSuccess:)];
     [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_FAILURE withSelector:@selector(onVerificationFailure:)];
-    [self registerNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withSelector:@selector(refreshLists:)];    
+    [self registerNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withSelector:@selector(refreshLists:)];
+
 }
 
 -(void) viewDidUnload {
@@ -67,7 +68,9 @@
 
 - (void) viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    [self refreshLists:nil];
+    if (!self.listOfItems) {
+        [self refreshLists:nil];
+    }
 }
 
 #pragma mark - private methods

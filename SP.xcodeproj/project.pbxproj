@@ -11,6 +11,7 @@
 		001642BB147A1B72005C3DF8 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 001642B9147A1B72005C3DF8 /* bg.png */; };
 		001642BD147A1BE3005C3DF8 /* bg_btn_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 001642BC147A1BE3005C3DF8 /* bg_btn_clear.png */; };
 		0017648F1491E34E00C349CB /* ReachabilityEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017648E1491E34E00C349CB /* ReachabilityEx.m */; };
+		001764921491E8B300C349CB /* ReachabilityMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = 001764911491E8B300C349CB /* ReachabilityMgr.m */; };
 		00476A21147C8D2B008C42D6 /* SPCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 00476A20147C8D2B008C42D6 /* SPCommon.m */; };
 		00B128CF1474AF2C007F65B6 /* UtilsFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B128CE1474AF2C007F65B6 /* UtilsFunc.m */; };
 		00C7EF1B147F37F100F21C6B /* IBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C7EEDC147F37F100F21C6B /* IBAlertView.m */; };
@@ -143,8 +144,10 @@
 		001642B8147A1B72005C3DF8 /* bg_btn_verify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_verify.png; sourceTree = "<group>"; };
 		001642B9147A1B72005C3DF8 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		001642BC147A1BE3005C3DF8 /* bg_btn_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_clear.png; sourceTree = "<group>"; };
-		0017648D1491E34E00C349CB /* ReachabilityEx.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ReachabilityEx.h; sourceTree = "<group>"; };
+		0017648D1491E34E00C349CB /* ReachabilityEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityEx.h; sourceTree = "<group>"; };
 		0017648E1491E34E00C349CB /* ReachabilityEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityEx.m; sourceTree = "<group>"; };
+		001764901491E8B300C349CB /* ReachabilityMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityMgr.h; sourceTree = "<group>"; };
+		001764911491E8B300C349CB /* ReachabilityMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityMgr.m; sourceTree = "<group>"; };
 		00476A1F147C8D2B008C42D6 /* SPCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCommon.h; sourceTree = "<group>"; };
 		00476A20147C8D2B008C42D6 /* SPCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCommon.m; sourceTree = "<group>"; };
 		00B128CD1474AF2C007F65B6 /* UtilsFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsFunc.h; sourceTree = "<group>"; };
@@ -916,6 +919,8 @@
 				0BDDD7A41461607300FD34D2 /* NSObject+SPExtensions.m */,
 				00F02DB11488CB7D00885225 /* ProgressIndicator.h */,
 				00F02DB21488CB7D00885225 /* ProgressIndicator.m */,
+				001764901491E8B300C349CB /* ReachabilityMgr.h */,
+				001764911491E8B300C349CB /* ReachabilityMgr.m */,
 				0BDDD7A01461586C00FD34D2 /* SPCachedData.h */,
 				0BDDD7A11461586C00FD34D2 /* SPCachedData.m */,
 				00476A1F147C8D2B008C42D6 /* SPCommon.h */,
@@ -1140,6 +1145,7 @@
 				7312C2D2148EFCC400A54587 /* Item.m in Sources */,
 				7312C2D3148EFCC400A54587 /* AddAttachmentService.m in Sources */,
 				0017648F1491E34E00C349CB /* ReachabilityEx.m in Sources */,
+				001764921491E8B300C349CB /* ReachabilityMgr.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
