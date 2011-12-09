@@ -10,6 +10,7 @@
 		001642BA147A1B72005C3DF8 /* bg_btn_verify.png in Resources */ = {isa = PBXBuildFile; fileRef = 001642B8147A1B72005C3DF8 /* bg_btn_verify.png */; };
 		001642BB147A1B72005C3DF8 /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 001642B9147A1B72005C3DF8 /* bg.png */; };
 		001642BD147A1BE3005C3DF8 /* bg_btn_clear.png in Resources */ = {isa = PBXBuildFile; fileRef = 001642BC147A1BE3005C3DF8 /* bg_btn_clear.png */; };
+		0017648F1491E34E00C349CB /* ReachabilityEx.m in Sources */ = {isa = PBXBuildFile; fileRef = 0017648E1491E34E00C349CB /* ReachabilityEx.m */; };
 		00476A21147C8D2B008C42D6 /* SPCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 00476A20147C8D2B008C42D6 /* SPCommon.m */; };
 		00B128CF1474AF2C007F65B6 /* UtilsFunc.m in Sources */ = {isa = PBXBuildFile; fileRef = 00B128CE1474AF2C007F65B6 /* UtilsFunc.m */; };
 		00C7EF1B147F37F100F21C6B /* IBAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C7EEDC147F37F100F21C6B /* IBAlertView.m */; };
@@ -142,6 +143,8 @@
 		001642B8147A1B72005C3DF8 /* bg_btn_verify.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_verify.png; sourceTree = "<group>"; };
 		001642B9147A1B72005C3DF8 /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		001642BC147A1BE3005C3DF8 /* bg_btn_clear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_btn_clear.png; sourceTree = "<group>"; };
+		0017648D1491E34E00C349CB /* ReachabilityEx.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ReachabilityEx.h; sourceTree = "<group>"; };
+		0017648E1491E34E00C349CB /* ReachabilityEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityEx.m; sourceTree = "<group>"; };
 		00476A1F147C8D2B008C42D6 /* SPCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPCommon.h; sourceTree = "<group>"; };
 		00476A20147C8D2B008C42D6 /* SPCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPCommon.m; sourceTree = "<group>"; };
 		00B128CD1474AF2C007F65B6 /* UtilsFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilsFunc.h; sourceTree = "<group>"; };
@@ -404,6 +407,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		0017648A1491E32200C349CB /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				0017648D1491E34E00C349CB /* ReachabilityEx.h */,
+				0017648E1491E34E00C349CB /* ReachabilityEx.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
 		00C7EED9147F37F100F21C6B /* iBoost */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,6 +640,7 @@
 		0B672D351456B4EE00EAE589 /* 3rdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0017648A1491E32200C349CB /* Reachability */,
 				00C7EF36147F3F1400F21C6B /* ASIHTTPRequest */,
 				0BC2F93D1460F8D300292406 /* GoogleXML */,
 				00C7EED9147F37F100F21C6B /* iBoost */,
@@ -1126,6 +1139,7 @@
 				7312C2D0148EFCC400A54587 /* FileListViewController.m in Sources */,
 				7312C2D2148EFCC400A54587 /* Item.m in Sources */,
 				7312C2D3148EFCC400A54587 /* AddAttachmentService.m in Sources */,
+				0017648F1491E34E00C349CB /* ReachabilityEx.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
