@@ -20,6 +20,7 @@
 #import "NSObject+SPExtensions.h"
 #import "SPConst.h"
 #import "SPCachedData.h"
+#import "ReachabilityMgr.h"
 
 @interface RootViewController ()
 
@@ -28,11 +29,15 @@
 - (void) clearLists;
 - (void) showFirstDetailWithListsCleared;
 
+
+- (void)onNetworkNormal:(NSNotification *)notification;
+- (void)onNetworkDisconnected:(NSNotification *)notification;
+
 @end
 
 @implementation RootViewController
 
-@synthesize firstDetailViewController, listOfItems, topListTableView, authenticatePopover, siteItem;
+@synthesize firstDetailViewController, listOfItems, topListTableView, authenticatePopover, siteItem, networkStatusItem;
 
 
 
@@ -45,6 +50,8 @@
     [self setTitle:@"List Collection"];
     [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_SUCCESS withSelector:@selector(onVerificationSuccess:)];
     [self registerNotification:SP_NOTIFICATION_GETLISTCOLLECTION_FAILURE withSelector:@selector(onVerificationFailure:)];
+    [self registerNotification:SP_NOTIFICATION_NETWORK_NORMAL withSelector:@selector(onNetworkNormal:)];
+    [self registerNotification:SP_NOTIFICATION_NETWORK_DISCONNECTED withSelector:@selector(onNetworkDisconnected:)];
     [self registerNotification:SP_NOTIFICATION_SITESETTINGS_CHANGED withSelector:@selector(refreshLists:)];
 
 }
@@ -56,10 +63,16 @@
     [self.authenticatePopover dismissPopoverAnimated:NO];
     self.authenticatePopover = nil;
     self.siteItem = nil;
+    self.networkStatusItem = nil;
 }
 
 - (void) viewWillAppear:(BOOL)animated {    
-    [super viewWillAppear:animated];    
+    [super viewWillAppear:animated];  
+    if ([ReachabilityMgr isNetworkAvailable]) {
+        self.networkStatusItem.title = @"Online";
+    } else {
+        self.networkStatusItem.title = @"Offline";
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -112,6 +125,19 @@
     NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
     NSLog(@"%@", errorMsg);
     //[self showError:errorMsg];
+}
+
+- (void)onNetworkNormal:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.networkStatusItem.title = @"Online";
+    });
+}
+
+- (void)onNetworkDisconnected:(NSNotification *)notification {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.networkStatusItem.title = @"Offline";
+
+    });
 }
 
 #pragma mark -

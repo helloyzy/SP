@@ -10,6 +10,7 @@
 #import "SoapRequest.h"
 #import "UTLDebug.h"
 #import "ProgressIndicator.h"
+#import "ReachabilityMgr.h"
 
 // Connection timeout setting (in seconds)
 static int SP_CONNECTION_TIMEOUT = 20;
@@ -41,7 +42,11 @@ static int SP_CONNECTION_TIMEOUT = 20;
 
 #pragma mark - public methods
 
-- (void) request {    
+- (void) request { 
+    if (![ReachabilityMgr isNetworkAvailable]) {
+        [self fail:@"Network not available, please try again later!"];
+        return;
+    }
     if (soapRequestParam) {
         SoapEnveloper * soapEnveloper = [[SoapEnveloper alloc] init];
         [soapEnveloper write:soapRequestParam];        

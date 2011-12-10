@@ -10,6 +10,7 @@
 #import "SPAuthenticationView.h"
 #import "SPCoreDataUtil.h"
 #import "SPCachedData.h"
+#import "ReachabilityMgr.h"
 
 @interface SPAppDelegate ()
 
@@ -49,6 +50,7 @@
     
     [self initCoreDataEnv];
     [self initCache];
+    [ReachabilityMgr initReachabiliity];
     
     [self.window addSubview:splitViewController.view];
     [self.window makeKeyAndVisible];

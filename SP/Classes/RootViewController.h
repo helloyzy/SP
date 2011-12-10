@@ -22,6 +22,7 @@
 @property(nonatomic, retain) IBOutlet UITableView *topListTableView;
 @property(nonatomic, retain) UIPopoverController * authenticatePopover;
 @property(nonatomic, retain) IBOutlet UIBarButtonItem * siteItem;
+@property (nonatomic, retain) IBOutlet UIBarButtonItem * networkStatusItem;
 
 - (IBAction) logonSites:(id)sender;
 - (IBAction) refreshLists:(id)sender;
