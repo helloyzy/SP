@@ -74,7 +74,12 @@ static SPCachedData * sharedInstance;
     // E.g. take "sharepoint.perficient.com" from "https://sharepoint.perficient.com/sites/SP"
     sharedInstance.serviceHost = host; 
     // E.g. take "sites/SP" from "https://sharepoint.perficient.com/sites/SP"
-    sharedInstance.serviceRelativePath = [[url relativePath] substringFromIndex:1];
+    NSString * relativePath = [url relativePath];
+    if (relativePath && relativePath.length > 0) {
+        sharedInstance.serviceRelativePath = [[url relativePath] substringFromIndex:1];
+    } else {
+        sharedInstance.serviceRelativePath = @"";
+    }
     NSRange range = [site rangeOfString:host];
     // E.g. take "https://sharepoint.perficient.com" from "https://sharepoint.perficient.com/sites/SP" and add the trailing "/"
     sharedInstance.serviceHostUrl = [[site substringToIndex:(range.location + range.length)] stringByAppendingString:@"/"];
@@ -89,7 +94,6 @@ static SPCachedData * sharedInstance;
     }
     // E.g. convert "https://sharepoint.perficient.com/sites/SP" to "https://sharepoint.perficient.com/sites/SP/_vti_bin/"
     sharedInstance.serviceUrlPrefix = [site stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    NSLog(@"%@, %@", [url relativePath], [url relativeString]);
 }
 
 + (NSString *) userInputSite {

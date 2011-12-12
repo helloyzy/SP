@@ -11,6 +11,7 @@
 @interface ReachabilityMgr : NSObject
 
 + (BOOL) isNetworkAvailable;
++ (BOOL) isNetworkAvailableForUrl:(NSString *)urlStr;
 + (void) initReachabiliity;
 
 @end

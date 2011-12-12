@@ -16,6 +16,7 @@
 #import "UIView+Boost.h"
 #import "SPCommon.h"
 #import "ProgressIndicator.h"
+#import "ReachabilityMgr.h"
 
 @interface SPAuthenticationView ()
 
@@ -86,8 +87,6 @@
     [ProgressIndicator hide];
     NSString * errorMsg = (NSString *) [self valueFromSPNotification:notification];
     [self showError:errorMsg];
-    self.txtPassword.text = @"";
-    [self.txtPassword becomeFirstResponder];
 }
 
 - (void)hideResultHints {
