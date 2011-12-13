@@ -202,6 +202,7 @@
         selectedItem.title = listInfo.title;
         controller.listInfo = selectedItem;
         [[self navigationController] pushViewController:controller animated:YES];
+        [controller release];
         
     } else if ([fileName isEqualToString:@"1_.000" ]) {
         TaskViewController *controller = [[TaskViewController alloc] initWithNibName:@"TaskViewController" bundle:nil];    
